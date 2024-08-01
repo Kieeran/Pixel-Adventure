@@ -35,4 +35,5 @@ Some of the things left to do:
 
 # Credits
 Specials thanks to: 
-- [Pixel Frog](https://pixelfrog-assets.itch.io/pixel-adventure-1) - for the fully complete asset pack and the original game 
+- [Pixel Frog](https://pixelfrog-assets.itch.io/pixel-adventure-1) - for the fully complete asset pack and the original game
+And thanks to many more who have helped with suggestions and feedback! 
