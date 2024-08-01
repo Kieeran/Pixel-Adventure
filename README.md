@@ -7,9 +7,9 @@ The game is still incomplete, but I will try to update it in the future
 
 ## Built with
 
-- ![C#](https://img.shields.io/badge/C%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)
-- ![Unity](https://img.shields.io/badge/Unity-%23000000.svg?style=for-the-badge&logo=unity&logoColor=white)
-- ![.NET Framework](https://img.shields.io/badge/.NET_Framework-%235C2D91.svg?style=for-the-badge&logo=dotnet&logoColor=white)
+- [![C#](https://img.shields.io/badge/C%23-%23239120.svg?style=for-the-badge&logo=c-sharp&logoColor=white)](https://learn.microsoft.com/en-us/dotnet/csharp/)
+- [![Unity](https://img.shields.io/badge/Unity-%23000000.svg?style=for-the-badge&logo=unity&logoColor=white)](https://unity.com/)
+- [![.NET Framework](https://img.shields.io/badge/.NET_Framework-%235C2D91.svg?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/en-us/)
 
 ## Status
 This project is not yet completed. I will update it in the future
