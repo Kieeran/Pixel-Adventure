@@ -11,6 +11,9 @@ The game is still incomplete, but I will try to update it in the future
 - ![Unity](https://img.shields.io/badge/Unity-%23000000.svg?style=for-the-badge&logo=unity&logoColor=white)
 - ![.NET Framework](https://img.shields.io/badge/.NET_Framework-%235C2D91.svg?style=for-the-badge&logo=dotnet&logoColor=white)
 
+## Status
+This project is not yet completed. I will update it in the future
+
 ## Sample results
 ![Level_0](https://github.com/user-attachments/assets/43f5c0d6-d23b-4c92-a583-cff508f40873)
 
