@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef154ea2918c6640ba814bdf24589aa, type: 3}
+  m_Name: Level_1
+  m_EditorClassIdentifier: 
+  levelID: 1
+  fruitsData: {fileID: 11400000, guid: bb636894dcbd179499c29b5873e7f6bf, type: 2}
+  boxesData: {fileID: 11400000, guid: e620be81830513641ad801438d5e3a9f, type: 2}
+  trapsData: {fileID: 0}
+  playerPosition: {x: -14, y: -4, z: 0}
