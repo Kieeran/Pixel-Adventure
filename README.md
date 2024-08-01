@@ -3,9 +3,7 @@
 
 This Game Project is a clone of the original game with the same name, created by Pixel Frog. I made this project for learning purposes. 
 The game is still incomplete, but I will try to update it in the future
-
-![Level_0](https://github.com/user-attachments/assets/73689365-76c1-48ba-b172-dccbee2ea25e)
-
+https://github.com/user-attachments/assets/34c2c4f5-c839-4a72-938f-949bb7a96c62
 # Usage
 - Via Git: Clone the repo as usual via cmd/terminal or in your favourite Git GUI software.
 - Downloadable zips: 2022.3 Project ([Unity 2022.3.10f1](https://drive.google.com/file/d/1m2ZUILGIoksgGUTJ1GpBx174nwdFLrpc/view?usp=sharing))
