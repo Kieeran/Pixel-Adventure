@@ -4,7 +4,11 @@
 This Game Project is a clone of the original game with the same name, created by Pixel Frog. I made this project for learning purposes. 
 The game is still incomplete, but I will try to update it in the future
 
+## Sample results
 ![Level_0](https://github.com/user-attachments/assets/43f5c0d6-d23b-4c92-a583-cff508f40873)
+
+![Level_2](https://github.com/user-attachments/assets/ce49bda3-d59e-4d90-9b13-3dee7cae6e9d)
+
 
 # Usage
 - Via Git: Clone the repo as usual via cmd/terminal or in your favourite Git GUI software.
