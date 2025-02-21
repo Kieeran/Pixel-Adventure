@@ -37,28 +37,28 @@ public class ParticleController : MonoBehaviour
 
             if (counter > delayTime)
             {
-                if (PlayerController.Instance.GetIsGrounded())
-                    movementParticle.Play();
+                // if (PlayerController.Instance.GetIsGrounded())
+                //     movementParticle.Play();
 
                 counter = 0;
             }
         }
 
-        if (counter > delayTime)
-        {
-            if (PlayerController.Instance.GetIsFallDown())
-            {
-                fallParticle.Play();
-                PlayerController.Instance.SetIsFallDown(false);
-            }
+        // if (counter > delayTime)
+        // {
+        //     if (PlayerController.Instance.GetIsFallDown())
+        //     {
+        //         fallParticle.Play();
+        //         PlayerController.Instance.SetIsFallDown(false);
+        //     }
 
-            if (PlayerController.Instance.GetIsTouch())
-            {
-                touchParticle.Play();
-                PlayerController.Instance.SetIsTouch(false);
-            }
+        //     if (PlayerController.Instance.GetIsTouch())
+        //     {
+        //         touchParticle.Play();
+        //         PlayerController.Instance.SetIsTouch(false);
+        //     }
 
-            counter = 0;
-        }
+        //     counter = 0;
+        // }
     }
 }

@@ -152,7 +152,7 @@ public class LevelManager : MonoBehaviour
         TrapsManager.Instance.Spawn(levelData[levelID].trapsData);
 
         player.transform.position = levelData[levelID].playerPosition;
-        player.ChangeRandomSkin();
+        // player.ChangeRandomSkin();
         //currentLevel.AddPlayer(_prefabCharacter);
         //Debug.Log(levelData[levelID].boxesData);
     }
