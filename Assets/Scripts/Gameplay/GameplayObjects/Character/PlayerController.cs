@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
             Instance = this;
     }
 
-    // private float horizontalInput;
     // private float moveSpeed = 10;
     // private float jumpPower = 22;
     // private bool isFacingRight = true;

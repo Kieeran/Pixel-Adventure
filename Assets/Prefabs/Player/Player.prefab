@@ -14679,6 +14679,7 @@ GameObject:
   - component: {fileID: 4529585981724746651}
   - component: {fileID: 95255012435249809}
   - component: {fileID: 6457185354270965852}
+  - component: {fileID: 5741197850277541710}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -14887,22 +14888,6 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Move
       m_Flags: 4
-    - m_Name: up
-      m_Id: 3b8340dd-fed7-4e62-9672-0e0face3dae6
-      m_Path: <Keyboard>/w
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: down
-      m_Id: 9e79f951-55bd-4b85-a3f9-79174c074822
-      m_Path: <Keyboard>/s
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
     - m_Name: left
       m_Id: f5aec956-e166-4831-a90e-856092890f8d
       m_Path: <Keyboard>/a
@@ -14927,22 +14912,6 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Move
       m_Flags: 4
-    - m_Name: up
-      m_Id: 2d95d67f-87fe-4ff0-adb0-31254b246cb1
-      m_Path: <Keyboard>/upArrow
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
-    - m_Name: down
-      m_Id: eaa8e9da-aad9-4b4e-85f6-504bbaf7b60f
-      m_Path: <Keyboard>/downArrow
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Move
-      m_Flags: 8
     - m_Name: left
       m_Id: 3c0674d0-2384-4b51-8da5-88622c07c50f
       m_Path: <Keyboard>/leftArrow
@@ -14960,6 +14929,51 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     m_Flags: 0
+  jumpAction:
+    m_Name: Jump
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 7a1bc0ee-f821-4644-a681-2c3af5966f88
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: a54c34d8-e7cb-4125-b9d3-ddd0f475c6f0
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Jump
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 8b325ab9-21cb-4a94-aa3c-e345069569c7
+      m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Jump
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 6396acf0-6e07-4184-9ff9-f6367bc5e842
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Jump
+      m_Flags: 0
+    m_Flags: 0
+--- !u!114 &5741197850277541710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3128816913271557176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d84f8cfe1f87144b795d63c06f0294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7932850783537353504
 GameObject:
   m_ObjectHideFlags: 0
