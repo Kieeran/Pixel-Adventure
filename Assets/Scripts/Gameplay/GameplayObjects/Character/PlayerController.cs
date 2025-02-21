@@ -5,15 +5,20 @@ public class PlayerController : MonoBehaviour
 {
     public static PlayerController Instance { get; private set; }
 
+    public PlayerInput playerInput;
+    public PlayerMovement playerMovement;
+
     private void Awake()
     {
         if (Instance != null)
             Destroy(gameObject);
         else
             Instance = this;
+
+        playerInput = GetComponent<PlayerInput>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
-    // private float moveSpeed = 10;
     // private float jumpPower = 22;
     // private bool isFacingRight = true;
     // private bool isGrounded = false;

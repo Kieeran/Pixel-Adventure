@@ -8,12 +8,23 @@ public class PlayerInput : MonoBehaviour
     public InputAction moveAction;
     public InputAction jumpAction;
 
+    public Vector2 move;
+    public bool jump;
+
     public void Awake()
     {
         jumpAction.started +=
             ctx =>
         {
-            Debug.Log("Jump!");
+            jump = true;
+            //Debug.Log("Start jump!");
+        };
+
+        jumpAction.canceled +=
+            ctx =>
+        {
+            jump = false;
+            //Debug.Log("Done jump!");
         };
     }
 
@@ -31,6 +42,6 @@ public class PlayerInput : MonoBehaviour
 
     public void Update()
     {
-        moveAction.ReadValue<Vector2>();
+        move = moveAction.ReadValue<Vector2>();
     }
 }
