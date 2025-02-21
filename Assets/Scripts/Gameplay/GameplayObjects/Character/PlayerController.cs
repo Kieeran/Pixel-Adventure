@@ -3,15 +3,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController _instance;
-    public static PlayerController Instance => _instance;
+    public static PlayerController Instance { get; private set; }
 
     private void Awake()
     {
-        if (_instance != null)
-            Destroy(_instance);
+        if (Instance != null)
+            Destroy(gameObject);
         else
-            _instance = this;
+            Instance = this;
     }
 
     private float horizontalInput;
