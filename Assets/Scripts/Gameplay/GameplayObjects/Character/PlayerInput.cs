@@ -1,18 +1,26 @@
 using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.InputSystem;
 using UnityEngine;
+using UnityEngine.InputSystem.Interactions;
 
 public class PlayerInput : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public InputAction moveAction;
+
+    public void OnEnable()
     {
-        
+        moveAction.Enable();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnDisable()
     {
-        
+        moveAction.Disable();
+    }
+
+    public void Update()
+    {
+        var move = moveAction.ReadValue<Vector2>();
+
+        Debug.Log(move);
     }
 }
