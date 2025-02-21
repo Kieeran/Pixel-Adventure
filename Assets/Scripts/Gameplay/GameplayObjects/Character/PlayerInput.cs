@@ -6,21 +6,31 @@ using UnityEngine.InputSystem.Interactions;
 public class PlayerInput : MonoBehaviour
 {
     public InputAction moveAction;
+    public InputAction jumpAction;
+
+    public void Awake()
+    {
+        jumpAction.started +=
+            ctx =>
+        {
+            Debug.Log("Jump!");
+        };
+    }
 
     public void OnEnable()
     {
         moveAction.Enable();
+        jumpAction.Enable();
     }
 
     public void OnDisable()
     {
         moveAction.Disable();
+        jumpAction.Disable();
     }
 
     public void Update()
     {
-        var move = moveAction.ReadValue<Vector2>();
-
-        Debug.Log(move);
+        moveAction.ReadValue<Vector2>();
     }
 }
