@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    public bool isGrounded = false;
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Terrain"))
         {
-            isGrounded = true;
+            PlayerController.Instance.playerMovement.isGrounded = true;
+            PlayerController.Instance.playerMovement.isJumpInAir = false;
         }
     }
 
@@ -18,7 +17,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Terrain"))
         {
-            isGrounded = false;
+            PlayerController.Instance.playerMovement.isGrounded = false;
         }
     }
 

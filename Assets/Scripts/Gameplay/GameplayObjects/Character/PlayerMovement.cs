@@ -8,7 +8,11 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpPower;
+    [SerializeField] private float jumpAirPower;
     [SerializeField] private bool isFacingRight = true;
+
+    public bool isGrounded = false;
+    public bool isJumpInAir = false;
 
     private void Awake()
     {
@@ -38,10 +42,18 @@ public class PlayerMovement : MonoBehaviour
     {
         if (PlayerController.Instance.playerInput.jump == true)
         {
-            if (PlayerController.Instance.playerCollision.isGrounded == true)
+            if (isGrounded == true)
             {
                 playerRB.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
                 PlayerController.Instance.playerInput.jump = false;
+            }
+
+            if (isJumpInAir == false && isGrounded == false)
+            {
+                playerRB.velocity = new Vector2(playerRB.velocity.x, 0);
+                
+                playerRB.AddForce(Vector2.up * jumpAirPower, ForceMode2D.Impulse);
+                isJumpInAir = true;
             }
         }
     }
