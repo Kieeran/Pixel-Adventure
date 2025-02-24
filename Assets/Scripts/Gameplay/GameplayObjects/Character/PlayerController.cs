@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
     }
 
     // private float jumpPower = 22;
-    // private bool isFacingRight = true;
     // private bool isGrounded = false;
     // private bool isFallDown = false;
     // private bool isTouch = false;
@@ -259,16 +258,5 @@ public class PlayerController : MonoBehaviour
     // {
     //     animator.SetFloat("jumpCount", 0f);
     //     Debug.Log("Done double jump");
-    // }
-
-    // private void FlipSprite()
-    // {
-    //     if (isFacingRight && horizontalInput < 0f || !isFacingRight && horizontalInput > 0f)
-    //     {
-    //         isFacingRight = !isFacingRight;
-    //         Vector3 ls = transform.localScale;
-    //         ls.x *= -1f;
-    //         transform.localScale = ls;
-    //     }
     // }
 }
