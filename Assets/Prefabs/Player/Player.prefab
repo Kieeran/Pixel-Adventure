@@ -14680,6 +14680,7 @@ GameObject:
   - component: {fileID: 95255012435249809}
   - component: {fileID: 6457185354270965852}
   - component: {fileID: 5741197850277541710}
+  - component: {fileID: 3918691766044789199}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -14812,10 +14813,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 20
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 7
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -14860,6 +14861,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001b125974b003148b476b17fcf41fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInput: {fileID: 0}
+  playerMovement: {fileID: 0}
 --- !u!114 &6457185354270965852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14962,6 +14965,8 @@ MonoBehaviour:
       m_Action: Jump
       m_Flags: 0
     m_Flags: 0
+  move: {x: 0, y: 0}
+  jump: 0
 --- !u!114 &5741197850277541710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14972,6 +14977,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 16d84f8cfe1f87144b795d63c06f0294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  jumpPower: 1
+  isFacingRight: 1
+--- !u!114 &3918691766044789199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3128816913271557176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eccfae56b594c2d4daa568cc96ad28de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7932850783537353504

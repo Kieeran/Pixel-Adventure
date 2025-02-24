@@ -1562,14 +1562,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1795255654124406223, guid: 404be6036aec4fc4f9833ae055280885, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1795255654124406223, guid: 404be6036aec4fc4f9833ae055280885, type: 3}
-      propertyPath: m_GravityScale
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3128816913271557176, guid: 404be6036aec4fc4f9833ae055280885, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1614,28 +1606,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5741197850277541710, guid: 404be6036aec4fc4f9833ae055280885, type: 3}
-      propertyPath: playerRB
-      value: 
-      objectReference: {fileID: 1201002280}
-    - target: {fileID: 5741197850277541710, guid: 404be6036aec4fc4f9833ae055280885, type: 3}
-      propertyPath: jumpPower
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5741197850277541710, guid: 404be6036aec4fc4f9833ae055280885, type: 3}
-      propertyPath: moveSpeed
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 404be6036aec4fc4f9833ae055280885, type: 3}
---- !u!50 &1201002280 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 1795255654124406223, guid: 404be6036aec4fc4f9833ae055280885, type: 3}
-  m_PrefabInstance: {fileID: 991948876}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1214630785
 GameObject:
   m_ObjectHideFlags: 0
