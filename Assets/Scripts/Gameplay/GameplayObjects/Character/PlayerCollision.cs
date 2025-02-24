@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionExit2D(Collision2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.gameObject.CompareTag("Terrain"))
+        {
+            Debug.Log(collision.gameObject.name);
+        }
     }
 }

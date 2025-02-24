@@ -202,18 +202,6 @@ public class PlayerController : MonoBehaviour
     //     }
     // }
 
-    // private void OnCollisionExit2D(Collision2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Terrain"))
-    //     {
-    //         if (IsWallJump)
-    //         {
-    //             IsWallJump = false;
-    //             animator.SetBool("IsWallJump", IsWallJump);
-    //         }
-    //     }
-    // }
-
     // private void OnTriggerEnter2D(Collider2D collision)
     // {
     //     if (collision.gameObject.CompareTag("Fruit"))
