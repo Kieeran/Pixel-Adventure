@@ -1533,9 +1533,61 @@ PrefabInstance:
       propertyPath: m_Offset.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5343921162609851906, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[16].m_Data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343921162609851906, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[17].m_Data
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343921162609851906, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[18].m_Data
+      value: 
+      objectReference: {fileID: 4860222720029096845, guid: fc584d329b77b9545b9c9c8bb829e553, type: 3}
+    - target: {fileID: 5343921162609851906, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[30].m_Data
+      value: 
+      objectReference: {fileID: -2572975058836569894, guid: fc584d329b77b9545b9c9c8bb829e553, type: 3}
+    - target: {fileID: 5343921162609851906, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[31].m_Data
+      value: 
+      objectReference: {fileID: 3220740477721170248, guid: fc584d329b77b9545b9c9c8bb829e553, type: 3}
+    - target: {fileID: 5343921162609851906, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[16].m_RefCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343921162609851906, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[17].m_RefCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343921162609851906, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[30].m_RefCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343921162609851906, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
+      propertyPath: m_TileSpriteArray.Array.data[31].m_RefCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343921162609851906, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
+      propertyPath: m_Tiles.Array.data[0].second.m_TileSpriteIndex
+      value: 31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343921162609851906, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
+      propertyPath: m_Tiles.Array.data[30].second.m_TileSpriteIndex
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5343921162609851906, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
+      propertyPath: m_Tiles.Array.data[105].second.m_TileSpriteIndex
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 5718343400300661518, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
       propertyPath: m_Name
       value: Level_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5718343400300661518, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6719212494403773125, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
       propertyPath: m_GeometryType
@@ -1564,7 +1616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5343213706839473338, guid: 404be6036aec4fc4f9833ae055280885, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.15
+      value: -2.28
       objectReference: {fileID: 0}
     - target: {fileID: 5343213706839473338, guid: 404be6036aec4fc4f9833ae055280885, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1597,6 +1649,10 @@ PrefabInstance:
     - target: {fileID: 5343213706839473338, guid: 404be6036aec4fc4f9833ae055280885, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5741197850277541710, guid: 404be6036aec4fc4f9833ae055280885, type: 3}
+      propertyPath: jumpPower
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
