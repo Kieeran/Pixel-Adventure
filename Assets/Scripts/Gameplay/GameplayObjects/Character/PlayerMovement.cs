@@ -38,7 +38,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (PlayerController.Instance.playerInput.jump == true)
         {
-            playerRB.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            if (PlayerController.Instance.playerCollision.isGrounded == true)
+            {
+                playerRB.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            }
         }
     }
 
