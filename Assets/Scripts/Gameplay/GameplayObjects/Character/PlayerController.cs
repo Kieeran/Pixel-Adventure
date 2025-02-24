@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
     }
 
-    // private float jumpPower = 22;
     // private bool isGrounded = false;
     // private bool isFallDown = false;
     // private bool isTouch = false;

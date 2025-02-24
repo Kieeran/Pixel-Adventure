@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D playerRB;
 
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float jumpPower;
     [SerializeField] private bool isFacingRight = true;
 
     private void Awake()
@@ -21,10 +22,24 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Move();
+        Jump();
+    }
+
+    private void Move()
+    {
         playerRB.velocity = new Vector2(
             PlayerController.Instance.playerInput.move.x * moveSpeed,
             playerRB.velocity.y
         );
+    }
+
+    private void Jump()
+    {
+        if (PlayerController.Instance.playerInput.jump == true)
+        {
+            playerRB.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+        }
     }
 
     private void UpdateSpriteDirection()
