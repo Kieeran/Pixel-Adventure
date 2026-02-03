@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 76444398}
   - component: {fileID: 76444397}
   - component: {fileID: 76444396}
+  - component: {fileID: 76444400}
   m_Layer: 5
   m_Name: MainCanvas
   m_TagString: Untagged
@@ -370,6 +371,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &76444400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 76444395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d28ee1cd4e3048a42a2d1f056a994210, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundScroll: {fileID: 408127243}
 --- !u!1 &91216148
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,7 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 729336413f13c4b48b2347ec03ef4735, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 500
+  speed: 300
 --- !u!1 &482018700
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,8 +1030,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448ae72d85e017f489102be273dbe74d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCanvas: {fileID: 76444400}
   preButton: {fileID: 91216150}
   nextButton: {fileID: 27721568}
+  backGroundSprites:
+  - {fileID: 21300000, guid: 70ec9e0747600f940abef7d699a1e49f, type: 3}
+  - {fileID: 21300000, guid: af50b588eb2029d46979be654cf4be79, type: 3}
+  - {fileID: 21300000, guid: 2d90b10aa99eb9c42b5840f006470d60, type: 3}
+  - {fileID: 21300000, guid: 5e23c87ffaf121d45ba005aea62d917d, type: 3}
+  - {fileID: 21300000, guid: fa802272232596f4e9f67706aee6907b, type: 3}
+  - {fileID: 21300000, guid: 5ea05e5e718afef468dca3cf9b78ac8b, type: 3}
+  - {fileID: 21300000, guid: 7c153b39633124649b0a2b0fe060ce5a, type: 3}
 --- !u!1 &1441926487
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,7 +1075,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -85.22998, y: -46.350006}
+  m_AnchoredPosition: {x: -85.22998, y: -46.349976}
   m_SizeDelta: {x: 170.45, y: 92.69}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1462254350
@@ -1067,7 +1090,7 @@ GameObject:
   - component: {fileID: 1462254353}
   - component: {fileID: 1462254352}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Background-1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1112,7 +1135,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 70ec9e0747600f940abef7d699a1e49f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e23c87ffaf121d45ba005aea62d917d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -1612,7 +1635,7 @@ GameObject:
   - component: {fileID: 2002822833}
   - component: {fileID: 2002822832}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Background-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1657,7 +1680,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 70ec9e0747600f940abef7d699a1e49f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5e23c87ffaf121d45ba005aea62d917d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1

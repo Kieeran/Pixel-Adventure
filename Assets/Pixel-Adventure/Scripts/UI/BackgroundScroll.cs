@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BackgroundScroll : MonoBehaviour
 {
@@ -9,7 +10,13 @@ public class BackgroundScroll : MonoBehaviour
     RectTransform backGround2;
     float bgHeight;
 
-    void Start()
+    public void SetBackgroundSprite(Sprite sprite)
+    {
+        backGround1.GetComponent<Image>().sprite = sprite;
+        backGround2.GetComponent<Image>().sprite = sprite;
+    }
+
+    void Awake()
     {
         if (transform.childCount < 2) return;
 

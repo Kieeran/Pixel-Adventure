@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    #region Singleton
     public static UIManager _instance;
     public static UIManager Instance => _instance;
 
@@ -15,11 +14,16 @@ public class UIManager : MonoBehaviour
             Destroy(_instance);
         else
             _instance = this;
-    }
-    #endregion Singleton
 
+        int randomIndex = Random.Range(0, backGroundSprites.Count - 1);
+        mainCanvas.backgroundScroll.SetBackgroundSprite(backGroundSprites[randomIndex]);
+    }
+
+    public MainCanvas mainCanvas;
     public Button preButton;
     public Button nextButton;
+
+    [SerializeField] List<Sprite> backGroundSprites;
 
     public void SetActivePreButton(bool b)
     {
