@@ -7,7 +7,7 @@ public class Orange : Fruit
     public override void SetIsCollected(bool b)
     {
         base.SetIsCollected(b);
-        animator.SetBool("IsCollected", b);
+        // animator.SetBool("IsCollected", b);
     }
 
     public override void DoneCollecting()

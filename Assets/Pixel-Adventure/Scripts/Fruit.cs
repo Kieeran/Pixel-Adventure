@@ -5,9 +5,10 @@ using UnityEngine;
 public class Fruit : MonoBehaviour
 {
     [SerializeField] int fruitID;
-    public Collider2D _collider;
-    public Rigidbody2D rb;
-    public Animator animator;
+
+    [SerializeField] Collider2D _collider;
+    [SerializeField] Animator animator;
+    [SerializeField] Rigidbody2D rb;
 
     protected bool IsCollected;
     protected bool _DoneCollecting;
@@ -41,22 +42,27 @@ public class Fruit : MonoBehaviour
         rb.velocity = new Vector2(power, rb.velocity.y + 10f);
     }
 
+    void Awake()
+    {
+        rb = GetComponentInChildren<Rigidbody2D>();
+        _collider = GetComponentInChildren<Collider2D>();
+        animator = GetComponentInChildren<Animator>();
+    }
+
     protected virtual void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-
-        if (rb != null && rb.gravityScale > 0)
-        {
-            FirstBoost(FruitManager.Instance.GetRandomPower() * 5, rb);
-        }
+        // if (rb != null && rb.gravityScale > 0)
+        // {
+        //     FirstBoost(FruitManager.Instance.GetRandomPower() * 5, rb);
+        // }
     }
 
     protected virtual void Update()
     {
-        if (_DoneCollecting)
-        {
-            FruitManager.Instance.ReturnFruit(GetFruitID(), this);
-            _DoneCollecting = false;
-        }
+        // if (_DoneCollecting)
+        // {
+        //     FruitManager.Instance.ReturnFruit(GetFruitID(), this);
+        //     _DoneCollecting = false;
+        // }
     }
 }
