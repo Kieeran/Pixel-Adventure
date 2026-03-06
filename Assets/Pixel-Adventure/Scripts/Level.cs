@@ -5,11 +5,11 @@ using UnityEngine.UIElements;
 
 public class Level : MonoBehaviour
 {
-    private List<Fruits> fruits = new List<Fruits>();
+    private List<Fruit> fruits = new List<Fruit>();
     private List<Boxes> boxes = new List<Boxes>();
     private List<Trap> traps = new List<Trap>();
 
-    public void AddFruit(Fruits fruit)
+    public void AddFruit(Fruit fruit)
     {
         if (fruits != null)
             fruits.Add(fruit);

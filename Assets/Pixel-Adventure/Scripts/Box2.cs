@@ -15,7 +15,7 @@ public class Box2 : Boxes
         base.DoneHitting();
         Debug.Log("Box hit have ID: " + boxID);
 
-        Fruits fruit = FruitManager.Instance.GetRandomFruit();
+        Fruit fruit = FruitManager.Instance.GetRandomFruit();
         fruit.transform.position = transform.position;
 
         if (this.GetBoxHP() <= 0)

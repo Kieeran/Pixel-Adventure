@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Melon : Fruits
+public class Melon : Fruit
 {
     public override void SetIsCollected(bool b)
     {

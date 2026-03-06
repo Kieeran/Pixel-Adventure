@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 
-public class Bananas : Fruits
+public class Bananas : Fruit
 {
     public override void SetIsCollected(bool b)
     {

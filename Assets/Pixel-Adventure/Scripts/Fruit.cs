@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fruits : MonoBehaviour
+public class Fruit : MonoBehaviour
 {
-    private int fruitID;
+    [SerializeField] int fruitID;
     public Collider2D _collider;
     public Rigidbody2D rb;
     public Animator animator;

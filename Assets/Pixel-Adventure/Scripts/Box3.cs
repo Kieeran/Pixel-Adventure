@@ -19,11 +19,11 @@ public class Box3 : Boxes
         {
             BoxesManager.Instance.ReturnBox(this.GetBoxID(), this);
 
-            Fruits fruit1 = FruitManager.Instance.GetRandomFruit();
-            Fruits fruit2 = FruitManager.Instance.GetRandomFruit();
-            Fruits fruit3 = FruitManager.Instance.GetRandomFruit();
-            Fruits fruit4 = FruitManager.Instance.GetRandomFruit();
-            Fruits fruit5 = FruitManager.Instance.GetRandomFruit();
+            Fruit fruit1 = FruitManager.Instance.GetRandomFruit();
+            Fruit fruit2 = FruitManager.Instance.GetRandomFruit();
+            Fruit fruit3 = FruitManager.Instance.GetRandomFruit();
+            Fruit fruit4 = FruitManager.Instance.GetRandomFruit();
+            Fruit fruit5 = FruitManager.Instance.GetRandomFruit();
 
             fruit1.transform.position = transform.position;
             fruit2.transform.position = transform.position;

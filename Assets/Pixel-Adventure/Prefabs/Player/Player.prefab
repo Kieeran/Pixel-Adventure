@@ -14861,8 +14861,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001b125974b003148b476b17fcf41fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 0}
-  playerMovement: {fileID: 0}
+  playerInput: {fileID: 6457185354270965852}
+  playerMovement: {fileID: 5741197850277541710}
+  playerCollision: {fileID: 3918691766044789199}
 --- !u!114 &6457185354270965852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14981,7 +14982,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpPower: 1
+  jumpAirPower: 0
   isFacingRight: 1
+  isGrounded: 0
+  isJumpInAir: 0
 --- !u!114 &3918691766044789199
 MonoBehaviour:
   m_ObjectHideFlags: 0

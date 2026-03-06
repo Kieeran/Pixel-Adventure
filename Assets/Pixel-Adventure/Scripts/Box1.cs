@@ -16,8 +16,8 @@ public class Box1 : Boxes
 
         BoxesManager.Instance.ReturnBox(this.GetBoxID(), this);
 
-        Fruits fruit1 = FruitManager.Instance.GetRandomFruit();
-        Fruits fruit2 = FruitManager.Instance.GetRandomFruit();
+        Fruit fruit1 = FruitManager.Instance.GetRandomFruit();
+        Fruit fruit2 = FruitManager.Instance.GetRandomFruit();
         fruit1.transform.position = transform.position;
         fruit2.transform.position = transform.position;
     }

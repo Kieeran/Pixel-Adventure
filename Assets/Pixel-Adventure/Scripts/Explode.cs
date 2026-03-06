@@ -24,8 +24,8 @@ public class Explode : MonoBehaviour
         int fruit1ID = Random.Range(0, 6);
         int fruit2ID = Random.Range(0, 6);
 
-        Fruits fruit1 = null;
-        Fruits fruit2 = null;
+        Fruit fruit1 = null;
+        Fruit fruit2 = null;
 
         if (FruitManager.Instance != null)
         {

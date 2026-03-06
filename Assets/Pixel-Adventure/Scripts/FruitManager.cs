@@ -19,7 +19,7 @@ public class FruitManager : MonoBehaviour
     #endregion Singleton
 
     public FruitsData fruitData;
-    private Dictionary<int, Queue<Fruits>> fruitPools;
+    private Dictionary<int, Queue<Fruit>> fruitPools;
     private int amount;
 
     #region Pooling
@@ -39,16 +39,16 @@ public class FruitManager : MonoBehaviour
 
     private void InitializePools()
     {
-        fruitPools = new Dictionary<int, Queue<Fruits>>
+        fruitPools = new Dictionary<int, Queue<Fruit>>
         {
-            { fruitData.appleID, new Queue<Fruits>() },
-            { fruitData.bananaID, new Queue<Fruits>() },
-            { fruitData.cherryID, new Queue<Fruits>() },
-            { fruitData.kiwiID, new Queue<Fruits>() },
-            { fruitData.melonID, new Queue<Fruits>() },
-            { fruitData.orangeID, new Queue<Fruits>() },
-            { fruitData.pineappleID, new Queue<Fruits>() },
-            { fruitData.strawberryID, new Queue<Fruits>() }
+            { fruitData.appleID, new Queue<Fruit>() },
+            { fruitData.bananaID, new Queue<Fruit>() },
+            { fruitData.cherryID, new Queue<Fruit>() },
+            { fruitData.kiwiID, new Queue<Fruit>() },
+            { fruitData.melonID, new Queue<Fruit>() },
+            { fruitData.orangeID, new Queue<Fruit>() },
+            { fruitData.pineappleID, new Queue<Fruit>() },
+            { fruitData.strawberryID, new Queue<Fruit>() }
         };
 
         Apple apple;
@@ -96,10 +96,10 @@ public class FruitManager : MonoBehaviour
         }
     }
 
-    public Fruits GetFruitByID(int fruitID)
+    public Fruit GetFruitByID(int fruitID)
     {
         //Debug.Log(fruitPools);
-        Fruits fruit;
+        Fruit fruit;
         if (fruitPools.ContainsKey(fruitID) && fruitPools[fruitID].Count > 0)
         {
             fruit = fruitPools[fruitID].Dequeue();
@@ -117,7 +117,7 @@ public class FruitManager : MonoBehaviour
 
     private void CreateMoreFruits(int fruitID)
     {
-        Fruits _prefab;
+        Fruit _prefab;
         switch (fruitID)
         {
             case 0:
@@ -203,7 +203,7 @@ public class FruitManager : MonoBehaviour
         }
     }
 
-    public void ReturnFruit(int fruitID, Fruits fruit)
+    public void ReturnFruit(int fruitID, Fruit fruit)
     {
         if (fruitPools.ContainsKey(fruitID))
         {
@@ -222,7 +222,7 @@ public class FruitManager : MonoBehaviour
 
     #endregion Pooling
 
-    public Fruits GetRandomFruit()
+    public Fruit GetRandomFruit()
     {
         List<int> fruitID = new()
         { fruitData.appleID,
@@ -259,7 +259,7 @@ public class FruitManager : MonoBehaviour
             Debug.Log("No level data");
         }
 
-        Fruits fruit;
+        Fruit fruit;
 
         // Apple
         for (int i = 0; i < data.applePosition.Count; i++)
