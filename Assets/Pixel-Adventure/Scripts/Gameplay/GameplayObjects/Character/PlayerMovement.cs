@@ -32,9 +32,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        playerRB.velocity = new Vector2(
+        playerRB.linearVelocity = new Vector2(
             PlayerController.Instance.playerInput.move.x * moveSpeed,
-            playerRB.velocity.y
+            playerRB.linearVelocity.y
         );
     }
 
@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (isJumpInAir == false && isGrounded == false)
             {
-                playerRB.velocity = new Vector2(playerRB.velocity.x, 0);
+                playerRB.linearVelocity = new Vector2(playerRB.linearVelocity.x, 0);
                 
                 playerRB.AddForce(Vector2.up * jumpAirPower, ForceMode2D.Impulse);
                 isJumpInAir = true;

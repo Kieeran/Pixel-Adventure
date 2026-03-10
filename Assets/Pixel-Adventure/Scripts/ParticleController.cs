@@ -24,11 +24,11 @@ public class ParticleController : MonoBehaviour
     {
         counter += Time.deltaTime;
 
-        if (Mathf.Abs(playerRb.velocity.x) > occurAfterVelocity)
+        if (Mathf.Abs(playerRb.linearVelocity.x) > occurAfterVelocity)
         {
             Vector3 ls = movementParticle.transform.localScale;
 
-            if (playerRb.velocity.x > 0)
+            if (playerRb.linearVelocity.x > 0)
                 ls.x = Mathf.Abs(ls.x);
             else
                 ls.x = -Mathf.Abs(ls.x);

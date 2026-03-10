@@ -1,8 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static Unity.Burst.Intrinsics.Arm;
+
 public class FruitManager : MonoBehaviour
 {
     #region Singleton
@@ -20,186 +18,64 @@ public class FruitManager : MonoBehaviour
 
     public FruitsData fruitData;
     private Dictionary<int, Queue<Fruit>> fruitPools;
-    private int amount;
+    [SerializeField] int amount = 4;
 
     #region Pooling
-    public Apple _prefabApple;
-    public Bananas _prefabBananas;
-    public Cherry _prefabCherry;
-    public Kiwi _prefabKiwi;
-    public Melon _prefabMelon;
-    public Orange _prefabOrange;
-    public Pineapple _prefabPineapple;
-    public Strawberry _prefabStrawberry;
-    private void Start()
+    [SerializeField] List<Fruit> prefabList;
+    Dictionary<int, Fruit> prefabDict;
+
+    [SerializeField] Transform poolContainer;
+
+    void Start()
     {
-        amount = 6;
         InitializePools();
     }
 
-    private void InitializePools()
+    void InitializePools()
     {
-        fruitPools = new Dictionary<int, Queue<Fruit>>
+        fruitPools = new();
+        prefabDict = new();
+
+        if (prefabList.Count == 0 || prefabList == null)
         {
-            { fruitData.appleID, new Queue<Fruit>() },
-            { fruitData.bananaID, new Queue<Fruit>() },
-            { fruitData.cherryID, new Queue<Fruit>() },
-            { fruitData.kiwiID, new Queue<Fruit>() },
-            { fruitData.melonID, new Queue<Fruit>() },
-            { fruitData.orangeID, new Queue<Fruit>() },
-            { fruitData.pineappleID, new Queue<Fruit>() },
-            { fruitData.strawberryID, new Queue<Fruit>() }
-        };
+            Debug.Log("Fruit prefabList is null or empty!");
+        }
 
-        Apple apple;
-        Bananas banana;
-        Cherry cherry;
-        Kiwi kiwi;
-        Melon melon;
-        Orange orange;
-        Pineapple pineapple;
-        Strawberry strawberry;
-
-        for (int i = 0; i < amount; i++)
+        foreach (Fruit fruit in prefabList)
         {
-            apple = Instantiate(_prefabApple);
-            apple.gameObject.SetActive(false);
-            fruitPools[fruitData.appleID].Enqueue(apple);
+            prefabDict.Add(fruit.GetFruitID(), fruit);
+            fruitPools.Add(fruit.GetFruitID(), new Queue<Fruit>());
 
-            banana = Instantiate(_prefabBananas);
-            banana.gameObject.SetActive(false);
-            fruitPools[fruitData.bananaID].Enqueue(banana);
-
-            cherry = Instantiate(_prefabCherry);
-            cherry.gameObject.SetActive(false);
-            fruitPools[fruitData.cherryID].Enqueue(cherry);
-
-            kiwi = Instantiate(_prefabKiwi);
-            kiwi.gameObject.SetActive(false);
-            fruitPools[fruitData.kiwiID].Enqueue(kiwi);
-
-            melon = Instantiate(_prefabMelon);
-            melon.gameObject.SetActive(false);
-            fruitPools[fruitData.melonID].Enqueue(melon);
-
-            orange = Instantiate(_prefabOrange);
-            orange.gameObject.SetActive(false);
-            fruitPools[fruitData.orangeID].Enqueue(orange);
-
-            pineapple = Instantiate(_prefabPineapple);
-            pineapple.gameObject.SetActive(false);
-            fruitPools[fruitData.pineappleID].Enqueue(pineapple);
-
-            strawberry = Instantiate(_prefabStrawberry);
-            strawberry.gameObject.SetActive(false);
-            fruitPools[fruitData.strawberryID].Enqueue(strawberry);
+            CreateFruits(fruit.GetFruitID());
         }
     }
 
     public Fruit GetFruitByID(int fruitID)
     {
-        //Debug.Log(fruitPools);
-        Fruit fruit;
-        if (fruitPools.ContainsKey(fruitID) && fruitPools[fruitID].Count > 0)
+        if (!fruitPools.ContainsKey(fruitID))
         {
-            fruit = fruitPools[fruitID].Dequeue();
-            fruit.gameObject.SetActive(true);
+            Debug.Log("Unvalid fruitID");
+            return null;
         }
-        else
+
+        if (fruitPools[fruitID].Count <= 0)
         {
             Debug.Log("Create more food has ID:" + fruitID);
-            CreateMoreFruits(fruitID);
-            fruit = fruitPools[fruitID].Dequeue();
-            fruit.gameObject.SetActive(true);
+            CreateFruits(fruitID);
         }
+
+        Fruit fruit = fruitPools[fruitID].Dequeue();
+        fruit.gameObject.SetActive(true);
         return fruit;
     }
 
-    private void CreateMoreFruits(int fruitID)
+    void CreateFruits(int fruitID)
     {
-        Fruit _prefab;
-        switch (fruitID)
+        for (int i = 0; i < amount; i++)
         {
-            case 0:
-                _prefab = _prefabApple;
-                Apple apple;
-                for (int i = 0; i < amount; i++)
-                {
-                    apple = (Apple)Instantiate(_prefab);
-                    apple.gameObject.SetActive(false);
-                    fruitPools[fruitID].Enqueue(apple);
-                }
-                break;
-            case 1:
-                _prefab = _prefabBananas;
-                Bananas banana;
-                for (int i = 0; i < amount; i++)
-                {
-                    banana = (Bananas)Instantiate(_prefab);
-                    banana.gameObject.SetActive(false);
-                    fruitPools[fruitID].Enqueue(banana);
-                }
-                break;
-            case 2:
-                _prefab = _prefabCherry;
-                Cherry cherry;
-                for (int i = 0; i < amount; i++)
-                {
-                    cherry = (Cherry)Instantiate(_prefab);
-                    cherry.gameObject.SetActive(false);
-                    fruitPools[fruitID].Enqueue(cherry);
-                }
-                break;
-            case 3:
-                _prefab = _prefabKiwi;
-                Kiwi kiwi;
-                for (int i = 0; i < amount; i++)
-                {
-                    kiwi = (Kiwi)Instantiate(_prefab);
-                    kiwi.gameObject.SetActive(false);
-                    fruitPools[fruitID].Enqueue(kiwi);
-                }
-                break;
-            case 4:
-                _prefab = _prefabMelon;
-                Melon melon;
-                for (int i = 0; i < amount; i++)
-                {
-                    melon = (Melon)Instantiate(_prefab);
-                    melon.gameObject.SetActive(false);
-                    fruitPools[fruitID].Enqueue(melon);
-                }
-                break;
-            case 5:
-                _prefab = _prefabOrange;
-                Orange orange;
-                for (int i = 0; i < amount; i++)
-                {
-                    orange = (Orange)Instantiate(_prefab);
-                    orange.gameObject.SetActive(false);
-                    fruitPools[fruitID].Enqueue(orange);
-                }
-                break;
-            case 6:
-                _prefab = _prefabPineapple;
-                Pineapple pineapple;
-                for (int i = 0; i < amount; i++)
-                {
-                    pineapple = (Pineapple)Instantiate(_prefab);
-                    pineapple.gameObject.SetActive(false);
-                    fruitPools[fruitID].Enqueue(pineapple);
-                }
-                break;
-            case 7:
-                _prefab = _prefabStrawberry;
-                Strawberry strawberry;
-                for (int i = 0; i < amount; i++)
-                {
-                    strawberry = (Strawberry)Instantiate(_prefab);
-                    strawberry.gameObject.SetActive(false);
-                    fruitPools[fruitID].Enqueue(strawberry);
-                }
-                break;
+            Fruit spawnFruit = Instantiate(prefabDict[fruitID], poolContainer);
+            spawnFruit.gameObject.SetActive(false);
+            fruitPools[fruitID].Enqueue(spawnFruit);
         }
     }
 
@@ -245,109 +121,109 @@ public class FruitManager : MonoBehaviour
 
     public void Spawn(FruitsData data)
     {
-        LevelManager level = LevelManager.Instance;
+        // LevelManager level = LevelManager.Instance;
 
-        //Debug.Log(data);
-        if (data == null)
-        {
-            Debug.Log("No fruit data");
-            return;
-        }
+        // //Debug.Log(data);
+        // if (data == null)
+        // {
+        //     Debug.Log("No fruit data");
+        //     return;
+        // }
 
-        if (level == null)
-        {
-            Debug.Log("No level data");
-        }
+        // if (level == null)
+        // {
+        //     Debug.Log("No level data");
+        // }
 
-        Fruit fruit;
+        // Fruit fruit;
 
-        // Apple
-        for (int i = 0; i < data.applePosition.Count; i++)
-        {
-            fruit = GetFruitByID(data.appleID);
-            fruit.transform.position = data.applePosition[i];
-            fruit.SetIsTrigger(data._isTrigger);
-            fruit.SetGravityScale(data._gravityScale);
+        // // Apple
+        // for (int i = 0; i < data.applePosition.Count; i++)
+        // {
+        //     fruit = GetFruitByID(data.appleID);
+        //     fruit.transform.position = data.applePosition[i];
+        //     fruit.SetIsTrigger(data._isTrigger);
+        //     fruit.SetGravityScale(data._gravityScale);
 
-            level.GetCurrentLevel().AddFruit(fruit);
-        }
+        //     level.GetCurrentLevel().AddFruit(fruit);
+        // }
 
-        // Cherry
-        for (int i = 0; i < data.cherryPosition.Count; i++)
-        {
-            fruit = GetFruitByID(data.cherryID);
-            fruit.transform.position = data.cherryPosition[i];
-            fruit.SetIsTrigger(data._isTrigger);
-            fruit.SetGravityScale(data._gravityScale);
+        // // Cherry
+        // for (int i = 0; i < data.cherryPosition.Count; i++)
+        // {
+        //     fruit = GetFruitByID(data.cherryID);
+        //     fruit.transform.position = data.cherryPosition[i];
+        //     fruit.SetIsTrigger(data._isTrigger);
+        //     fruit.SetGravityScale(data._gravityScale);
 
-            level.GetCurrentLevel().AddFruit(fruit);
-        }
+        //     level.GetCurrentLevel().AddFruit(fruit);
+        // }
 
-        // Bananas
-        for (int i = 0; i < data.bananasPosition.Count; i++)
-        {
-            fruit = GetFruitByID(data.bananaID);
-            fruit.transform.position = data.bananasPosition[i];
-            fruit.SetIsTrigger(data._isTrigger);
-            fruit.SetGravityScale(data._gravityScale);
+        // // Bananas
+        // for (int i = 0; i < data.bananasPosition.Count; i++)
+        // {
+        //     fruit = GetFruitByID(data.bananaID);
+        //     fruit.transform.position = data.bananasPosition[i];
+        //     fruit.SetIsTrigger(data._isTrigger);
+        //     fruit.SetGravityScale(data._gravityScale);
 
-            level.GetCurrentLevel().AddFruit(fruit);
-        }
+        //     level.GetCurrentLevel().AddFruit(fruit);
+        // }
 
-        // Kiwi
-        for (int i = 0; i < data.kiwiPosition.Count; i++)
-        {
-            fruit = GetFruitByID(data.kiwiID);
-            fruit.transform.position = data.kiwiPosition[i];
-            fruit.SetIsTrigger(data._isTrigger);
-            fruit.SetGravityScale(data._gravityScale);
+        // // Kiwi
+        // for (int i = 0; i < data.kiwiPosition.Count; i++)
+        // {
+        //     fruit = GetFruitByID(data.kiwiID);
+        //     fruit.transform.position = data.kiwiPosition[i];
+        //     fruit.SetIsTrigger(data._isTrigger);
+        //     fruit.SetGravityScale(data._gravityScale);
 
-            level.GetCurrentLevel().AddFruit(fruit);
-        }
+        //     level.GetCurrentLevel().AddFruit(fruit);
+        // }
 
-        // Melon
-        for (int i = 0; i < data.melonPosition.Count; i++)
-        {
-            fruit = GetFruitByID(data.melonID);
-            fruit.transform.position = data.melonPosition[i];
-            fruit.SetIsTrigger(data._isTrigger);
-            fruit.SetGravityScale(data._gravityScale);
+        // // Melon
+        // for (int i = 0; i < data.melonPosition.Count; i++)
+        // {
+        //     fruit = GetFruitByID(data.melonID);
+        //     fruit.transform.position = data.melonPosition[i];
+        //     fruit.SetIsTrigger(data._isTrigger);
+        //     fruit.SetGravityScale(data._gravityScale);
 
-            level.GetCurrentLevel().AddFruit(fruit);
-        }
+        //     level.GetCurrentLevel().AddFruit(fruit);
+        // }
 
-        // Orange
-        for (int i = 0; i < data.orangePosition.Count; i++)
-        {
-            fruit = GetFruitByID(data.orangeID);
-            fruit.transform.position = data.orangePosition[i];
-            fruit.SetIsTrigger(data._isTrigger);
-            fruit.SetGravityScale(data._gravityScale);
+        // // Orange
+        // for (int i = 0; i < data.orangePosition.Count; i++)
+        // {
+        //     fruit = GetFruitByID(data.orangeID);
+        //     fruit.transform.position = data.orangePosition[i];
+        //     fruit.SetIsTrigger(data._isTrigger);
+        //     fruit.SetGravityScale(data._gravityScale);
 
-            level.GetCurrentLevel().AddFruit(fruit);
-        }
+        //     level.GetCurrentLevel().AddFruit(fruit);
+        // }
 
-        // Pineapple
-        for (int i = 0; i < data.pineapplePosition.Count; i++)
-        {
-            fruit = (Pineapple)GetFruitByID(data.pineappleID);
-            fruit.transform.position = data.pineapplePosition[i];
-            fruit.SetIsTrigger(data._isTrigger);
-            fruit.SetGravityScale(data._gravityScale);
+        // // Pineapple
+        // for (int i = 0; i < data.pineapplePosition.Count; i++)
+        // {
+        //     fruit = (Pineapple)GetFruitByID(data.pineappleID);
+        //     fruit.transform.position = data.pineapplePosition[i];
+        //     fruit.SetIsTrigger(data._isTrigger);
+        //     fruit.SetGravityScale(data._gravityScale);
 
-            level.GetCurrentLevel().AddFruit(fruit);
-        }
+        //     level.GetCurrentLevel().AddFruit(fruit);
+        // }
 
-        // Strawberry
-        for (int i = 0; i < data.strawberryPosition.Count; i++)
-        {
-            fruit = GetFruitByID(data.strawberryID);
-            fruit.transform.position = data.strawberryPosition[i];
-            fruit.SetIsTrigger(data._isTrigger);
-            fruit.SetGravityScale(data._gravityScale);
+        // // Strawberry
+        // for (int i = 0; i < data.strawberryPosition.Count; i++)
+        // {
+        //     fruit = GetFruitByID(data.strawberryID);
+        //     fruit.transform.position = data.strawberryPosition[i];
+        //     fruit.SetIsTrigger(data._isTrigger);
+        //     fruit.SetGravityScale(data._gravityScale);
 
-            level.GetCurrentLevel().AddFruit(fruit);
-        }
+        //     level.GetCurrentLevel().AddFruit(fruit);
+        // }
 
         //// Apple
         //for (int i = 0; i < data.applePosition.Count; i++)

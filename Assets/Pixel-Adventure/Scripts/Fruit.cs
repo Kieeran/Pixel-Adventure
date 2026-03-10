@@ -39,7 +39,7 @@ public class Fruit : MonoBehaviour
 
     public void FirstBoost(float power, Rigidbody2D rb)
     {
-        rb.velocity = new Vector2(power, rb.velocity.y + 10f);
+        rb.linearVelocity = new Vector2(power, rb.linearVelocity.y + 10f);
     }
 
     void Awake()
