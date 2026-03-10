@@ -100,17 +100,8 @@ public class FruitManager : MonoBehaviour
 
     public Fruit GetRandomFruit()
     {
-        List<int> fruitID = new()
-        { fruitData.appleID,
-        fruitData.bananaID,
-        fruitData.cherryID,
-        fruitData.kiwiID,
-        fruitData.melonID,
-        fruitData.orangeID,
-        fruitData.pineappleID,
-        fruitData.strawberryID};
-
-        return GetFruitByID(fruitID[Random.Range(0, 8)]);
+        int randomFruitID = prefabList[Random.Range(0, prefabList.Count)].GetFruitID();
+        return GetFruitByID(randomFruitID);
     }
 
     public int GetRandomPower()
