@@ -21,7 +21,7 @@ public class Cherry : Fruit
         base.Start();
         if (data != null)
         {
-            SetFruitID(data.cherryID);
+            // SetFruitID(data.cherryID);
         }
         else
             Debug.Log("data null from cherry");

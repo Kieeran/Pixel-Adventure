@@ -21,7 +21,7 @@ public class Kiwi : Fruit
         base.Start();
         if (data != null)
         {
-            SetFruitID(data.kiwiID);
+            // SetFruitID(data.kiwiID);
         }
         else
             Debug.Log("data null from kiwi");

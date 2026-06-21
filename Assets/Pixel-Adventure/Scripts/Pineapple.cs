@@ -21,7 +21,7 @@ public class Pineapple : Fruit
         base.Start();
         if (data != null)
         {
-            SetFruitID(data.pineappleID);
+            // SetFruitID(data.pineappleID);
         }
         else
             Debug.Log("data null from pineapple");

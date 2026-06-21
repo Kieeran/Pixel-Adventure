@@ -21,33 +21,33 @@ public class Explode : MonoBehaviour
     }
     private void Spawn()
     {
-        int fruit1ID = Random.Range(0, 6);
-        int fruit2ID = Random.Range(0, 6);
+        // int fruit1ID = Random.Range(0, 6);
+        // int fruit2ID = Random.Range(0, 6);
 
-        Fruit fruit1 = null;
-        Fruit fruit2 = null;
+        // Fruit fruit1 = null;
+        // Fruit fruit2 = null;
 
-        if (FruitManager.Instance != null)
-        {
-            //fruit1 = FruitManager.Instance.GetFruitByID(0);
-            //fruit2 = FruitManager.Instance.GetFruitByID(1);
-            fruit1 = FruitManager.Instance.GetFruitByID(fruit1ID);
-            fruit2 = FruitManager.Instance.GetFruitByID(fruit2ID);
-        }
-        else
-        {
-            Debug.Log("FruitManager instance is null");
-        }
+        // if (FruitManager.Instance != null)
+        // {
+        //     //fruit1 = FruitManager.Instance.GetFruitByID(0);
+        //     //fruit2 = FruitManager.Instance.GetFruitByID(1);
+        //     fruit1 = FruitManager.Instance.GetFruitByID(fruit1ID);
+        //     fruit2 = FruitManager.Instance.GetFruitByID(fruit2ID);
+        // }
+        // else
+        // {
+        //     Debug.Log("FruitManager instance is null");
+        // }
 
-        if (fruit1 != null && fruit2 != null)
-        {
-            fruit1.transform.position = this.transform.position + new Vector3(0.001f, 0, 0);
-            fruit2.transform.position = this.transform.position + new Vector3(-0.001f, 0, 0);
-        }
-        else
-        {
-            Debug.Log("NULLLLL");
-        }
+        // if (fruit1 != null && fruit2 != null)
+        // {
+        //     fruit1.transform.position = this.transform.position + new Vector3(0.001f, 0, 0);
+        //     fruit2.transform.position = this.transform.position + new Vector3(-0.001f, 0, 0);
+        // }
+        // else
+        // {
+        //     Debug.Log("NULLLLL");
+        // }
     }
 
     //private GameObject SpawnFruit(int fruitID)

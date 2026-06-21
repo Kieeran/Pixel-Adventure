@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum FruitID
+{
+    None, Apple, Bananas, Cherry, Kiwi, Melon, Orange, Pineapple, Strawberry
+}
+
 public class Fruit : MonoBehaviour
 {
-    [SerializeField] int fruitID;
+    [SerializeField] FruitID _fruitID;
 
     [SerializeField] Collider2D _collider;
     [SerializeField] Animator animator;
@@ -28,8 +33,7 @@ public class Fruit : MonoBehaviour
         _DoneCollecting = true;
     }
 
-    public virtual int GetFruitID() { return fruitID; }
-    public virtual void SetFruitID(int i) { fruitID = i; }
+    public virtual FruitID GetFruitID() { return _fruitID; }
 
     public virtual void SetIsTrigger(bool b) { _collider.isTrigger = b; }
     public virtual bool GetIsTrigger() { return _isTrigger; }
@@ -40,13 +44,6 @@ public class Fruit : MonoBehaviour
     public void FirstBoost(float power, Rigidbody2D rb)
     {
         rb.linearVelocity = new Vector2(power, rb.linearVelocity.y + 10f);
-    }
-
-    void Awake()
-    {
-        rb = GetComponentInChildren<Rigidbody2D>();
-        _collider = GetComponentInChildren<Collider2D>();
-        animator = GetComponentInChildren<Animator>();
     }
 
     protected virtual void Start()
@@ -64,5 +61,12 @@ public class Fruit : MonoBehaviour
         //     FruitManager.Instance.ReturnFruit(GetFruitID(), this);
         //     _DoneCollecting = false;
         // }
+    }
+
+    protected virtual void OnValidate()
+    {
+        rb = GetComponentInChildren<Rigidbody2D>();
+        _collider = GetComponentInChildren<Collider2D>();
+        animator = GetComponentInChildren<Animator>();
     }
 }

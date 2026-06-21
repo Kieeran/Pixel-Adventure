@@ -21,7 +21,7 @@ public class Apple : Fruit
         base.Start();
         if (data != null)
         {
-            SetFruitID(data.appleID);
+            // SetFruitID(data.appleID);
         }
         else
             Debug.Log("data null from apple");

@@ -21,7 +21,7 @@ public class Strawberry : Fruit
         base.Start();
         if (data != null)
         {
-            SetFruitID(data.strawberryID);
+            // SetFruitID(data.strawberryID);
         }
         else
             Debug.Log("data null from strawberry");

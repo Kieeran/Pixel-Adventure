@@ -21,7 +21,7 @@ public class Melon : Fruit
         base.Start();
         if (data != null)
         {
-            SetFruitID(data.melonID);
+            // SetFruitID(data.melonID);
         }
         else
             Debug.Log("data null from melon");

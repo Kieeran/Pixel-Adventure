@@ -17,12 +17,12 @@ public class FruitManager : MonoBehaviour
     #endregion Singleton
 
     public FruitsData fruitData;
-    private Dictionary<int, Queue<Fruit>> fruitPools;
+    private Dictionary<FruitID, Queue<Fruit>> fruitPools;
     [SerializeField] int amount = 4;
 
     #region Pooling
     [SerializeField] List<Fruit> prefabList;
-    Dictionary<int, Fruit> prefabDict;
+    Dictionary<FruitID, Fruit> prefabDict;
 
     [SerializeField] Transform poolContainer;
 
@@ -50,7 +50,7 @@ public class FruitManager : MonoBehaviour
         }
     }
 
-    public Fruit GetFruitByID(int fruitID)
+    public Fruit GetFruitByID(FruitID fruitID)
     {
         if (!fruitPools.ContainsKey(fruitID))
         {
@@ -69,7 +69,7 @@ public class FruitManager : MonoBehaviour
         return fruit;
     }
 
-    void CreateFruits(int fruitID)
+    void CreateFruits(FruitID fruitID)
     {
         for (int i = 0; i < amount; i++)
         {
@@ -79,7 +79,7 @@ public class FruitManager : MonoBehaviour
         }
     }
 
-    public void ReturnFruit(int fruitID, Fruit fruit)
+    public void ReturnFruit(FruitID fruitID, Fruit fruit)
     {
         if (fruitPools.ContainsKey(fruitID))
         {
@@ -100,7 +100,7 @@ public class FruitManager : MonoBehaviour
 
     public Fruit GetRandomFruit()
     {
-        int randomFruitID = prefabList[Random.Range(0, prefabList.Count)].GetFruitID();
+        FruitID randomFruitID = prefabList[Random.Range(0, prefabList.Count)].GetFruitID();
         return GetFruitByID(randomFruitID);
     }
 

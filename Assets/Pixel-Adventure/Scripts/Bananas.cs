@@ -22,7 +22,7 @@ public class Bananas : Fruit
         base.Start();
         if (data != null)
         {
-            SetFruitID(data.bananaID);
+            // SetFruitID(data.bananaID);
         }
         else
             Debug.Log("data null from banana");

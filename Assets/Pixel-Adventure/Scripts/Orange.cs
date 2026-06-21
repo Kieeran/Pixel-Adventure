@@ -21,7 +21,7 @@ public class Orange : Fruit
         base.Start();
         if (data != null)
         {
-            SetFruitID(data.orangeID);
+            // SetFruitID(data.orangeID);
         }
         else
             Debug.Log("data null from orange");
