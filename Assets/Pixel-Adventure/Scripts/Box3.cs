@@ -7,7 +7,7 @@ public class Box3 : Boxes
     private void Start()
     {
         this.SetBoxHP(5);
-        this.SetBoxID(BoxesManager.Instance.boxesData.box3ID);
+        // this.SetBoxID(BoxesManager.Instance.boxesData.box3ID);
     }
 
     public override void DoneHitting()

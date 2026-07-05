@@ -1,29 +1,21 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Kiểu dữ liệu custom cho một fruit
+[Serializable]
+public struct FruitData
+{
+    public string fruitID;
+    public Vector2 fruitPosition;
+    public bool isStatic;
+}
+
+// Data này lưu vị trí của các fruit trong level
 [CreateAssetMenu(fileName = "FruitsData", menuName = "ScriptableObjects/ItemData/FruitsData")]
 public class FruitsData : ScriptableObject
 {
-    // Fruits's ID
-    public int appleID;
-    public int bananaID;
-    public int cherryID;
-    public int kiwiID;
-    public int melonID;
-    public int orangeID;
-    public int pineappleID;
-    public int strawberryID;
-
-    // Fruit's Positions
-    public List<Vector3> applePosition;
-    public List<Vector3> bananasPosition;
-    public List<Vector3> cherryPosition;
-    public List<Vector3> kiwiPosition;
-    public List<Vector3> melonPosition;
-    public List<Vector3> orangePosition;
-    public List<Vector3> pineapplePosition;
-    public List<Vector3> strawberryPosition;
+    public List<FruitData> fruitDatas;
 
     public int _gravityScale;
     public bool _isTrigger;

@@ -44,7 +44,7 @@ public class LevelManager : MonoBehaviour
     private void Start()
     {
         currentLevelID = InGameManager.Instance.GetCurrentLevel();
-        player = Instantiate(_prefabCharacter, levelData[currentLevelID].playerPosition, Quaternion.identity);
+        player = Instantiate(_prefabCharacter, levelData[currentLevelID].playerStartPosition, Quaternion.identity);
         Invoke(nameof(LateStart), 0.00001f);
     }
 
@@ -151,7 +151,7 @@ public class LevelManager : MonoBehaviour
         BoxesManager.Instance.Spawn(levelData[levelID].boxesData);
         TrapsManager.Instance.Spawn(levelData[levelID].trapsData);
 
-        player.transform.position = levelData[levelID].playerPosition;
+        player.transform.position = levelData[levelID].playerStartPosition;
         // player.ChangeRandomSkin();
         //currentLevel.AddPlayer(_prefabCharacter);
         //Debug.Log(levelData[levelID].boxesData);
