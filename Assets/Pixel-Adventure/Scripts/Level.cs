@@ -5,6 +5,8 @@ using UnityEngine.UIElements;
 
 public class Level : MonoBehaviour
 {
+    public LevelData levelData;
+
     private List<Fruit> fruits = new List<Fruit>();
     private List<Boxes> boxes = new List<Boxes>();
     private List<Trap> traps = new List<Trap>();
@@ -25,6 +27,13 @@ public class Level : MonoBehaviour
     {
         if (traps != null)
             traps.Add(trap);
+    }
+
+    public void LoadLevel()
+    {
+        FruitManager.Instance.Spawn(levelData.fruitsData);
+        BoxesManager.Instance.Spawn(levelData.boxesData);
+        TrapsManager.Instance.Spawn(levelData.trapsData);
     }
 
     public void UnloadLevel()

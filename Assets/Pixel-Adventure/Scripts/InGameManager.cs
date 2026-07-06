@@ -19,15 +19,13 @@ public class InGameManager : MonoBehaviour
 
     #endregion Singleton
 
-    private int currentLevel;
+    private string currentLevel;
     public GameData gameData;
-    public int GetCurrentLevel() { return currentLevel; }
-    public void SetCurrentLevel(int i) { currentLevel = i; }
+    public string GetCurrentLevel() { return currentLevel; }
+    public void SetCurrentLevel(string i) { currentLevel = i; }
 
     private void Start()
     {
         currentLevel = gameData.currentLevel;
-        //Physics.IgnoreLayerCollision(6, 6);
-        //Physics.IgnoreLayerCollision(6, 7);
     }
 }

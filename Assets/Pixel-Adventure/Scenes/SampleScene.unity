@@ -1327,13 +1327,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1c4a5d87603a544a7a279b95ec6546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevel: {fileID: 7160789173081092704, guid: 43448b5a613e25c40867e868aeaab365, type: 3}
-  levelData:
-  - {fileID: 11400000, guid: 11324fa90feb3f84b917854a248e47b8, type: 2}
-  - {fileID: 11400000, guid: cf56cb3cd74fa0b4dbd14fbbb4907661, type: 2}
-  - {fileID: 11400000, guid: b1351534ab9de4d45a8bf0fd15390ca1, type: 2}
-  - {fileID: 11400000, guid: 2feed4462139db44080e105a2d02a1bd, type: 2}
-  - {fileID: 11400000, guid: ab2260b2400188e4fb240dbd6d74f9cf, type: 2}
+  currentLevelID: 
+  currentLevel: {fileID: 0}
   _preFabLevels:
   - {fileID: -5694099202821323519, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
   - {fileID: 1173650104548072053, guid: e20936e08ecb0a049994a5e4591a36ed, type: 3}

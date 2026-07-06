@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef154ea2918c6640ba814bdf24589aa, type: 3}
   m_Name: Level_0
   m_EditorClassIdentifier: 
-  levelID: 0
+  levelID: LEVEL_00
   fruitsData: {fileID: 11400000, guid: 52595729ebc93964aa63c4a1fce004ec, type: 2}
   boxesData: {fileID: 0}
   trapsData: {fileID: 0}
-  playerPosition: {x: -13.5, y: -7, z: 0}
+  playerStartPosition: {x: 0, y: 0, z: 0}
