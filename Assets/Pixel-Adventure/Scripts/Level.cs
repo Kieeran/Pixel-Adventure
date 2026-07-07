@@ -6,6 +6,7 @@ using UnityEngine.UIElements;
 public class Level : MonoBehaviour
 {
     public LevelData levelData;
+    public Transform placedObjectsHolder;
 
     private List<Fruit> fruits = new List<Fruit>();
     private List<Boxes> boxes = new List<Boxes>();
@@ -27,6 +28,17 @@ public class Level : MonoBehaviour
     {
         if (traps != null)
             traps.Add(trap);
+    }
+
+    void OnValidate()
+    {
+        foreach (Transform tf in transform)
+        {
+            if (tf.gameObject.CompareTag("PlacedObjectsHolder"))
+            {
+                placedObjectsHolder = tf;
+            }
+        }
     }
 
     public void LoadLevel()

@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1256fe9026f0a499fe5bdbfbb96d9a, type: 3}
   m_Name: FruitsDt_0
   m_EditorClassIdentifier: 
-  fruitDatas:
-  - fruitID: 
-    fruitPosition: {x: 0, y: 0}
-    isStatic: 0
+  fruitDatas: []
   _gravityScale: 0
   _isTrigger: 1

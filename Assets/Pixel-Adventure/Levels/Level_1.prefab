@@ -7509,6 +7509,7 @@ Transform:
   m_Children:
   - {fileID: 3545124259043403640}
   - {fileID: 5908713371346748245}
+  - {fileID: 6469268318503945057}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1173650104548072053
@@ -7524,6 +7525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelData: {fileID: 11400000, guid: cf56cb3cd74fa0b4dbd14fbbb4907661, type: 2}
+  placedObjectsHolder: {fileID: 0}
 --- !u!1 &7359799070805661225
 GameObject:
   m_ObjectHideFlags: 0
@@ -55645,3 +55647,34 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
+--- !u!1 &7897204688379790193
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6469268318503945057}
+  m_Layer: 0
+  m_Name: PlacedObjectsHolder
+  m_TagString: PlacedObjectsHolder
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6469268318503945057
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7897204688379790193}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6543260732218686382}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

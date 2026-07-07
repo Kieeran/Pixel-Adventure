@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public struct FruitData
 {
-    public string fruitID;
+    public FruitID fruitID;
     public Vector2 fruitPosition;
     public bool isStatic;
 }

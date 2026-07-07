@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eef154ea2918c6640ba814bdf24589aa, type: 3}
   m_Name: Level_2
   m_EditorClassIdentifier: 
-  levelID: LEVEL_02
+  levelID: 2
   fruitsData: {fileID: 11400000, guid: 0212e8bc304b7524688d89450261cf80, type: 2}
   boxesData: {fileID: 0}
   trapsData: {fileID: 11400000, guid: 0bcc3f21325f1a14bb5e3cf5dd52e855, type: 2}
