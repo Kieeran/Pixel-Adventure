@@ -20,12 +20,12 @@ public class Bananas : Fruit
     protected override void Start()
     {
         base.Start();
-        if (data != null)
-        {
-            // SetFruitID(data.bananaID);
-        }
-        else
-            Debug.Log("data null from banana");
+        // if (data != null)
+        // {
+        //     // SetFruitID(data.bananaID);
+        // }
+        // else
+        //     Debug.Log("data null from banana");
     }
     protected override void Update()
     {

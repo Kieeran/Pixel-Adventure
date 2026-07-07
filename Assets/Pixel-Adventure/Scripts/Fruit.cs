@@ -18,7 +18,7 @@ public class Fruit : MonoBehaviour
     protected bool IsCollected;
     protected bool _DoneCollecting;
 
-    public FruitsData data;
+    // public FruitsData data;
     protected bool _isTrigger;
     protected int _gravityScale;
 

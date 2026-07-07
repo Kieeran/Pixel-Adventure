@@ -19,12 +19,12 @@ public class Pineapple : Fruit
     protected override void Start()
     {
         base.Start();
-        if (data != null)
-        {
-            // SetFruitID(data.pineappleID);
-        }
-        else
-            Debug.Log("data null from pineapple");
+        // if (data != null)
+        // {
+        //     // SetFruitID(data.pineappleID);
+        // }
+        // else
+        //     Debug.Log("data null from pineapple");
     }
 
     protected override void Update()

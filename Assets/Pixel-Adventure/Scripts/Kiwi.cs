@@ -19,12 +19,12 @@ public class Kiwi : Fruit
     protected override void Start()
     {
         base.Start();
-        if (data != null)
-        {
-            // SetFruitID(data.kiwiID);
-        }
-        else
-            Debug.Log("data null from kiwi");
+        // if (data != null)
+        // {
+        //     // SetFruitID(data.kiwiID);
+        // }
+        // else
+        //     Debug.Log("data null from kiwi");
     }
 
     protected override void Update()

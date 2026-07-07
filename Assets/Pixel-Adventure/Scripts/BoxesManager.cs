@@ -16,7 +16,7 @@ public class BoxesManager : MonoBehaviour
             _instance = this;
     }
 
-    public BoxesData boxesData;
+    // public BoxesData boxesData;
     private int amount;
 
     public Box1 _prefabBox1;
@@ -133,46 +133,46 @@ public class BoxesManager : MonoBehaviour
                 break;
         }
     }
-    public void Spawn(BoxesData data)
-    {
-        // LevelManager level = LevelManager.Instance;
+    // public void Spawn(BoxesData data)
+    // {
+    //     // LevelManager level = LevelManager.Instance;
 
-        // //Debug.Log(boxes);
-        // if (data == null)
-        // {
-        //     Debug.Log("No box data");
-        //     return;
-        // }
+    //     // //Debug.Log(boxes);
+    //     // if (data == null)
+    //     // {
+    //     //     Debug.Log("No box data");
+    //     //     return;
+    //     // }
 
-        // if (level == null)
-        // {
-        //     Debug.Log("No level data");
-        // }
+    //     // if (level == null)
+    //     // {
+    //     //     Debug.Log("No level data");
+    //     // }
 
-        // Boxes box;
+    //     // Boxes box;
 
-        // // Box1
-        // for (int i = 0; i < data.box1Position.Count; i++)
-        // {
-        //     box = GetBoxByID(data.box1ID);
-        //     box.transform.position = data.box1Position[i];
-        //     level.GetCurrentLevel().AddBox(box);
-        // }
+    //     // // Box1
+    //     // for (int i = 0; i < data.box1Position.Count; i++)
+    //     // {
+    //     //     box = GetBoxByID(data.box1ID);
+    //     //     box.transform.position = data.box1Position[i];
+    //     //     level.GetCurrentLevel().AddBox(box);
+    //     // }
 
-        // // Box2
-        // for (int i = 0; i < data.box2Position.Count; i++)
-        // {
-        //     box = GetBoxByID(data.box2ID);
-        //     box.transform.position = data.box2Position[i];
-        //     level.GetCurrentLevel().AddBox(box);
-        // }
+    //     // // Box2
+    //     // for (int i = 0; i < data.box2Position.Count; i++)
+    //     // {
+    //     //     box = GetBoxByID(data.box2ID);
+    //     //     box.transform.position = data.box2Position[i];
+    //     //     level.GetCurrentLevel().AddBox(box);
+    //     // }
 
-        // // Box3
-        // for (int i = 0; i < data.box3Position.Count; i++)
-        // {
-        //     box = GetBoxByID(data.box3ID);
-        //     box.transform.position = data.box3Position[i];
-        //     level.GetCurrentLevel().AddBox(box);
-        // }
-    }
+    //     // // Box3
+    //     // for (int i = 0; i < data.box3Position.Count; i++)
+    //     // {
+    //     //     box = GetBoxByID(data.box3ID);
+    //     //     box.transform.position = data.box3Position[i];
+    //     //     level.GetCurrentLevel().AddBox(box);
+    //     // }
+    // }
 }

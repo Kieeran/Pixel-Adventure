@@ -19,12 +19,12 @@ public class Melon : Fruit
     protected override void Start()
     {
         base.Start();
-        if (data != null)
-        {
-            // SetFruitID(data.melonID);
-        }
-        else
-            Debug.Log("data null from melon");
+        // if (data != null)
+        // {
+        //     // SetFruitID(data.melonID);
+        // }
+        // else
+        //     Debug.Log("data null from melon");
     }
 
     protected override void Update()

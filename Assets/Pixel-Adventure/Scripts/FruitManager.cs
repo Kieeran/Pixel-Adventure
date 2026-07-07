@@ -16,7 +16,7 @@ public class FruitManager : MonoBehaviour
     }
     #endregion Singleton
 
-    public FruitsData fruitData;
+    // public FruitsData fruitData;
     private Dictionary<FruitID, Queue<Fruit>> fruitPools;
     [SerializeField] int amount = 4;
 
@@ -110,198 +110,198 @@ public class FruitManager : MonoBehaviour
         return power[Random.Range(0, 2)];
     }
 
-    public void Spawn(FruitsData data)
-    {
-        // LevelManager level = LevelManager.Instance;
+    // public void Spawn(FruitsData data)
+    // {
+    //     // LevelManager level = LevelManager.Instance;
 
-        // //Debug.Log(data);
-        // if (data == null)
-        // {
-        //     Debug.Log("No fruit data");
-        //     return;
-        // }
+    //     // //Debug.Log(data);
+    //     // if (data == null)
+    //     // {
+    //     //     Debug.Log("No fruit data");
+    //     //     return;
+    //     // }
 
-        // if (level == null)
-        // {
-        //     Debug.Log("No level data");
-        // }
+    //     // if (level == null)
+    //     // {
+    //     //     Debug.Log("No level data");
+    //     // }
 
-        // Fruit fruit;
+    //     // Fruit fruit;
 
-        // // Apple
-        // for (int i = 0; i < data.applePosition.Count; i++)
-        // {
-        //     fruit = GetFruitByID(data.appleID);
-        //     fruit.transform.position = data.applePosition[i];
-        //     fruit.SetIsTrigger(data._isTrigger);
-        //     fruit.SetGravityScale(data._gravityScale);
+    //     // // Apple
+    //     // for (int i = 0; i < data.applePosition.Count; i++)
+    //     // {
+    //     //     fruit = GetFruitByID(data.appleID);
+    //     //     fruit.transform.position = data.applePosition[i];
+    //     //     fruit.SetIsTrigger(data._isTrigger);
+    //     //     fruit.SetGravityScale(data._gravityScale);
 
-        //     level.GetCurrentLevel().AddFruit(fruit);
-        // }
+    //     //     level.GetCurrentLevel().AddFruit(fruit);
+    //     // }
 
-        // // Cherry
-        // for (int i = 0; i < data.cherryPosition.Count; i++)
-        // {
-        //     fruit = GetFruitByID(data.cherryID);
-        //     fruit.transform.position = data.cherryPosition[i];
-        //     fruit.SetIsTrigger(data._isTrigger);
-        //     fruit.SetGravityScale(data._gravityScale);
+    //     // // Cherry
+    //     // for (int i = 0; i < data.cherryPosition.Count; i++)
+    //     // {
+    //     //     fruit = GetFruitByID(data.cherryID);
+    //     //     fruit.transform.position = data.cherryPosition[i];
+    //     //     fruit.SetIsTrigger(data._isTrigger);
+    //     //     fruit.SetGravityScale(data._gravityScale);
 
-        //     level.GetCurrentLevel().AddFruit(fruit);
-        // }
+    //     //     level.GetCurrentLevel().AddFruit(fruit);
+    //     // }
 
-        // // Bananas
-        // for (int i = 0; i < data.bananasPosition.Count; i++)
-        // {
-        //     fruit = GetFruitByID(data.bananaID);
-        //     fruit.transform.position = data.bananasPosition[i];
-        //     fruit.SetIsTrigger(data._isTrigger);
-        //     fruit.SetGravityScale(data._gravityScale);
+    //     // // Bananas
+    //     // for (int i = 0; i < data.bananasPosition.Count; i++)
+    //     // {
+    //     //     fruit = GetFruitByID(data.bananaID);
+    //     //     fruit.transform.position = data.bananasPosition[i];
+    //     //     fruit.SetIsTrigger(data._isTrigger);
+    //     //     fruit.SetGravityScale(data._gravityScale);
 
-        //     level.GetCurrentLevel().AddFruit(fruit);
-        // }
+    //     //     level.GetCurrentLevel().AddFruit(fruit);
+    //     // }
 
-        // // Kiwi
-        // for (int i = 0; i < data.kiwiPosition.Count; i++)
-        // {
-        //     fruit = GetFruitByID(data.kiwiID);
-        //     fruit.transform.position = data.kiwiPosition[i];
-        //     fruit.SetIsTrigger(data._isTrigger);
-        //     fruit.SetGravityScale(data._gravityScale);
+    //     // // Kiwi
+    //     // for (int i = 0; i < data.kiwiPosition.Count; i++)
+    //     // {
+    //     //     fruit = GetFruitByID(data.kiwiID);
+    //     //     fruit.transform.position = data.kiwiPosition[i];
+    //     //     fruit.SetIsTrigger(data._isTrigger);
+    //     //     fruit.SetGravityScale(data._gravityScale);
 
-        //     level.GetCurrentLevel().AddFruit(fruit);
-        // }
+    //     //     level.GetCurrentLevel().AddFruit(fruit);
+    //     // }
 
-        // // Melon
-        // for (int i = 0; i < data.melonPosition.Count; i++)
-        // {
-        //     fruit = GetFruitByID(data.melonID);
-        //     fruit.transform.position = data.melonPosition[i];
-        //     fruit.SetIsTrigger(data._isTrigger);
-        //     fruit.SetGravityScale(data._gravityScale);
+    //     // // Melon
+    //     // for (int i = 0; i < data.melonPosition.Count; i++)
+    //     // {
+    //     //     fruit = GetFruitByID(data.melonID);
+    //     //     fruit.transform.position = data.melonPosition[i];
+    //     //     fruit.SetIsTrigger(data._isTrigger);
+    //     //     fruit.SetGravityScale(data._gravityScale);
 
-        //     level.GetCurrentLevel().AddFruit(fruit);
-        // }
+    //     //     level.GetCurrentLevel().AddFruit(fruit);
+    //     // }
 
-        // // Orange
-        // for (int i = 0; i < data.orangePosition.Count; i++)
-        // {
-        //     fruit = GetFruitByID(data.orangeID);
-        //     fruit.transform.position = data.orangePosition[i];
-        //     fruit.SetIsTrigger(data._isTrigger);
-        //     fruit.SetGravityScale(data._gravityScale);
+    //     // // Orange
+    //     // for (int i = 0; i < data.orangePosition.Count; i++)
+    //     // {
+    //     //     fruit = GetFruitByID(data.orangeID);
+    //     //     fruit.transform.position = data.orangePosition[i];
+    //     //     fruit.SetIsTrigger(data._isTrigger);
+    //     //     fruit.SetGravityScale(data._gravityScale);
 
-        //     level.GetCurrentLevel().AddFruit(fruit);
-        // }
+    //     //     level.GetCurrentLevel().AddFruit(fruit);
+    //     // }
 
-        // // Pineapple
-        // for (int i = 0; i < data.pineapplePosition.Count; i++)
-        // {
-        //     fruit = (Pineapple)GetFruitByID(data.pineappleID);
-        //     fruit.transform.position = data.pineapplePosition[i];
-        //     fruit.SetIsTrigger(data._isTrigger);
-        //     fruit.SetGravityScale(data._gravityScale);
+    //     // // Pineapple
+    //     // for (int i = 0; i < data.pineapplePosition.Count; i++)
+    //     // {
+    //     //     fruit = (Pineapple)GetFruitByID(data.pineappleID);
+    //     //     fruit.transform.position = data.pineapplePosition[i];
+    //     //     fruit.SetIsTrigger(data._isTrigger);
+    //     //     fruit.SetGravityScale(data._gravityScale);
 
-        //     level.GetCurrentLevel().AddFruit(fruit);
-        // }
+    //     //     level.GetCurrentLevel().AddFruit(fruit);
+    //     // }
 
-        // // Strawberry
-        // for (int i = 0; i < data.strawberryPosition.Count; i++)
-        // {
-        //     fruit = GetFruitByID(data.strawberryID);
-        //     fruit.transform.position = data.strawberryPosition[i];
-        //     fruit.SetIsTrigger(data._isTrigger);
-        //     fruit.SetGravityScale(data._gravityScale);
+    //     // // Strawberry
+    //     // for (int i = 0; i < data.strawberryPosition.Count; i++)
+    //     // {
+    //     //     fruit = GetFruitByID(data.strawberryID);
+    //     //     fruit.transform.position = data.strawberryPosition[i];
+    //     //     fruit.SetIsTrigger(data._isTrigger);
+    //     //     fruit.SetGravityScale(data._gravityScale);
 
-        //     level.GetCurrentLevel().AddFruit(fruit);
-        // }
+    //     //     level.GetCurrentLevel().AddFruit(fruit);
+    //     // }
 
-        //// Apple
-        //for (int i = 0; i < data.applePosition.Count; i++)
-        //{
-        //    Apple apple = (Apple)GetFruitByID(data.appleID);
-        //    apple.transform.position = data.applePosition[i];
-        //    apple.SetIsTrigger(data._isTrigger);
-        //    apple.SetGravityScale(data._gravityScale);
+    //     //// Apple
+    //     //for (int i = 0; i < data.applePosition.Count; i++)
+    //     //{
+    //     //    Apple apple = (Apple)GetFruitByID(data.appleID);
+    //     //    apple.transform.position = data.applePosition[i];
+    //     //    apple.SetIsTrigger(data._isTrigger);
+    //     //    apple.SetGravityScale(data._gravityScale);
 
-        //    level.GetCurrentLevel().AddFruit(apple);
-        //}
+    //     //    level.GetCurrentLevel().AddFruit(apple);
+    //     //}
 
-        //// Cherry
-        //for (int i = 0; i < data.cherryPosition.Count; i++)
-        //{
-        //    Cherry cherry = (Cherry)GetFruitByID(data.cherryID);
-        //    cherry.transform.position = data.cherryPosition[i];
-        //    cherry.SetIsTrigger(data._isTrigger);
-        //    cherry.SetGravityScale(data._gravityScale);
+    //     //// Cherry
+    //     //for (int i = 0; i < data.cherryPosition.Count; i++)
+    //     //{
+    //     //    Cherry cherry = (Cherry)GetFruitByID(data.cherryID);
+    //     //    cherry.transform.position = data.cherryPosition[i];
+    //     //    cherry.SetIsTrigger(data._isTrigger);
+    //     //    cherry.SetGravityScale(data._gravityScale);
 
-        //    level.GetCurrentLevel().AddFruit(cherry);
-        //}
+    //     //    level.GetCurrentLevel().AddFruit(cherry);
+    //     //}
 
-        //// Bananas
-        //for (int i = 0; i < data.bananasPosition.Count; i++)
-        //{
-        //    Bananas banana = (Bananas)GetFruitByID(data.bananaID);
-        //    banana.transform.position = data.bananasPosition[i];
-        //    banana.SetIsTrigger(data._isTrigger);
-        //    banana.SetGravityScale(data._gravityScale);
+    //     //// Bananas
+    //     //for (int i = 0; i < data.bananasPosition.Count; i++)
+    //     //{
+    //     //    Bananas banana = (Bananas)GetFruitByID(data.bananaID);
+    //     //    banana.transform.position = data.bananasPosition[i];
+    //     //    banana.SetIsTrigger(data._isTrigger);
+    //     //    banana.SetGravityScale(data._gravityScale);
 
-        //    level.GetCurrentLevel().AddFruit(banana);
-        //}
+    //     //    level.GetCurrentLevel().AddFruit(banana);
+    //     //}
 
-        //// Kiwi
-        //for (int i = 0; i < data.kiwiPosition.Count; i++)
-        //{
-        //    Kiwi kiwi = (Kiwi)GetFruitByID(data.kiwiID);
-        //    kiwi.transform.position = data.kiwiPosition[i];
-        //    kiwi.SetIsTrigger(data._isTrigger);
-        //    kiwi.SetGravityScale(data._gravityScale);
+    //     //// Kiwi
+    //     //for (int i = 0; i < data.kiwiPosition.Count; i++)
+    //     //{
+    //     //    Kiwi kiwi = (Kiwi)GetFruitByID(data.kiwiID);
+    //     //    kiwi.transform.position = data.kiwiPosition[i];
+    //     //    kiwi.SetIsTrigger(data._isTrigger);
+    //     //    kiwi.SetGravityScale(data._gravityScale);
 
-        //    level.GetCurrentLevel().AddFruit(kiwi);
-        //}
+    //     //    level.GetCurrentLevel().AddFruit(kiwi);
+    //     //}
 
-        //// Melon
-        //for (int i = 0; i < data.melonPosition.Count; i++)
-        //{
-        //    Melon melon = (Melon)GetFruitByID(data.melonID);
-        //    melon.transform.position = data.melonPosition[i];
-        //    melon.SetIsTrigger(data._isTrigger);
-        //    melon.SetGravityScale(data._gravityScale);
+    //     //// Melon
+    //     //for (int i = 0; i < data.melonPosition.Count; i++)
+    //     //{
+    //     //    Melon melon = (Melon)GetFruitByID(data.melonID);
+    //     //    melon.transform.position = data.melonPosition[i];
+    //     //    melon.SetIsTrigger(data._isTrigger);
+    //     //    melon.SetGravityScale(data._gravityScale);
 
-        //    level.GetCurrentLevel().AddFruit(melon);
-        //}
+    //     //    level.GetCurrentLevel().AddFruit(melon);
+    //     //}
 
-        //// Orange
-        //for (int i = 0; i < data.orangePosition.Count; i++)
-        //{
-        //    Orange orange = (Orange)GetFruitByID(data.orangeID);
-        //    orange.transform.position = data.orangePosition[i];
-        //    orange.SetIsTrigger(data._isTrigger);
-        //    orange.SetGravityScale(data._gravityScale);
+    //     //// Orange
+    //     //for (int i = 0; i < data.orangePosition.Count; i++)
+    //     //{
+    //     //    Orange orange = (Orange)GetFruitByID(data.orangeID);
+    //     //    orange.transform.position = data.orangePosition[i];
+    //     //    orange.SetIsTrigger(data._isTrigger);
+    //     //    orange.SetGravityScale(data._gravityScale);
 
-        //    level.GetCurrentLevel().AddFruit(orange);
-        //}
+    //     //    level.GetCurrentLevel().AddFruit(orange);
+    //     //}
 
-        //// Pineapple
-        //for (int i = 0; i < data.pineapplePosition.Count; i++)
-        //{
-        //    Pineapple pineapple = (Pineapple)GetFruitByID(data.pineappleID);
-        //    pineapple.transform.position = data.pineapplePosition[i];
-        //    pineapple.SetIsTrigger(data._isTrigger);
-        //    pineapple.SetGravityScale(data._gravityScale);
+    //     //// Pineapple
+    //     //for (int i = 0; i < data.pineapplePosition.Count; i++)
+    //     //{
+    //     //    Pineapple pineapple = (Pineapple)GetFruitByID(data.pineappleID);
+    //     //    pineapple.transform.position = data.pineapplePosition[i];
+    //     //    pineapple.SetIsTrigger(data._isTrigger);
+    //     //    pineapple.SetGravityScale(data._gravityScale);
 
-        //    level.GetCurrentLevel().AddFruit(pineapple);
-        //}
+    //     //    level.GetCurrentLevel().AddFruit(pineapple);
+    //     //}
 
-        //// Strawberry
-        //for (int i = 0; i < data.strawberryPosition.Count; i++)
-        //{
-        //    Strawberry strawberry = (Strawberry)GetFruitByID(data.strawberryID);
-        //    strawberry.transform.position = data.strawberryPosition[i];
-        //    strawberry.SetIsTrigger(data._isTrigger);
-        //    strawberry.SetGravityScale(data._gravityScale);
+    //     //// Strawberry
+    //     //for (int i = 0; i < data.strawberryPosition.Count; i++)
+    //     //{
+    //     //    Strawberry strawberry = (Strawberry)GetFruitByID(data.strawberryID);
+    //     //    strawberry.transform.position = data.strawberryPosition[i];
+    //     //    strawberry.SetIsTrigger(data._isTrigger);
+    //     //    strawberry.SetGravityScale(data._gravityScale);
 
-        //    level.GetCurrentLevel().AddFruit(strawberry);
-        //}
-    }
+    //     //    level.GetCurrentLevel().AddFruit(strawberry);
+    //     //}
+    // }
 }

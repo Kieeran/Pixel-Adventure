@@ -19,12 +19,12 @@ public class Apple : Fruit
     protected override void Start()
     {
         base.Start();
-        if (data != null)
-        {
-            // SetFruitID(data.appleID);
-        }
-        else
-            Debug.Log("data null from apple");
+        // if (data != null)
+        // {
+        //     // SetFruitID(data.appleID);
+        // }
+        // else
+        //     Debug.Log("data null from apple");
     }
 
     protected override void Update()

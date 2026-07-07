@@ -329,15 +329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ef110636995df4b887b29a5233aefe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelDesigner
-  prefabFruits:
-  - {fileID: 1192876730772223496, guid: 42d3173bbbe063449ab4cf7d0b2dcad9, type: 3}
-  - {fileID: 8789284817146860118, guid: 0c705719a5b6e684386c856b3e6e9a78, type: 3}
-  - {fileID: 4362290083712328120, guid: 0e0b716ed7802bc41b5ec5c82f608b31, type: 3}
-  - {fileID: 4362290083712328120, guid: eedfbfa1cbdb51243b2fe1f3cf5c4ce3, type: 3}
-  - {fileID: 4362290083712328120, guid: feccb72ceedbbea418a06c721a6c7ddb, type: 3}
-  - {fileID: 4362290083712328120, guid: cdac6228f06c9034a8ba76e0d3e339cf, type: 3}
-  - {fileID: 4362290083712328120, guid: 0105a53e059a03341a32f7b56ad9d244, type: 3}
-  - {fileID: 4362290083712328120, guid: 0aac4277d97362f4e8c6d7b076c2ca2a, type: 3}
   level: {fileID: 888735060}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

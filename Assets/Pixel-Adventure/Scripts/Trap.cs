@@ -8,7 +8,7 @@ public class Trap : MonoBehaviour
     protected bool IsHit;
     public Animator animator;
 
-    public TrapData data;
+    // public TrapData data;
     public virtual int GetTrapID() { return trapID; }
     public virtual void SetTrapID(int i) { trapID = i; }
 

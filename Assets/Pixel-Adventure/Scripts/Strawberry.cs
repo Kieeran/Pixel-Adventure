@@ -19,12 +19,12 @@ public class Strawberry : Fruit
     protected override void Start()
     {
         base.Start();
-        if (data != null)
-        {
-            // SetFruitID(data.strawberryID);
-        }
-        else
-            Debug.Log("data null from strawberry");
+        // if (data != null)
+        // {
+        //     // SetFruitID(data.strawberryID);
+        // }
+        // else
+        //     Debug.Log("data null from strawberry");
     }
 
     protected override void Update()

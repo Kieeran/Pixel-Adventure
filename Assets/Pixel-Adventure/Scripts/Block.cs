@@ -7,12 +7,12 @@ public class Block : Trap
     protected override void Start()
     {
         base.Start();
-        if (data != null)
-        {
-            SetTrapID(data.blockID);
-        }
-        else
-            Debug.Log("data null from block");
+        // if (data != null)
+        // {
+        //     SetTrapID(data.blockID);
+        // }
+        // else
+        //     Debug.Log("data null from block");
     }
 
     public override void DoneHitting()

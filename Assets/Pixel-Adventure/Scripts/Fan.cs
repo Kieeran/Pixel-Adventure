@@ -13,13 +13,13 @@ public class Fan : Trap
     protected override void Start()
     {
         base.Start();
-        if (data != null)
-        {
-            SetTrapID(data.fanID);
-        }
-        else
-            Debug.Log("data null from fan");
-        On_OffTime = 5f;
+        // if (data != null)
+        // {
+        //     SetTrapID(data.fanID);
+        // }
+        // else
+        //     Debug.Log("data null from fan");
+        // On_OffTime = 5f;
     }
 
     public Vector2 GetForcePower() { return forcePower; }

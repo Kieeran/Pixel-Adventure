@@ -7,11 +7,11 @@ public class Trampoline : Trap
     protected override void Start()
     {
         base.Start();
-        if (data != null)
-        {
-            SetTrapID(data.trampolineID);
-        }
-        else
-            Debug.Log("data null from trampoline");
+        // if (data != null)
+        // {
+        //     SetTrapID(data.trampolineID);
+        // }
+        // else
+        //     Debug.Log("data null from trampoline");
     }
 }

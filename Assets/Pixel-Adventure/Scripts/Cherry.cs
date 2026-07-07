@@ -19,12 +19,12 @@ public class Cherry : Fruit
     protected override void Start()
     {
         base.Start();
-        if (data != null)
-        {
-            // SetFruitID(data.cherryID);
-        }
-        else
-            Debug.Log("data null from cherry");
+        // if (data != null)
+        // {
+        //     // SetFruitID(data.cherryID);
+        // }
+        // else
+        //     Debug.Log("data null from cherry");
     }
 
     protected override void Update()

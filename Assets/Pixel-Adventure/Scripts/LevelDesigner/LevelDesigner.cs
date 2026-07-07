@@ -1,10 +1,10 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
 public class LevelDesigner : MonoBehaviour
 {
-    public List<Fruit> prefabFruits;
-    public Dictionary<FruitID, Fruit> fruits;
     public Level level;
 
     [ContextMenu("Save level")]
@@ -15,20 +15,17 @@ public class LevelDesigner : MonoBehaviour
             Debug.Log("Level not found");
             return;
         }
-        level.levelData.fruitsData.fruitDatas.Clear();
+        level.levelData.placedObjectDatas.Clear();
 
         level.transform.position = Vector2.zero;
         foreach (Transform tf in level.placedObjectsHolder)
         {
-            if (tf.TryGetComponent<Fruit>(out var fruit))
+            GameObject prefab = PrefabUtility.GetCorrespondingObjectFromSource(tf.gameObject);
+            level.levelData.placedObjectDatas.Add(new PlacedObjectData
             {
-                level.levelData.fruitsData.fruitDatas.Add(new FruitData()
-                {
-                    fruitID = fruit.GetFruitID(),
-                    fruitPosition = tf.position,
-                    isStatic = true // fix cứng chổ này về sau sửa lại
-                });
-            }
+                prefab = prefab,
+                position = tf.position
+            });
         }
         Debug.Log("Save level complete!");
     }
@@ -49,27 +46,13 @@ public class LevelDesigner : MonoBehaviour
         }
 
         level.transform.position = Vector2.zero;
-        foreach (FruitData data in level.levelData.fruitsData.fruitDatas)
+        foreach (PlacedObjectData data in level.levelData.placedObjectDatas)
         {
-            Fruit fruit = Instantiate(fruits[data.fruitID]);
-            fruit.transform.parent = level.placedObjectsHolder;
-            fruit.transform.position = data.fruitPosition;
+            GameObject obj = (GameObject)PrefabUtility.InstantiatePrefab(data.prefab);
+            obj.transform.parent = level.placedObjectsHolder;
+            obj.transform.position = data.position;
         }
         Debug.Log("Reopen level level");
     }
-
-    void OnValidate()
-    {
-        if (prefabFruits == null || prefabFruits.Count == 0)
-        {
-            Debug.Log("PrefabFruits list is null or empty!");
-            return;
-        }
-
-        fruits = new();
-        foreach (Fruit fruit in prefabFruits)
-        {
-            fruits[fruit.GetFruitID()] = fruit;
-        }
-    }
 }
+#endif

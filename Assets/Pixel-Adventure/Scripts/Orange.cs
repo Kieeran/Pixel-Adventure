@@ -19,12 +19,12 @@ public class Orange : Fruit
     protected override void Start()
     {
         base.Start();
-        if (data != null)
-        {
-            // SetFruitID(data.orangeID);
-        }
-        else
-            Debug.Log("data null from orange");
+        // if (data != null)
+        // {
+        //     // SetFruitID(data.orangeID);
+        // }
+        // else
+        //     Debug.Log("data null from orange");
     }
 
     protected override void Update()
