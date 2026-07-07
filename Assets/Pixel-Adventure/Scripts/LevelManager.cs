@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public string currentLevelID;
+    public int currentLevelID;
     public Level currentLevel;
     public List<Level> _preFabLevels;
-    public Dictionary<string, Level> levels;
+    public Dictionary<int, Level> levels;
 
-    public Level GetCurrentLevel() { return currentLevel; }
+    public Level GetCurrentLevel()  { return currentLevel; }
 
     public PlayerController _prefabCharacter;
     private PlayerController player;

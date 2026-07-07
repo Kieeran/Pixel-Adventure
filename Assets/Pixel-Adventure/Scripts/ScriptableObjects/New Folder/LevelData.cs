@@ -8,7 +8,7 @@ using UnityEngine.Tilemaps;
 [CreateAssetMenu(fileName = "LevelData", menuName = "ScriptableObjects/LevelData")]
 public class LevelData : ScriptableObject
 {
-    public string levelID;
+    public int levelID;
     public FruitsData fruitsData;
     public BoxesData boxesData;
     public TrapData trapsData;
