@@ -9,18 +9,15 @@ public class LevelManager : MonoBehaviour
     public List<Level> _preFabLevels;
     public Dictionary<int, Level> levels;
 
-    public Level GetCurrentLevel()  { return currentLevel; }
+    public Level GetCurrentLevel() { return currentLevel; }
 
     public PlayerController _prefabCharacter;
     private PlayerController player;
 
-    private bool IsReadyToLoad = false;
-    private bool _LoadNextLevel;
-    private bool _LoadPreLevel;
-
-    public void SetIsReadyToLoad() { IsReadyToLoad = true; }
-    public void SetLoadNextLevel() { _LoadNextLevel = true; }
-    public void SetLoadPreLevel() { _LoadPreLevel = true; }
+    public void SetIsReadyToLoad()
+    {
+        LoadLevel();
+    }
 
     public static LevelManager _instance;
     public static LevelManager Instance => _instance;

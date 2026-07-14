@@ -20,11 +20,39 @@ public class UIManager : MonoBehaviour
 
         preButton.onClick.AddListener(() =>
         {
+            int currentLevel = InGameManager.Instance.GetCurrentLevel() - 1;
+            if (currentLevel < 0) return;
+
+            InGameManager.Instance.SetCurrentLevel(currentLevel);
+
+            if (currentLevel == 0)
+            {
+                preButton.gameObject.SetActive(false);
+            }
+            else
+            {
+                nextButton.gameObject.SetActive(true);
+            }
+
             OnPreButtonPressed?.Invoke();
         });
 
         nextButton.onClick.AddListener(() =>
         {
+            int currentLevel = InGameManager.Instance.GetCurrentLevel() + 1;
+            if (currentLevel >= LevelManager.Instance._preFabLevels.Count) return;
+
+            InGameManager.Instance.SetCurrentLevel(currentLevel);
+
+            if (currentLevel == LevelManager.Instance._preFabLevels.Count - 1)
+            {
+                nextButton.gameObject.SetActive(false);
+            }
+            else
+            {
+                preButton.gameObject.SetActive(true);
+            }
+
             OnNextButtonPressed?.Invoke();
         });
     }
@@ -37,16 +65,6 @@ public class UIManager : MonoBehaviour
     public event System.Action OnNextButtonPressed;
 
     [SerializeField] List<Sprite> backGroundSprites;
-
-    public void SetActivePreButton(bool b)
-    {
-        preButton.gameObject.SetActive(b);
-    }
-
-    public void SetActiveNextButton(bool b)
-    {
-        nextButton.gameObject.SetActive(b);
-    }
 
     private void Start()
     {

@@ -31,14 +31,14 @@ public class Transition : MonoBehaviour
     {
         if (isTransitioning)
         {
-            this.transform.position += new Vector3(transitionSpeed, 0, 0);
-            if (this.transform.position.x > 48.5f)
+            transform.position += new Vector3(transitionSpeed, 0, 0);
+            if (transform.position.x > 48.5f)
             {
                 isTransitioning = false;
-                this.transform.position = new Vector3(-48.5f, 0, 0);
+                transform.position = new Vector3(-48.5f, 0, 0);
             }
 
-            if (this.transform.position.x > 0)
+            if (transform.position.x > 0)
             {
                 LevelManager.Instance.SetIsReadyToLoad();
             }
