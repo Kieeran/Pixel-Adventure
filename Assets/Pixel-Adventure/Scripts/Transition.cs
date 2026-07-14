@@ -10,6 +10,16 @@ public class Transition : MonoBehaviour
     private void Start()
     {
         isTransitioning = false;
+
+        UIManager.Instance.OnPreButtonPressed += () =>
+        {
+            StartTransition();
+        };
+
+        UIManager.Instance.OnNextButtonPressed += () =>
+        {
+            StartTransition();
+        };
     }
 
     public void StartTransition()

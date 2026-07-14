@@ -17,11 +17,24 @@ public class UIManager : MonoBehaviour
 
         int randomIndex = Random.Range(0, backGroundSprites.Count - 1);
         mainCanvas.backgroundScroll.SetBackgroundSprite(backGroundSprites[randomIndex]);
+
+        preButton.onClick.AddListener(() =>
+        {
+            OnPreButtonPressed?.Invoke();
+        });
+
+        nextButton.onClick.AddListener(() =>
+        {
+            OnNextButtonPressed?.Invoke();
+        });
     }
 
     public MainCanvas mainCanvas;
     public Button preButton;
     public Button nextButton;
+
+    public event System.Action OnPreButtonPressed;
+    public event System.Action OnNextButtonPressed;
 
     [SerializeField] List<Sprite> backGroundSprites;
 

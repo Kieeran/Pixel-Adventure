@@ -432,7 +432,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a64a1b71fb2aee4ea82c483299005e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fruitData: {fileID: 11400000, guid: 761cb621fab4f86439cc019002b3d3b2, type: 2}
   amount: 4
   prefabList: []
   poolContainer: {fileID: 0}
@@ -610,31 +609,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 873351796}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1524922656}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: SetLoadNextLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1533777973}
-        m_TargetAssemblyTypeName: Transition, Assembly-CSharp
-        m_MethodName: StartTransition
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &873351796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1160,31 +1135,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1336712931}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1524922656}
-        m_TargetAssemblyTypeName: LevelManager, Assembly-CSharp
-        m_MethodName: SetLoadPreLevel
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
-      - m_Target: {fileID: 1533777973}
-        m_TargetAssemblyTypeName: Transition, Assembly-CSharp
-        m_MethodName: StartTransition
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1336712931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1327,7 +1278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1c4a5d87603a544a7a279b95ec6546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLevelID: 
+  currentLevelID: 0
   currentLevel: {fileID: 0}
   _preFabLevels:
   - {fileID: -5694099202821323519, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
@@ -1578,7 +1529,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 307c001bc53ba8041a54772598037b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxesData: {fileID: 11400000, guid: 4c9078475eec7ab4d81fe077c4f1f419, type: 2}
   _prefabBox1: {fileID: 627326841526014396, guid: 4d781c305a1814044ab71b924a4ea5b9, type: 3}
   _prefabBox2: {fileID: 4794446899375773385, guid: ad6a8b05ff0f36b4db88204f341906ea, type: 3}
   _prefabBox3: {fileID: 3932882946414846658, guid: 7f0168d501fa2094697081f147b1dffa, type: 3}
@@ -1756,7 +1706,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cf5e87e410997a449e20ca6367e67da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trapData: {fileID: 11400000, guid: d6a9d7425cd127d4abd65ec15f78eed9, type: 2}
   _prefabTrampoline: {fileID: 214367853752091098, guid: 4db8fcce5e89a2e42bf846ae5a2b2133, type: 3}
   _prefabBlock: {fileID: 1134289332158202844, guid: 43b08761c50f6b54384679a0ab21e4e5, type: 3}
   _prefabFan: {fileID: 7814249743494573922, guid: 7dcd2164c8ec03847bbd835f589731d0, type: 3}
