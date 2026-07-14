@@ -4,47 +4,49 @@ using UnityEngine;
 
 public class Transition : MonoBehaviour
 {
-    private float transitionSpeed = 0.32f;
-    private bool isTransitioning;
+    [SerializeField] float speed;
+    [SerializeField] float endX;
+    RectTransform transition;
+    Vector2 originPos;
+    float currentSpeed;
+
+    void Awake()
+    {
+        transition = GetComponent<RectTransform>();
+        originPos = transition.anchoredPosition;
+        currentSpeed = 0;
+    }
 
     private void Start()
     {
-        isTransitioning = false;
-
         UIManager.Instance.OnPreButtonPressed += () =>
         {
-            StartTransition();
+            currentSpeed = speed;
         };
 
         UIManager.Instance.OnNextButtonPressed += () =>
         {
-            StartTransition();
+            currentSpeed = speed;
         };
     }
 
-    public void StartTransition()
+    void Update()
     {
-        isTransitioning = true;
-    }
-
-    private void Update()
-    {
-        if (isTransitioning)
+        if (currentSpeed != 0)
         {
-            transform.position += new Vector3(transitionSpeed, 0, 0);
-            if (transform.position.x > 48.5f)
-            {
-                isTransitioning = false;
-                transform.position = new Vector3(-48.5f, 0, 0);
-            }
+            Vector2 movement = Vector2.right * (speed * Time.deltaTime);
+            transition.anchoredPosition += movement;
 
-            if (transform.position.x > 0)
+            if (transition.anchoredPosition.x >= 0)
             {
                 LevelManager.Instance.SetIsReadyToLoad();
             }
-        }
 
-        //Debug.Log(transform.position.x);
-        //Debug.Log(isTransitioning);
+            if (transition.anchoredPosition.x >= endX)
+            {
+                transition.anchoredPosition = originPos;
+                currentSpeed = 0;
+            }
+        }
     }
 }
