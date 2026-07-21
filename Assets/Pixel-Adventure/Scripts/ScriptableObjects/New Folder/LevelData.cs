@@ -5,7 +5,7 @@ using UnityEngine;
 [Serializable]
 public struct PlacedObjectData
 {
-    public GameObject prefab;
+    public string addressableKey;
     public Vector2 position;
 }
 
