@@ -43,8 +43,12 @@ public class LevelManager : MonoBehaviour
 
     void Start()
     {
-        LoadLevel();
-        player = Instantiate(_prefabCharacter, currentLevel.levelData.playerStartPosition, Quaternion.identity);
+        InGameManager.Instance.OnFruitPoolsReady += () =>
+        {
+            Debug.Log("Start to load level");
+            LoadLevel();
+            player = Instantiate(_prefabCharacter, currentLevel.levelData.playerStartPosition, Quaternion.identity);
+        };
     }
 
     void LoadLevel()

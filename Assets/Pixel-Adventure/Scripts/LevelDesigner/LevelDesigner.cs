@@ -51,13 +51,13 @@ public class LevelDesigner : MonoBehaviour
         // Clear object cũ trước khi đặt object mới load từ SO lên
         for (int i = level.placedObjectsHolder.childCount - 1; i >= 0; i--)
         {
-            AddressableSpawner.DespawnInEditorImmediate(level.placedObjectsHolder.GetChild(i).gameObject);
+            AddressableHandler.DespawnInEditorImmediate(level.placedObjectsHolder.GetChild(i).gameObject);
         }
 
         level.transform.position = Vector2.zero;
         foreach (PlacedObjectData data in level.levelData.placedObjectDatas)
         {
-            GameObject obj = AddressableSpawner.SpawnInEditorImmediate(data.addressableKey);
+            GameObject obj = AddressableHandler.SpawnInEditorImmediate(data.addressableKey);
             obj.transform.parent = level.placedObjectsHolder;
             obj.transform.position = data.position;
         }

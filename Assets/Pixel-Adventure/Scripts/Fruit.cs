@@ -2,14 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum FruitID
-{
-    None, Apple, Bananas, Cherry, Kiwi, Melon, Orange, Pineapple, Strawberry
-}
-
 public class Fruit : MonoBehaviour
 {
-    [SerializeField] FruitID _fruitID;
+    [SerializeField] string _fruitID;
 
     [SerializeField] Collider2D _collider;
     [SerializeField] Animator animator;
@@ -33,7 +28,7 @@ public class Fruit : MonoBehaviour
         _DoneCollecting = true;
     }
 
-    public virtual FruitID GetFruitID() { return _fruitID; }
+    public virtual string GetFruitID() { return _fruitID; }
 
     public virtual void SetIsTrigger(bool b) { _collider.isTrigger = b; }
     public virtual bool GetIsTrigger() { return _isTrigger; }

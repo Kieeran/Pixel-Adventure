@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,8 @@ public class InGameManager : MonoBehaviour
     public GameData gameData;
     public int GetCurrentLevel() { return currentLevel; }
     public void SetCurrentLevel(int i) { currentLevel = i; }
+
+    public Action OnFruitPoolsReady;
 
     private void Start()
     {
