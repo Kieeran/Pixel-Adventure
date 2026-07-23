@@ -36,6 +36,9 @@ public class LevelDesigner : MonoBehaviour
                 Debug.Log("Không thể lấy được addressableKey từ prefab");
             }
         }
+
+        EditorUtility.SetDirty(level.levelData);
+        AssetDatabase.SaveAssets();
         Debug.Log("Save level complete!");
     }
 

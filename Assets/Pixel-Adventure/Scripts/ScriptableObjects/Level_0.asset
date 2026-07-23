@@ -13,5 +13,39 @@ MonoBehaviour:
   m_Name: Level_0
   m_EditorClassIdentifier: 
   levelID: 0
-  placedObjectDatas: []
+  placedObjectDatas:
+  - addressableKey: Apple
+    position: {x: -10, y: 1}
+  - addressableKey: Apple
+    position: {x: -8.5, y: 1}
+  - addressableKey: Apple
+    position: {x: -7, y: 1}
+  - addressableKey: Apple
+    position: {x: -9.25, y: 2}
+  - addressableKey: Apple
+    position: {x: -7.75, y: 2}
+  - addressableKey: Apple
+    position: {x: -8.5, y: 3}
+  - addressableKey: Cherry
+    position: {x: -4, y: -3}
+  - addressableKey: Cherry
+    position: {x: -2.5, y: -3}
+  - addressableKey: Cherry
+    position: {x: -1, y: -3}
+  - addressableKey: Cherry
+    position: {x: 0.5, y: -3}
+  - addressableKey: Cherry
+    position: {x: 2, y: -3}
+  - addressableKey: Orange
+    position: {x: 2, y: 3}
+  - addressableKey: Orange
+    position: {x: 4, y: 3}
+  - addressableKey: Orange
+    position: {x: 3, y: 4.5}
+  - addressableKey: Pineapple
+    position: {x: 11.5, y: -0.5}
+  - addressableKey: Pineapple
+    position: {x: 11.5, y: 1.5}
+  - addressableKey: Pineapple
+    position: {x: 11.5, y: 3.5}
   playerStartPosition: {x: 0, y: 0, z: 0}
