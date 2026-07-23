@@ -569,7 +569,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d724fab96d166bc41992d504199baa8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AddressableHandler
-  activeSpawnedObjects: []
 --- !u!1 &873351793
 GameObject:
   m_ObjectHideFlags: 0
@@ -1836,12 +1835,12 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 519420032}
-  - {fileID: 362993034}
   - {fileID: 1538753310}
   - {fileID: 1231460847}
   - {fileID: 76444399}
   - {fileID: 2145157174}
   - {fileID: 2117698510}
+  - {fileID: 362993034}
   - {fileID: 832272809}
   - {fileID: 1152749582}
   - {fileID: 891734402}

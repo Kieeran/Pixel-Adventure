@@ -15,50 +15,50 @@ MonoBehaviour:
   m_GroupName: Default Local Group
   m_GUID: a0d209a4cdaf4a549a96c4a44c8d5b39
   m_SerializeEntries:
-  - m_GUID: 0105a53e059a03341a32f7b56ad9d244
-    m_Address: Pineapple
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Fruit
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0aac4277d97362f4e8c6d7b076c2ca2a
-    m_Address: Strawberry
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Fruit
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0c705719a5b6e684386c856b3e6e9a78
-    m_Address: Bananas
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Fruit
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 0e0b716ed7802bc41b5ec5c82f608b31
-    m_Address: Cherry
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Fruit
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: 42d3173bbbe063449ab4cf7d0b2dcad9
-    m_Address: Apple
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Fruit
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: cdac6228f06c9034a8ba76e0d3e339cf
-    m_Address: Orange
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Fruit
-    FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: eedfbfa1cbdb51243b2fe1f3cf5c4ce3
+  - m_GUID: 3bd8e73d7bdeb0f46b431a1a83de8818
     m_Address: Kiwi
     m_ReadOnly: 0
     m_SerializedLabels:
     - Fruit
     FlaggedDuringContentUpdateRestriction: 0
-  - m_GUID: feccb72ceedbbea418a06c721a6c7ddb
+  - m_GUID: 4136cc1c671afef4183f53cc4045b388
     m_Address: Melon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fruit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4fd093d4da641ad4098780e7d4eeda1d
+    m_Address: Cherry
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fruit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c0f2a27d3ae71747a698e760fe075c3
+    m_Address: Apple
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fruit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a0e8572b1baca749b93d08ac6520b64
+    m_Address: Bananas
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fruit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f5de91ec732388468847537d805f3c0
+    m_Address: Strawberry
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fruit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee70dbb42474efd47abe51a1b1c0c226
+    m_Address: Pineapple
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fruit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f906bc7d5a990394ebe8721422040f5d
+    m_Address: Orange
     m_ReadOnly: 0
     m_SerializedLabels:
     - Fruit

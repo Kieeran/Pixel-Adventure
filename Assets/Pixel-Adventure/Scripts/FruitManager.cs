@@ -145,6 +145,8 @@ public class FruitManager : MonoBehaviour
             {
                 Fruit fruit = GetFruitByID(data.addressableKey);
                 fruit.transform.position = data.position;
+
+                fruit.transform.SetParent(LevelManager.Instance.currentLevel.placedObjectsHolder);
             }
             else Debug.Log("prefabDict.Keys not contain id: " + data.addressableKey);
         }
