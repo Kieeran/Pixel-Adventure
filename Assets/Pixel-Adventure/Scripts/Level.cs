@@ -39,6 +39,8 @@ public class Level : MonoBehaviour
     {
         for (int i = 0; i < placedObjects.Count; i++)
         {
+            if (placedObjects[i].gameObject.activeSelf == false) continue;  // Đã return rồi nhưng vẫn còn giữ reference
+
             placedObjects[i].UnloadObject();
         }
         placedObjects.Clear();
