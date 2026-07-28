@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fruit : MonoBehaviour
+public class Fruit : PlacedObject
 {
     [SerializeField] string _fruitID;
 
@@ -21,6 +21,9 @@ public class Fruit : MonoBehaviour
     public virtual void SetIsCollected(bool b)
     {
         IsCollected = b;
+        animator.SetBool("IsCollected", b);
+
+        UnloadObject();
     }
 
     public virtual void DoneCollecting()
@@ -29,6 +32,7 @@ public class Fruit : MonoBehaviour
     }
 
     public virtual string GetFruitID() { return _fruitID; }
+    public virtual void SetFruitID(string id) { _fruitID = id; }
 
     public virtual void SetIsTrigger(bool b) { _collider.isTrigger = b; }
     public virtual bool GetIsTrigger() { return _isTrigger; }
@@ -63,5 +67,10 @@ public class Fruit : MonoBehaviour
         rb = GetComponentInChildren<Rigidbody2D>();
         _collider = GetComponentInChildren<Collider2D>();
         animator = GetComponentInChildren<Animator>();
+    }
+
+    public override void UnloadObject()
+    {
+        FruitManager.Instance.ReturnFruit(this);
     }
 }

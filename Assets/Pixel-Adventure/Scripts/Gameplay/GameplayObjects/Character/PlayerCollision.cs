@@ -21,6 +21,15 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.parent.gameObject.CompareTag("Fruit"))
+        {
+            Fruit fruit = collision.gameObject.GetComponentInParent<Fruit>();
+            fruit.SetIsCollected(true);
+        }
+    }
+
     // private void OnCollisionEnter2D(Collision2D collision)
     // {
     //     ContactPoint2D contact = collision.contacts[0];
@@ -99,19 +108,6 @@ public class PlayerCollision : MonoBehaviour
     //             }
     //         }
     //         Debug.Log(trap.GetTrapID());
-    //     }
-    // }
-
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if (collision.gameObject.CompareTag("Fruit"))
-    //     {
-    //         //Fruits fruit = collision.gameObject.GetComponent<Fruits>();
-    //         //int fruitID = fruit.GetFruitID();
-    //         //FruitManager.Instance.ReturnFruit(fruitID, fruit);
-
-    //         Fruits fruit = collision.gameObject.GetComponent<Fruits>();
-    //         fruit.SetIsCollected(true);
     //     }
     // }
 

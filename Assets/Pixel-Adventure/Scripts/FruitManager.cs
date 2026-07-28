@@ -101,19 +101,22 @@ public class FruitManager : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             Fruit spawnFruit = Instantiate(prefabDict[fruitID], poolContainer);
+            spawnFruit.SetFruitID(fruitID);
             spawnFruit.gameObject.SetActive(false);
             fruitPools[fruitID].Enqueue(spawnFruit);
         }
     }
 
-    public void ReturnFruit(string fruitID, Fruit fruit)
+    public void ReturnFruit(Fruit fruit)
     {
+        string fruitID = fruit.GetFruitID();
         if (fruitPools.ContainsKey(fruitID))
         {
-            fruit.SetIsTrigger(false);
-            fruit.SetGravityScale(5);
+            // fruit.SetIsTrigger(false);
+            // fruit.SetGravityScale(5);
             fruit.gameObject.SetActive(false);
             fruitPools[fruitID].Enqueue(fruit);
+            fruit.transform.SetParent(poolContainer);
 
             Debug.Log("Return fruit has ID: " + fruitID);
         }
@@ -146,7 +149,7 @@ public class FruitManager : MonoBehaviour
                 Fruit fruit = GetFruitByID(data.addressableKey);
                 fruit.transform.position = data.position;
 
-                fruit.transform.SetParent(LevelManager.Instance.currentLevel.placedObjectsHolder);
+                LevelManager.Instance.currentLevel.AddPlacedObject(fruit);
             }
             else Debug.Log("prefabDict.Keys not contain id: " + data.addressableKey);
         }
