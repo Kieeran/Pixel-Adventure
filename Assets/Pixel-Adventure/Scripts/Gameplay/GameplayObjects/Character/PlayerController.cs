@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public PlayerInput playerInput;
     public PlayerMovement playerMovement;
     public PlayerCollision playerCollision;
+    public PlayerAnimation playerAnimation;
 
     private void Awake()
     {
@@ -15,10 +16,21 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
         else
             Instance = this;
+    }
 
-        playerInput = GetComponent<PlayerInput>();
-        playerMovement = GetComponent<PlayerMovement>();
-        playerCollision = GetComponent<PlayerCollision>();
+    void OnValidate()
+    {
+        if (playerInput == null) playerInput = GetComponent<PlayerInput>();
+        if (playerMovement == null) playerMovement = GetComponent<PlayerMovement>();
+        if (playerCollision == null) playerCollision = GetComponent<PlayerCollision>();
+
+        foreach (Transform child in transform)
+        {
+            if (playerAnimation == null && child.TryGetComponent<PlayerAnimation>(out var animation))
+            {
+                playerAnimation = animation;
+            }
+        }
     }
 
     // private bool isFallDown = false;
