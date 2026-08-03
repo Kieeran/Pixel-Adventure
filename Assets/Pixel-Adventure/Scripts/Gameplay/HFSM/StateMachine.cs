@@ -14,12 +14,12 @@ public abstract class State
 
 public abstract class HierarchicalState : State
 {
-    protected State CurrentSubState;
-    protected State DefaultSubState;
-    protected List<State> SubStates = new List<State>();
+    public State CurrentSubState;
+    public State DefaultSubState;
+    public List<State> SubStates = new();
 
     // Thêm Substate con và gán mối quan hệ Parent
-    protected void RegisterSubState(State subState, bool isDefault = false)
+    public void RegisterSubState(State subState, bool isDefault = false)
     {
         SubStates.Add(subState);
         subState.ParentState = this;
@@ -92,5 +92,14 @@ public class StateMachine
     {
         CurrentState?.HandleInput();
         CurrentState?.OnUpdate();
+    }
+
+    // Nếu biến CurrentState là State thì trả về CurrentState luôn
+    // Nếu biến CurrentState là HierarchicalState thì trả về CurrentSubState của HierarchicalState đó
+    public State GetTheMostCurrentState()
+    {
+        HierarchicalState superState = CurrentState as HierarchicalState;
+
+        return superState is not null ? superState.CurrentSubState : CurrentState;
     }
 }

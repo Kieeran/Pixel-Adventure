@@ -2,15 +2,14 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public Animator animator;
 
-    // Update is called once per frame
-    void Update()
+    public static readonly int IdleStateHash = Animator.StringToHash("Idle");
+    public static readonly int RunStateHash = Animator.StringToHash("Run");
+
+    public void PlayAnimation(int stateHash, float layer = 0, float normalizedTime = 0f)
     {
-        
+        // Chạy thẳng State đó mà không cần Transition
+        animator.Play(stateHash, (int)layer, normalizedTime);
     }
 }

@@ -22,12 +22,20 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         UpdateSpriteDirection();
+
+        if (PlayerController.Instance.StateMachine.GetTheMostCurrentState().Name == "Walk")
+        {
+            playerRB.linearVelocity = new Vector2(
+                PlayerController.Instance.playerInput.move.x * moveSpeed,
+                playerRB.linearVelocity.y
+            );
+        }
     }
 
     private void FixedUpdate()
     {
-        Move();
-        Jump();
+        // Move();
+        // Jump();
     }
 
     private void Move()
@@ -51,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
             if (isJumpInAir == false && isGrounded == false)
             {
                 playerRB.linearVelocity = new Vector2(playerRB.linearVelocity.x, 0);
-                
+
                 playerRB.AddForce(Vector2.up * jumpAirPower, ForceMode2D.Impulse);
                 isJumpInAir = true;
             }

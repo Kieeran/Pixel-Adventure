@@ -10,12 +10,21 @@ public class PlayerController : MonoBehaviour
     public PlayerCollision playerCollision;
     public PlayerAnimation playerAnimation;
 
+    // HFSM
+    public StateMachine StateMachine { get; private set; }
+    public GroundedState GroundedState { get; private set; }
+
+    public IdleState IdleState { get; set; }
+    public WalkState WalkState { get; set; }
+
     private void Awake()
     {
         if (Instance != null)
             Destroy(gameObject);
         else
             Instance = this;
+
+        InitHFSM();
     }
 
     void OnValidate()
@@ -31,6 +40,19 @@ public class PlayerController : MonoBehaviour
                 playerAnimation = animation;
             }
         }
+    }
+
+    void InitHFSM()
+    {
+        StateMachine = new StateMachine();
+        GroundedState = new GroundedState();
+
+        StateMachine.Initialize(GroundedState);
+    }
+
+    void Update()
+    {
+        StateMachine.Update();
     }
 
     // private bool isFallDown = false;

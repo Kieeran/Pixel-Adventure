@@ -14926,7 +14926,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d84f8cfe1f87144b795d63c06f0294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerRB: {fileID: 0}
   moveSpeed: 7
   jumpPower: 20
   jumpAirPower: 15
@@ -15072,6 +15071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1baa3b1e6e94b5b418c9ca2890185aa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
+  animator: {fileID: 8631672350750552613}
 --- !u!1 &7932850783537353504
 GameObject:
   m_ObjectHideFlags: 0
