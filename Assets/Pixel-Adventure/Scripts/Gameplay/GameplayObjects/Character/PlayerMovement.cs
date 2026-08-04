@@ -14,29 +14,26 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody2D>();
-        PlayerController.Instance.OnJump += Jump;
+        PlayerController.Instance.OnJump += OnJump;
     }
 
     private void Update()
     {
         UpdateSpriteDirection();
-
-        if (PlayerController.Instance.StateMachine.GetTheMostCurrentState().Name == "Walk")
-        {
-            playerRB.linearVelocity = new Vector2(
-                PlayerController.Instance.playerInput.move.x * moveSpeed,
-                playerRB.linearVelocity.y
-            );
-        }
     }
 
     private void FixedUpdate()
     {
-        // Move();
-        // Jump();
+        switch (PlayerController.Instance.StateMachine.CurrentState.Name)
+        {
+            case "Walk":
+            case "InAir":
+                Move();
+                break;
+        }
     }
 
-    private void Move()
+    void Move()
     {
         playerRB.linearVelocity = new Vector2(
             PlayerController.Instance.playerInput.move.x * moveSpeed,
@@ -44,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         );
     }
 
-    void Jump()
+    void OnJump()
     {
         if (PlayerController.Instance.playerInput.isGrounded == true)
         {

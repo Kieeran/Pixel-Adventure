@@ -10,15 +10,17 @@ public class PlayerController : MonoBehaviour
     public PlayerCollision playerCollision;
     public PlayerAnimation playerAnimation;
 
-    // HFSM
+    // FSM
     public StateMachine StateMachine { get; private set; }
-    public GroundedState GroundedState { get; private set; }
 
     public IdleState IdleState { get; set; }
     public WalkState WalkState { get; set; }
+    public InAirState InAirState { get; set; }
 
     // Events
     public Action OnJump;
+
+    public string CurrentState = null;
 
     private void Awake()
     {
@@ -27,7 +29,7 @@ public class PlayerController : MonoBehaviour
         else
             Instance = this;
 
-        InitHFSM();
+        InitFSM();
     }
 
     void OnValidate()
@@ -45,17 +47,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void InitHFSM()
+    void InitFSM()
     {
         StateMachine = new StateMachine();
-        GroundedState = new GroundedState();
+        IdleState = new IdleState();
+        WalkState = new WalkState();
+        InAirState = new InAirState();
 
-        StateMachine.Initialize(GroundedState);
+        StateMachine.Initialize(InAirState);
     }
 
     void Update()
     {
         StateMachine.Update();
+        CurrentState = StateMachine?.CurrentState?.Name;
     }
 
     // private bool isFallDown = false;
