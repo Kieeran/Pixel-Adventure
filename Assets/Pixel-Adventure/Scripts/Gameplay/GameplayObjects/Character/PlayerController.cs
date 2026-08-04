@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
 
     public IdleState IdleState { get; set; }
     public WalkState WalkState { get; set; }
+
+    // Events
+    public Action OnJump;
 
     private void Awake()
     {

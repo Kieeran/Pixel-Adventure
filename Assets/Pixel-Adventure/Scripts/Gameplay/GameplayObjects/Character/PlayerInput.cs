@@ -1,30 +1,20 @@
-using System.Collections;
 using UnityEngine.InputSystem;
 using UnityEngine;
-using UnityEngine.InputSystem.Interactions;
 
 public class PlayerInput : MonoBehaviour
 {
     public InputAction moveAction;
     public InputAction jumpAction;
 
-    public Vector2 move;
-    public bool jump;
+    public Vector2 move = Vector2.zero;
+    public bool isGrounded = false;
+    public bool isJumpInAir = false;
 
     public void Awake()
     {
-        jumpAction.started +=
-            ctx =>
+        jumpAction.started += ctx =>
         {
-            jump = true;
-            //Debug.Log("Start jump!");
-        };
-
-        jumpAction.canceled +=
-            ctx =>
-        {
-            jump = false;
-            //Debug.Log("Done jump!");
+            PlayerController.Instance.OnJump?.Invoke();
         };
     }
 

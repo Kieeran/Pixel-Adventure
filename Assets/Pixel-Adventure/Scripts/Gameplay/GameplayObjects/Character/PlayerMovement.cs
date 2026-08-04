@@ -11,12 +11,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpAirPower;
     [SerializeField] private bool isFacingRight = true;
 
-    public bool isGrounded = false;
-    public bool isJumpInAir = false;
-
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody2D>();
+        PlayerController.Instance.OnJump += Jump;
     }
 
     private void Update()
@@ -46,23 +44,19 @@ public class PlayerMovement : MonoBehaviour
         );
     }
 
-    private void Jump()
+    void Jump()
     {
-        if (PlayerController.Instance.playerInput.jump == true)
+        if (PlayerController.Instance.playerInput.isGrounded == true)
         {
-            if (isGrounded == true)
-            {
-                playerRB.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-                PlayerController.Instance.playerInput.jump = false;
-            }
+            playerRB.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+        }
 
-            if (isJumpInAir == false && isGrounded == false)
-            {
-                playerRB.linearVelocity = new Vector2(playerRB.linearVelocity.x, 0);
+        if (PlayerController.Instance.playerInput.isJumpInAir == false && PlayerController.Instance.playerInput.isGrounded == false)
+        {
+            playerRB.linearVelocity = new Vector2(playerRB.linearVelocity.x, 0);
 
-                playerRB.AddForce(Vector2.up * jumpAirPower, ForceMode2D.Impulse);
-                isJumpInAir = true;
-            }
+            playerRB.AddForce(Vector2.up * jumpAirPower, ForceMode2D.Impulse);
+            PlayerController.Instance.playerInput.isJumpInAir = true;
         }
     }
 

@@ -8,8 +8,8 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Terrain"))
         {
-            PlayerController.Instance.playerMovement.isGrounded = true;
-            PlayerController.Instance.playerMovement.isJumpInAir = false;
+            PlayerController.Instance.playerInput.isGrounded = true;
+            PlayerController.Instance.playerInput.isJumpInAir = false;
         }
     }
 
@@ -17,7 +17,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Terrain"))
         {
-            PlayerController.Instance.playerMovement.isGrounded = false;
+            PlayerController.Instance.playerInput.isGrounded = false;
         }
     }
 
