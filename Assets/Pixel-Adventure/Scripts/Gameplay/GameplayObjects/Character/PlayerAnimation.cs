@@ -3,34 +3,24 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     public Animator animator;
-    public StateMachine AniStateMachine { get; private set; }
-    public IdleAniState IdleAniState { get; private set; }
-    public WalkAniState WalkAniState { get; private set; }
 
-    public static readonly int RunStateHash = Animator.StringToHash("Run");
+    private static readonly int xVelocityHash = Animator.StringToHash("xVelocity");
+    private static readonly int yVelocityHash = Animator.StringToHash("yVelocity");
+    private static readonly int isGroundedHash = Animator.StringToHash("isGrounded");
+    private static readonly int isDoubleJumpHash = Animator.StringToHash("isDoubleJump");
 
-    void Awake()
+    void Start()
     {
-        InitAniFSM();
-    }
-
-    void InitAniFSM()
-    {
-        AniStateMachine = new StateMachine();
-        IdleAniState = new IdleAniState(AniStateMachine);
-        WalkAniState = new WalkAniState(AniStateMachine);
-
-        AniStateMachine.Initialize(IdleAniState);
+        PlayerController.Instance.OnDoubleJump += () =>
+        {
+            animator.SetTrigger(isDoubleJumpHash);
+        };
     }
 
     void Update()
     {
-        AniStateMachine.Update();
-    }
-
-    public void PlayAnimation(int stateHash, float layer = 0, float normalizedTime = 0f)
-    {
-        // Chạy thẳng State đó mà không cần Transition
-        animator.Play(stateHash, (int)layer, normalizedTime);
+        animator.SetFloat(xVelocityHash, Mathf.Abs(PlayerController.Instance.playerMovement.playerRB.linearVelocityX));
+        animator.SetFloat(yVelocityHash, PlayerController.Instance.playerMovement.playerRB.linearVelocityY);
+        animator.SetBool(isGroundedHash, PlayerController.Instance.playerInput.isGrounded);
     }
 }

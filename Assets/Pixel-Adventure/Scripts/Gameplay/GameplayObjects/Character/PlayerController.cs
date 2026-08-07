@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     // Events
     public Action OnJump;
+    public Action OnDoubleJump;
 
     public string CurrentState = null;
 

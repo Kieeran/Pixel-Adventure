@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D playerRB;
+    public Rigidbody2D playerRB;
 
     [SerializeField] private float moveSpeed;
     [SerializeField] private float jumpPower;
@@ -54,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
             playerRB.AddForce(Vector2.up * jumpAirPower, ForceMode2D.Impulse);
             PlayerController.Instance.playerInput.isJumpInAir = true;
+            PlayerController.Instance.OnDoubleJump?.Invoke();
         }
     }
 
