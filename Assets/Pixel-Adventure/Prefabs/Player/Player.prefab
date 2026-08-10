@@ -14783,16 +14783,16 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 5
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a3d90c739fc47a947b32f537ab5fe344, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &95255012435249809
 MonoBehaviour:
@@ -14810,6 +14810,7 @@ MonoBehaviour:
   playerMovement: {fileID: 5741197850277541710}
   playerCollision: {fileID: 3918691766044789199}
   playerAnimation: {fileID: 5803102028198684687}
+  CurrentState: 
 --- !u!114 &6457185354270965852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14913,7 +14914,8 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   move: {x: 0, y: 0}
-  jump: 0
+  isGrounded: 0
+  isJumpInAir: 0
 --- !u!114 &5741197850277541710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14926,12 +14928,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d84f8cfe1f87144b795d63c06f0294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerRB: {fileID: 0}
   moveSpeed: 7
   jumpPower: 20
   jumpAirPower: 15
   isFacingRight: 1
-  isGrounded: 0
-  isJumpInAir: 0
 --- !u!114 &3918691766044789199
 MonoBehaviour:
   m_ObjectHideFlags: 0
