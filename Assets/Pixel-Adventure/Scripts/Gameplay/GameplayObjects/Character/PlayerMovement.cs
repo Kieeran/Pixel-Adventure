@@ -24,13 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        switch (PlayerController.Instance.StateMachine.CurrentState.Name)
-        {
-            case "Walk":
-            case "InAir":
-                Move();
-                break;
-        }
+        Move();
     }
 
     void Move()

@@ -30,9 +30,7 @@ public class PlayerInput : MonoBehaviour
         jumpAction.Disable();
     }
 
-    // Chổ này về sau cần phải được xem xét lại
-    // Vấn đề: bất đồng bộ giữa việc lấy input ở Update và dùng nó cho physic ở FixedUpdate
-    public void FixedUpdate()
+    public void Update()
     {
         move = moveAction.ReadValue<Vector2>();
     }
