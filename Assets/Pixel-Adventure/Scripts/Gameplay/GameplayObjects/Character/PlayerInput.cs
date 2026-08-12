@@ -9,6 +9,7 @@ public class PlayerInput : MonoBehaviour
     public Vector2 move = Vector2.zero;
     public bool isGrounded = false;
     public bool isJumpInAir = false;
+    public bool isOnWall = false;
 
     public void Awake()
     {
