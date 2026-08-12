@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -7,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D playerRB;
 
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float slideOnWallSpeed;
     [SerializeField] private float jumpPower;
     [SerializeField] private float jumpAirPower;
     [SerializeField] private bool isFacingRight = true;
@@ -29,10 +28,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Move()
     {
-        playerRB.linearVelocity = new Vector2(
-            PlayerController.Instance.playerInput.move.x * moveSpeed,
-            playerRB.linearVelocity.y
-        );
+        Vector2 currentVelocity = playerRB.linearVelocity;
+
+        currentVelocity.x = PlayerController.Instance.playerInput.move.x * moveSpeed;
+
+        if (PlayerController.Instance.playerInput.isOnWall == true)
+        {
+            currentVelocity.y = -slideOnWallSpeed;
+        }
+
+        playerRB.linearVelocity = currentVelocity;
     }
 
     void OnJump()

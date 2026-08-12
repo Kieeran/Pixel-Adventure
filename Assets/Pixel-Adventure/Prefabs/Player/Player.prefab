@@ -14916,6 +14916,7 @@ MonoBehaviour:
   move: {x: 0, y: 0}
   isGrounded: 0
   isJumpInAir: 0
+  isOnWall: 0
 --- !u!114 &5741197850277541710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14930,6 +14931,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerRB: {fileID: 0}
   moveSpeed: 7
+  slideOnWallSpeed: 3
   jumpPower: 20
   jumpAirPower: 15
   isFacingRight: 1
