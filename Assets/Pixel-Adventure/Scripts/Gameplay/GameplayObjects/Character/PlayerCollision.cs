@@ -32,7 +32,7 @@ public class PlayerCollision : MonoBehaviour
             }
 
             // Nếu count = collision.contactCount - 1 => duyệt hết tất cả contact point rồi nhưng chưa chứng minh được character đang đứng ở mặt đất
-            // => Character đang va chạm với tường và rời khỏi mặt đất
+            // => Character đang va chạm với tường và không ở mặt đất
             if (count >= collision.contactCount - 1)
             {
                 PlayerController.Instance.playerInput.isGrounded = false;
