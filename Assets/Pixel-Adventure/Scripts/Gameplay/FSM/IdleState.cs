@@ -10,7 +10,7 @@ public class IdleState : State
     public override void HandleInput()
     {
         // Idle <-> Walk
-        if (PlayerController.Instance.playerInput.move != Vector2.zero)
+        if (PlayerController.Instance.playerInput.IsMoving())
         {
             PlayerController.Instance.StateMachine.ChangeState(PlayerController.Instance.WalkState);
         }

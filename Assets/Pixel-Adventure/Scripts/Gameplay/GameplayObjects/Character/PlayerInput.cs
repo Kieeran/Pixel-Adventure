@@ -11,6 +11,11 @@ public class PlayerInput : MonoBehaviour
     public bool isJumpInAir = false;
     public bool isOnWall = false;
 
+    public bool IsMoving()
+    {
+        return PlayerController.Instance.playerMovement.playerRB.linearVelocityX != 0;
+    }
+
     public void Awake()
     {
         jumpAction.started += ctx =>

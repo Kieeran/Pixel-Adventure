@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public IdleState IdleState { get; set; }
     public WalkState WalkState { get; set; }
     public InAirState InAirState { get; set; }
+    public SlideOnWallState SlideOnWallState { get; set; }
 
     // Events
     public Action OnJump;
@@ -54,6 +55,7 @@ public class PlayerController : MonoBehaviour
         IdleState = new IdleState();
         WalkState = new WalkState();
         InAirState = new InAirState();
+        SlideOnWallState = new SlideOnWallState();
 
         StateMachine.Initialize(InAirState);
     }
