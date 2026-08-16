@@ -66,6 +66,11 @@ public class PlayerController : MonoBehaviour
         CurrentState = StateMachine?.CurrentState?.Name;
     }
 
+    void FixedUpdate()
+    {
+        StateMachine.FixedUpdate();
+    }
+
     // private bool isFallDown = false;
     // private bool isTouch = false;
     // private int jumpCount = 0;

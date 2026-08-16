@@ -17,6 +17,10 @@ public class PlayerCollision : MonoBehaviour
             for (int i = 0; i < collision.contactCount; i++)
             {
                 ContactPoint2D contact = collision.GetContact(i);
+
+                if (contact.normal.x > 0) PlayerController.Instance.playerInput.isContactLeftWall = true;
+                else if (contact.normal.x < 0) PlayerController.Instance.playerInput.isContactLeftWall = false;
+
                 // Nếu contact.normal.y > 0.7f thì character chắn chắn đang đứng ở mặt đất
                 // Set isGrounded = true
                 // Set isOnWall = false
@@ -28,11 +32,16 @@ public class PlayerCollision : MonoBehaviour
                     PlayerController.Instance.playerInput.isJumpInAir = false;
                     break;
                 }
+
+                // Chạm trần => không làm gì cả
+                if (contact.normal.y < -0.7f) break;
+
                 count++;
             }
 
-            // Nếu count = collision.contactCount - 1 => duyệt hết tất cả contact point rồi nhưng chưa chứng minh được character đang đứng ở mặt đất
-            // => Character đang va chạm với tường và không ở mặt đất
+            // Nếu count = collision.contactCount - 1 => duyệt hết tất cả contact point rồi nhưng chưa chứng minh được 
+            // character đang đứng ở mặt đất hay chạm trần (xét va chạm vertical)
+            // => Character đang va chạm với tường (xét va chạm horizontal)
             if (count >= collision.contactCount - 1)
             {
                 PlayerController.Instance.playerInput.isGrounded = false;

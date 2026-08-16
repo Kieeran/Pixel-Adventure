@@ -10,7 +10,7 @@ public class WalkState : State
     public override void HandleInput()
     {
         // Walk -> Idle
-        if (!PlayerController.Instance.playerInput.IsMoving())
+        if (!PlayerController.Instance.playerInput.IsMovingHorizontal())
         {
             PlayerController.Instance.StateMachine.ChangeState(PlayerController.Instance.IdleState);
         }
@@ -20,5 +20,25 @@ public class WalkState : State
         {
             PlayerController.Instance.StateMachine.ChangeState(PlayerController.Instance.InAirState);
         }
+    }
+
+    public override void OnFixedUpdate()
+    {
+        PlayerController.Instance.playerMovement.MoveHorizontal(PlayerController.Instance.playerInput.move.x);
+    }
+
+    public override void OnEnter()
+    {
+        PlayerController.Instance.OnJump += OnJump;
+    }
+
+    public override void OnExit()
+    {
+        PlayerController.Instance.OnJump -= OnJump;
+    }
+
+    void OnJump()
+    {
+        PlayerController.Instance.playerMovement.Jump();
     }
 }

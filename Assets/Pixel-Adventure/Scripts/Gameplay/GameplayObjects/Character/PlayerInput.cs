@@ -10,10 +10,16 @@ public class PlayerInput : MonoBehaviour
     public bool isGrounded = false;
     public bool isJumpInAir = false;
     public bool isOnWall = false;
+    public bool isContactLeftWall = false;
 
-    public bool IsMoving()
+    public bool IsMovingHorizontal()
     {
         return PlayerController.Instance.playerMovement.playerRB.linearVelocityX != 0;
+    }
+
+    public bool IsJumping()
+    {
+        return PlayerController.Instance.playerMovement.playerRB.linearVelocityY > 0;
     }
 
     public void Awake()
