@@ -6,18 +6,17 @@ using UnityEngine.UIElements;
 
 public class TrapsManager : MonoBehaviour
 {
-    #region Singleton
-    public static TrapsManager _instance;
-    public static TrapsManager Instance => _instance;
+    public static TrapsManager Instance { get; private set; }
 
     private void Awake()
     {
-        if (_instance != null)
-            Destroy(_instance);
-        else
-            _instance = this;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
     }
-    #endregion Singleton
 
     // public TrapData trapData;
 

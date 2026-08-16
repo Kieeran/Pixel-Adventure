@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class FruitManager : MonoBehaviour
 {
-    #region Singleton
-    public static FruitManager _instance;
-    public static FruitManager Instance => _instance;
+    public static FruitManager Instance { get; private set; }
 
     private void Awake()
     {
-        if (_instance != null)
-            Destroy(_instance);
-        else
-            _instance = this;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
     }
-    #endregion Singleton
 
     private Dictionary<string, Queue<Fruit>> fruitPools;
     [SerializeField] int amount = 4;

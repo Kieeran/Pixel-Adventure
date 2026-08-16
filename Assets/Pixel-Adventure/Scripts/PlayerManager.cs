@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    #region Singleton
-    public static PlayerManager _instance;
-    public static PlayerManager Instance => _instance;
+    public static PlayerManager Instance { get; private set; }
 
     private void Awake()
     {
-        if (_instance != null)
-            Destroy(_instance);
-        else
-            _instance = this;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
     }
-    #endregion Singleton
 
     //public PlayerController _prefabCharacter;
 

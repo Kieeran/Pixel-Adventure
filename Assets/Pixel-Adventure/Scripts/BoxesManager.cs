@@ -5,15 +5,16 @@ using UnityEngine.UIElements;
 
 public class BoxesManager : MonoBehaviour
 {
-    public static BoxesManager _instance;
-    public static BoxesManager Instance => _instance;
+    public static BoxesManager Instance { get; private set; }
 
     private void Awake()
     {
-        if (_instance != null)
-            Destroy(_instance);
-        else
-            _instance = this;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
     }
 
     // public BoxesData boxesData;

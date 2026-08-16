@@ -19,15 +19,16 @@ public class LevelManager : MonoBehaviour
         LoadLevel();
     }
 
-    public static LevelManager _instance;
-    public static LevelManager Instance => _instance;
+    public static LevelManager Instance { get; private set; }
 
     private void Awake()
     {
-        if (_instance != null)
-            Destroy(_instance);
-        else
-            _instance = this;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
 
         SetupLevels();
     }
