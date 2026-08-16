@@ -17,11 +17,6 @@ public class PlayerInput : MonoBehaviour
         return PlayerController.Instance.playerMovement.playerRB.linearVelocityX != 0;
     }
 
-    public bool IsJumping()
-    {
-        return PlayerController.Instance.playerMovement.playerRB.linearVelocityY > 0;
-    }
-
     public void Awake()
     {
         jumpAction.started += ctx =>

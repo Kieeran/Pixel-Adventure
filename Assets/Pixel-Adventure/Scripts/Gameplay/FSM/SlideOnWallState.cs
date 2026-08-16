@@ -17,8 +17,7 @@ public class SlideOnWallState : State
         }
 
         // SlideOnWall -> InAir
-        if (!PlayerController.Instance.playerInput.isOnWall &&
-        (PlayerController.Instance.playerInput.IsMovingHorizontal() || PlayerController.Instance.playerInput.IsJumping()))
+        if (!PlayerController.Instance.playerInput.isOnWall)
         {
             PlayerController.Instance.StateMachine.ChangeState(PlayerController.Instance.InAirState);
         }
