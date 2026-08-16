@@ -1,72 +1,53 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D playerRB;
+    public Rigidbody2D playerRB;
 
     [SerializeField] private float moveSpeed;
+    [SerializeField] private float slideOnWallSpeed;
     [SerializeField] private float jumpPower;
     [SerializeField] private float jumpAirPower;
-    [SerializeField] private bool isFacingRight = true;
-
-    public bool isGrounded = false;
-    public bool isJumpInAir = false;
+    [SerializeField] private float wallBouncePower;
 
     private void Awake()
     {
         playerRB = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
-    {
-        UpdateSpriteDirection();
-    }
-
-    private void FixedUpdate()
-    {
-        Move();
-        Jump();
-    }
-
-    private void Move()
+    public void MoveHorizontal(float inputX)
     {
         playerRB.linearVelocity = new Vector2(
-            PlayerController.Instance.playerInput.move.x * moveSpeed,
+            inputX * moveSpeed,
             playerRB.linearVelocity.y
         );
     }
 
-    private void Jump()
+    public void Jump()
     {
-        if (PlayerController.Instance.playerInput.jump == true)
-        {
-            if (isGrounded == true)
-            {
-                playerRB.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
-                PlayerController.Instance.playerInput.jump = false;
-            }
-
-            if (isJumpInAir == false && isGrounded == false)
-            {
-                playerRB.linearVelocity = new Vector2(playerRB.linearVelocity.x, 0);
-                
-                playerRB.AddForce(Vector2.up * jumpAirPower, ForceMode2D.Impulse);
-                isJumpInAir = true;
-            }
-        }
+        playerRB.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
     }
 
-    private void UpdateSpriteDirection()
+    public void JumpInAir()
     {
-        Vector2 _move = PlayerController.Instance.playerInput.move;
-        if (isFacingRight && _move.x < 0f || !isFacingRight && _move.x > 0f)
-        {
-            isFacingRight = !isFacingRight;
-            Vector3 ls = transform.localScale;
-            ls.x *= -1f;
-            transform.localScale = ls;
-        }
+        playerRB.linearVelocity = new Vector2(playerRB.linearVelocity.x, 0);
+        playerRB.AddForce(Vector2.up * jumpAirPower, ForceMode2D.Impulse);
+    }
+
+    public void JumpFromWall()
+    {
+        playerRB.linearVelocity = new Vector2(playerRB.linearVelocity.x, 0);
+        playerRB.AddForce(
+            (PlayerController.Instance.playerInput.isContactLeftWall ? Vector2.right : Vector2.left) * wallBouncePower + Vector2.up * jumpPower,
+            ForceMode2D.Impulse
+        );
+    }
+
+    public void SlideOnWall()
+    {
+        playerRB.linearVelocity = new Vector2(
+            playerRB.linearVelocity.x,
+            -slideOnWallSpeed
+        );
     }
 }

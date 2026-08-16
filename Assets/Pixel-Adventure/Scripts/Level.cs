@@ -1,33 +1,20 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Level : MonoBehaviour
 {
     public LevelData levelData;
     public Transform placedObjectsHolder;
 
-    private List<Fruit> fruits = new List<Fruit>();
-    private List<Boxes> boxes = new List<Boxes>();
-    private List<Trap> traps = new List<Trap>();
+    List<PlacedObject> placedObjects = new();
 
-    public void AddFruit(Fruit fruit)
+    public void AddPlacedObject(PlacedObject placedObject)
     {
-        if (fruits != null)
-            fruits.Add(fruit);
-    }
-
-    public void AddBox(Boxes box)
-    {
-        if (boxes != null)
-            boxes.Add(box);
-    }
-
-    public void AddTrap(Trap trap)
-    {
-        if (traps != null)
-            traps.Add(trap);
+        if (placedObject != null)
+        {
+            placedObjects.Add(placedObject);
+            placedObject.transform.SetParent(placedObjectsHolder);
+        }
     }
 
     void OnValidate()
@@ -50,19 +37,12 @@ public class Level : MonoBehaviour
 
     public void UnloadLevel()
     {
-        for (int i = 0; i < fruits.Count; i++)
+        for (int i = 0; i < placedObjects.Count; i++)
         {
-            FruitManager.Instance.ReturnFruit(fruits[i].GetFruitID(), fruits[i]);
-        }
+            if (placedObjects[i].gameObject.activeSelf == false) continue;  // Đã return rồi nhưng vẫn còn giữ reference
 
-        for (int i = 0; i < boxes.Count; i++)
-        {
-            BoxesManager.Instance.ReturnBox(boxes[i].GetBoxID(), boxes[i]);
+            placedObjects[i].UnloadObject();
         }
-
-        for (int i = 0; i < traps.Count; i++)
-        {
-            TrapsManager.Instance.ReturnTrap(traps[i].GetTrapID(), traps[i]);
-        }
+        placedObjects.Clear();
     }
 }

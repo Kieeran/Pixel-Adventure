@@ -1,34 +1,31 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fruit : MonoBehaviour
+public class Fruit : PlacedObject
 {
+    private static readonly int IsCollectedHash = Animator.StringToHash("IsCollected");
     [SerializeField] string _fruitID;
 
     [SerializeField] Collider2D _collider;
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D rb;
 
-    protected bool IsCollected;
-    protected bool _DoneCollecting;
-
-    // public FruitsData data;
     protected bool _isTrigger;
     protected int _gravityScale;
 
-    public virtual bool GetIsCollected() { return IsCollected; }
     public virtual void SetIsCollected(bool b)
     {
-        IsCollected = b;
-    }
-
-    public virtual void DoneCollecting()
-    {
-        _DoneCollecting = true;
+        animator.SetBool(IsCollectedHash, b);
+        StartCoroutine(WaitAnimationEnd(() =>
+        {
+            UnloadObject();
+        }));
     }
 
     public virtual string GetFruitID() { return _fruitID; }
+    public virtual void SetFruitID(string id) { _fruitID = id; }
 
     public virtual void SetIsTrigger(bool b) { _collider.isTrigger = b; }
     public virtual bool GetIsTrigger() { return _isTrigger; }
@@ -63,5 +60,30 @@ public class Fruit : MonoBehaviour
         rb = GetComponentInChildren<Rigidbody2D>();
         _collider = GetComponentInChildren<Collider2D>();
         animator = GetComponentInChildren<Animator>();
+    }
+
+    public override void UnloadObject()
+    {
+        FruitManager.Instance.ReturnFruit(this);
+    }
+
+    IEnumerator WaitAnimationEnd(Action onCompleted)
+    {
+        // Chờ 1 frame để Animator kịp chuyển state
+        yield return null;
+
+        // Lấy thông tin State hiện tại
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        // Đợi cho đến khi normalizedTime >= 1.0f (nghĩa là đã chạy xong 100% độ dài clip)
+        while (stateInfo.normalizedTime < 1.0f)
+        {
+            stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            yield return null;
+        }
+
+        // Tín hiệu hoàn tất!
+        Debug.Log("Animation kết thúc từ Coroutine!");
+        onCompleted?.Invoke();
     }
 }

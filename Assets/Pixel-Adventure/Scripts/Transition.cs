@@ -9,6 +9,7 @@ public class Transition : MonoBehaviour
     RectTransform transition;
     Vector2 originPos;
     float currentSpeed;
+    bool isLoaded = false;  // dơ
 
     void Awake()
     {
@@ -30,22 +31,24 @@ public class Transition : MonoBehaviour
         };
     }
 
-    void Update()
+    void Update()       // dơ: chổ này mốt đổi thành clamp cho mượt
     {
         if (currentSpeed != 0)
         {
             Vector2 movement = Vector2.right * (speed * Time.deltaTime);
             transition.anchoredPosition += movement;
 
-            if (transition.anchoredPosition.x >= 0)
+            if (transition.anchoredPosition.x >= 0 && !isLoaded)
             {
                 LevelManager.Instance.SetIsReadyToLoad();
+                isLoaded = true;
             }
 
             if (transition.anchoredPosition.x >= endX)
             {
                 transition.anchoredPosition = originPos;
                 currentSpeed = 0;
+                isLoaded = false;
             }
         }
     }
