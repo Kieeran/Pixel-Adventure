@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5097161380419790706}
   m_Layer: 0
   m_Name: TR_Tilemap
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6692,7 +6692,7 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
@@ -6736,11 +6736,85 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 3657263565801890916}
+    m_ColliderPaths:
+    - - X: 200000000
+        Y: 100000000
+      - X: -230000000
+        Y: 100000000
+      - X: -230000000
+        Y: -120000000
+      - X: 200000000
+        Y: -120000000
+    - - X: -30000000
+        Y: -80000000
+      - X: -30000000
+        Y: -70000000
+      - X: -50000000
+        Y: -70000000
+      - X: -50000000
+        Y: -50000000
+      - X: -150000000
+        Y: -50000000
+      - X: -150000000
+        Y: 30000000
+      - X: -140000000
+        Y: 30000000
+      - X: -140000000
+        Y: 50000000
+      - X: -130000000
+        Y: 50000000
+      - X: -130000000
+        Y: 60000000
+      - X: 90000000
+        Y: 60000000
+      - X: 90000000
+        Y: 50000000
+      - X: 110000000
+        Y: 50000000
+      - X: 110000000
+        Y: 30000000
+      - X: 130000000
+        Y: 30000000
+      - X: 130000000
+        Y: -30000000
+      - X: 60000000
+        Y: -30000000
+      - X: 60000000
+        Y: -60000000
+      - X: 50000000
+        Y: -60000000
+      - X: 50000000
+        Y: -80000000
   m_CompositePaths:
-    m_Paths: []
+    m_Paths:
+    - - {x: 20, y: 10}
+      - {x: -23, y: 10}
+      - {x: -23, y: -12}
+      - {x: 20, y: -12}
+    - - {x: -3, y: -8}
+      - {x: -3, y: -7}
+      - {x: -5, y: -7}
+      - {x: -5, y: -5}
+      - {x: -15, y: -5}
+      - {x: -15, y: 3}
+      - {x: -14, y: 3}
+      - {x: -14, y: 5}
+      - {x: -13, y: 5}
+      - {x: -13, y: 6}
+      - {x: 9, y: 6}
+      - {x: 9, y: 5}
+      - {x: 11, y: 5}
+      - {x: 11, y: 3}
+      - {x: 13, y: 3}
+      - {x: 13, y: -3}
+      - {x: 6, y: -3}
+      - {x: 6, y: -6}
+      - {x: 5, y: -6}
+      - {x: 5, y: -8}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.00005
+  m_OffsetDistance: 0
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 1417386393068464448}
 --- !u!50 &5097161380419790706
@@ -6783,7 +6857,7 @@ GameObject:
   - component: {fileID: 2052807178795762289}
   m_Layer: 0
   m_Name: BackGround
-  m_TagString: Terrain
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7489,7 +7563,7 @@ GameObject:
   - component: {fileID: 1173650104548072053}
   m_Layer: 0
   m_Name: Level_1
-  m_TagString: Terrain
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7525,7 +7599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelData: {fileID: 11400000, guid: cf56cb3cd74fa0b4dbd14fbbb4907661, type: 2}
-  placedObjectsHolder: {fileID: 0}
+  placedObjectsHolder: {fileID: 6469268318503945057}
 --- !u!1 &7359799070805661225
 GameObject:
   m_ObjectHideFlags: 0
@@ -7539,7 +7613,7 @@ GameObject:
   - component: {fileID: 8845050508002303247}
   m_Layer: 0
   m_Name: BG_Tilemap
-  m_TagString: Terrain
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

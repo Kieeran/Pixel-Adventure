@@ -47,8 +47,9 @@ public class LevelManager : MonoBehaviour
         InGameManager.Instance.OnFruitPoolsReady += () =>
         {
             Debug.Log("Start to load level");
+            player = Instantiate(_prefabCharacter);
+            
             LoadLevel();
-            player = Instantiate(_prefabCharacter, currentLevel.levelData.playerStartPosition, Quaternion.identity);
         };
     }
 
@@ -63,5 +64,6 @@ public class LevelManager : MonoBehaviour
         currentLevelID = InGameManager.Instance.GetCurrentLevel();
         currentLevel = Instantiate(levels[currentLevelID]);
         currentLevel.LoadLevel();
+        player.transform.SetPositionAndRotation(currentLevel.levelData.playerStartPosition, Quaternion.identity);
     }
 }
