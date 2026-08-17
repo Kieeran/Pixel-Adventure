@@ -48,4 +48,4 @@ MonoBehaviour:
     position: {x: 11.5, y: 1.5}
   - addressableKey: Pineapple
     position: {x: 11.5, y: 3.5}
-  playerStartPosition: {x: 0, y: 0, z: 0}
+  playerStartPosition: {x: -12, y: -7, z: 0}
