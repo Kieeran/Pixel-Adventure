@@ -398,7 +398,7 @@ GameObject:
   - component: {fileID: 513666255}
   - component: {fileID: 513666256}
   m_Layer: 0
-  m_Name: FruitsManager
+  m_Name: FruitManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1524,7 +1524,7 @@ GameObject:
   - component: {fileID: 1856300756}
   - component: {fileID: 1856300757}
   m_Layer: 0
-  m_Name: BoxesManager
+  m_Name: BoxManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1554,12 +1554,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1856300755}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 307c001bc53ba8041a54772598037b0c, type: 3}
+  m_Script: {fileID: 11500000, guid: 72b02046e283187458cd4a892520cf24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefabBox1: {fileID: 627326841526014396, guid: 4d781c305a1814044ab71b924a4ea5b9, type: 3}
-  _prefabBox2: {fileID: 4794446899375773385, guid: ad6a8b05ff0f36b4db88204f341906ea, type: 3}
-  _prefabBox3: {fileID: 3932882946414846658, guid: 7f0168d501fa2094697081f147b1dffa, type: 3}
+  poolContainer: {fileID: 1856300756}
+  amount: 4
 --- !u!1 &2002822830
 GameObject:
   m_ObjectHideFlags: 0

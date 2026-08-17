@@ -33,11 +33,23 @@ MonoBehaviour:
     m_SerializedLabels:
     - Fruit
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ee6d3a92a4fc8c4d9533fc7167928c7
+    m_Address: Box2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Box
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6c0f2a27d3ae71747a698e760fe075c3
     m_Address: Apple
     m_ReadOnly: 0
     m_SerializedLabels:
     - Fruit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e188fa1e402645448fd671f80750f5a
+    m_Address: Box1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Box
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9a0e8572b1baca749b93d08ac6520b64
     m_Address: Bananas
@@ -56,6 +68,12 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Fruit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eecac20db3dd8a349b81b6c3b03b0004
+    m_Address: Box3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Box
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: f906bc7d5a990394ebe8721422040f5d
     m_Address: Orange

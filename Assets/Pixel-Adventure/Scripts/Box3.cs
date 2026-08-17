@@ -17,7 +17,7 @@ public class Box3 : Boxes
 
         if (this.GetBoxHP() <= 0)
         {
-            BoxesManager.Instance.ReturnBox(this.GetBoxID(), this);
+            // BoxManager.Instance.ReturnBox(this.GetBoxID(), this);
 
             Fruit fruit1 = FruitManager.Instance.GetRandomFruit();
             Fruit fruit2 = FruitManager.Instance.GetRandomFruit();

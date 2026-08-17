@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: a0d209a4cdaf4a549a96c4a44c8d5b39
   m_currentHash:
     serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+    Hash: 7a1887a92f01646832a308427611efb7
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_CatalogRequestsTimeout: 0
@@ -102,6 +102,7 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - Fruit
+    - Box
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: b7cf673a78175b44fb5682da858503b2, type: 2}

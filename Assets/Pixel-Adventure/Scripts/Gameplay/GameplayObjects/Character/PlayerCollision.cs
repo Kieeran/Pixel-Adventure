@@ -11,7 +11,7 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Terrain"))
+        if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("Box"))
         {
             int count = 0;
             for (int i = 0; i < collision.contactCount; i++)
@@ -56,7 +56,7 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Terrain"))
+        if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("Box"))
         {
             PlayerController.Instance.playerInput.isGrounded = false;
             PlayerController.Instance.playerInput.isOnWall = false;

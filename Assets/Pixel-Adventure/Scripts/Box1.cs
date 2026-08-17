@@ -14,7 +14,7 @@ public class Box1 : Boxes
         base.DoneHitting();
         Debug.Log("Box hit have ID: " + boxID);
 
-        BoxesManager.Instance.ReturnBox(this.GetBoxID(), this);
+        // BoxManager.Instance.ReturnBox(this.GetBoxID(), this);
 
         Fruit fruit1 = FruitManager.Instance.GetRandomFruit();
         Fruit fruit2 = FruitManager.Instance.GetRandomFruit();

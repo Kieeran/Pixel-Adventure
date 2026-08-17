@@ -13,5 +13,25 @@ MonoBehaviour:
   m_Name: Level_1
   m_EditorClassIdentifier: 
   levelID: 1
-  placedObjectDatas: []
-  playerStartPosition: {x: -13.5, y: -3.9, z: 0}
+  placedObjectDatas:
+  - addressableKey: Box1
+    position: {x: -12, y: 0}
+  - addressableKey: Box1
+    position: {x: -9, y: 0}
+  - addressableKey: Box1
+    position: {x: -6, y: 0}
+  - addressableKey: Box1
+    position: {x: -6, y: -4.4}
+  - addressableKey: Box2
+    position: {x: -6, y: -4.4}
+  - addressableKey: Box2
+    position: {x: -0.75, y: -7.4}
+  - addressableKey: Box2
+    position: {x: 2.75, y: -7.4}
+  - addressableKey: Box2
+    position: {x: 2.75, y: -2.25}
+  - addressableKey: Box3
+    position: {x: 8, y: 2.25}
+  - addressableKey: Box3
+    position: {x: 11.25, y: -2.4}
+  playerStartPosition: {x: -13.5, y: -3.7, z: 0}

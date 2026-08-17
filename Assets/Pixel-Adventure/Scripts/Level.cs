@@ -31,6 +31,7 @@ public class Level : MonoBehaviour
     public void LoadLevel()
     {
         FruitManager.Instance.Spawn(levelData.placedObjectDatas);
+        BoxManager.Instance.Spawn(levelData.placedObjectDatas);
         // BoxesManager.Instance.Spawn(levelData.boxesData);
         // TrapsManager.Instance.Spawn(levelData.trapsData);
     }

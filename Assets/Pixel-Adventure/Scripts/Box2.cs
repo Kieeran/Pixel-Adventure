@@ -20,7 +20,7 @@ public class Box2 : Boxes
 
         if (this.GetBoxHP() <= 0)
         {
-            BoxesManager.Instance.ReturnBox(this.GetBoxID(), this);
+            // BoxManager.Instance.ReturnBox(this.GetBoxID(), this);
         }
     }
     //public override void DropFruits(int number)
