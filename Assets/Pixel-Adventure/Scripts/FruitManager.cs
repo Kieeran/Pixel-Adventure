@@ -100,7 +100,7 @@ public class FruitManager : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             Fruit spawnFruit = Instantiate(prefabDict[fruitID], poolContainer);
-            spawnFruit.SetFruitID(fruitID);
+            spawnFruit.Id = fruitID;
             spawnFruit.gameObject.SetActive(false);
             fruitPools[fruitID].Enqueue(spawnFruit);
         }
@@ -108,7 +108,7 @@ public class FruitManager : MonoBehaviour
 
     public void ReturnFruit(Fruit fruit)
     {
-        string fruitID = fruit.GetFruitID();
+        string fruitID = fruit.Id;
         if (fruitPools.ContainsKey(fruitID))
         {
             // fruit.SetIsTrigger(false);

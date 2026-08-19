@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BoxManager : MonoBehaviour
@@ -101,7 +102,7 @@ public class BoxManager : MonoBehaviour
         for (int i = 0; i < amount; i++)
         {
             Box spawnBox = Instantiate(prefabDict[boxID], poolContainer);
-            spawnBox.SetBoxID(boxID);
+            spawnBox.Id = boxID;
             spawnBox.gameObject.SetActive(false);
             boxPools[boxID].Enqueue(spawnBox);
         }
@@ -109,7 +110,7 @@ public class BoxManager : MonoBehaviour
 
     public void ReturnBox(Box box)
     {
-        string boxID = box.GetBoxID();
+        string boxID = box.Id;
         if (boxPools.ContainsKey(boxID))
         {
             box.gameObject.SetActive(false);

@@ -6,7 +6,6 @@ using UnityEngine;
 public class Fruit : PlacedObject
 {
     private static readonly int IsCollectedHash = Animator.StringToHash("IsCollected");
-    [SerializeField] string _fruitID;
 
     [SerializeField] Collider2D _collider;
     [SerializeField] Animator animator;
@@ -20,12 +19,9 @@ public class Fruit : PlacedObject
         animator.SetBool(IsCollectedHash, b);
         StartCoroutine(WaitAnimationEnd(() =>
         {
-            UnloadObject();
+            PoolManager.Instance.Return(this);
         }));
     }
-
-    public virtual string GetFruitID() { return _fruitID; }
-    public virtual void SetFruitID(string id) { _fruitID = id; }
 
     public virtual void SetIsTrigger(bool b) { _collider.isTrigger = b; }
     public virtual bool GetIsTrigger() { return _isTrigger; }
@@ -62,11 +58,6 @@ public class Fruit : PlacedObject
         animator = GetComponentInChildren<Animator>();
     }
 
-    public override void UnloadObject()
-    {
-        FruitManager.Instance.ReturnFruit(this);
-    }
-
     IEnumerator WaitAnimationEnd(Action onCompleted)
     {
         // Chờ 1 frame để Animator kịp chuyển state
@@ -85,5 +76,15 @@ public class Fruit : PlacedObject
         // Tín hiệu hoàn tất!
         Debug.Log("Animation kết thúc từ Coroutine!");
         onCompleted?.Invoke();
+    }
+
+    public override void OnSpawn()
+    {
+
+    }
+
+    public override void OnDespawn()
+    {
+
     }
 }

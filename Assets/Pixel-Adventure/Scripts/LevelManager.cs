@@ -57,13 +57,13 @@ public class LevelManager : MonoBehaviour
     {
         if (currentLevel != null)
         {
-            currentLevel.UnloadLevel();
+            currentLevel.Unload();
             Destroy(currentLevel.gameObject);
         }
 
         currentLevelID = InGameManager.Instance.GetCurrentLevel();
         currentLevel = Instantiate(levels[currentLevelID]);
-        currentLevel.LoadLevel();
+        currentLevel.Load();
         player.transform.SetPositionAndRotation(currentLevel.levelData.playerStartPosition, Quaternion.identity);
     }
 }
