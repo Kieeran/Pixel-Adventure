@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f7d5b58f3ceca408e96651281ea512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fruitID: 
   _collider: {fileID: 383783925739999374}
   animator: {fileID: 94265898386784825}
   rb: {fileID: 1337769908285673417}
@@ -61,6 +60,7 @@ GameObject:
   - component: {fileID: 6071708071159024233}
   - component: {fileID: 1337769908285673417}
   - component: {fileID: 383783925739999374}
+  - component: {fileID: 4916914479470314346}
   m_Layer: 6
   m_Name: Physic
   m_TagString: Untagged
@@ -146,6 +146,18 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.5
+--- !u!114 &4916914479470314346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3933512588288848776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df7cefbee8b2cc649bb930c8d0bf9747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FruitCollision
 --- !u!1 &5369794871900557033
 GameObject:
   m_ObjectHideFlags: 0

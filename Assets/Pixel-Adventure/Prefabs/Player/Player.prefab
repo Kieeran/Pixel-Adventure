@@ -14699,7 +14699,7 @@ GameObject:
   - component: {fileID: 3918691766044789199}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14917,6 +14917,7 @@ MonoBehaviour:
   isGrounded: 0
   isJumpInAir: 0
   isOnWall: 0
+  isContactLeftWall: 0
 --- !u!114 &5741197850277541710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14935,7 +14936,6 @@ MonoBehaviour:
   jumpPower: 20
   jumpAirPower: 15
   wallBouncePower: 10
-  isFacingRight: 1
 --- !u!114 &3918691766044789199
 MonoBehaviour:
   m_ObjectHideFlags: 0

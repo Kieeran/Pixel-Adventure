@@ -124,6 +124,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3766027488859168891}
   - component: {fileID: 1224315494986253393}
+  - component: {fileID: 7217093014896874835}
   m_Layer: 7
   m_Name: Physic
   m_TagString: Box
@@ -192,6 +193,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7217093014896874835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4759430831685742063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ea34f178291d7f4496ab9c9dce67e85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoxCollision
 --- !u!1 &8038266304849799413
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,5 +251,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227a2d6104046234f84b821860286fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Box
-  boxID: 
   animator: {fileID: 7351300349276907688}

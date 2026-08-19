@@ -63,15 +63,6 @@ public class PlayerCollision : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.transform.parent.gameObject.CompareTag("Fruit"))
-        {
-            Fruit fruit = collision.gameObject.GetComponentInParent<Fruit>();
-            fruit.SetIsCollected(true);
-        }
-    }
-
     // private void OnCollisionEnter2D(Collision2D collision)
     // {
     //     ContactPoint2D contact = collision.contacts[0];
