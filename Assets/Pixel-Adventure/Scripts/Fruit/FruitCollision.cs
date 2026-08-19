@@ -17,7 +17,7 @@ public class FruitCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Character"))
         {
-            fruit.SetIsCollected(true);
+            fruit.IsCollected(true);
         }
     }
 }

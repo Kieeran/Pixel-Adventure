@@ -18,7 +18,7 @@ public class BoxCollision : MonoBehaviour
             ContactPoint2D contact = collision.GetContact(0);
             if (contact.normal.y != 0)
             {
-                PoolManager.Instance.Return(box);
+                box.IsCollided();
             }
         }
     }
