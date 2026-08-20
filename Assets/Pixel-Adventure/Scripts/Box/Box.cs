@@ -6,7 +6,12 @@ public class Box : PlacedObject
     [SerializeField] Animator animator;
     [SerializeField] int Hp;
 
-    int OriginHp => Hp;
+    int originHp;
+
+    void Awake()
+    {
+        originHp = Hp;
+    }
 
     void OnValidate()
     {
@@ -28,7 +33,7 @@ public class Box : PlacedObject
 
     public override void OnSpawn()
     {
-        Hp = OriginHp;
+        Hp = originHp;
     }
 
     public override void OnDespawn()

@@ -19,6 +19,16 @@ public class BoxCollision : MonoBehaviour
             if (contact.normal.y != 0)
             {
                 box.IsCollided();
+
+                if (collision.gameObject.TryGetComponent<PlayerController>(out var player))
+                {
+                    if (contact.normal.y > 0) player.playerMovement.KnockBackByBox(false);
+                    else player.playerMovement.KnockBackByBox(true);
+                }
+                else
+                {
+                    Debug.Log("Can get player ref when contact with box");
+                }
             }
         }
     }

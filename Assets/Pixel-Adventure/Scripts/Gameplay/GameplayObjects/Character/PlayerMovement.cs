@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpPower;
     [SerializeField] private float jumpAirPower;
     [SerializeField] private float wallBouncePower;
+    [SerializeField] private float KnockUpByBoxPower;
+    [SerializeField] private float KnockDownByBoxPower;
 
     private void Awake()
     {
@@ -49,5 +51,18 @@ public class PlayerMovement : MonoBehaviour
             playerRB.linearVelocity.x,
             -slideOnWallSpeed
         );
+    }
+
+    public void KnockBackByBox(bool knockUp)
+    {
+        playerRB.linearVelocity = new Vector2(playerRB.linearVelocity.x, 0);
+        if (knockUp)
+        {
+            playerRB.AddForce(Vector2.up * KnockUpByBoxPower, ForceMode2D.Impulse);
+        }
+        else
+        {
+            playerRB.AddForce(Vector2.down * KnockDownByBoxPower, ForceMode2D.Impulse);
+        }
     }
 }

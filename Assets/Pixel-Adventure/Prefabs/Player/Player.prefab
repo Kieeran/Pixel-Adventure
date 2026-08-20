@@ -14936,6 +14936,8 @@ MonoBehaviour:
   jumpPower: 20
   jumpAirPower: 15
   wallBouncePower: 10
+  KnockUpByBoxPower: 18
+  KnockDownByBoxPower: 9
 --- !u!114 &3918691766044789199
 MonoBehaviour:
   m_ObjectHideFlags: 0
