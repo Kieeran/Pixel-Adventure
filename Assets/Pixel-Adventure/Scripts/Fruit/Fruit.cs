@@ -10,7 +10,7 @@ public class Fruit : PlacedObject
     public virtual void IsCollected(bool b)
     {
         animator.SetBool(IsCollectedHash, b);
-        StartCoroutine(HelpFunctions.WaitCurrentAnimationEnd(animator, () =>
+        StartCoroutine(HelperFunctions.WaitCurrentAnimationEnd(animator, () =>
         {
             PoolManager.Instance.Return(this);
         }));

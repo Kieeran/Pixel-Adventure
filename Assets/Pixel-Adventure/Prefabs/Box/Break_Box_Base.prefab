@@ -570,6 +570,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9094192469744520478}
   - component: {fileID: 775587666569393067}
+  - component: {fileID: 449899854877840115}
   m_Layer: 8
   m_Name: Break_2
   m_TagString: Untagged
@@ -621,6 +622,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &449899854877840115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6061486202494622904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84806072c60a9c24d86ef7a860b7285b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SingleBreak
+  breakRenderer: {fileID: 929933701563257517}
+  originPos: {x: 0, y: 0, z: 0}
+  originRot: {x: 0, y: 0, z: 0}
+  rb: {fileID: 775587666569393067}
 --- !u!1 &6656114528244278667
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +726,7 @@ GameObject:
   m_Component:
   - component: {fileID: 169842070432214577}
   - component: {fileID: 1302768627831166819}
+  - component: {fileID: 4304146476068862783}
   m_Layer: 8
   m_Name: Break_0
   m_TagString: Untagged
@@ -760,6 +778,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &4304146476068862783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757517230822744183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84806072c60a9c24d86ef7a860b7285b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SingleBreak
+  breakRenderer: {fileID: 633771836977481760}
+  originPos: {x: 0, y: 0, z: 0}
+  originRot: {x: 0, y: 0, z: 0}
+  rb: {fileID: 1302768627831166819}
 --- !u!1 &6788480506788733797
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,6 +804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8648595299212761326}
   - component: {fileID: 8854650879926561077}
+  - component: {fileID: 4619992204149177340}
   m_Layer: 8
   m_Name: Break_3
   m_TagString: Untagged
@@ -821,6 +856,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &4619992204149177340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6788480506788733797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84806072c60a9c24d86ef7a860b7285b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SingleBreak
+  breakRenderer: {fileID: 4568349057759409472}
+  originPos: {x: 0, y: 0, z: 0}
+  originRot: {x: 0, y: 0, z: 0}
+  rb: {fileID: 8854650879926561077}
 --- !u!1 &7102760176983197849
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,6 +882,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7114103530015534603}
   - component: {fileID: 539444607710037929}
+  - component: {fileID: 9182471245408956174}
   m_Layer: 8
   m_Name: Break_1
   m_TagString: Untagged
@@ -882,6 +934,22 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &9182471245408956174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7102760176983197849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84806072c60a9c24d86ef7a860b7285b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SingleBreak
+  breakRenderer: {fileID: 3539334298359584254}
+  originPos: {x: 0, y: 0, z: 0}
+  originRot: {x: 0, y: 0, z: 0}
+  rb: {fileID: 539444607710037929}
 --- !u!1 &8471831484727492036
 GameObject:
   m_ObjectHideFlags: 0

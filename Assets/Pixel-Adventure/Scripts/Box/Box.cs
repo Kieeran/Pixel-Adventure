@@ -25,7 +25,7 @@ public class Box : PlacedObject
     public void IsCollided()
     {
         animator.SetTrigger(IsCollidedHash);
-        StartCoroutine(HelpFunctions.WaitCurrentAnimationEnd(animator, () =>
+        StartCoroutine(HelperFunctions.WaitCurrentAnimationEnd(animator, () =>
         {
             Hp--;
             if (Hp < 0) return;

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9017623444589406894}
   - component: {fileID: 4362290083712328120}
+  - component: {fileID: 2192815399558067848}
   m_Layer: 6
   m_Name: Fruit_Base
   m_TagString: Fruit
@@ -46,9 +47,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21f7d5b58f3ceca408e96651281ea512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collider: {fileID: 383783925739999374}
   animator: {fileID: 94265898386784825}
-  rb: {fileID: 1337769908285673417}
+--- !u!50 &2192815399558067848
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2831069390281347877}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &3933512588288848776
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,7 +84,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6071708071159024233}
-  - component: {fileID: 1337769908285673417}
   - component: {fileID: 383783925739999374}
   - component: {fileID: 4916914479470314346}
   m_Layer: 6
@@ -83,33 +108,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 9017623444589406894}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &1337769908285673417
-Rigidbody2D:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3933512588288848776}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!58 &383783925739999374
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -158,6 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df7cefbee8b2cc649bb930c8d0bf9747, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FruitCollision
+  fruit: {fileID: 4362290083712328120}
+  _collider: {fileID: 383783925739999374}
+  rb: {fileID: 0}
 --- !u!1 &5369794871900557033
 GameObject:
   m_ObjectHideFlags: 0

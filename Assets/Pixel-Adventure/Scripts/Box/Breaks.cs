@@ -5,9 +5,7 @@ using UnityEngine;
 
 public class Breaks : MonoBehaviour
 {
-    List<Transform> breakTransform;
-    List<SpriteRenderer> breakRenderer;
-    List<(Vector3 pos, Vector3 rot)> breakOriginPosRot;
+    List<SingleBreak> breaks;
 
     [SerializeField] float _minLifeTime = 2f;
     [SerializeField] float _maxLifeTime = 2.5f;
@@ -27,33 +25,32 @@ public class Breaks : MonoBehaviour
 
     void Init()
     {
-        breakTransform = new();
-        breakRenderer = new();
-        breakOriginPosRot = new();
+        breaks = new();
         foreach (Transform tf in transform)
         {
-            breakTransform.Add(tf);
-            breakOriginPosRot.Add((tf.localPosition, tf.localEulerAngles));
-            breakRenderer.Add(tf.GetComponentInChildren<SpriteRenderer>());
+            if (tf.TryGetComponent<SingleBreak>(out var b))
+            {
+                breaks.Add(b);
+            }
         }
 
+        // Chổ này set theo index cố định
+        // Vì không làm logic check giao điểm
+        // Chỉ có thứ tự này mới cho ra hai đoạn thẳng giao nhau
+        // Yes, nó dơ :D
         centerPoint = GetIntersectionPoint(
-            breakTransform[0].localPosition,
-            breakTransform[3].localPosition,
-            breakTransform[1].localPosition,
-            breakTransform[2].localPosition
+            breaks[0].transform.localPosition,
+            breaks[3].transform.localPosition,
+            breaks[1].transform.localPosition,
+            breaks[2].transform.localPosition
         );
     }
 
     void Reset()
     {
-        for (int i = 0; i < breakTransform.Count; i++)
+        foreach (var b in breaks)
         {
-            breakTransform[i].gameObject.SetActive(true);
-            breakTransform[i].localPosition = breakOriginPosRot[i].pos;
-            breakTransform[i].localEulerAngles = breakOriginPosRot[i].rot;
-
-            SetAlpha(breakRenderer[i], 1f);
+            b.Reset();
         }
     }
 
@@ -62,10 +59,10 @@ public class Breaks : MonoBehaviour
         Reset();
         gameObject.SetActive(true);
 
-        int remaining = breakTransform.Count;
-        for (int i = 0; i < breakTransform.Count; i++)
+        int remaining = breaks.Count;
+        for (int i = 0; i < breaks.Count; i++)
         {
-            Explode(breakTransform[i]);
+            Explode(breaks[i]);
 
             // Lambda không copy giá trị i — nó giữ reference đến biến i
             // Vòng lặp chạy xong → i = Count
@@ -75,9 +72,9 @@ public class Breaks : MonoBehaviour
             // Lambda capture index — biến này không ai thay đổi nữa
 
             int index = i;
-            StartCoroutine(LifeCycleRoutine(breakRenderer[index], () =>
+            StartCoroutine(LifeCycleRoutine(breaks[index].breakRenderer, () =>
             {
-                breakTransform[index].gameObject.SetActive(false);
+                breaks[index].gameObject.SetActive(false);
                 remaining--;
 
                 if (remaining == 0)
@@ -88,11 +85,11 @@ public class Breaks : MonoBehaviour
         }
     }
 
-    void Explode(Transform breakPiece)
+    void Explode(SingleBreak breakPiece)
     {
-        Vector2 dir = ((Vector2)breakPiece.localPosition - centerPoint).normalized;
-        breakPiece.GetComponent<Rigidbody2D>().AddForce(dir * explosionForce, ForceMode2D.Impulse);
-        breakPiece.GetComponent<Rigidbody2D>().AddTorque(UnityEngine.Random.Range(-5f, 5f));
+        Vector2 dir = ((Vector2)breakPiece.transform.localPosition - centerPoint).normalized;
+        breakPiece.rb.AddForce(dir * explosionForce, ForceMode2D.Impulse);
+        breakPiece.rb.AddTorque(UnityEngine.Random.Range(-5f, 5f));
     }
 
     IEnumerator LifeCycleRoutine(SpriteRenderer renderer, Action onComplete)
@@ -105,22 +102,15 @@ public class Breaks : MonoBehaviour
         int count = 0;
         while (count < _blinkCount)
         {
-            SetAlpha(renderer, 0f);
+            HelperFunctions.SetAlpha(renderer, 0f);
             yield return new WaitForSeconds(_blinkInterval);
 
-            SetAlpha(renderer, 1f);
+            HelperFunctions.SetAlpha(renderer, 1f);
             yield return new WaitForSeconds(_blinkInterval);
 
             count++;
         }
         onComplete?.Invoke();
-    }
-
-    void SetAlpha(SpriteRenderer renderer, float alpha)
-    {
-        var color = renderer.color;
-        color.a = alpha;
-        renderer.color = color;
     }
 
     Vector2 GetIntersectionPoint(Vector2 A, Vector2 B, Vector2 C, Vector2 D)

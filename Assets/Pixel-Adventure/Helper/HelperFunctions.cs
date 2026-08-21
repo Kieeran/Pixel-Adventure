@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public static class HelpFunctions
+public static class HelperFunctions
 {
     public static IEnumerator WaitCurrentAnimationEnd(Animator animator, Action onCompleted)
     {
@@ -22,5 +22,12 @@ public static class HelpFunctions
         // Tín hiệu hoàn tất!
         Debug.Log("Animation kết thúc từ Coroutine!");
         onCompleted?.Invoke();
+    }
+
+    public static void SetAlpha(SpriteRenderer renderer, float alpha)
+    {
+        var color = renderer.color;
+        color.a = alpha;
+        renderer.color = color;
     }
 }
