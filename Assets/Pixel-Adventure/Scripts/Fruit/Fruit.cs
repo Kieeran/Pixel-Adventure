@@ -6,6 +6,7 @@ public class Fruit : PlacedObject
 {
     private static readonly int IsCollectedHash = Animator.StringToHash("IsCollected");
     [SerializeField] Animator animator;
+    [SerializeField] Rigidbody2D rb;
 
     public virtual void IsCollected(bool b)
     {
@@ -19,6 +20,7 @@ public class Fruit : PlacedObject
     void OnValidate()
     {
         animator = GetComponentInChildren<Animator>();
+        if (TryGetComponent<Rigidbody2D>(out var rigidbody)) rb = rigidbody;
     }
 
     public override void OnSpawn()
