@@ -205,6 +205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ea34f178291d7f4496ab9c9dce67e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoxCollision
+  box: {fileID: 94190882972475501}
+  _collider: {fileID: 1224315494986253393}
 --- !u!1 &8038266304849799413
 GameObject:
   m_ObjectHideFlags: 0
@@ -252,3 +254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Box
   animator: {fileID: 7351300349276907688}
+  Hp: 0
+  breaks: {fileID: 0}
+  skin: {fileID: 3487686018523278927}
+  physic: {fileID: 3766027488859168891}

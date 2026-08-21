@@ -20,8 +20,6 @@ MonoBehaviour:
     position: {x: -9, y: 0}
   - addressableKey: Box1
     position: {x: -6, y: 0}
-  - addressableKey: Box1
-    position: {x: -6, y: -4.4}
   - addressableKey: Box2
     position: {x: -6, y: -4.4}
   - addressableKey: Box2
