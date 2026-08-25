@@ -13,7 +13,45 @@ MonoBehaviour:
   m_Name: Level_2
   m_EditorClassIdentifier: 
   levelID: 2
-  fruitsData: {fileID: 11400000, guid: 0212e8bc304b7524688d89450261cf80, type: 2}
-  boxesData: {fileID: 0}
-  trapsData: {fileID: 11400000, guid: 0bcc3f21325f1a14bb5e3cf5dd52e855, type: 2}
-  playerStartPosition: {x: 0, y: 0, z: 0}
+  placedObjectDatas:
+  - addressableKey: Apple
+    position: {x: 2, y: -2.5}
+  - addressableKey: Apple
+    position: {x: 2, y: -0.5}
+  - addressableKey: Apple
+    position: {x: 2, y: 1.5}
+  - addressableKey: Apple
+    position: {x: 5.75, y: 3}
+  - addressableKey: Apple
+    position: {x: 7.75, y: 3}
+  - addressableKey: Apple
+    position: {x: 9.75, y: 3}
+  - addressableKey: Apple
+    position: {x: 6.75, y: 4.5}
+  - addressableKey: Apple
+    position: {x: 8.75, y: 4.5}
+  - addressableKey: Bananas
+    position: {x: -7, y: -6}
+  - addressableKey: Bananas
+    position: {x: -7, y: -4}
+  - addressableKey: Bananas
+    position: {x: -6, y: -2}
+  - addressableKey: Bananas
+    position: {x: -8, y: -2}
+  - addressableKey: Bananas
+    position: {x: -10, y: -2}
+  - addressableKey: Bananas
+    position: {x: -4, y: -2}
+  - addressableKey: Bananas
+    position: {x: -9, y: 0}
+  - addressableKey: Bananas
+    position: {x: -5, y: 0}
+  - addressableKey: Bananas
+    position: {x: -7, y: 0}
+  - addressableKey: Bananas
+    position: {x: -6, y: 2}
+  - addressableKey: Bananas
+    position: {x: -8, y: 2}
+  - addressableKey: Bananas
+    position: {x: -7, y: 4}
+  playerStartPosition: {x: -13.75, y: -4, z: 0}
