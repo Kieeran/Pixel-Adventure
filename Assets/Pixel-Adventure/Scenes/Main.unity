@@ -757,6 +757,8 @@ GameObject:
   m_Component:
   - component: {fileID: 891734402}
   - component: {fileID: 891734403}
+  - component: {fileID: 891734404}
+  - component: {fileID: 891734405}
   m_Layer: 0
   m_Name: InGameManager
   m_TagString: Untagged
@@ -792,6 +794,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameData: {fileID: 11400000, guid: 9386c753b5ee32e4490ece9e7be0de88, type: 2}
+--- !u!114 &891734404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891734401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d179a57c65f38945b4866f7bb554033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EventChannel
+--- !u!114 &891734405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891734401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28f012ffa34694b4aa2911f72c72e083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoxRewardSystem
+  minForce: 6
+  maxForce: 10
 --- !u!1 &940739133
 GameObject:
   m_ObjectHideFlags: 0

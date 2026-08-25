@@ -16,6 +16,14 @@ PrefabInstance:
       propertyPath: breaks
       value: 
       objectReference: {fileID: 8239989678392635465}
+    - target: {fileID: 94190882972475501, guid: caf50db1f0a0ec244813f6c728353d17, type: 3}
+      propertyPath: boxRewardDataWhenHit
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 94190882972475501, guid: caf50db1f0a0ec244813f6c728353d17, type: 3}
+      propertyPath: boxRewardDataWhenBroken
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b67d20a0ede0e74caa049b3429912d3, type: 2}
     - target: {fileID: 1224315494986253393, guid: caf50db1f0a0ec244813f6c728353d17, type: 3}
       propertyPath: m_Size.x
       value: 1.3

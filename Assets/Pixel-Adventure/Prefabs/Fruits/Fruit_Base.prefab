@@ -233,7 +233,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -259,6 +259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4146313440184530868}
   rb: {fileID: 2192815399558067848}
+  fruitCollision: {fileID: 3944568001357316500}
 --- !u!114 &3944568001357316500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,6 +273,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FruitCollision
   fruit: {fileID: 4362290083712328120}
+  surfaceCollider: {fileID: 3245650438189457843}
+  cachedColliderRadius: 0
 --- !u!1 &3933512588288848776
 GameObject:
   m_ObjectHideFlags: 0

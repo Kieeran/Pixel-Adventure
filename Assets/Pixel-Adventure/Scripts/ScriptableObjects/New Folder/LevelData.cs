@@ -10,7 +10,7 @@ public struct PlacedObjectData
 }
 
 // Data này lưu tất cả dữ liệu trong level (vị trí fruits, boxes, ...)
-[CreateAssetMenu(fileName = "LevelData", menuName = "ScriptableObjects/LevelData")]
+[CreateAssetMenu(fileName = "LevelData", menuName = "Scriptable Objects/LevelData")]
 public class LevelData : ScriptableObject
 {
     public int levelID;

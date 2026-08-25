@@ -9,6 +9,10 @@ public class Box : PlacedObject
     [SerializeField] Transform skin;
     [SerializeField] Transform physic;
 
+    [HideInInspector] public BoxCollision boxCollision;
+    public BoxRewardData boxRewardDataWhenBroken;
+    public BoxRewardData boxRewardDataWhenHit;
+
     int originHp;
 
     void Awake()
@@ -20,6 +24,7 @@ public class Box : PlacedObject
     {
         animator = GetComponentInChildren<Animator>();
         breaks = GetComponentInChildren<Breaks>();
+        if (TryGetComponent<BoxCollision>(out var collision)) boxCollision = collision;
     }
 
     public void IsCollided()
@@ -28,8 +33,15 @@ public class Box : PlacedObject
         StartCoroutine(HelperFunctions.WaitCurrentAnimationEnd(animator, () =>
         {
             Hp--;
-            if (Hp < 0) return;
-            if (Hp == 0)
+            if (Hp > 0)
+            {
+                EventChannel.Instance.OnBoxHit?.Invoke(this);
+            }
+            else if (Hp < 0)
+            {
+                return;
+            }
+            else
             {
                 OnBoxBreak();
                 breaks.Enable();
@@ -39,6 +51,8 @@ public class Box : PlacedObject
 
     void OnBoxBreak()
     {
+        EventChannel.Instance.OnBoxBroken?.Invoke(this);
+
         skin.gameObject.SetActive(false);
         physic.gameObject.SetActive(false);
     }

@@ -3,12 +3,14 @@ using UnityEngine;
 public class BoxCollision : MonoBehaviour
 {
     [SerializeField] Box box;
-    [SerializeField] Collider2D _collider;
+
+    public Collider2D _collider;
+    public float cachedColliderRadius;
 
     void OnValidate()
     {
-        if (TryGetComponent<Collider2D>(out var collider)) _collider = collider;
-        if (transform.parent.TryGetComponent<Box>(out var box)) this.box = box;
+        if (transform.TryGetComponent<Box>(out var box)) this.box = box;
+        cachedColliderRadius = _collider.bounds.extents.magnitude;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
