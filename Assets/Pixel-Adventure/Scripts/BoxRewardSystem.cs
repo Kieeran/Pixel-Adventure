@@ -16,7 +16,7 @@ public class BoxRewardSystem : MonoBehaviour
     void OnBoxHit(Box box)
     {
         if (box.boxRewardDataWhenHit == null) return;
-        
+
         Distribute(box, box.boxRewardDataWhenHit);
     }
 
@@ -46,6 +46,8 @@ public class BoxRewardSystem : MonoBehaviour
                 PlacedObject obj = PoolManager.Instance.GetByID(id);
                 if (obj.TryGetComponent<Fruit>(out var fruit))
                 {
+                    LevelManager.Instance.currentLevel.AddPlacedObject(obj);
+
                     fruit.ApplyGravity();
                     fruit.transform.position = box.transform.position + Vector3.up * 0.5f;
                     Launch(fruit.rb);
