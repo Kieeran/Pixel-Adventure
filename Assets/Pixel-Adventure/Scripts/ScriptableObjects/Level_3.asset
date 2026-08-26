@@ -44,4 +44,104 @@ MonoBehaviour:
     position: {x: -4, y: -3.5}
   - addressableKey: Strawberry
     position: {x: -4, y: -5}
+  - addressableKey: Block
+    position: {x: -14.5, y: -1.5}
+  - addressableKey: Block
+    position: {x: -13.5, y: -1.5}
+  - addressableKey: Block
+    position: {x: -12.5, y: -1.5}
+  - addressableKey: Block
+    position: {x: -11.5, y: -1.5}
+  - addressableKey: Block
+    position: {x: -10.5, y: -1.5}
+  - addressableKey: Block
+    position: {x: -9.5, y: -1.5}
+  - addressableKey: Block
+    position: {x: -14.5, y: -0.5}
+  - addressableKey: Block
+    position: {x: -13.5, y: -0.5}
+  - addressableKey: Block
+    position: {x: -12.5, y: -0.5}
+  - addressableKey: Block
+    position: {x: -11.5, y: -0.5}
+  - addressableKey: Block
+    position: {x: -10.5, y: -0.5}
+  - addressableKey: Block
+    position: {x: -9.5, y: -0.5}
+  - addressableKey: Block
+    position: {x: -4.5, y: 1.5}
+  - addressableKey: Block
+    position: {x: -3.5, y: 1.5}
+  - addressableKey: Block
+    position: {x: -2.5, y: 1.5}
+  - addressableKey: Block
+    position: {x: -1.5, y: 1.5}
+  - addressableKey: Block
+    position: {x: -0.5, y: 1.5}
+  - addressableKey: Block
+    position: {x: 2.5, y: 1}
+  - addressableKey: Block
+    position: {x: 3.5, y: 1}
+  - addressableKey: Block
+    position: {x: 4.5, y: 1}
+  - addressableKey: Block
+    position: {x: 5.5, y: 1}
+  - addressableKey: Block
+    position: {x: 6.5, y: 1}
+  - addressableKey: Block
+    position: {x: 7.5, y: 1}
+  - addressableKey: Block
+    position: {x: 8.5, y: 1}
+  - addressableKey: Block
+    position: {x: 9.5, y: 1}
+  - addressableKey: Block
+    position: {x: 10.5, y: 1}
+  - addressableKey: Block
+    position: {x: 11.5, y: 1}
+  - addressableKey: Block
+    position: {x: 12.5, y: 1}
+  - addressableKey: Block
+    position: {x: 2.5, y: 0}
+  - addressableKey: Block
+    position: {x: 3.5, y: 0}
+  - addressableKey: Block
+    position: {x: 4.5, y: 0}
+  - addressableKey: Block
+    position: {x: 5.5, y: 0}
+  - addressableKey: Block
+    position: {x: 6.5, y: 0}
+  - addressableKey: Block
+    position: {x: 7.5, y: 0}
+  - addressableKey: Block
+    position: {x: 8.5, y: 0}
+  - addressableKey: Block
+    position: {x: 9.5, y: 0}
+  - addressableKey: Block
+    position: {x: 10.5, y: 0}
+  - addressableKey: Block
+    position: {x: 11.5, y: 0}
+  - addressableKey: Block
+    position: {x: 12.5, y: 0}
+  - addressableKey: Block
+    position: {x: 2.5, y: -1}
+  - addressableKey: Block
+    position: {x: 3.5, y: -1}
+  - addressableKey: Block
+    position: {x: 4.5, y: -1}
+  - addressableKey: Block
+    position: {x: 5.5, y: -1}
+  - addressableKey: Block
+    position: {x: 6.5, y: -1}
+  - addressableKey: Block
+    position: {x: 7.5, y: -1}
+  - addressableKey: Block
+    position: {x: 8.5, y: -1}
+  - addressableKey: Block
+    position: {x: 9.5, y: -1}
+  - addressableKey: Block
+    position: {x: 10.5, y: -1}
+  - addressableKey: Block
+    position: {x: 11.5, y: -1}
+  - addressableKey: Block
+    position: {x: 12.5, y: -1}
   playerStartPosition: {x: -10, y: -5, z: 0}

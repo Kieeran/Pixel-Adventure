@@ -12,6 +12,7 @@ TagManager:
   - Terrain
   - PlacedObjectsHolder
   - Character
+  - Block
   layers:
   - Default
   - TransparentFX

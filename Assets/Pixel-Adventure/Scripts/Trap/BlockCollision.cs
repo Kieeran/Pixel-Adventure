@@ -1,16 +1,9 @@
 using System;
 using UnityEngine;
 
-public class BoxCollision : MonoBehaviour
+public class BlockCollision : MonoBehaviour
 {
-    public Collider2D _collider;
-    public float cachedColliderRadius;
     public event Action<Vector2> OnCharacterCollided;
-
-    void OnValidate()
-    {
-        cachedColliderRadius = _collider.bounds.extents.magnitude;
-    }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
