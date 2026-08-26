@@ -13,7 +13,35 @@ MonoBehaviour:
   m_Name: Level_3
   m_EditorClassIdentifier: 
   levelID: 3
-  fruitsData: {fileID: 11400000, guid: 54bdbe3e3498f7740a68a71c5d372bb7, type: 2}
-  boxesData: {fileID: 0}
-  trapsData: {fileID: 11400000, guid: 6d6d9275f983ee246b34fbf744c7d982, type: 2}
-  playerStartPosition: {x: 0, y: 0, z: 0}
+  placedObjectDatas:
+  - addressableKey: Kiwi
+    position: {x: 3.5, y: 3}
+  - addressableKey: Kiwi
+    position: {x: 5.5, y: 3}
+  - addressableKey: Kiwi
+    position: {x: 7.5, y: 3}
+  - addressableKey: Kiwi
+    position: {x: 9.5, y: 3}
+  - addressableKey: Kiwi
+    position: {x: 11.5, y: 3}
+  - addressableKey: Kiwi
+    position: {x: 4.5, y: 4.75}
+  - addressableKey: Kiwi
+    position: {x: 6.5, y: 4.75}
+  - addressableKey: Kiwi
+    position: {x: 8.5, y: 4.75}
+  - addressableKey: Kiwi
+    position: {x: 10.5, y: 4.75}
+  - addressableKey: Orange
+    position: {x: -10, y: 4}
+  - addressableKey: Orange
+    position: {x: -7.25, y: 4}
+  - addressableKey: Orange
+    position: {x: -4.5, y: 4}
+  - addressableKey: Orange
+    position: {x: -1.75, y: 4}
+  - addressableKey: Strawberry
+    position: {x: -4, y: -3.5}
+  - addressableKey: Strawberry
+    position: {x: -4, y: -5}
+  playerStartPosition: {x: -10, y: -5, z: 0}

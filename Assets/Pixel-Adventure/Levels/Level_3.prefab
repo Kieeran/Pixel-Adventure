@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3486545485887513030}
   m_Layer: 0
   m_Name: BackGround
-  m_TagString: Terrain
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -674,7 +674,7 @@ GameObject:
   - component: {fileID: 4609294486347353894}
   m_Layer: 0
   m_Name: Level_3
-  m_TagString: Terrain
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -710,7 +710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelData: {fileID: 11400000, guid: 2feed4462139db44080e105a2d02a1bd, type: 2}
-  placedObjectsHolder: {fileID: 0}
+  placedObjectsHolder: {fileID: 53243080980365055}
 --- !u!1 &5475698732077547698
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 1768727697439545070}
   m_Layer: 0
   m_Name: BG_Tilemap
-  m_TagString: Terrain
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48924,7 +48924,7 @@ GameObject:
   - component: {fileID: 8583734207822866201}
   m_Layer: 0
   m_Name: TR_Tilemap
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55788,7 +55788,7 @@ TilemapCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_CompositeOperation: 0
+  m_CompositeOperation: 1
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
@@ -55832,11 +55832,139 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 8505464438976140374}
+    m_ColliderPaths:
+    - - X: 200000000
+        Y: 100000000
+      - X: -230000000
+        Y: 100000000
+      - X: -230000000
+        Y: -120000000
+      - X: 200000000
+        Y: -120000000
+    - - X: -130000000
+        Y: -80000000
+      - X: -130000000
+        Y: -70000000
+      - X: -140000000
+        Y: -70000000
+      - X: -140000000
+        Y: -40000000
+      - X: -150000000
+        Y: -40000000
+      - X: -150000000
+        Y: 50000000
+      - X: -140000000
+        Y: 50000000
+      - X: -140000000
+        Y: 60000000
+      - X: 0
+        Y: 60000000
+      - X: 0
+        Y: -40000000
+      - X: 20000000
+        Y: -40000000
+      - X: 20000000
+        Y: 60000000
+      - X: 130000000
+        Y: 60000000
+      - X: 130000000
+        Y: -40000000
+      - X: 120000000
+        Y: -40000000
+      - X: 120000000
+        Y: -60000000
+      - X: 90000000
+        Y: -60000000
+      - X: 90000000
+        Y: -70000000
+      - X: 60000000
+        Y: -70000000
+      - X: 60000000
+        Y: -80000000
+      - X: 10000000
+        Y: -80000000
+      - X: 10000000
+        Y: -70000000
+      - X: -30000000
+        Y: -70000000
+      - X: -30000000
+        Y: -60000000
+      - X: -50000000
+        Y: -60000000
+      - X: -50000000
+        Y: -24375000
+      - X: -30625000
+        Y: -24375000
+      - X: -30000000
+        Y: -23750000
+      - X: -30000000
+        Y: -20000000
+      - X: -50000000
+        Y: -20000000
+      - X: -50000000
+        Y: 20000000
+      - X: -110000000
+        Y: 20000000
+      - X: -110000000
+        Y: 16250000
+      - X: -109375000
+        Y: 15625000
+      - X: -90000000
+        Y: 15625000
+      - X: -90000000
+        Y: -60000000
+      - X: -110000000
+        Y: -60000000
+      - X: -110000000
+        Y: -80000000
   m_CompositePaths:
-    m_Paths: []
+    m_Paths:
+    - - {x: 20, y: 10}
+      - {x: -23, y: 10}
+      - {x: -23, y: -12}
+      - {x: 20, y: -12}
+    - - {x: -13, y: -8}
+      - {x: -13, y: -7}
+      - {x: -14, y: -7}
+      - {x: -14, y: -4}
+      - {x: -15, y: -4}
+      - {x: -15, y: 5}
+      - {x: -14, y: 5}
+      - {x: -14, y: 6}
+      - {x: 0, y: 6}
+      - {x: 0, y: -4}
+      - {x: 2, y: -4}
+      - {x: 2, y: 6}
+      - {x: 13, y: 6}
+      - {x: 13, y: -4}
+      - {x: 12, y: -4}
+      - {x: 12, y: -6}
+      - {x: 9, y: -6}
+      - {x: 9, y: -7}
+      - {x: 6, y: -7}
+      - {x: 6, y: -8}
+      - {x: 1, y: -8}
+      - {x: 1, y: -7}
+      - {x: -3, y: -7}
+      - {x: -3, y: -6}
+      - {x: -5, y: -6}
+      - {x: -5, y: -2.4375}
+      - {x: -3.0625, y: -2.4375}
+      - {x: -3, y: -2.375}
+      - {x: -3, y: -2}
+      - {x: -5, y: -2}
+      - {x: -5, y: 2}
+      - {x: -11, y: 2}
+      - {x: -11, y: 1.625}
+      - {x: -10.9375, y: 1.5625}
+      - {x: -9, y: 1.5625}
+      - {x: -9, y: -6}
+      - {x: -11, y: -6}
+      - {x: -11, y: -8}
   m_VertexDistance: 0.0005
-  m_OffsetDistance: 0.00005
+  m_OffsetDistance: 0
   m_UseDelaunayMesh: 0
   m_CompositeGameObject: {fileID: 7389384166905398932}
 --- !u!50 &8583734207822866201
