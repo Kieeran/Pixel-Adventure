@@ -10,7 +10,6 @@ TagManager:
   - Box
   - Trap
   - Terrain
-  - abc
   - PlacedObjectsHolder
   - Character
   layers:

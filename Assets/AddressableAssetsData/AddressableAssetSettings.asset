@@ -103,6 +103,7 @@ MonoBehaviour:
     - default
     - Fruit
     - Box
+    - Trap
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: b7cf673a78175b44fb5682da858503b2, type: 2}

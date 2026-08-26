@@ -48,7 +48,7 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("Start to load level");
             player = Instantiate(_prefabCharacter);
-            
+
             LoadLevel();
         };
     }

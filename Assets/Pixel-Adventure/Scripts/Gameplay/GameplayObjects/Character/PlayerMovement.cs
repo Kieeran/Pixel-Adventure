@@ -65,4 +65,10 @@ public class PlayerMovement : MonoBehaviour
             playerRB.AddForce(Vector2.down * KnockDownByBoxPower, ForceMode2D.Impulse);
         }
     }
+
+    public void PushUpByTrampoline(float force)
+    {
+        playerRB.linearVelocity = new Vector2(playerRB.linearVelocity.x, 0);
+        playerRB.AddForce(Vector2.up * force, ForceMode2D.Impulse);
+    }
 }

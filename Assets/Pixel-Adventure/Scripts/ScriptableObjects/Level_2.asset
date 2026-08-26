@@ -54,4 +54,8 @@ MonoBehaviour:
     position: {x: -8, y: 2}
   - addressableKey: Bananas
     position: {x: -7, y: 4}
+  - addressableKey: Trampoline
+    position: {x: -7, y: -7.12}
+  - addressableKey: Trampoline
+    position: {x: 2, y: -5.12}
   playerStartPosition: {x: -13.75, y: -4, z: 0}

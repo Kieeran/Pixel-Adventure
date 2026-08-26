@@ -10,7 +10,7 @@ public class PoolManager : MonoBehaviour
     Dictionary<string, PlacedObject> prefabs;
     Dictionary<string, Transform> containers;
 
-    readonly List<string> labels = new() { "Fruit", "Box" };
+    readonly List<string> labels = new() { "Fruit", "Box", "Trap" };
 
     void Awake()
     {
