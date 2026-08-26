@@ -240,9 +240,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 227a2d6104046234f84b821860286fdc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Box
+  animator: {fileID: 7351300349276907688}
   Hp: 0
+  breaks: {fileID: 0}
   skin: {fileID: 3487686018523278927}
   physic: {fileID: 3766027488859168891}
+  knockCharacterUpForce: 18
+  knockCharacterDownForce: 9
   boxCollision: {fileID: 3225728622450746928}
   boxRewardDataWhenBroken: {fileID: 0}
   boxRewardDataWhenHit: {fileID: 11400000, guid: 2eeb20e4f33aa3c4eb8e78525598b451, type: 2}

@@ -8,6 +8,8 @@ public class Box : PlacedObject
     [SerializeField] Breaks breaks;
     [SerializeField] Transform skin;
     [SerializeField] Transform physic;
+    [SerializeField] float knockCharacterUpForce;
+    [SerializeField] float knockCharacterDownForce;
 
     [HideInInspector] public BoxCollision boxCollision;
     public BoxRewardData boxRewardDataWhenBroken;
@@ -27,8 +29,13 @@ public class Box : PlacedObject
         if (TryGetComponent<BoxCollision>(out var collision)) boxCollision = collision;
     }
 
-    public void IsCollided()
+    void OnCharacterCollided(Vector2 direction)
     {
+        PlayerController.Instance.playerMovement.ReboundVertically(
+            direction,
+            direction == Vector2.up ? knockCharacterUpForce : knockCharacterDownForce
+        );
+
         animator.SetTrigger(IsCollidedHash);
         StartCoroutine(HelperFunctions.WaitCurrentAnimationEnd(animator, () =>
         {
@@ -65,6 +72,7 @@ public class Box : PlacedObject
     public override void OnSpawn()
     {
         breaks.OnAllBreaksDisappear += OnAllBreaksDisappear;
+        boxCollision.OnCharacterCollided += OnCharacterCollided;
 
         Hp = originHp;
         skin.gameObject.SetActive(true);
@@ -75,5 +83,6 @@ public class Box : PlacedObject
     public override void OnDespawn()
     {
         breaks.OnAllBreaksDisappear -= OnAllBreaksDisappear;
+        boxCollision.OnCharacterCollided -= OnCharacterCollided;
     }
 }

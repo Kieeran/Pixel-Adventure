@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BoxCollision : MonoBehaviour
@@ -6,6 +7,7 @@ public class BoxCollision : MonoBehaviour
 
     public Collider2D _collider;
     public float cachedColliderRadius;
+    public event Action<Vector2> OnCharacterCollided;
 
     void OnValidate()
     {
@@ -20,17 +22,8 @@ public class BoxCollision : MonoBehaviour
             ContactPoint2D contact = collision.GetContact(0);
             if (contact.normal.y != 0)
             {
-                box.IsCollided();
-
-                if (collision.gameObject.TryGetComponent<PlayerController>(out var player))
-                {
-                    if (contact.normal.y > 0) player.playerMovement.KnockBackByBox(false);
-                    else player.playerMovement.KnockBackByBox(true);
-                }
-                else
-                {
-                    Debug.Log("Can get player ref when contact with box");
-                }
+                if (contact.normal.y > 0) OnCharacterCollided?.Invoke(Vector2.down);
+                else OnCharacterCollided?.Invoke(Vector2.up);
             }
         }
     }
