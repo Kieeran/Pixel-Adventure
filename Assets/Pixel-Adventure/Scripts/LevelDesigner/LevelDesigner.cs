@@ -28,7 +28,8 @@ public class LevelDesigner : MonoBehaviour
                 level.levelData.placedObjectDatas.Add(new PlacedObjectData
                 {
                     addressableKey = addressableKey,
-                    position = tf.position
+                    position = tf.position,
+                    rotation = tf.eulerAngles.z
                 });
             }
             else

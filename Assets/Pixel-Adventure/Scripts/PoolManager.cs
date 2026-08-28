@@ -124,6 +124,11 @@ public class PoolManager : MonoBehaviour
             {
                 PlacedObject obj = GetByID(data.addressableKey);
                 obj.transform.position = data.position;
+                obj.transform.eulerAngles = new Vector3(
+                    obj.transform.eulerAngles.x,
+                    obj.transform.eulerAngles.y,
+                    data.rotation
+                );
 
                 LevelManager.Instance.currentLevel.AddPlacedObject(obj);
             }

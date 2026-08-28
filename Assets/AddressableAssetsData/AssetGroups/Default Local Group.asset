@@ -63,6 +63,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Box
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7dcd2164c8ec03847bbd835f589731d0
+    m_Address: Fan
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 9a0e8572b1baca749b93d08ac6520b64
     m_Address: Bananas
     m_ReadOnly: 0

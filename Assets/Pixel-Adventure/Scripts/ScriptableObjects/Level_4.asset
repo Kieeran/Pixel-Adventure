@@ -13,7 +13,44 @@ MonoBehaviour:
   m_Name: Level_4
   m_EditorClassIdentifier: 
   levelID: 4
-  fruitsData: {fileID: 11400000, guid: 0dbd67235d68cfa438571aa9c118911f, type: 2}
-  boxesData: {fileID: 0}
-  trapsData: {fileID: 11400000, guid: cfb779010175b9345bd1d4e75f24ff98, type: 2}
-  playerStartPosition: {x: 0, y: 0, z: 0}
+  placedObjectDatas:
+  - addressableKey: Cherry
+    position: {x: 4, y: -0.5}
+    rotation: 0
+  - addressableKey: Cherry
+    position: {x: 4, y: -2.5}
+    rotation: 0
+  - addressableKey: Cherry
+    position: {x: 12, y: 4}
+    rotation: 0
+  - addressableKey: Pineapple
+    position: {x: -4.5, y: -1}
+    rotation: 0
+  - addressableKey: Pineapple
+    position: {x: -5.75, y: -2.75}
+    rotation: 0
+  - addressableKey: Pineapple
+    position: {x: -3.25, y: -2.75}
+    rotation: 0
+  - addressableKey: Pineapple
+    position: {x: -7, y: -4.75}
+    rotation: 0
+  - addressableKey: Pineapple
+    position: {x: -4.5, y: -4.75}
+    rotation: 0
+  - addressableKey: Pineapple
+    position: {x: -2, y: -4.75}
+    rotation: 0
+  - addressableKey: Fan
+    position: {x: -11, y: -7.75}
+    rotation: 0
+  - addressableKey: Fan
+    position: {x: 7, y: -7.75}
+    rotation: 0
+  - addressableKey: Fan
+    position: {x: 10, y: -6.75}
+    rotation: 0
+  - addressableKey: Fan
+    position: {x: -14.75, y: 4.5}
+    rotation: 270
+  playerStartPosition: {x: 4, y: -6, z: 0}
