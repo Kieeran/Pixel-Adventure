@@ -157,9 +157,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1501716951627310167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14f292c43cb9c9f4ca8da43b3e38be50, type: 3}
+  m_Script: {fileID: 11500000, guid: 447b736d76807d440af59ccaf037737b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  customData: {fileID: 0}
   animator: {fileID: 2871925228444778206}
   toggle: 0
   counter: 0

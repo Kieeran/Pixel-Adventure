@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Fan : PlacedObject
 {
+    private static readonly int ToggleHash = Animator.StringToHash("Toggle");
     [SerializeField] Animator animator;
 
     void OnValidate()
@@ -46,12 +47,15 @@ public class Fan : PlacedObject
     // }
     public bool GetToggle() { return toggle; }
 
-    private void Update()
+    public void Activate()
     {
-        // counter += Time.deltaTime;
-        // if (counter < On_OffTime) return;
-        // counter = 0f;
-        // toggle = !toggle;
-        // animator.SetBool("toggle", toggle);
+        toggle = true;
+        animator.SetBool(ToggleHash, toggle);
+    }
+
+    public void Deactivate()
+    {
+        toggle = false;
+        animator.SetBool(ToggleHash, toggle);
     }
 }

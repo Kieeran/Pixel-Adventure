@@ -833,6 +833,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa85d678f08cdaa44969772d9ea16c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FanTurnScheduler
+  activeDuration: 4
+  gapDuration: 0.5
 --- !u!1 &940739133
 GameObject:
   m_ObjectHideFlags: 0
