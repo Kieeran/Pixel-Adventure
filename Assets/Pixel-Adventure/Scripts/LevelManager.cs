@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,8 @@ public class LevelManager : MonoBehaviour
 
     public PlayerController _prefabCharacter;
     private PlayerController player;
+
+    public event Action CurrentLevelLoaded;
 
     public void SetIsReadyToLoad()
     {
@@ -63,7 +66,11 @@ public class LevelManager : MonoBehaviour
 
         currentLevelID = InGameManager.Instance.GetCurrentLevel();
         currentLevel = Instantiate(levels[currentLevelID]);
-        currentLevel.Load();
+
         player.transform.SetPositionAndRotation(currentLevel.levelData.playerStartPosition, Quaternion.identity);
+        currentLevel.Load(() =>
+        {
+            CurrentLevelLoaded?.Invoke();
+        });
     }
 }

@@ -25,11 +25,17 @@ public class LevelDesigner : MonoBehaviour
 
             if (TryGetAddressableKey(prefab, out var addressableKey))
             {
+                CustomData data = null;
+                if (tf.TryGetComponent<PlacedObject>(out var placedObject))
+                {
+                    data = placedObject.customData;
+                }
                 level.levelData.placedObjectDatas.Add(new PlacedObjectData
                 {
                     addressableKey = addressableKey,
                     position = tf.position,
-                    rotation = tf.eulerAngles.z
+                    rotation = tf.eulerAngles.z,
+                    customData = data
                 });
             }
             else
@@ -64,6 +70,15 @@ public class LevelDesigner : MonoBehaviour
             GameObject obj = AddressableHandler.SpawnInEditorImmediate(data.addressableKey);
             obj.transform.parent = level.placedObjectsHolder;
             obj.transform.position = data.position;
+            obj.transform.eulerAngles = new Vector3(
+                obj.transform.rotation.eulerAngles.x,
+                obj.transform.rotation.eulerAngles.y,
+                data.rotation
+            );
+            if (obj.TryGetComponent<PlacedObject>(out var placedObject))
+            {
+                placedObject.customData = data.customData;
+            }
         }
         Debug.Log("Reopen level level");
     }

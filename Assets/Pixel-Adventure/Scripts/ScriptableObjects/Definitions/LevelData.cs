@@ -8,6 +8,7 @@ public struct PlacedObjectData
     public string addressableKey;
     public Vector2 position;
     public float rotation;
+    public CustomData customData;
 }
 
 // Data này lưu tất cả dữ liệu trong level (vị trí fruits, boxes, ...)

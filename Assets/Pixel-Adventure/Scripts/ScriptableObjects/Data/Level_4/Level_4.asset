@@ -17,40 +17,53 @@ MonoBehaviour:
   - addressableKey: Cherry
     position: {x: 4, y: -0.5}
     rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Cherry
     position: {x: 4, y: -2.5}
     rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Cherry
     position: {x: 12, y: 4}
     rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Pineapple
     position: {x: -4.5, y: -1}
     rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Pineapple
     position: {x: -5.75, y: -2.75}
     rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Pineapple
     position: {x: -3.25, y: -2.75}
     rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Pineapple
     position: {x: -7, y: -4.75}
     rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Pineapple
     position: {x: -4.5, y: -4.75}
     rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Pineapple
     position: {x: -2, y: -4.75}
     rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Fan
     position: {x: -11, y: -7.75}
     rotation: 0
+    customData: {fileID: 11400000, guid: 2c73c4170eeff8e449450bbc71833eea, type: 2}
   - addressableKey: Fan
     position: {x: 7, y: -7.75}
     rotation: 0
+    customData: {fileID: 11400000, guid: 2c73c4170eeff8e449450bbc71833eea, type: 2}
   - addressableKey: Fan
     position: {x: 10, y: -6.75}
     rotation: 0
+    customData: {fileID: 11400000, guid: 2c73c4170eeff8e449450bbc71833eea, type: 2}
   - addressableKey: Fan
     position: {x: -14.75, y: 4.5}
     rotation: 270
-  playerStartPosition: {x: 4, y: -6, z: 0}
+    customData: {fileID: 11400000, guid: fed7d85e2b4fa3f46885f5a5fb53a97e, type: 2}
+  playerStartPosition: {x: 4, y: -5.95, z: 0}

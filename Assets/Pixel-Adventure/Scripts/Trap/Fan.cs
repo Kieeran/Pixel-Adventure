@@ -7,15 +7,24 @@ public class Fan : PlacedObject
 {
     [SerializeField] Animator animator;
 
-    private float On_OffTime;
-    public bool toggle;
-    public float counter;
-    public Vector2 forcePower;
-
     void OnValidate()
     {
         animator = GetComponentInChildren<Animator>();
     }
+
+    public override void OnSpawn()
+    {
+
+    }
+    public override void OnDespawn()
+    {
+        customData = null;
+    }
+
+    private float On_OffTime;
+    public bool toggle;
+    public float counter;
+    public Vector2 forcePower;
 
     public Vector2 GetForcePower() { return forcePower; }
 

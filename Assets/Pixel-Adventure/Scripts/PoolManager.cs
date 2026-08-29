@@ -9,6 +9,7 @@ public class PoolManager : MonoBehaviour
     Dictionary<string, Queue<PlacedObject>> pools;
     Dictionary<string, PlacedObject> prefabs;
     Dictionary<string, Transform> containers;
+    public List<PlacedObject> activeObjects { get; private set; }
 
     readonly List<string> labels = new() { "Fruit", "Box", "Trap" };
 
@@ -31,6 +32,7 @@ public class PoolManager : MonoBehaviour
     {
         pools = new();
         prefabs = new();
+        activeObjects = new();
 
         LoadAllPrefabs(() =>
         {
@@ -92,6 +94,8 @@ public class PoolManager : MonoBehaviour
         obj.gameObject.SetActive(true);
         obj.transform.SetParent(null);
 
+        activeObjects.Add(obj);
+
         return obj;
     }
 
@@ -108,6 +112,8 @@ public class PoolManager : MonoBehaviour
             pools[obj.Id].Enqueue(obj);
             obj.transform.SetParent(containers[obj.Id]);
 
+            activeObjects.Remove(obj);
+
             Debug.Log("Return object has id: " + obj.Id);
         }
         else
@@ -116,7 +122,7 @@ public class PoolManager : MonoBehaviour
         }
     }
 
-    public void Spawn(List<PlacedObjectData> placedObjectDatas)
+    public void Spawn(List<PlacedObjectData> placedObjectDatas, Action onComplete)
     {
         foreach (var data in placedObjectDatas)
         {
@@ -129,11 +135,14 @@ public class PoolManager : MonoBehaviour
                     obj.transform.eulerAngles.y,
                     data.rotation
                 );
+                obj.customData = data.customData;
 
                 LevelManager.Instance.currentLevel.AddPlacedObject(obj);
             }
             else Debug.Log("pools not contain id: " + data.addressableKey);
         }
+
+        onComplete?.Invoke();
     }
 
     public void Despawn(List<PlacedObject> placedObjects)

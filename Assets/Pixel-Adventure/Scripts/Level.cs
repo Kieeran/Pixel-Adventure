@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,9 +29,9 @@ public class Level : MonoBehaviour
         }
     }
 
-    public void Load()
+    public void Load(Action onComplete)
     {
-        PoolManager.Instance.Spawn(levelData.placedObjectDatas);
+        PoolManager.Instance.Spawn(levelData.placedObjectDatas, onComplete);
     }
 
     public void Unload()
