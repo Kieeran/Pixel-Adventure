@@ -47,6 +47,8 @@ public class InAirState : State
     {
         if (PlayerController.Instance.playerInput.isJumpInAir == false && PlayerController.Instance.playerInput.isGrounded == false)
         {
+            if (PlayerController.Instance.playerInput.isPushedByFan) return;
+
             PlayerController.Instance.playerMovement.JumpInAir();
             PlayerController.Instance.playerInput.isJumpInAir = true;
             PlayerController.Instance.OnDoubleJump?.Invoke();

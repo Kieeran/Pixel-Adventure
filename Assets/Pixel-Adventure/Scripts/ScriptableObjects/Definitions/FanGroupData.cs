@@ -4,4 +4,5 @@ using UnityEngine;
 public class FanGroupData : CustomData
 {
     public string groupId;
+    public Vector2 pushDirection = Vector2.zero;
 }

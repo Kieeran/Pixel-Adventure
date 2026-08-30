@@ -7,6 +7,11 @@ public class Fan : PlacedObject
 {
     private static readonly int ToggleHash = Animator.StringToHash("Toggle");
     [SerializeField] Animator animator;
+    [SerializeField] Transform physic;
+    [SerializeField] float pushVerticalPower;
+    [SerializeField] float pushHorizontalPower;
+    public Vector2 pushDirection = Vector2.zero;
+    public bool isOn;
 
     void OnValidate()
     {
@@ -15,47 +20,42 @@ public class Fan : PlacedObject
 
     public override void OnSpawn()
     {
-
+        pushDirection = (customData as FanGroupData).pushDirection;
     }
+
     public override void OnDespawn()
     {
         customData = null;
+        isOn = false;
+        pushDirection = Vector2.zero;
     }
-
-    private float On_OffTime;
-    public bool toggle;
-    public float counter;
-    public Vector2 forcePower;
-
-    public Vector2 GetForcePower() { return forcePower; }
-
-    // public override void SetToggle(bool b)
-    // {
-    //     base.SetToggle(b);
-    //     if (b)
-    //     {
-    //         Debug.Log("Do settoggle at fan");
-    //         forcePower = new Vector2(20, 0f);
-    //     }
-    //     else
-    //     {
-    //         Debug.Log("Not do settoggle at fan");
-    //         forcePower = new Vector2(0, 20f);
-    //     }
-    //     toggle = b;
-    //     animator.SetBool("toggle", toggle);
-    // }
-    public bool GetToggle() { return toggle; }
 
     public void Activate()
     {
-        toggle = true;
-        animator.SetBool(ToggleHash, toggle);
+        isOn = true;
+        animator.SetBool(ToggleHash, isOn);
+
+        physic.gameObject.SetActive(true);
     }
 
     public void Deactivate()
     {
-        toggle = false;
-        animator.SetBool(ToggleHash, toggle);
+        isOn = false;
+        animator.SetBool(ToggleHash, isOn);
+
+        physic.gameObject.SetActive(false);
+    }
+
+    public float GetPushPower()
+    {
+        if (pushDirection == Vector2.up || pushDirection == Vector2.down)
+        {
+            return pushVerticalPower;
+        }
+        else if (pushDirection == Vector2.left || pushDirection == Vector2.right)
+        {
+            return pushHorizontalPower;
+        }
+        else return -1;
     }
 }

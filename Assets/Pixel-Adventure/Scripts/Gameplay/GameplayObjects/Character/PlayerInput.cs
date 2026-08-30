@@ -11,6 +11,7 @@ public class PlayerInput : MonoBehaviour
     public bool isJumpInAir = false;
     public bool isOnWall = false;
     public bool isContactLeftWall = false;
+    public bool isPushedByFan = false;
 
     public bool IsMovingHorizontal()
     {

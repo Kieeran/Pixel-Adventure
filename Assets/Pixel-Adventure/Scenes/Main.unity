@@ -834,7 +834,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FanTurnScheduler
   activeDuration: 4
-  gapDuration: 0.5
+  gapDuration: 0.8
 --- !u!1 &940739133
 GameObject:
   m_ObjectHideFlags: 0

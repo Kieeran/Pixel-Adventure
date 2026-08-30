@@ -74,7 +74,7 @@ public class PoolManager : MonoBehaviour
         }
     }
 
-    public PlacedObject GetByID(string id)
+    public PlacedObject GetByID(string id, CustomData customData = null)
     {
         if (!pools.ContainsKey(id))
         {
@@ -89,6 +89,9 @@ public class PoolManager : MonoBehaviour
         }
 
         PlacedObject obj = pools[id].Dequeue();
+
+        obj.customData = customData;
+
         obj.OnSpawn();
 
         obj.gameObject.SetActive(true);
@@ -128,14 +131,13 @@ public class PoolManager : MonoBehaviour
         {
             if (pools.Keys.Contains(data.addressableKey))
             {
-                PlacedObject obj = GetByID(data.addressableKey);
+                PlacedObject obj = GetByID(data.addressableKey, data.customData);
                 obj.transform.position = data.position;
                 obj.transform.eulerAngles = new Vector3(
                     obj.transform.eulerAngles.x,
                     obj.transform.eulerAngles.y,
                     data.rotation
                 );
-                obj.customData = data.customData;
 
                 LevelManager.Instance.currentLevel.AddPlacedObject(obj);
             }

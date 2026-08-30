@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: FanGroupData_0
   m_EditorClassIdentifier: Assembly-CSharp::FanGroupData
   groupId: FanGroupData_0
+  pushDirection: {x: 0, y: 1}

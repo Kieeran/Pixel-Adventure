@@ -14791,7 +14791,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &95255012435249809
@@ -14936,8 +14936,7 @@ MonoBehaviour:
   jumpPower: 20
   jumpAirPower: 15
   wallBouncePower: 10
-  KnockUpByBoxPower: 18
-  KnockDownByBoxPower: 9
+  isPushByFan: 0
 --- !u!114 &3918691766044789199
 MonoBehaviour:
   m_ObjectHideFlags: 0
