@@ -193,7 +193,7 @@ MonoBehaviour:
   animator: {fileID: 2871925228444778206}
   physic: {fileID: 4143712551901530855}
   pushVerticalPower: 12
-  pushHorizontalPower: 12
+  pushHorizontalPower: 6
   pushDirection: {x: 0, y: 0}
   isOn: 0
 --- !u!114 &5403580941240930720

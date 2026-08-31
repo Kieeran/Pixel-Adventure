@@ -21,6 +21,7 @@ public class Fan : PlacedObject
     public override void OnSpawn()
     {
         pushDirection = (customData as FanGroupData).pushDirection;
+        physic.gameObject.SetActive(false);
     }
 
     public override void OnDespawn()

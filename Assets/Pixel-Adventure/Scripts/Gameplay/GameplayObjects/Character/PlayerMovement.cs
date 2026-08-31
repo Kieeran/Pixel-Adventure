@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpAirPower;
     [SerializeField] private float wallBouncePower;
 
+    Vector2 fanPushDirection;
+    float currentVelocityX;
+
     float defaultGravityScale;
 
     private void Awake()
@@ -20,10 +23,27 @@ public class PlayerMovement : MonoBehaviour
 
     public void MoveHorizontal(float inputX)
     {
-        playerRB.linearVelocity = new Vector2(
-            inputX * moveSpeed,
-            playerRB.linearVelocity.y
-        );
+        // playerRB.linearVelocity = new Vector2(
+        //     inputX * moveSpeed,
+        //     playerRB.linearVelocity.y
+        // );
+        Vector2 currentVelocity = playerRB.linearVelocity;
+        if (PlayerController.Instance.playerInput.isPushedByFan && (fanPushDirection == Vector2.left || fanPushDirection == Vector2.right))
+        {
+            if (fanPushDirection == Vector2.left)
+            {
+                currentVelocity.x = inputX < 0 ? currentVelocityX - inputX * moveSpeed : currentVelocityX;
+            }
+            else if (fanPushDirection == Vector2.right)
+            {
+                currentVelocity.x = inputX > 0 ? currentVelocityX + inputX * moveSpeed : currentVelocityX;
+            }
+        }
+        else
+        {
+            currentVelocity.x = inputX * moveSpeed;
+        }
+        playerRB.linearVelocity = currentVelocity;
     }
 
     public void Jump()
@@ -75,6 +95,7 @@ public class PlayerMovement : MonoBehaviour
 
         playerRB.linearVelocity = currentVelocity;
         PlayerController.Instance.playerInput.isPushedByFan = true;
+        fanPushDirection = pushDirection;
     }
 
     public void ApplyFanPush(Vector2 pushDirection, float pushPower)
@@ -86,15 +107,17 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (pushDirection == Vector2.left || pushDirection == Vector2.right)
         {
-            currentVelocity.x = pushDirection == Vector2.left ? -pushPower : pushPower;
+            // currentVelocity.x = pushDirection == Vector2.left ? -pushPower : pushPower;
+            currentVelocityX = pushDirection == Vector2.left ? -pushPower : pushPower;
         }
         playerRB.linearVelocity = currentVelocity;
     }
 
     public void StopFanPush()
     {
-        playerRB.linearVelocity = new Vector2(playerRB.linearVelocity.x, 0);
+        // playerRB.linearVelocity = new Vector2(playerRB.linearVelocity.x, 0);
         playerRB.gravityScale = defaultGravityScale;
         PlayerController.Instance.playerInput.isPushedByFan = false;
+        fanPushDirection = Vector2.zero;
     }
 }

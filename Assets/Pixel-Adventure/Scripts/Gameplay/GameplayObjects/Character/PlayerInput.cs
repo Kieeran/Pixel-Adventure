@@ -15,7 +15,8 @@ public class PlayerInput : MonoBehaviour
 
     public bool IsMovingHorizontal()
     {
-        return PlayerController.Instance.playerMovement.playerRB.linearVelocityX != 0;
+        // return PlayerController.Instance.playerMovement.playerRB.linearVelocityX != 0;
+        return PlayerController.Instance.playerInput.move.x != 0;
     }
 
     public void Awake()
