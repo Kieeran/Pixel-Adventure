@@ -10,9 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float jumpAirPower;
     [SerializeField] private float wallBouncePower;
 
-    Vector2 fanPushDirection;
-    float currentVelocityX;
-
+    Vector2 externalPush;
     float defaultGravityScale;
 
     private void Awake()
@@ -23,27 +21,45 @@ public class PlayerMovement : MonoBehaviour
 
     public void MoveHorizontal(float inputX)
     {
-        // playerRB.linearVelocity = new Vector2(
-        //     inputX * moveSpeed,
-        //     playerRB.linearVelocity.y
-        // );
-        Vector2 currentVelocity = playerRB.linearVelocity;
-        if (PlayerController.Instance.playerInput.isPushedByFan && (fanPushDirection == Vector2.left || fanPushDirection == Vector2.right))
+        playerRB.linearVelocity = new Vector2(
+            inputX * moveSpeed,
+            playerRB.linearVelocity.y
+        );
+    }
+
+    public void HandleExternalPush(Vector2 move)
+    {
+        if (!PlayerController.Instance.playerInput.isExternallyPushed) return;
+
+        Vector2 v = playerRB.linearVelocity;
+
+        if (externalPush.x != 0)
         {
-            if (fanPushDirection == Vector2.left)
-            {
-                currentVelocity.x = inputX < 0 ? currentVelocityX - inputX * moveSpeed : currentVelocityX;
-            }
-            else if (fanPushDirection == Vector2.right)
-            {
-                currentVelocity.x = inputX > 0 ? currentVelocityX + inputX * moveSpeed : currentVelocityX;
-            }
+            v.x = externalPush.x * move.x * moveSpeed >= 0        // External push cùng chiều player di chuyển
+                ? externalPush.x + move.x * moveSpeed
+                : externalPush.x;
         }
-        else
+
+        if (externalPush.y != 0)
         {
-            currentVelocity.x = inputX * moveSpeed;
+            v.y = externalPush.y;
         }
-        playerRB.linearVelocity = currentVelocity;
+
+        playerRB.linearVelocity = v;
+    }
+
+    public void SetExternalPush(Vector2 direction, float power)
+    {
+        PlayerController.Instance.playerInput.isExternallyPushed = true;
+        externalPush = direction.normalized * power;
+        if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x))
+            playerRB.gravityScale = 0;
+    }
+
+    public void ClearExternalPush()
+    {
+        playerRB.gravityScale = defaultGravityScale;
+        PlayerController.Instance.playerInput.isExternallyPushed = false;
     }
 
     public void Jump()
@@ -78,46 +94,5 @@ public class PlayerMovement : MonoBehaviour
     {
         playerRB.linearVelocity = new Vector2(playerRB.linearVelocity.x, 0);
         playerRB.AddForce(direction * force, ForceMode2D.Impulse);
-    }
-
-    public void StartFanPush(Vector2 pushDirection)
-    {
-        Vector2 currentVelocity = playerRB.linearVelocity;
-        if (pushDirection == Vector2.up || pushDirection == Vector2.down)
-        {
-            currentVelocity.y = 0;
-            playerRB.gravityScale = 0;
-        }
-        else if (pushDirection == Vector2.left || pushDirection == Vector2.right)
-        {
-            currentVelocity.x = 0;
-        }
-
-        playerRB.linearVelocity = currentVelocity;
-        PlayerController.Instance.playerInput.isPushedByFan = true;
-        fanPushDirection = pushDirection;
-    }
-
-    public void ApplyFanPush(Vector2 pushDirection, float pushPower)
-    {
-        Vector2 currentVelocity = playerRB.linearVelocity;
-        if (pushDirection == Vector2.up || pushDirection == Vector2.down)
-        {
-            currentVelocity.y = pushPower;
-        }
-        else if (pushDirection == Vector2.left || pushDirection == Vector2.right)
-        {
-            // currentVelocity.x = pushDirection == Vector2.left ? -pushPower : pushPower;
-            currentVelocityX = pushDirection == Vector2.left ? -pushPower : pushPower;
-        }
-        playerRB.linearVelocity = currentVelocity;
-    }
-
-    public void StopFanPush()
-    {
-        // playerRB.linearVelocity = new Vector2(playerRB.linearVelocity.x, 0);
-        playerRB.gravityScale = defaultGravityScale;
-        PlayerController.Instance.playerInput.isPushedByFan = false;
-        fanPushDirection = Vector2.zero;
     }
 }

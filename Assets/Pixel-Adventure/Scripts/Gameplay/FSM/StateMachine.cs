@@ -14,7 +14,11 @@ public abstract class State
 
     public virtual void OnEnter() { }
     public virtual void OnUpdate() { }
-    public virtual void OnFixedUpdate() { }
+    public virtual void OnFixedUpdate()
+    {
+        PlayerController.Instance.playerMovement.MoveHorizontal(PlayerController.Instance.playerInput.move.x);
+        PlayerController.Instance.playerMovement.HandleExternalPush(PlayerController.Instance.playerInput.move);
+    }
     public virtual void OnExit() { }
     public virtual void HandleInput() { }
 }

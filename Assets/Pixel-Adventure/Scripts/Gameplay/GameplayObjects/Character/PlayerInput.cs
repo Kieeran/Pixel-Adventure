@@ -11,11 +11,12 @@ public class PlayerInput : MonoBehaviour
     public bool isJumpInAir = false;
     public bool isOnWall = false;
     public bool isContactLeftWall = false;
-    public bool isPushedByFan = false;
+    public bool isExternallyPushed = false;
 
     public bool IsMovingHorizontal()
     {
-        // return PlayerController.Instance.playerMovement.playerRB.linearVelocityX != 0;
+        // Chỉ khi player điều khiển di chuyển thì mới tính là move
+        // Còn không thì là bị tác động bởi yếu tố bên ngoài (external push)
         return PlayerController.Instance.playerInput.move.x != 0;
     }
 
