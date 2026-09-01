@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7e0b9f7e7409de64782e05babf87f4a9, type: 3}
-  m_Name: FanGroupData_0
+  m_Name: FanGroupData_2
   m_EditorClassIdentifier: Assembly-CSharp::FanGroupData
   groupId: Group_0
   pushDirection: {x: 0, y: 1}
-  colliderSize: {x: 4, y: 14.427962}
-  colliderOffset: {x: 0, y: 6.952801}
+  colliderOffset: {x: -0.14904213, y: 6.4131656}
+  colliderSize: {x: 2.2909527, y: 13.348693}

@@ -192,6 +192,7 @@ MonoBehaviour:
   customData: {fileID: 0}
   animator: {fileID: 2871925228444778206}
   physic: {fileID: 4143712551901530855}
+  col: {fileID: 7296245460158529139}
   pushVerticalPower: 12
   pushHorizontalPower: 6
   pushDirection: {x: 0, y: 0}
@@ -275,7 +276,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 12.74802}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -285,5 +286,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 4, y: 26.0184}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0

@@ -28,7 +28,8 @@ public class LevelDesigner : MonoBehaviour
                 CustomData data = null;
                 if (tf.TryGetComponent<PlacedObject>(out var placedObject))
                 {
-                    data = placedObject.customData;
+                    data = placedObject.customData;                         // Lấy các data dạng điền thông tin vào so
+                    if (data != null) data.CaptureFrom(placedObject);       // Lấy các data dạng trích xuất từ các component của obj (nếu có)
                 }
                 level.levelData.placedObjectDatas.Add(new PlacedObjectData
                 {
@@ -77,7 +78,7 @@ public class LevelDesigner : MonoBehaviour
             );
             if (obj.TryGetComponent<PlacedObject>(out var placedObject))
             {
-                placedObject.customData = data.customData;
+                if (data.customData != null) data.customData.ApplyTo(placedObject);
             }
         }
         Debug.Log("Reopen level level");

@@ -10,17 +10,22 @@ public class Fan : PlacedObject
     [SerializeField] Transform physic;
     [SerializeField] float pushVerticalPower;
     [SerializeField] float pushHorizontalPower;
+    public BoxCollider2D col;
     public Vector2 pushDirection = Vector2.zero;
     public bool isOn;
 
     void OnValidate()
     {
         animator = GetComponentInChildren<Animator>();
+        col = GetComponentInChildren<BoxCollider2D>();
     }
 
     public override void OnSpawn()
     {
-        pushDirection = (customData as FanGroupData).pushDirection;
+        FanGroupData data = customData as FanGroupData;
+        pushDirection = data.pushDirection;
+        SetColliderShape(data.colliderSize, data.colliderOffset);
+
         physic.gameObject.SetActive(false);
     }
 
@@ -29,6 +34,13 @@ public class Fan : PlacedObject
         customData = null;
         isOn = false;
         pushDirection = Vector2.zero;
+        SetColliderShape(Vector2.one, Vector2.zero);
+    }
+
+    public void SetColliderShape(Vector2 size, Vector2 offset)
+    {
+        col.size = size;
+        col.offset = offset;
     }
 
     public void Activate()

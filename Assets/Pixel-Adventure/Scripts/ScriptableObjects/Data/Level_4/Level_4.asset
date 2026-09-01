@@ -57,11 +57,11 @@ MonoBehaviour:
   - addressableKey: Fan
     position: {x: 7, y: -7.75}
     rotation: 0
-    customData: {fileID: 11400000, guid: 2c73c4170eeff8e449450bbc71833eea, type: 2}
+    customData: {fileID: 11400000, guid: e17701e22a59254428a2847977d190d4, type: 2}
   - addressableKey: Fan
     position: {x: 10, y: -6.75}
     rotation: 0
-    customData: {fileID: 11400000, guid: 2c73c4170eeff8e449450bbc71833eea, type: 2}
+    customData: {fileID: 11400000, guid: 05337b84266c76c408f02f20c19619a2, type: 2}
   - addressableKey: Fan
     position: {x: -14.75, y: 4.5}
     rotation: 270
