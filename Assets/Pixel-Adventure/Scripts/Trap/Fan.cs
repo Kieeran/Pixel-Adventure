@@ -8,6 +8,7 @@ public class Fan : PlacedObject
     private static readonly int ToggleHash = Animator.StringToHash("Toggle");
     [SerializeField] Animator animator;
     [SerializeField] Transform physic;
+    [SerializeField] ParticleSystem ps;
     [SerializeField] float pushVerticalPower;
     [SerializeField] float pushHorizontalPower;
     public BoxCollider2D col;
@@ -18,6 +19,7 @@ public class Fan : PlacedObject
     {
         animator = GetComponentInChildren<Animator>();
         col = GetComponentInChildren<BoxCollider2D>();
+        ps = GetComponentInChildren<ParticleSystem>();
     }
 
     public override void OnSpawn()
@@ -27,6 +29,7 @@ public class Fan : PlacedObject
         SetColliderShape(data.colliderSize, data.colliderOffset);
 
         physic.gameObject.SetActive(false);
+        ToggleFanParticles(false);
     }
 
     public override void OnDespawn()
@@ -47,16 +50,16 @@ public class Fan : PlacedObject
     {
         isOn = true;
         animator.SetBool(ToggleHash, isOn);
-
         physic.gameObject.SetActive(true);
+        ToggleFanParticles(true);
     }
 
     public void Deactivate()
     {
         isOn = false;
         animator.SetBool(ToggleHash, isOn);
-
         physic.gameObject.SetActive(false);
+        ToggleFanParticles(false);
     }
 
     public float GetPushPower()
@@ -70,5 +73,11 @@ public class Fan : PlacedObject
             return pushHorizontalPower;
         }
         else return -1;
+    }
+
+    void ToggleFanParticles(bool b)
+    {
+        var emission = ps.emission;
+        emission.enabled = b;
     }
 }
