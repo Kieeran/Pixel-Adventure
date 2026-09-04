@@ -8,10 +8,10 @@ public class Fan : PlacedObject
     private static readonly int ToggleHash = Animator.StringToHash("Toggle");
     [SerializeField] Animator animator;
     [SerializeField] Transform physic;
-    [SerializeField] ParticleSystem ps;
     [SerializeField] float pushVerticalPower;
     [SerializeField] float pushHorizontalPower;
     public BoxCollider2D col;
+    public ParticleSystem ps;
     public Vector2 pushDirection = Vector2.zero;
     public bool isOn;
 
@@ -27,6 +27,7 @@ public class Fan : PlacedObject
         FanGroupData data = customData as FanGroupData;
         pushDirection = data.pushDirection;
         SetColliderShape(data.colliderSize, data.colliderOffset);
+        SetParticleSystemProperties(data.minLifeTime, data.maxLifeTime, data.angle);
 
         physic.gameObject.SetActive(false);
         ToggleFanParticles(false);
@@ -44,6 +45,14 @@ public class Fan : PlacedObject
     {
         col.size = size;
         col.offset = offset;
+    }
+
+    public void SetParticleSystemProperties(float minLifeTime, float maxLifeTime, float angle)
+    {
+        var main = ps.main;
+        var shape = ps.shape;
+        main.startLifetime = new ParticleSystem.MinMaxCurve(minLifeTime, maxLifeTime);
+        shape.angle = angle;
     }
 
     public void Activate()

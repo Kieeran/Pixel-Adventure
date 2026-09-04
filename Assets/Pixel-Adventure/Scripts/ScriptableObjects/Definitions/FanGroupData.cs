@@ -9,6 +9,11 @@ public class FanGroupData : CustomData
     public Vector2 colliderOffset;
     public Vector2 colliderSize;
 
+    // Particle
+    public float minLifeTime;
+    public float maxLifeTime;
+    public float angle;
+
     public override void ApplyTo(PlacedObject target)
     {
         base.ApplyTo(target);
@@ -16,6 +21,7 @@ public class FanGroupData : CustomData
 
         fan.pushDirection = pushDirection;
         fan.SetColliderShape(colliderSize, colliderOffset);
+        fan.SetParticleSystemProperties(minLifeTime, maxLifeTime, angle);
     }
 
     public override void CaptureFrom(PlacedObject target)
@@ -24,5 +30,9 @@ public class FanGroupData : CustomData
 
         colliderOffset = fan.col.offset;
         colliderSize = fan.col.size;
+
+        minLifeTime = fan.ps.main.startLifetime.constantMin;
+        maxLifeTime = fan.ps.main.startLifetime.constantMax;
+        angle = fan.ps.shape.angle;
     }
 }
