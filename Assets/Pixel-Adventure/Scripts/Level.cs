@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,21 +29,14 @@ public class Level : MonoBehaviour
         }
     }
 
-    public void LoadLevel()
+    public void Load(Action onComplete)
     {
-        FruitManager.Instance.Spawn(levelData.placedObjectDatas);
-        // BoxesManager.Instance.Spawn(levelData.boxesData);
-        // TrapsManager.Instance.Spawn(levelData.trapsData);
+        PoolManager.Instance.Spawn(levelData.placedObjectDatas, onComplete);
     }
 
-    public void UnloadLevel()
+    public void Unload()
     {
-        for (int i = 0; i < placedObjects.Count; i++)
-        {
-            if (placedObjects[i].gameObject.activeSelf == false) continue;  // Đã return rồi nhưng vẫn còn giữ reference
-
-            placedObjects[i].UnloadObject();
-        }
+        PoolManager.Instance.Despawn(placedObjects);
         placedObjects.Clear();
     }
 }

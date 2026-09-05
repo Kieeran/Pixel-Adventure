@@ -1,6 +1,11 @@
+using System;
 using UnityEngine;
 
-public abstract class PlacedObject : MonoBehaviour
+public class PlacedObject : MonoBehaviour
 {
-    public abstract void UnloadObject();
+    public string Id { get; set; }
+    public CustomData customData;
+
+    public virtual void OnSpawn() { }
+    public virtual void OnDespawn() { }
 }

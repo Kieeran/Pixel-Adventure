@@ -28,11 +28,6 @@ public class InAirState : State
         }
     }
 
-    public override void OnFixedUpdate()
-    {
-        PlayerController.Instance.playerMovement.MoveHorizontal(PlayerController.Instance.playerInput.move.x);
-    }
-
     public override void OnEnter()
     {
         PlayerController.Instance.OnJump += OnJumpInAir;
@@ -47,6 +42,8 @@ public class InAirState : State
     {
         if (PlayerController.Instance.playerInput.isJumpInAir == false && PlayerController.Instance.playerInput.isGrounded == false)
         {
+            if (PlayerController.Instance.playerInput.isExternallyPushed) return;
+
             PlayerController.Instance.playerMovement.JumpInAir();
             PlayerController.Instance.playerInput.isJumpInAir = true;
             PlayerController.Instance.OnDoubleJump?.Invoke();

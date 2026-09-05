@@ -2333,7 +2333,7 @@ GameObject:
   - component: {fileID: -5694099202821323519}
   m_Layer: 0
   m_Name: Level_0
-  m_TagString: Terrain
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2383,7 +2383,7 @@ GameObject:
   - component: {fileID: 3567320804265138075}
   m_Layer: 0
   m_Name: Terrain
-  m_TagString: Terrain
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5035,7 +5035,7 @@ GameObject:
   - component: {fileID: 3566138699549847711}
   m_Layer: 0
   m_Name: BG_Tilemap
-  m_TagString: Terrain
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56106,7 +56106,7 @@ GameObject:
   - component: {fileID: 6591423361315190798}
   m_Layer: 0
   m_Name: BackGround
-  m_TagString: Terrain
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -22,11 +22,6 @@ public class WalkState : State
         }
     }
 
-    public override void OnFixedUpdate()
-    {
-        PlayerController.Instance.playerMovement.MoveHorizontal(PlayerController.Instance.playerInput.move.x);
-    }
-
     public override void OnEnter()
     {
         PlayerController.Instance.OnJump += OnJump;

@@ -1,0 +1,61 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef154ea2918c6640ba814bdf24589aa, type: 3}
+  m_Name: Level_2
+  m_EditorClassIdentifier: 
+  levelID: 2
+  placedObjectDatas:
+  - addressableKey: Apple
+    position: {x: 2, y: -2.5}
+  - addressableKey: Apple
+    position: {x: 2, y: -0.5}
+  - addressableKey: Apple
+    position: {x: 2, y: 1.5}
+  - addressableKey: Apple
+    position: {x: 5.75, y: 3}
+  - addressableKey: Apple
+    position: {x: 7.75, y: 3}
+  - addressableKey: Apple
+    position: {x: 9.75, y: 3}
+  - addressableKey: Apple
+    position: {x: 6.75, y: 4.5}
+  - addressableKey: Apple
+    position: {x: 8.75, y: 4.5}
+  - addressableKey: Bananas
+    position: {x: -7, y: -6}
+  - addressableKey: Bananas
+    position: {x: -7, y: -4}
+  - addressableKey: Bananas
+    position: {x: -6, y: -2}
+  - addressableKey: Bananas
+    position: {x: -8, y: -2}
+  - addressableKey: Bananas
+    position: {x: -10, y: -2}
+  - addressableKey: Bananas
+    position: {x: -4, y: -2}
+  - addressableKey: Bananas
+    position: {x: -9, y: 0}
+  - addressableKey: Bananas
+    position: {x: -5, y: 0}
+  - addressableKey: Bananas
+    position: {x: -7, y: 0}
+  - addressableKey: Bananas
+    position: {x: -6, y: 2}
+  - addressableKey: Bananas
+    position: {x: -8, y: 2}
+  - addressableKey: Bananas
+    position: {x: -7, y: 4}
+  - addressableKey: Trampoline
+    position: {x: -7, y: -7.12}
+  - addressableKey: Trampoline
+    position: {x: 2, y: -5.12}
+  playerStartPosition: {x: -13.75, y: -4, z: 0}

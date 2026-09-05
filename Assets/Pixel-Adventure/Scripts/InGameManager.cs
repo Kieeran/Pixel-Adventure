@@ -5,20 +5,17 @@ using UnityEngine;
 
 public class InGameManager : MonoBehaviour
 {
-    #region Singleton
-
-    public static InGameManager _instance;
-    public static InGameManager Instance => _instance;
+    public static InGameManager Instance { get; private set; }
 
     private void Awake()
     {
-        if (_instance != null)
-            Destroy(_instance);
-        else
-            _instance = this;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
     }
-
-    #endregion Singleton
 
     private int currentLevel;
     public GameData gameData;

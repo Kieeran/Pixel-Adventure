@@ -10,8 +10,9 @@ TagManager:
   - Box
   - Trap
   - Terrain
-  - abc
   - PlacedObjectsHolder
+  - Character
+  - Block
   layers:
   - Default
   - TransparentFX
@@ -19,12 +20,12 @@ TagManager:
   - Player
   - Water
   - UI
-  - Fruit
+  - 
   - Box
-  - 
-  - 
-  - 
-  - 
+  - Break
+  - Fruit-TerrainAndBox
+  - Fruit-Other
+  - BlockBreak
   - 
   - 
   - 

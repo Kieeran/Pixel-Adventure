@@ -25,6 +25,12 @@ public class SlideOnWallState : State
 
     public override void OnFixedUpdate()
     {
+        if (PlayerController.Instance.playerInput.isExternallyPushed)
+        {
+            PlayerController.Instance.playerInput.isOnWall = false;
+            return;
+        }
+
         if (isBounceWall)
         {
             if (!PlayerController.Instance.playerInput.IsMovingHorizontal())

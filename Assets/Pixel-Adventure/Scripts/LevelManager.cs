@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,20 +15,23 @@ public class LevelManager : MonoBehaviour
     public PlayerController _prefabCharacter;
     private PlayerController player;
 
+    public event Action CurrentLevelLoaded;
+
     public void SetIsReadyToLoad()
     {
         LoadLevel();
     }
 
-    public static LevelManager _instance;
-    public static LevelManager Instance => _instance;
+    public static LevelManager Instance { get; private set; }
 
     private void Awake()
     {
-        if (_instance != null)
-            Destroy(_instance);
-        else
-            _instance = this;
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
 
         SetupLevels();
     }
@@ -46,8 +50,9 @@ public class LevelManager : MonoBehaviour
         InGameManager.Instance.OnFruitPoolsReady += () =>
         {
             Debug.Log("Start to load level");
+            player = Instantiate(_prefabCharacter);
+
             LoadLevel();
-            player = Instantiate(_prefabCharacter, currentLevel.levelData.playerStartPosition, Quaternion.identity);
         };
     }
 
@@ -55,12 +60,17 @@ public class LevelManager : MonoBehaviour
     {
         if (currentLevel != null)
         {
-            currentLevel.UnloadLevel();
+            currentLevel.Unload();
             Destroy(currentLevel.gameObject);
         }
 
         currentLevelID = InGameManager.Instance.GetCurrentLevel();
         currentLevel = Instantiate(levels[currentLevelID]);
-        currentLevel.LoadLevel();
+
+        player.transform.SetPositionAndRotation(currentLevel.levelData.playerStartPosition, Quaternion.identity);
+        currentLevel.Load(() =>
+        {
+            CurrentLevelLoaded?.Invoke();
+        });
     }
 }
