@@ -16,3 +16,6 @@ MonoBehaviour:
   pushDirection: {x: 1, y: 0}
   colliderOffset: {x: 0, y: 12.74802}
   colliderSize: {x: 4, y: 26.0184}
+  minLifeTime: 1.4
+  maxLifeTime: 2.4
+  angle: 1.5

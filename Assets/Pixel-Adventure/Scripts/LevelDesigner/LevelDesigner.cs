@@ -29,7 +29,11 @@ public class LevelDesigner : MonoBehaviour
                 if (tf.TryGetComponent<PlacedObject>(out var placedObject))
                 {
                     data = placedObject.customData;                         // Lấy các data dạng điền thông tin vào so
-                    if (data != null) data.CaptureFrom(placedObject);       // Lấy các data dạng trích xuất từ các component của obj (nếu có)
+                    if (data != null)
+                    {
+                        data.CaptureFrom(placedObject);                     // Lấy các data dạng trích xuất từ các component của obj (nếu có)
+                        EditorUtility.SetDirty(data);
+                    }
                 }
                 level.levelData.placedObjectDatas.Add(new PlacedObjectData
                 {
