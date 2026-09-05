@@ -39,7 +39,7 @@ public class PoolManager : MonoBehaviour
             InitContainers();
             InitPools();
 
-            InGameManager.Instance.OnFruitPoolsReady?.Invoke();
+            InGameManager.Instance.OnPoolsReady?.Invoke();
         });
     }
 

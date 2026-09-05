@@ -1419,12 +1419,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevelID: 0
   currentLevel: {fileID: 0}
-  _preFabLevels:
-  - {fileID: 5156715897468646508, guid: 2f6274f150dd624448bd58b8a725f9c6, type: 3}
-  - {fileID: 3231330731347571125, guid: 527276e5cd9c46845b5a33b30acf2156, type: 3}
-  - {fileID: 3092360074472290994, guid: d84194041cb2a864692ba8c27718076a, type: 3}
-  - {fileID: 5566444141636299323, guid: 86a784ed30ceee04299504779b110362, type: 3}
-  - {fileID: 7151082937277904510, guid: 3a9a6b35fc71bf249825b4855739f06d, type: 3}
+  _preFabLevels: []
   _prefabCharacter: {fileID: 95255012435249809, guid: 404be6036aec4fc4f9833ae055280885, type: 3}
 --- !u!4 &1524922657
 Transform:

@@ -22,10 +22,35 @@ public class InGameManager : MonoBehaviour
     public int GetCurrentLevel() { return currentLevel; }
     public void SetCurrentLevel(int i) { currentLevel = i; }
 
-    public Action OnFruitPoolsReady;
+    // Dơ: sẽ quay lại refactor khi hoàn thành full levels
+    public Action OnGameReady;
+    public Action OnPoolsReady;
+    public Action OnLevelsReady;
+    bool assetsLoaded = false;
+    bool levelsLoaded = false;
 
-    private void Start()
+    void Start()
     {
         currentLevel = gameData.currentLevel;
+
+        OnPoolsReady += () =>
+        {
+            assetsLoaded = true;
+            CheckGameReady();
+        };
+
+        OnLevelsReady += () =>
+        {
+            levelsLoaded = true;
+            CheckGameReady();
+        };
+    }
+
+    void CheckGameReady()
+    {
+        if (assetsLoaded && levelsLoaded)
+        {
+            OnGameReady?.Invoke();
+        }
     }
 }

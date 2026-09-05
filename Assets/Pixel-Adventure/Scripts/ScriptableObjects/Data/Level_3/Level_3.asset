@@ -274,4 +274,4 @@ MonoBehaviour:
     position: {x: 13.5, y: -1}
     rotation: 0
     customData: {fileID: 0}
-  playerStartPosition: {x: -9, y: -4.9, z: 0}
+  playerStartPosition: {x: -9, y: -4.85, z: 0}

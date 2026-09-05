@@ -40,11 +40,11 @@ public class UIManager : MonoBehaviour
         nextButton.onClick.AddListener(() =>
         {
             int currentLevel = InGameManager.Instance.GetCurrentLevel() + 1;
-            if (currentLevel >= LevelManager.Instance._preFabLevels.Count) return;
+            if (currentLevel >= LevelManager.Instance.preFabLevels.Count) return;
 
             InGameManager.Instance.SetCurrentLevel(currentLevel);
 
-            if (currentLevel == LevelManager.Instance._preFabLevels.Count - 1)
+            if (currentLevel == LevelManager.Instance.preFabLevels.Count - 1)
             {
                 nextButton.gameObject.SetActive(false);
             }

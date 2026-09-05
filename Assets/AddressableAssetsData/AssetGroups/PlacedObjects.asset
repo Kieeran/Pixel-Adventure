@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Default Local Group
+  m_Name: PlacedObjects
   m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
-  m_GroupName: Default Local Group
+  m_GroupName: PlacedObjects
   m_GUID: a0d209a4cdaf4a549a96c4a44c8d5b39
   m_SerializeEntries:
   - m_GUID: 3bd8e73d7bdeb0f46b431a1a83de8818
