@@ -15,55 +15,55 @@ MonoBehaviour:
   levelID: 4
   placedObjectDatas:
   - addressableKey: Cherry
-    position: {x: 4, y: -0.5}
+    position: {x: 5, y: -0.5}
     rotation: 0
     customData: {fileID: 0}
   - addressableKey: Cherry
-    position: {x: 4, y: -2.5}
+    position: {x: 5, y: -2.5}
     rotation: 0
     customData: {fileID: 0}
   - addressableKey: Cherry
-    position: {x: 12, y: 4}
+    position: {x: 13, y: 4}
     rotation: 0
     customData: {fileID: 0}
   - addressableKey: Pineapple
-    position: {x: -4.5, y: -1}
+    position: {x: -3.5, y: -1}
     rotation: 0
     customData: {fileID: 0}
   - addressableKey: Pineapple
-    position: {x: -5.75, y: -2.75}
+    position: {x: -4.75, y: -2.75}
     rotation: 0
     customData: {fileID: 0}
   - addressableKey: Pineapple
-    position: {x: -3.25, y: -2.75}
+    position: {x: -2.25, y: -2.75}
     rotation: 0
     customData: {fileID: 0}
   - addressableKey: Pineapple
-    position: {x: -7, y: -4.75}
+    position: {x: -6, y: -4.75}
     rotation: 0
     customData: {fileID: 0}
   - addressableKey: Pineapple
-    position: {x: -4.5, y: -4.75}
+    position: {x: -3.5, y: -4.75}
     rotation: 0
     customData: {fileID: 0}
   - addressableKey: Pineapple
-    position: {x: -2, y: -4.75}
+    position: {x: -1, y: -4.75}
     rotation: 0
     customData: {fileID: 0}
   - addressableKey: Fan
-    position: {x: -11, y: -7.75}
+    position: {x: -10, y: -7.75}
     rotation: 0
     customData: {fileID: 11400000, guid: 2c73c4170eeff8e449450bbc71833eea, type: 2}
   - addressableKey: Fan
-    position: {x: 7, y: -7.75}
+    position: {x: 8, y: -7.75}
     rotation: 0
     customData: {fileID: 11400000, guid: e17701e22a59254428a2847977d190d4, type: 2}
   - addressableKey: Fan
-    position: {x: 10, y: -6.75}
+    position: {x: 11, y: -6.75}
     rotation: 0
     customData: {fileID: 11400000, guid: 05337b84266c76c408f02f20c19619a2, type: 2}
   - addressableKey: Fan
-    position: {x: -14.75, y: 4.5}
+    position: {x: -13.75, y: 4.5}
     rotation: 270
     customData: {fileID: 11400000, guid: fed7d85e2b4fa3f46885f5a5fb53a97e, type: 2}
-  playerStartPosition: {x: 4, y: -5.95, z: 0}
+  playerStartPosition: {x: 5, y: -5.95, z: 0}

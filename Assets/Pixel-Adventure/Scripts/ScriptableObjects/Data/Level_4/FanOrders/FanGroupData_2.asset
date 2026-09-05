@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FanGroupData
   groupId: Group_0
   pushDirection: {x: 0, y: 1}
-  colliderOffset: {x: -0.14904213, y: 6.4131656}
-  colliderSize: {x: 2.2909527, y: 13.348693}
+  colliderOffset: {x: -0.25907612, y: 6.4131656}
+  colliderSize: {x: 2.0708847, y: 13.348693}
   minLifeTime: 0.5
   maxLifeTime: 1.5
   angle: 2
