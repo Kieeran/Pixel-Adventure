@@ -87,6 +87,8 @@ public class Breaks : MonoBehaviour
 
     void Explode(SingleBreak breakPiece)
     {
+        breakPiece.rb.linearVelocity = Vector2.zero;
+
         Vector2 dir = ((Vector2)breakPiece.transform.localPosition - centerPoint).normalized;
         breakPiece.rb.AddForce(dir * explosionForce, ForceMode2D.Impulse);
         breakPiece.rb.AddTorque(UnityEngine.Random.Range(-5f, 5f));
