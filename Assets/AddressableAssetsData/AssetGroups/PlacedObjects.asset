@@ -81,6 +81,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Fruit
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cbf0088ad83d58f478500c2ddcdde346
+    m_Address: Arrow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: ee70dbb42474efd47abe51a1b1c0c226
     m_Address: Pineapple
     m_ReadOnly: 0
