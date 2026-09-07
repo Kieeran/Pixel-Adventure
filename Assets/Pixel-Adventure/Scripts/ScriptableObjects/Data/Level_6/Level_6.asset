@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef154ea2918c6640ba814bdf24589aa, type: 3}
+  m_Name: Level_6
+  m_EditorClassIdentifier: Assembly-CSharp::LevelData
+  levelID: 6
+  placedObjectDatas:
+  - addressableKey: Apple
+    position: {x: -12.5, y: 3.8}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Apple
+    position: {x: -11, y: 3.8}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Apple
+    position: {x: -9.5, y: 3.8}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Apple
+    position: {x: -10.25, y: 4.9700003}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Apple
+    position: {x: -11.75, y: 4.9700003}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -9.75, y: -5.25}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -7.75, y: -7}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -7.75, y: -5.25}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -7.75, y: -3.57}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -5.75, y: -7}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -5.75, y: -5.25}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -3.75, y: -7}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -9.75, y: -3.57}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -9.75, y: -1.82}
+    rotation: 0
+    customData: {fileID: 0}
+  playerStartPosition: {x: 11.5, y: -5.8, z: 0}
