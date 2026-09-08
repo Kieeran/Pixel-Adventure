@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlacedObject : MonoBehaviour
 {
     public string Id { get; set; }
-    [HideInInspector] public CustomData customData;
+    public CustomData customData;
 
     public virtual void OnSpawn() { }
     public virtual void OnDespawn() { }

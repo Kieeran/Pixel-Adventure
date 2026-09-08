@@ -14,6 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelID: 6
   placedObjectDatas:
+  - addressableKey: Platform
+    position: {x: 12, y: -4.5}
+    rotation: 0
+    customData: {fileID: 11400000, guid: a8314be7af19ad34baa8d084539c3e08, type: 2}
+  - addressableKey: Platform
+    position: {x: 3.25, y: -6}
+    rotation: 0
+    customData: {fileID: 11400000, guid: 99f32dc0d450e964199a702884ceb376, type: 2}
+  - addressableKey: Platform
+    position: {x: -6.5, y: 2.66}
+    rotation: 0
+    customData: {fileID: 11400000, guid: fa05759a0d477944a95a798acd37e310, type: 2}
   - addressableKey: Apple
     position: {x: -12.5, y: 3.8}
     rotation: 0
