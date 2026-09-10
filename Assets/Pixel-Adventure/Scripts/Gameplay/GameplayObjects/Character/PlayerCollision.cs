@@ -11,8 +11,23 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("Box") || collision.gameObject.CompareTag("Block"))
+        if (collision.gameObject.CompareTag("Terrain") ||
+            collision.gameObject.CompareTag("Box") ||
+            collision.gameObject.CompareTag("Block") ||
+            collision.gameObject.CompareTag("OneWayPlatform")
+        )
         {
+            // Nếu va chạm với OneWayPlatform mà đang bị overlapped
+            // => Hầu hết bỏ qua các logic tính toán đặc biệt phía dưới, maybe =))
+            if (collision.gameObject.CompareTag("OneWayPlatform"))
+            {
+                ColliderDistance2D d = Physics2D.Distance(collision.collider, collision.otherCollider);
+                if (d.distance < -0.01)
+                {
+                    return;
+                }
+            }
+
             int count = 0;
             for (int i = 0; i < collision.contactCount; i++)
             {
@@ -21,7 +36,7 @@ public class PlayerCollision : MonoBehaviour
                 if (contact.normal.x > 0) PlayerController.Instance.playerInput.isContactLeftWall = true;
                 else if (contact.normal.x < 0) PlayerController.Instance.playerInput.isContactLeftWall = false;
 
-                // Nếu contact.normal.y > 0.7f thì character chắn chắn đang đứng ở mặt đất
+                // Nếu contact.normal.y > 0.7f => va chạm từ trên xuống => character chắn chắn đang đứng ở mặt đất
                 // Set isGrounded = true
                 // Set isOnWall = false
                 // Set isJumpInAir = false (reset)
@@ -33,7 +48,7 @@ public class PlayerCollision : MonoBehaviour
                     break;
                 }
 
-                // Chạm trần => không làm gì cả
+                // Va chạm từ dưới lên => chạm trần => không làm gì cả
                 if (contact.normal.y < -0.7f) break;
 
                 count++;
@@ -61,7 +76,11 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Terrain") || collision.gameObject.CompareTag("Box") || collision.gameObject.CompareTag("Block"))
+        if (collision.gameObject.CompareTag("Terrain") ||
+            collision.gameObject.CompareTag("Box") ||
+            collision.gameObject.CompareTag("Block") ||
+            collision.gameObject.CompareTag("OneWayPlatform")
+        )
         {
             PlayerController.Instance.playerInput.isGrounded = false;
             PlayerController.Instance.playerInput.isOnWall = false;

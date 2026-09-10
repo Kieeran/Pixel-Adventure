@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 4572564840461944199}
   m_Layer: 0
   m_Name: 1WayPlatform
-  m_TagString: Terrain
+  m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -510,7 +510,7 @@ BoxCollider2D:
   m_UsedByEffector: 1
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -9.005015, y: 1.8425511}
+  m_Offset: {x: -8.98, y: 1.8233373}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -520,7 +520,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.0534492, y: 0.39159656}
+  m_Size: {x: 2.0349941, y: 0.35332465}
   m_EdgeRadius: 0
 --- !u!251 &4572564840461944199
 PlatformEffector2D:
@@ -7968,7 +7968,7 @@ PrefabInstance:
     - target: {fileID: 7046525275698728557, guid: 1f49deb13823c614087ac86321e043cb, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[16].m_Data
       value: 
-      objectReference: {fileID: 1034891850837087948, guid: fc584d329b77b9545b9c9c8bb829e553, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 7046525275698728557, guid: 1f49deb13823c614087ac86321e043cb, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[17].m_Data
       value: 
@@ -7976,7 +7976,7 @@ PrefabInstance:
     - target: {fileID: 7046525275698728557, guid: 1f49deb13823c614087ac86321e043cb, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[18].m_Data
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1034891850837087948, guid: fc584d329b77b9545b9c9c8bb829e553, type: 3}
     - target: {fileID: 7046525275698728557, guid: 1f49deb13823c614087ac86321e043cb, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[19].m_Data
       value: 
@@ -10939,7 +10939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7046525275698728557, guid: 1f49deb13823c614087ac86321e043cb, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[16].m_RefCount
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7046525275698728557, guid: 1f49deb13823c614087ac86321e043cb, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[17].m_RefCount
@@ -10947,7 +10947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7046525275698728557, guid: 1f49deb13823c614087ac86321e043cb, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[18].m_RefCount
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7046525275698728557, guid: 1f49deb13823c614087ac86321e043cb, type: 3}
       propertyPath: m_TileSpriteArray.Array.data[19].m_RefCount
@@ -15195,7 +15195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7046525275698728557, guid: 1f49deb13823c614087ac86321e043cb, type: 3}
       propertyPath: m_Tiles.Array.data[379].second.m_TileSpriteIndex
-      value: 16
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 7046525275698728557, guid: 1f49deb13823c614087ac86321e043cb, type: 3}
       propertyPath: m_Tiles.Array.data[380].second.m_TileSpriteIndex
