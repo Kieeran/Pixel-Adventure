@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 9058889882039708624}
   m_Layer: 0
   m_Name: Physic
-  m_TagString: Untagged
+  m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -370,9 +370,10 @@ GameObject:
   - component: {fileID: 4885020910905749941}
   - component: {fileID: 590033682162362090}
   - component: {fileID: 2808166825245042403}
+  - component: {fileID: 2468571626601073532}
   m_Layer: 0
   m_Name: Platform
-  m_TagString: Untagged
+  m_TagString: OneWayPlatform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -434,5 +435,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Platform
   customData: {fileID: 0}
+  animator: {fileID: 0}
   brownSkin: {fileID: 7680990742095930811}
   greySkin: {fileID: 491763575660584495}
+  waypoints: []
+  moveSpeed: 2
+  waitTime: 1
+--- !u!114 &2468571626601073532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7575742391662431337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 092b31a5d817fa945990d975d071ee3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlatformCollision

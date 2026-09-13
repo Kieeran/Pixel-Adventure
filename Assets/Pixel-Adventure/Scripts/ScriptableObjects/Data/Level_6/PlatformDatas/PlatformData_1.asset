@@ -12,4 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7244eff93d95e434497919a0bbaf7fb4, type: 3}
   m_Name: PlatformData_1
   m_EditorClassIdentifier: Assembly-CSharp::PlatformData
+  waypoints:
+  - {x: 3.25, y: -6}
+  - {x: 3.25, y: 0.4499998}
   isBrownPlatform: 1
