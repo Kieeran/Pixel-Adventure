@@ -59,11 +59,15 @@ public class Platform : PlacedObject
         brownSkin.gameObject.SetActive(true);
         greySkin.gameObject.SetActive(true);
         waypoints.Clear();
-        waitTimer = 0f;
-
         isMoving = false;
+        currentWaypointIndex = 0;
+        direction = 1;
+        targetPosition = Vector2.zero;
+        moveDirection = Vector2.zero;
+        waitTimer = 0f;
         enableCollision = true;
         hasPendingCollisionEvent = false;
+        pendingCollisionValue = false;
         CancelInvoke();
     }
 
