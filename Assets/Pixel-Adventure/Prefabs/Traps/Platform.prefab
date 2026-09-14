@@ -436,10 +436,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Platform
   customData: {fileID: 0}
   animator: {fileID: 0}
+  platformCollision: {fileID: 2468571626601073532}
+  rb: {fileID: 590033682162362090}
+  controlledByPlayer: 0
   brownSkin: {fileID: 7680990742095930811}
   greySkin: {fileID: 491763575660584495}
   waypoints: []
-  moveSpeed: 2
+  moveSpeed: 2.5
   waitTime: 1
 --- !u!114 &2468571626601073532
 MonoBehaviour:

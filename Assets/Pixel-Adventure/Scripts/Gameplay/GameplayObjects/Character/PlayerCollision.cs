@@ -22,7 +22,7 @@ public class PlayerCollision : MonoBehaviour
             if (collision.gameObject.CompareTag("OneWayPlatform"))
             {
                 ColliderDistance2D d = Physics2D.Distance(collision.collider, collision.otherCollider);
-                if (d.distance < -0.01)
+                if (d.distance < -0.05f)
                 {
                     return;
                 }
