@@ -35,9 +35,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (externalPush.x != 0)
         {
-            v.x = externalPush.x * move.x * moveSpeed >= 0        // External push cùng chiều player di chuyển
-                ? externalPush.x + move.x * moveSpeed
-                : externalPush.x;
+            v.x = externalPush.x + move.x * moveSpeed;
         }
 
         if (externalPush.y != 0)

@@ -14,6 +14,7 @@ public class Platform : PlacedObject
     public float moveSpeed = 1f;
     public float waitTime = 1f;
 
+    private bool isCarryingPlayer;
     private bool isMoving;
     private int currentWaypointIndex;
     private int direction;
@@ -56,9 +57,15 @@ public class Platform : PlacedObject
     {
         platformCollision.OnCharacterCollided -= OnCharacterCollided;
 
+        if (isCarryingPlayer && isMoving)
+        {
+            PlayerController.Instance.playerMovement.ClearExternalPush();
+        }
+
         brownSkin.gameObject.SetActive(true);
         greySkin.gameObject.SetActive(true);
         waypoints.Clear();
+        isCarryingPlayer = false;
         isMoving = false;
         currentWaypointIndex = 0;
         direction = 1;
@@ -81,6 +88,19 @@ public class Platform : PlacedObject
             HandleAutomaticPlatform();
 
         rb.linearVelocity = moveDirection * moveSpeed;
+
+        if (isCarryingPlayer)
+        {
+            if (isMoving)
+            {
+                PlayerController.Instance.playerMovement.SetExternalPush((moveDirection * Vector2.right).normalized, moveSpeed);
+            }
+            else
+            {
+                // Chổ này clear external push do platform dừng lại
+                PlayerController.Instance.playerMovement.ClearExternalPush();
+            }
+        }
     }
 
     void HandleManualPlatform()
@@ -200,6 +220,15 @@ public class Platform : PlacedObject
 
     void OnCharacterCollided(bool isCharacterCollided)
     {
+        // Nếu player nhảy lên trên platform -> isCharacterCollided = true -> platform carry player
+        // Nếu player rời khỏi platform -> isCharacterCollided = false -> platform không carry player
+        isCarryingPlayer = isCharacterCollided;
+        if (!isCarryingPlayer)
+        {
+            // Chổ này clear external push do player rời khỏi platform -> không nhận lực đẩy khi platform carry nữa
+            PlayerController.Instance.playerMovement.ClearExternalPush();
+        }
+
         if (!controlledByPlayer) return;
 
         // Ghi lại sự kiện mới nhất khi đang delay collision
