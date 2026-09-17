@@ -8,6 +8,7 @@ public class Platform : PlacedObject
     [SerializeField] PlatformCollision platformCollision;
     [SerializeField] Rigidbody2D rb;
     [SerializeField] bool controlledByPlayer;
+    public Chains chains;
     public Transform brownSkin;
     public Transform greySkin;
     public List<Vector2> waypoints;
@@ -42,6 +43,11 @@ public class Platform : PlacedObject
         controlledByPlayer = isBrownPlatform;
     }
 
+    public void SetChainsProperties(List<Vector2> chainWaypoints, Vector2 rootPos, float spacing)
+    {
+        chains.SetProperties(chainWaypoints, rootPos, spacing);
+    }
+
     public override void OnSpawn()
     {
         platformCollision.OnCharacterCollided += OnCharacterCollided;
@@ -49,13 +55,26 @@ public class Platform : PlacedObject
         PlatformData data = customData as PlatformData;
         SetPlatformSkin(data.isBrownPlatform);
         waypoints = new List<Vector2>(data.waypoints);
+        SetChainsProperties(data.chainWaypoints, data.rootPos, data.spacing);
+        chains.Render();
+
+        // Chổ này khá dơ, sẽ quay lại sửa sau 
+        // Thay vì đợi loading các manager, pool khởi tạo, ta đợi luôn LevelManager load level trước khi khởi động các object trên level
+        Invoke(nameof(WaitOneSec), 0.1f);
 
         InitWaypointMovement();
+    }
+
+    void WaitOneSec()
+    {
+        chains.transform.SetParent(transform.parent, true);
     }
 
     public override void OnDespawn()
     {
         platformCollision.OnCharacterCollided -= OnCharacterCollided;
+
+        chains.transform.SetParent(transform);
 
         if (isCarryingPlayer && isMoving)
         {

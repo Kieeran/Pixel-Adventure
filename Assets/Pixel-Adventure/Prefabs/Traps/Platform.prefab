@@ -80,7 +80,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 2cebb83e3d9b5b247be3eb722143beb7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -292,7 +292,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 19602dbd991e72f4c8df688afa341f3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -392,6 +392,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4466934761508878044}
+  - {fileID: 1942269564841500225}
   - {fileID: 5533158216784852193}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -439,6 +440,7 @@ MonoBehaviour:
   platformCollision: {fileID: 2468571626601073532}
   rb: {fileID: 590033682162362090}
   controlledByPlayer: 0
+  chains: {fileID: 4051042554504400021}
   brownSkin: {fileID: 7680990742095930811}
   greySkin: {fileID: 491763575660584495}
   waypoints: []
@@ -456,3 +458,80 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 092b31a5d817fa945990d975d071ee3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlatformCollision
+--- !u!1001 &4356607101957976364
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 4885020910905749941}
+    m_Modifications:
+    - target: {fileID: 310175180253035961, guid: bf7675322527a2e45a20e7526c782651, type: 3}
+      propertyPath: waypoints.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774662618383134573, guid: bf7675322527a2e45a20e7526c782651, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774662618383134573, guid: bf7675322527a2e45a20e7526c782651, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774662618383134573, guid: bf7675322527a2e45a20e7526c782651, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774662618383134573, guid: bf7675322527a2e45a20e7526c782651, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774662618383134573, guid: bf7675322527a2e45a20e7526c782651, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774662618383134573, guid: bf7675322527a2e45a20e7526c782651, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774662618383134573, guid: bf7675322527a2e45a20e7526c782651, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774662618383134573, guid: bf7675322527a2e45a20e7526c782651, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774662618383134573, guid: bf7675322527a2e45a20e7526c782651, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774662618383134573, guid: bf7675322527a2e45a20e7526c782651, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4774367378233170590, guid: bf7675322527a2e45a20e7526c782651, type: 3}
+      propertyPath: m_Name
+      value: Chains
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bf7675322527a2e45a20e7526c782651, type: 3}
+--- !u!4 &1942269564841500225 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2774662618383134573, guid: bf7675322527a2e45a20e7526c782651, type: 3}
+  m_PrefabInstance: {fileID: 4356607101957976364}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4051042554504400021 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 310175180253035961, guid: bf7675322527a2e45a20e7526c782651, type: 3}
+  m_PrefabInstance: {fileID: 4356607101957976364}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5834991dd5d784d9c664240ffd5714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chains

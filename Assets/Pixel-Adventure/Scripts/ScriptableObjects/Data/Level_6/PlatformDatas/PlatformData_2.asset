@@ -16,3 +16,8 @@ MonoBehaviour:
   - {x: -6.5, y: 2.66}
   - {x: 3.5, y: 2.66}
   isBrownPlatform: 0
+  chainWaypoints:
+  - {x: 0, y: 0}
+  - {x: 10, y: 0}
+  rootPos: {x: 0, y: 0}
+  spacing: 0.5

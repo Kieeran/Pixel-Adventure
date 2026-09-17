@@ -14,5 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlatformData
   waypoints:
   - {x: 12, y: -4.5}
-  - {x: 12, y: 2.75}
+  - {x: 12, y: 3}
   isBrownPlatform: 1
+  chainWaypoints:
+  - {x: 0, y: 0}
+  - {x: 0, y: 6.5}
+  rootPos: {x: 0, y: 0.5}
+  spacing: 0.5

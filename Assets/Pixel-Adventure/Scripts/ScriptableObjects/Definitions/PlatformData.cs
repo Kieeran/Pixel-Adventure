@@ -7,12 +7,18 @@ public class PlatformData : CustomData
     public List<Vector2> waypoints;
     public bool isBrownPlatform;
 
+    // Chains properties
+    public List<Vector2> chainWaypoints;
+    public Vector2 rootPos;
+    public float spacing;
+
     public override void ApplyTo(PlacedObject target)
     {
         base.ApplyTo(target);
         if (target is not Platform platform) return;
 
         platform.SetPlatformSkin(isBrownPlatform);
+        platform.SetChainsProperties(chainWaypoints, rootPos, spacing);
 
         foreach (var wp in waypoints)
         {
@@ -49,5 +55,10 @@ public class PlatformData : CustomData
                 ));
             }
         }
+
+        chainWaypoints.Clear();
+        chainWaypoints = new List<Vector2>(platform.chains.waypoints);
+        rootPos = platform.chains.rootPos;
+        spacing = platform.chains.spacing;
     }
 }
