@@ -66,4 +66,20 @@ MonoBehaviour:
     position: {x: 3.232, y: 4}
     rotation: 0
     customData: {fileID: 0}
+  - addressableKey: FallingPlatform
+    position: {x: -5.5, y: -1.5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: FallingPlatform
+    position: {x: 4.63, y: -1.75}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: FallingPlatform
+    position: {x: -2.05, y: -2.4}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: FallingPlatform
+    position: {x: 1.14, y: -1.04}
+    rotation: 0
+    customData: {fileID: 0}
   playerStartPosition: {x: -13, y: -0.5, z: 0}

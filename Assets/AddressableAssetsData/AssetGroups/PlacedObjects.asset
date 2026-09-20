@@ -33,6 +33,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Trap
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a4d477fac2ce774c870e567a47b0551
+    m_Address: FallingPlatform
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4db8fcce5e89a2e42bf846ae5a2b2133
     m_Address: Trampoline
     m_ReadOnly: 0
