@@ -1,16 +1,18 @@
+using System;
 using UnityEngine;
 
 public class FallingPlatformCollision : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public event Action OnCharacterCollided;
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.gameObject.CompareTag("Character"))
+        {
+            ContactPoint2D contact = collision.GetContact(0);
+            if (contact.normal.y < -0.7f)
+            {
+                OnCharacterCollided?.Invoke();
+            }
+        }
     }
 }
