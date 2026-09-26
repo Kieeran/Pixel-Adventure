@@ -13,5 +13,65 @@ MonoBehaviour:
   m_Name: Level_8
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelID: 8
-  placedObjectDatas: []
+  placedObjectDatas:
+  - addressableKey: Apple
+    position: {x: -13.25, y: 0.25}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Apple
+    position: {x: -11.75, y: 0.25}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Apple
+    position: {x: -3.5, y: 0.25}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Apple
+    position: {x: -5.5, y: 0.25}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Apple
+    position: {x: -4.5, y: 1.25}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Apple
+    position: {x: 7, y: -6}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Apple
+    position: {x: 7, y: -4.5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Bananas
+    position: {x: 0, y: 0.25}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Bananas
+    position: {x: 1, y: 2}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Bananas
+    position: {x: 5, y: 2}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Bananas
+    position: {x: 6, y: 0.25}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Bananas
+    position: {x: 3, y: 3}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Bananas
+    position: {x: 11.75, y: 2.5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Bananas
+    position: {x: 13.25, y: 2.5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Bananas
+    position: {x: 12.5, y: 3.75}
+    rotation: 0
+    customData: {fileID: 0}
   playerStartPosition: {x: -13, y: -4.8, z: 0}
