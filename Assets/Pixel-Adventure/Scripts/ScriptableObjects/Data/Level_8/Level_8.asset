@@ -74,4 +74,32 @@ MonoBehaviour:
     position: {x: 12.5, y: 3.75}
     rotation: 0
     customData: {fileID: 0}
+  - addressableKey: Spikes
+    position: {x: -7.5, y: -5.5}
+    rotation: 0
+    customData: {fileID: 11400000, guid: e5965d4219d07564ca9168da31e357de, type: 2}
+  - addressableKey: Spikes
+    position: {x: -11.5, y: -2.5}
+    rotation: 180
+    customData: {fileID: 11400000, guid: 3253078db315abb40b8a62000c52ceb7, type: 2}
+  - addressableKey: Spikes
+    position: {x: -12.5, y: 3.5}
+    rotation: 180
+    customData: {fileID: 11400000, guid: c98c049959d958544bad3595fc346e65, type: 2}
+  - addressableKey: Spikes
+    position: {x: -7.5, y: -0.5}
+    rotation: 0
+    customData: {fileID: 11400000, guid: fead560952a44e447bb229fd1a3fdb7c, type: 2}
+  - addressableKey: Spikes
+    position: {x: 5.5, y: 4.5}
+    rotation: 180
+    customData: {fileID: 11400000, guid: 1273674d8965da04e9a5e8ad0b997a96, type: 2}
+  - addressableKey: Spikes
+    position: {x: 2.5, y: -0.5}
+    rotation: 0
+    customData: {fileID: 11400000, guid: 68522845f8fba74429bd38aefe0e6284, type: 2}
+  - addressableKey: Spikes
+    position: {x: 10.5, y: -5.5}
+    rotation: 90
+    customData: {fileID: 11400000, guid: 32e73f0586daadc4fa76c0b894dc8757, type: 2}
   playerStartPosition: {x: -13, y: -4.8, z: 0}

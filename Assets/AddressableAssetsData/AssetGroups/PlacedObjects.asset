@@ -15,6 +15,12 @@ MonoBehaviour:
   m_GroupName: PlacedObjects
   m_GUID: a0d209a4cdaf4a549a96c4a44c8d5b39
   m_SerializeEntries:
+  - m_GUID: 35cc5695a6b2ad64e98ef5bfdd1b34d5
+    m_Address: Spikes
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 3bd8e73d7bdeb0f46b431a1a83de8818
     m_Address: Kiwi
     m_ReadOnly: 0

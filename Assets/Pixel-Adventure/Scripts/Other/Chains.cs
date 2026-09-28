@@ -163,4 +163,12 @@ public class Chains : MonoBehaviour
 
         spawnedChains.Clear();
     }
+
+    // TODO: Lỗi dư chain khi reload (chỉ ảnh hưởng editor, không ảnh hưởng play/data)
+    // - spawnedChains là readonly nên không được serialize -> reset rỗng sau khi reload scene / recompile
+    // - Chain clone thì được lưu trong scene -> ClearChains() không biết để xoá -> render lại sinh thêm 1 lớp chain đè lên
+    // - Nếu kéo waypoint sau khi reload -> lớp chain cũ nằm lại ở vị trí cũ (dây "ma")
+    // - Tạm thời: chạy Edit level để dọn sạch
+    // - Hướng sửa: bỏ spawnedChains, ClearChains() xoá toàn bộ con của chainHolder (giống Spikes)
+    //   -> trước đó cần Save lại Chains.prefab để field chainHolder được serialize đúng (hiện đang thiếu trong file prefab)
 }
