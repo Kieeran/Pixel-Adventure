@@ -44,7 +44,7 @@ public class InAirState : State
         {
             if (PlayerController.Instance.playerInput.isExternallyPushed) return;
 
-            PlayerController.Instance.playerMovement.JumpInAir();
+            PlayerController.Instance.playerPhysic.JumpInAir();
             PlayerController.Instance.playerInput.isJumpInAir = true;
             PlayerController.Instance.OnDoubleJump?.Invoke();
         }

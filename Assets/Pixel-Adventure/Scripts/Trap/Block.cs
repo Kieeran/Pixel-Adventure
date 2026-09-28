@@ -22,7 +22,7 @@ public class Block : PlacedObject
 
     void OnCharacterCollided(Vector2 direction)
     {
-        PlayerController.Instance.playerMovement.ReboundVertically(
+        PlayerController.Instance.playerPhysic.ReboundVertically(
             direction,
             direction == Vector2.up ? knockCharacterUpForce : knockCharacterDownForce
         );

@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerPhysic : MonoBehaviour
 {
     public Rigidbody2D playerRB;
 
+    [SerializeField] Collider2D col;
     [SerializeField] private float moveSpeed;
     [SerializeField] private float slideOnWallSpeed;
     [SerializeField] private float jumpPower;
@@ -13,10 +14,30 @@ public class PlayerMovement : MonoBehaviour
     Vector2 externalPush;
     float defaultGravityScale;
 
-    private void Awake()
+    void OnValidate()
+    {
+        playerRB = GetComponent<Rigidbody2D>();
+        col = GetComponentInChildren<Collider2D>();
+    }
+
+    void Awake()
     {
         playerRB = GetComponent<Rigidbody2D>();
         defaultGravityScale = playerRB.gravityScale;
+
+        PlayerController.Instance.OnDead += OnDead;
+    }
+
+    void OnDead()
+    {
+        col.enabled = false;
+    }
+
+    public void Reset()
+    {
+        PlayerController.Instance.playerInput.isDead = false;
+        col.enabled = true;
+        playerRB.linearVelocity = Vector2.zero;
     }
 
     public void MoveHorizontal(float inputX)
@@ -92,5 +113,11 @@ public class PlayerMovement : MonoBehaviour
     {
         playerRB.linearVelocity = new Vector2(playerRB.linearVelocity.x, 0);
         playerRB.AddForce(direction * force, ForceMode2D.Impulse);
+    }
+
+    public void ReceiveDamage()
+    {
+        PlayerController.Instance.playerInput.isDead = true;
+        PlayerController.Instance.OnDead?.Invoke();
     }
 }

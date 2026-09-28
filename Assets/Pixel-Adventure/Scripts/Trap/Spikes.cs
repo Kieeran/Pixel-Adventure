@@ -96,6 +96,6 @@ public class Spikes : PlacedObject
 
     void OnCharacterCollided()
     {
-
+        PlayerController.Instance.playerPhysic.ReceiveDamage();
     }
 }

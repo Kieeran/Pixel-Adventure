@@ -112,7 +112,9 @@ public class LevelManager : MonoBehaviour
         currentLevelID = InGameManager.Instance.GetCurrentLevel();
         currentLevel = Instantiate(levels[currentLevelID]);
 
+        player.Reset();
         player.transform.SetPositionAndRotation(currentLevel.levelData.playerStartPosition, Quaternion.identity);
+
         currentLevel.Load(() =>
         {
             CurrentLevelLoaded?.Invoke();

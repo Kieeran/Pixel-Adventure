@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController Instance { get; private set; }
 
     public PlayerInput playerInput;
-    public PlayerMovement playerMovement;
+    public PlayerPhysic playerPhysic;
     public PlayerCollision playerCollision;
     public PlayerAnimation playerAnimation;
 
@@ -17,10 +17,12 @@ public class PlayerController : MonoBehaviour
     public WalkState WalkState { get; set; }
     public InAirState InAirState { get; set; }
     public SlideOnWallState SlideOnWallState { get; set; }
+    public DeadState DeadState { get; set; }
 
     // Events
     public Action OnJump;
     public Action OnDoubleJump;
+    public Action OnDead;
 
     public string CurrentState = null;
 
@@ -39,7 +41,7 @@ public class PlayerController : MonoBehaviour
     void OnValidate()
     {
         if (playerInput == null) playerInput = GetComponent<PlayerInput>();
-        if (playerMovement == null) playerMovement = GetComponent<PlayerMovement>();
+        if (playerPhysic == null) playerPhysic = GetComponent<PlayerPhysic>();
         if (playerCollision == null) playerCollision = GetComponent<PlayerCollision>();
 
         foreach (Transform child in transform)
@@ -59,6 +61,9 @@ public class PlayerController : MonoBehaviour
         InAirState = new InAirState();
         SlideOnWallState = new SlideOnWallState();
 
+        DeadState = new DeadState();
+        StateMachine.AddAnyTransition(DeadState, () => playerInput.isDead);
+
         StateMachine.Initialize(InAirState);
     }
 
@@ -71,5 +76,11 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         StateMachine.FixedUpdate();
+    }
+
+    public void Reset()
+    {
+        StateMachine.ChangeState(InAirState);
+        playerPhysic.Reset();
     }
 }

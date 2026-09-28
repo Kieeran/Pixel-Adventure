@@ -1,11 +1,9 @@
+using System;
+using System.Collections.Generic;
+
 public enum StateName
 {
-    Idle, Walk, InAir, SlideOnWall
-}
-
-public enum AniStateName
-{
-    AniIdle, AniWalk, AniJump, AniDouble_Jump, AniFall, AniSlideOnWall
+    Idle, Walk, InAir, SlideOnWall, Dead
 }
 
 public abstract class State
@@ -16,8 +14,8 @@ public abstract class State
     public virtual void OnUpdate() { }
     public virtual void OnFixedUpdate()
     {
-        PlayerController.Instance.playerMovement.MoveHorizontal(PlayerController.Instance.playerInput.move.x);
-        PlayerController.Instance.playerMovement.HandleExternalPush(PlayerController.Instance.playerInput.move);
+        PlayerController.Instance.playerPhysic.MoveHorizontal(PlayerController.Instance.playerInput.move.x);
+        PlayerController.Instance.playerPhysic.HandleExternalPush(PlayerController.Instance.playerInput.move);
     }
     public virtual void OnExit() { }
     public virtual void HandleInput() { }
@@ -31,6 +29,7 @@ public class AniState : State
 
 public class StateMachine
 {
+    private readonly List<(State to, Func<bool> condition)> anyTransitions = new();
     public State CurrentState { get; private set; }
 
     public void Initialize(State startingState)
@@ -48,6 +47,7 @@ public class StateMachine
 
     public void Update()
     {
+        if (TryAnyTransition()) return;
         CurrentState?.HandleInput();
         CurrentState?.OnUpdate();
     }
@@ -55,5 +55,23 @@ public class StateMachine
     public void FixedUpdate()
     {
         CurrentState?.OnFixedUpdate();
+    }
+
+    public void AddAnyTransition(State to, Func<bool> condition)
+    {
+        anyTransitions.Add((to, condition));
+    }
+
+    private bool TryAnyTransition()
+    {
+        foreach (var (to, condition) in anyTransitions)
+        {
+            if (CurrentState != to && condition())
+            {
+                ChangeState(to);
+                return true;
+            }
+        }
+        return false;
     }
 }

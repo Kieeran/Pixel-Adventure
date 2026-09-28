@@ -29,7 +29,7 @@ public class Arrow : PlacedObject
     {
         physic.gameObject.SetActive(false);
         animator.SetTrigger(IsCollidedHash);
-        PlayerController.Instance.playerMovement.ReboundVertically(Vector2.up, pushCharacterForce);
+        PlayerController.Instance.playerPhysic.ReboundVertically(Vector2.up, pushCharacterForce);
         StartCoroutine(HelperFunctions.WaitCurrentAnimationEnd(animator, () =>
         {
             PoolManager.Instance.Return(this);

@@ -10,6 +10,7 @@ public class PlayerAnimation : MonoBehaviour
     private static readonly int isGroundedHash = Animator.StringToHash("isGrounded");
     private static readonly int isDoubleJumpHash = Animator.StringToHash("isDoubleJump");
     private static readonly int isOnWallHash = Animator.StringToHash("isOnWall");
+    private static readonly int isDead = Animator.StringToHash("isDead");
 
     void Start()
     {
@@ -24,9 +25,10 @@ public class PlayerAnimation : MonoBehaviour
         FlipSprite();
 
         animator.SetFloat(xVelocityHash, Mathf.Abs(PlayerController.Instance.playerInput.move.x));
-        animator.SetFloat(yVelocityHash, PlayerController.Instance.playerMovement.playerRB.linearVelocityY);
+        animator.SetFloat(yVelocityHash, PlayerController.Instance.playerPhysic.playerRB.linearVelocityY);
         animator.SetBool(isGroundedHash, PlayerController.Instance.playerInput.isGrounded);
         animator.SetBool(isOnWallHash, PlayerController.Instance.playerInput.isOnWall);
+        animator.SetBool(isDead, PlayerController.Instance.playerInput.isDead);
     }
 
     void FlipSprite()

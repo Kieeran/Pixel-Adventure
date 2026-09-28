@@ -78,7 +78,7 @@ public class Platform : PlacedObject
 
         if (isCarryingPlayer && isMoving)
         {
-            PlayerController.Instance.playerMovement.ClearExternalPush();
+            PlayerController.Instance.playerPhysic.ClearExternalPush();
         }
 
         brownSkin.gameObject.SetActive(true);
@@ -112,12 +112,12 @@ public class Platform : PlacedObject
         {
             if (isMoving)
             {
-                PlayerController.Instance.playerMovement.SetExternalPush((moveDirection * Vector2.right).normalized, moveSpeed);
+                PlayerController.Instance.playerPhysic.SetExternalPush((moveDirection * Vector2.right).normalized, moveSpeed);
             }
             else
             {
                 // Chổ này clear external push do platform dừng lại
-                PlayerController.Instance.playerMovement.ClearExternalPush();
+                PlayerController.Instance.playerPhysic.ClearExternalPush();
             }
         }
     }
@@ -245,7 +245,7 @@ public class Platform : PlacedObject
         if (!isCarryingPlayer)
         {
             // Chổ này clear external push do player rời khỏi platform -> không nhận lực đẩy khi platform carry nữa
-            PlayerController.Instance.playerMovement.ClearExternalPush();
+            PlayerController.Instance.playerPhysic.ClearExternalPush();
         }
 
         if (!controlledByPlayer) return;
