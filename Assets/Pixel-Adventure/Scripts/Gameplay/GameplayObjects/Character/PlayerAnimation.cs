@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     public Animator animator;
+    public SpriteRenderer spriteRenderer;
     bool isFacingRight = true;
 
     private static readonly int xVelocityHash = Animator.StringToHash("xVelocity");
@@ -11,6 +12,12 @@ public class PlayerAnimation : MonoBehaviour
     private static readonly int isDoubleJumpHash = Animator.StringToHash("isDoubleJump");
     private static readonly int isOnWallHash = Animator.StringToHash("isOnWall");
     private static readonly int isDead = Animator.StringToHash("isDead");
+
+    void OnValidate()
+    {
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     void Start()
     {
@@ -41,5 +48,10 @@ public class PlayerAnimation : MonoBehaviour
             ls.x *= -1f;
             transform.localScale = ls;
         }
+    }
+
+    public void ToggleRenderer(bool b)
+    {
+        spriteRenderer.enabled = b;
     }
 }

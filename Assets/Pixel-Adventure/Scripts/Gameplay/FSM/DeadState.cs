@@ -6,4 +6,9 @@ public class DeadState : State
     {
         Name = StateName.Dead.ToString();
     }
+
+    public override void OnFixedUpdate()
+    {
+        PlayerController.Instance.playerPhysic.LimitDeadSpin();
+    }
 }

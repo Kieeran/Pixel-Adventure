@@ -3,13 +3,21 @@ using UnityEngine;
 
 public class SpikesCollision : MonoBehaviour
 {
-    public event Action OnCharacterCollided;
+    public BoxCollider2D col;
+    public event Action<Vector2> OnCharacterCollided;
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnValidate()
     {
-        if (collision.gameObject.CompareTag("Character"))
+        col = GetComponentInChildren<BoxCollider2D>();
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Character"))
         {
-            OnCharacterCollided?.Invoke();
+            // Điểm trên collider gai gần tâm player nhất, để hướng knockback không phụ thuộc vào độ dài cụm gai
+            Vector2 hitPos = col.ClosestPoint(other.bounds.center);
+            OnCharacterCollided?.Invoke(hitPos);
         }
     }
 }

@@ -11,8 +11,16 @@ public class PlayerPhysic : MonoBehaviour
     [SerializeField] private float jumpAirPower;
     [SerializeField] private float wallBouncePower;
 
+    [Header("Knock Back")]
+    [SerializeField] private float verticalHitThreshold = 10f;
+    [SerializeField] private float verticalTiltAngle = 17.5f;
+    [SerializeField] private float downwardKnockBackMultiplier = 0.0f;
+    [SerializeField] private float deadSpinSpeed = 180f;
+    [SerializeField] private float deadSpinAngle = 17.5f;
+
     Vector2 externalPush;
     float defaultGravityScale;
+    RigidbodyConstraints2D defaultConstraints;
 
     void OnValidate()
     {
@@ -24,6 +32,7 @@ public class PlayerPhysic : MonoBehaviour
     {
         playerRB = GetComponent<Rigidbody2D>();
         defaultGravityScale = playerRB.gravityScale;
+        defaultConstraints = playerRB.constraints;
 
         PlayerController.Instance.OnDead += OnDead;
     }
@@ -31,17 +40,32 @@ public class PlayerPhysic : MonoBehaviour
     void OnDead()
     {
         col.enabled = false;
+        Invoke(nameof(DisablePlayer), 1f);
+    }
+
+    void DisablePlayer()
+    {
+        PlayerController.Instance.playerAnimation.ToggleRenderer(false);
+        playerRB.gravityScale = 0;
+        playerRB.linearVelocity = Vector2.zero;
+        playerRB.angularVelocity = 0;
+        playerRB.position = Vector2.zero;
+        playerRB.rotation = 0;
     }
 
     public void Reset()
     {
+        PlayerController.Instance.playerAnimation.ToggleRenderer(true);
         PlayerController.Instance.playerInput.isDead = false;
+        playerRB.gravityScale = defaultGravityScale;
+        playerRB.constraints = defaultConstraints;
         col.enabled = true;
-        playerRB.linearVelocity = Vector2.zero;
     }
 
     public void MoveHorizontal(float inputX)
     {
+        if (PlayerController.Instance.playerInput.isDead) return;
+
         playerRB.linearVelocity = new Vector2(
             inputX * moveSpeed,
             playerRB.linearVelocity.y
@@ -51,6 +75,7 @@ public class PlayerPhysic : MonoBehaviour
     public void HandleExternalPush(Vector2 move)
     {
         if (!PlayerController.Instance.playerInput.isExternallyPushed) return;
+        if (PlayerController.Instance.playerInput.isDead) return;
 
         Vector2 v = playerRB.linearVelocity;
 
@@ -103,6 +128,8 @@ public class PlayerPhysic : MonoBehaviour
 
     public void SlideOnWall()
     {
+        if (PlayerController.Instance.playerInput.isDead) return;
+
         playerRB.linearVelocity = new Vector2(
             playerRB.linearVelocity.x,
             -slideOnWallSpeed
@@ -115,9 +142,58 @@ public class PlayerPhysic : MonoBehaviour
         playerRB.AddForce(direction * force, ForceMode2D.Impulse);
     }
 
-    public void ReceiveDamage()
+    public void ReceiveDamage(Vector2 hitPos, float knockBackForce)
     {
+        // Lấy tâm trước khi OnDead tắt collider
+        Vector2 center = col.bounds.center;
+
         PlayerController.Instance.playerInput.isDead = true;
         PlayerController.Instance.OnDead?.Invoke();
+
+        KnockBack(center - hitPos, knockBackForce);
+    }
+
+    void KnockBack(Vector2 direction, float force)
+    {
+        ClearExternalPush();
+
+        Vector2 dir = direction.normalized;
+
+        // Va chạm gần như thẳng đứng thì nghiêng sang trái/phải ngẫu nhiên
+        // Hướng xuống trùng gravity nên giảm lực, hướng bằng 0 cũng tính vào trường hợp này
+        if (dir == Vector2.zero || Vector2.Angle(dir, Vector2.down) < verticalHitThreshold)
+        {
+            dir = TiltRandomly(Vector2.down);
+            force *= downwardKnockBackMultiplier;
+        }
+        else if (Vector2.Angle(dir, Vector2.up) < verticalHitThreshold)
+        {
+            dir = TiltRandomly(Vector2.up);
+        }
+
+        playerRB.linearVelocity = Vector2.zero;
+        playerRB.AddForce(dir * force, ForceMode2D.Impulse);
+
+        // Phải mở freeze rotation trước, nếu không angularVelocity không có tác dụng
+        playerRB.freezeRotation = false;
+        playerRB.angularVelocity = RandomSign() * deadSpinSpeed;
+    }
+
+    public void LimitDeadSpin()
+    {
+        if (Mathf.Abs(playerRB.rotation) < deadSpinAngle) return;
+
+        playerRB.angularVelocity = 0;
+        playerRB.rotation = Mathf.Sign(playerRB.rotation) * deadSpinAngle;
+    }
+
+    Vector2 TiltRandomly(Vector2 v)
+    {
+        return Quaternion.Euler(0, 0, RandomSign() * verticalTiltAngle) * v;
+    }
+
+    static float RandomSign()
+    {
+        return Random.value < 0.5f ? -1f : 1f;
     }
 }

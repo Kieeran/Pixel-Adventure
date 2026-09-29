@@ -13,7 +13,7 @@ public class Spikes : PlacedObject
     [SerializeField] SpikesCollision spikesCollision;
     [SerializeField] Transform unitTemplate;
     [SerializeField] Transform skin;
-    [SerializeField] BoxCollider2D col;
+    [SerializeField] float knockBackForce = 1f;
     [Min(1)] public int count = 1;
 
     void OnValidate()
@@ -21,13 +21,12 @@ public class Spikes : PlacedObject
         spikesCollision = GetComponent<SpikesCollision>();
         if (transform.childCount > 0) unitTemplate = transform.GetChild(0);
         if (transform.childCount > 1) skin = transform.GetChild(1);
-        col = GetComponentInChildren<BoxCollider2D>(true);
     }
 
     void Update()
     {
         if (Application.isPlaying) return;
-        if (unitTemplate == null || skin == null || col == null) return;
+        if (unitTemplate == null || skin == null || spikesCollision.col == null) return;
 
 #if UNITY_EDITOR
         // Prefab Mode chỉ dùng để chỉnh thông số của một unit, logic design cụm chỉ chạy trên scene
@@ -80,8 +79,8 @@ public class Spikes : PlacedObject
 
         // 1 collider gộp phủ cả cụm
         float length = (count - 1) * Spacing;
-        col.size = new Vector2(length + UnitWidth, col.size.y);
-        col.offset = new Vector2(length / 2f, col.offset.y);
+        spikesCollision.col.size = new Vector2(length + UnitWidth, spikesCollision.col.size.y);
+        spikesCollision.col.offset = new Vector2(length / 2f, spikesCollision.col.offset.y);
     }
 
     void ClearUnits()
@@ -94,8 +93,8 @@ public class Spikes : PlacedObject
         }
     }
 
-    void OnCharacterCollided()
+    void OnCharacterCollided(Vector2 hitPos)
     {
-        PlayerController.Instance.playerPhysic.ReceiveDamage();
+        PlayerController.Instance.playerPhysic.ReceiveDamage(hitPos, knockBackForce);
     }
 }

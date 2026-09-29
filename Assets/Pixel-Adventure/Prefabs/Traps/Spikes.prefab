@@ -111,7 +111,7 @@ MonoBehaviour:
   spikesCollision: {fileID: 3965615158793807096}
   unitTemplate: {fileID: 8188650503663169735}
   skin: {fileID: 2355655796177181024}
-  col: {fileID: 2595051863204136170}
+  knockBackForce: 7
   count: 1
 --- !u!114 &3965615158793807096
 MonoBehaviour:
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb239ffb419c11d418d63459695ed5ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpikesCollision
+  col: {fileID: 2595051863204136170}
 --- !u!1 &5694232161029570752
 GameObject:
   m_ObjectHideFlags: 0
