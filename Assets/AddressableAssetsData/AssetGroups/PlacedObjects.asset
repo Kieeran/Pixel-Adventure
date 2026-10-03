@@ -39,6 +39,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Trap
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 486fc3240143d0a4fb2bc36c2737c3bd
+    m_Address: Saw
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 4a4d477fac2ce774c870e567a47b0551
     m_Address: FallingPlatform
     m_ReadOnly: 0

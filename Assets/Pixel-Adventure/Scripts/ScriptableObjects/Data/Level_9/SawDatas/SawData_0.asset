@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6be41c6fbd78134ba2e17c27eada262, type: 3}
+  m_Name: SawData_0
+  m_EditorClassIdentifier: Assembly-CSharp::SawData
+  waypoints:
+  - position: {x: -9, y: -3}
+    waitTime: 0
+  - position: {x: -2, y: -3}
+    waitTime: 0
+  - position: {x: -2, y: 1}
+    waitTime: 0
+  - position: {x: -9, y: 1}
+    waitTime: 0
+  isLoop: 1
+  renderChains: 0
+  chainWaypoints: []
+  rootPos: {x: 0, y: 0}
+  spacing: 0.5

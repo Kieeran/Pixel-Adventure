@@ -14,6 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelID: 9
   placedObjectDatas:
+  - addressableKey: Saw
+    position: {x: -9, y: -3}
+    rotation: 0
+    customData: {fileID: 11400000, guid: 4e13672485f143a449e56a4ad960a3f1, type: 2}
+  - addressableKey: Saw
+    position: {x: -2, y: 1}
+    rotation: 0
+    customData: {fileID: 11400000, guid: e9174b47117ca61459c15c112064daf9, type: 2}
+  - addressableKey: Saw
+    position: {x: 5, y: 1}
+    rotation: 0
+    customData: {fileID: 11400000, guid: e80923a26c09db046b684dc97e39b302, type: 2}
+  - addressableKey: Saw
+    position: {x: 14, y: 0}
+    rotation: 0
+    customData: {fileID: 11400000, guid: f1d60e5fd1c94304ca458f129f496b32, type: 2}
   - addressableKey: Orange
     position: {x: -8.5, y: 3}
     rotation: 0
