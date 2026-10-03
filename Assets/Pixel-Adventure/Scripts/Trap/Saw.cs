@@ -6,6 +6,7 @@ public class Saw : PlacedObject
     [SerializeField] Animator animator;
     [SerializeField] SawCollision sawCollision;
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] float knockBackForce = 1f;
     public Chains chains;
     // true: đi vòng 0 → 1 → 2 → 0, false: đi qua lại 0 → 1 → 2 → 1 → 0
     public bool isLoop;
@@ -40,6 +41,8 @@ public class Saw : PlacedObject
 
     public override void OnSpawn()
     {
+        sawCollision.OnCharacterCollided += OnCharacterCollided;
+
         SawData data = customData as SawData;
         isLoop = data.isLoop;
         SetRenderChains(data.renderChains);
@@ -60,6 +63,8 @@ public class Saw : PlacedObject
 
     public override void OnDespawn()
     {
+        sawCollision.OnCharacterCollided -= OnCharacterCollided;
+
         chains.transform.SetParent(transform);
         SetRenderChains(true);
 
@@ -81,6 +86,11 @@ public class Saw : PlacedObject
         HandleMovement();
 
         rb.linearVelocity = moveDirection * moveSpeed;
+    }
+
+    void OnCharacterCollided(Vector2 hitPos)
+    {
+        PlayerController.Instance.playerPhysic.ReceiveDamage(hitPos, knockBackForce);
     }
 
     void HandleMovement()

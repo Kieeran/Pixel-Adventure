@@ -148,6 +148,7 @@ MonoBehaviour:
   animator: {fileID: 5234259979716685390}
   sawCollision: {fileID: 3772089645327907352}
   rb: {fileID: 4538993623285233058}
+  knockBackForce: 7
   chains: {fileID: 7076056885252337413}
   isLoop: 0
   renderChains: 1
