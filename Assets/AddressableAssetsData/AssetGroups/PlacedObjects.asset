@@ -75,6 +75,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - Fruit
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6daa86f083b10f943b2e8134cbda429f
+    m_Address: Fires
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 6e188fa1e402645448fd671f80750f5a
     m_Address: Box1
     m_ReadOnly: 0
