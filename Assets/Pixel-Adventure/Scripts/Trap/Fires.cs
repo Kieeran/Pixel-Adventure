@@ -12,18 +12,17 @@ public class Fires : PlacedObject
     const float UnitWidth = 1f;
 
     [SerializeField] FiresCollision firesCollision;
-    [SerializeField] Transform unitTemplate;
+    [SerializeField] FireUnit unitTemplate;
     [SerializeField] Transform skin;
-    [SerializeField] float knockBackForce = 1f;
     [Min(1)] public int count = 1;
 
-    [SerializeField] List<Transform> units = new();
-    [SerializeField] Transform collidedUnit;
+    [SerializeField] List<FireUnit> units = new();
+    [SerializeField] FireUnit collidedUnit;
 
     void OnValidate()
     {
         firesCollision = GetComponent<FiresCollision>();
-        if (transform.childCount > 0) unitTemplate = transform.GetChild(0);
+        if (transform.childCount > 0) unitTemplate = transform.GetChild(0).GetComponent<FireUnit>();
         if (transform.childCount > 1) skin = transform.GetChild(1);
     }
 
@@ -70,16 +69,17 @@ public class Fires : PlacedObject
     void OnCharacterCollided(Vector2 avgContactPoint)
     {
         int collidedUnitIndex = 0;
-        float closestDistance = Vector2.Distance(units[collidedUnitIndex].position, avgContactPoint);
+        float closestDistance = Vector2.Distance(units[collidedUnitIndex].transform.position, avgContactPoint);
         for (int i = 1; i < units.Count; i++)
         {
-            if (Vector2.Distance(units[i].position, avgContactPoint) < closestDistance)
+            if (Vector2.Distance(units[i].transform.position, avgContactPoint) < closestDistance)
             {
-                closestDistance = Vector2.Distance(units[i].position, avgContactPoint);
+                closestDistance = Vector2.Distance(units[i].transform.position, avgContactPoint);
                 collidedUnitIndex = i;
             }
         }
         collidedUnit = units[collidedUnitIndex];
+        collidedUnit.TriggerFire();
     }
 
     public void Render()
@@ -91,9 +91,9 @@ public class Fires : PlacedObject
         // Hàng dọc hay ngang là do rotation của root quyết định
         for (int i = 0; i < count; i++)
         {
-            Transform unit = Instantiate(unitTemplate, skin);
+            FireUnit unit = Instantiate(unitTemplate, skin);
             unit.gameObject.SetActive(true);
-            unit.SetLocalPositionAndRotation(new Vector2(i * Spacing, 0f), Quaternion.identity);
+            unit.transform.SetLocalPositionAndRotation(new Vector2(i * Spacing, 0f), Quaternion.identity);
 
             units.Add(unit);
         }
@@ -110,7 +110,7 @@ public class Fires : PlacedObject
         {
             GameObject unit = skin.GetChild(i).gameObject;
 
-            units.Remove(unit.transform);
+            units.Remove(unit.GetComponent<FireUnit>());
 
             if (Application.isPlaying) Destroy(unit);
             else DestroyImmediate(unit);
@@ -121,6 +121,6 @@ public class Fires : PlacedObject
     {
         if (!Application.isPlaying || collidedUnit == null) return;
         Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(collidedUnit.position, Vector2.one);
+        Gizmos.DrawWireCube(collidedUnit.transform.position, Vector2.one);
     }
 }
