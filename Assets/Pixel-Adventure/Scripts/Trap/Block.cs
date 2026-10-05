@@ -22,7 +22,7 @@ public class Block : PlacedObject
 
     void OnCharacterCollided(Vector2 direction)
     {
-        PlayerController.Instance.playerMovement.ReboundVertically(
+        PlayerController.Instance.playerPhysic.ReboundVertically(
             direction,
             direction == Vector2.up ? knockCharacterUpForce : knockCharacterDownForce
         );
@@ -43,6 +43,10 @@ public class Block : PlacedObject
 
     public override void OnSpawn()
     {
+        skin.gameObject.SetActive(true);
+        physic.gameObject.SetActive(true);
+        blockBreaks.gameObject.SetActive(false);
+
         blockCollision.OnCharacterCollided += OnCharacterCollided;
         blockBreaks.OnAllBreaksDisappear += OnAllBreaksDisappear;
     }

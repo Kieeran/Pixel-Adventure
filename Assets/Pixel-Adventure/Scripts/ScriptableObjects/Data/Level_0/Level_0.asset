@@ -16,36 +16,70 @@ MonoBehaviour:
   placedObjectDatas:
   - addressableKey: Apple
     position: {x: -10, y: 1}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Apple
     position: {x: -8.5, y: 1}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Apple
     position: {x: -7, y: 1}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Apple
     position: {x: -9.25, y: 2}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Apple
     position: {x: -7.75, y: 2}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Apple
     position: {x: -8.5, y: 3}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Cherry
     position: {x: -4, y: -3}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Cherry
     position: {x: -2.5, y: -3}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Cherry
     position: {x: -1, y: -3}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Cherry
     position: {x: 0.5, y: -3}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Cherry
     position: {x: 2, y: -3}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Orange
     position: {x: 2, y: 3}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Orange
     position: {x: 4, y: 3}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Orange
     position: {x: 3, y: 4.5}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Pineapple
     position: {x: 11.5, y: -0.5}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Pineapple
     position: {x: 11.5, y: 1.5}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Pineapple
     position: {x: 11.5, y: 3.5}
-  playerStartPosition: {x: -12, y: -7, z: 0}
+    rotation: 0
+    customData: {fileID: 0}
+  playerStartPosition: {x: -12, y: -6.95, z: 0}

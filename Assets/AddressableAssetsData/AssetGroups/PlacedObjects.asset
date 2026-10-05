@@ -1,0 +1,143 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: PlacedObjects
+  m_EditorClassIdentifier: Unity.Addressables.Editor::UnityEditor.AddressableAssets.Settings.AddressableAssetGroup
+  m_GroupName: PlacedObjects
+  m_GUID: a0d209a4cdaf4a549a96c4a44c8d5b39
+  m_SerializeEntries:
+  - m_GUID: 35cc5695a6b2ad64e98ef5bfdd1b34d5
+    m_Address: Spikes
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3bd8e73d7bdeb0f46b431a1a83de8818
+    m_Address: Kiwi
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fruit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4136cc1c671afef4183f53cc4045b388
+    m_Address: Melon
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fruit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 43b08761c50f6b54384679a0ab21e4e5
+    m_Address: Block
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 486fc3240143d0a4fb2bc36c2737c3bd
+    m_Address: Saw
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4a4d477fac2ce774c870e567a47b0551
+    m_Address: FallingPlatform
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4db8fcce5e89a2e42bf846ae5a2b2133
+    m_Address: Trampoline
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4fd093d4da641ad4098780e7d4eeda1d
+    m_Address: Cherry
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fruit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5ee6d3a92a4fc8c4d9533fc7167928c7
+    m_Address: Box2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Box
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6c0f2a27d3ae71747a698e760fe075c3
+    m_Address: Apple
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fruit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6daa86f083b10f943b2e8134cbda429f
+    m_Address: Fires
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e188fa1e402645448fd671f80750f5a
+    m_Address: Box1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Box
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 741f121b90e61394ba23f531b4cd0297
+    m_Address: Platform
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7dcd2164c8ec03847bbd835f589731d0
+    m_Address: Fan
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9a0e8572b1baca749b93d08ac6520b64
+    m_Address: Bananas
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fruit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9f5de91ec732388468847537d805f3c0
+    m_Address: Strawberry
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fruit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cbf0088ad83d58f478500c2ddcdde346
+    m_Address: Arrow
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ee70dbb42474efd47abe51a1b1c0c226
+    m_Address: Pineapple
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fruit
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: eecac20db3dd8a349b81b6c3b03b0004
+    m_Address: Box3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Box
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f906bc7d5a990394ebe8721422040f5d
+    m_Address: Orange
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fruit
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 2929fdb5926180747b8676b5043303f4, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: a5c8692941fc3574e8a5b976ba4411ff, type: 2}
+    - {fileID: 11400000, guid: bbbbbe193dc8f144aacd6626552ac705, type: 2}

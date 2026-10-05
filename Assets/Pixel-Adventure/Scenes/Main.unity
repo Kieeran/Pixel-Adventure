@@ -1419,13 +1419,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevelID: 0
   currentLevel: {fileID: 0}
-  _preFabLevels:
-  - {fileID: -5694099202821323519, guid: 7ca8ac41efc57ff46a705a8e38b9b9b6, type: 3}
-  - {fileID: 1173650104548072053, guid: e20936e08ecb0a049994a5e4591a36ed, type: 3}
-  - {fileID: 8493531065886341920, guid: 24c881d002a87114e82e72bb5b8e7441, type: 3}
-  - {fileID: 4609294486347353894, guid: 87e2b979f1575784ab97fae7b5a4fafc, type: 3}
-  - {fileID: 4904512667211170995, guid: 6e57e38d1bfbefc48bc0a482d20db340, type: 3}
+  preFabLevels: []
   _prefabCharacter: {fileID: 95255012435249809, guid: 404be6036aec4fc4f9833ae055280885, type: 3}
+  levelAddressableLabel: Level
 --- !u!4 &1524922657
 Transform:
   m_ObjectHideFlags: 0

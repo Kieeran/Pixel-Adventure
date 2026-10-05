@@ -34,6 +34,6 @@ public class WalkState : State
 
     void OnJump()
     {
-        PlayerController.Instance.playerMovement.Jump();
+        PlayerController.Instance.playerPhysic.Jump();
     }
 }

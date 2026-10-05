@@ -39,7 +39,7 @@ public class PoolManager : MonoBehaviour
             InitContainers();
             InitPools();
 
-            InGameManager.Instance.OnFruitPoolsReady?.Invoke();
+            InGameManager.Instance.OnPoolsReady?.Invoke();
         });
     }
 
@@ -90,12 +90,11 @@ public class PoolManager : MonoBehaviour
 
         PlacedObject obj = pools[id].Dequeue();
 
-        obj.customData = customData;
-
-        obj.OnSpawn();
-
         obj.gameObject.SetActive(true);
         obj.transform.SetParent(null);
+
+        obj.customData = customData;
+        obj.OnSpawn();
 
         activeObjects.Add(obj);
 

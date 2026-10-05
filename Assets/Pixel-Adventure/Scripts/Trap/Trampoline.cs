@@ -28,6 +28,6 @@ public class Trampoline : PlacedObject
     void OnCharacterCollided()
     {
         animator.SetTrigger(IsCollidedHash);
-        PlayerController.Instance.playerMovement.ReboundVertically(Vector2.up, pushCharacterForce);
+        PlayerController.Instance.playerPhysic.ReboundVertically(Vector2.up, pushCharacterForce);
     }
 }

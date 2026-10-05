@@ -40,8 +40,8 @@ public class SlideOnWallState : State
             return;
         }
 
-        PlayerController.Instance.playerMovement.SlideOnWall();
-        PlayerController.Instance.playerMovement.MoveHorizontal(PlayerController.Instance.playerInput.move.x);
+        PlayerController.Instance.playerPhysic.SlideOnWall();
+        PlayerController.Instance.playerPhysic.MoveHorizontal(PlayerController.Instance.playerInput.move.x);
     }
 
     public override void OnEnter()
@@ -59,7 +59,7 @@ public class SlideOnWallState : State
     {
         if (isBounceWall) return;
 
-        PlayerController.Instance.playerMovement.JumpFromWall();
+        PlayerController.Instance.playerPhysic.JumpFromWall();
         isBounceWall = true;
     }
 }

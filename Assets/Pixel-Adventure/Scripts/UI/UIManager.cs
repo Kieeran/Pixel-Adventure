@@ -40,11 +40,11 @@ public class UIManager : MonoBehaviour
         nextButton.onClick.AddListener(() =>
         {
             int currentLevel = InGameManager.Instance.GetCurrentLevel() + 1;
-            if (currentLevel >= LevelManager.Instance._preFabLevels.Count) return;
+            if (currentLevel >= LevelManager.Instance.preFabLevels.Count) return;
 
             InGameManager.Instance.SetCurrentLevel(currentLevel);
 
-            if (currentLevel == LevelManager.Instance._preFabLevels.Count - 1)
+            if (currentLevel == LevelManager.Instance.preFabLevels.Count - 1)
             {
                 nextButton.gameObject.SetActive(false);
             }
@@ -66,29 +66,21 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] List<Sprite> backGroundSprites;
 
-    private void Start()
+    void Start()
     {
-        preButton.gameObject.SetActive(false);
-    }
-
-    private void Update()
-    {
-        //if (LevelManager.Instance.GetCurrentLevelID() == 0)
-        //{
-        //    preButton.gameObject.SetActive(false);
-        //}
-        //else
-        //{
-        //    preButton.gameObject.SetActive(true);
-        //}
-
-        //if (LevelManager.Instance.GetCurrentLevelID() == 4)
-        //{
-        //    nextButton.gameObject.SetActive(false);
-        //}
-        //else
-        //{
-        //    nextButton.gameObject.SetActive(true);
-        //}
+        InGameManager.Instance.OnGameReady += () =>
+        {
+            int currentLevel = InGameManager.Instance.GetCurrentLevel();
+            if (currentLevel <= 0)
+            {
+                preButton.gameObject.SetActive(false);
+                nextButton.gameObject.SetActive(true);
+            }
+            if (currentLevel >= LevelManager.Instance.preFabLevels.Count - 1)
+            {
+                preButton.gameObject.SetActive(true);
+                nextButton.gameObject.SetActive(false);
+            }
+        };
     }
 }

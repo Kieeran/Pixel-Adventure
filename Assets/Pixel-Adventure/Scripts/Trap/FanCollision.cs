@@ -4,7 +4,7 @@ public class FanCollision : MonoBehaviour
 {
     [SerializeField] Fan fan;
 
-    PlayerMovement cachedPlayerMovement;
+    PlayerPhysic cachedPlayerMovement;
 
     void OnValidate()
     {
@@ -15,7 +15,7 @@ public class FanCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Character"))
         {
-            cachedPlayerMovement = collision.GetComponent<PlayerMovement>();
+            cachedPlayerMovement = collision.GetComponent<PlayerPhysic>();
             cachedPlayerMovement.SetExternalPush(fan.pushDirection, fan.GetPushPower());
         }
     }

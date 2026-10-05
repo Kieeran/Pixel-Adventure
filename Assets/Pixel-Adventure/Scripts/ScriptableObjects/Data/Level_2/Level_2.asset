@@ -15,47 +15,91 @@ MonoBehaviour:
   levelID: 2
   placedObjectDatas:
   - addressableKey: Apple
-    position: {x: 2, y: -2.5}
+    position: {x: 3, y: -2.5}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Apple
-    position: {x: 2, y: -0.5}
+    position: {x: 3, y: -0.5}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Apple
-    position: {x: 2, y: 1.5}
-  - addressableKey: Apple
-    position: {x: 5.75, y: 3}
+    position: {x: 3, y: 1.5}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Apple
     position: {x: 7.75, y: 3}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Apple
     position: {x: 9.75, y: 3}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Apple
-    position: {x: 6.75, y: 4.5}
+    position: {x: 11.75, y: 3}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Apple
     position: {x: 8.75, y: 4.5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Apple
+    position: {x: 10.75, y: 4.5}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Bananas
-    position: {x: -7, y: -6}
+    position: {x: -6, y: -6}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Bananas
-    position: {x: -7, y: -4}
+    position: {x: -6, y: -4}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Bananas
-    position: {x: -6, y: -2}
+    position: {x: -5, y: -2}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Bananas
-    position: {x: -8, y: -2}
+    position: {x: -7, y: -2}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Bananas
-    position: {x: -10, y: -2}
+    position: {x: -9, y: -2}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Bananas
-    position: {x: -4, y: -2}
+    position: {x: -3, y: -2}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Bananas
-    position: {x: -9, y: 0}
+    position: {x: -8, y: 0}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Bananas
-    position: {x: -5, y: 0}
+    position: {x: -4, y: 0}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Bananas
-    position: {x: -7, y: 0}
+    position: {x: -6, y: 0}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Bananas
-    position: {x: -6, y: 2}
+    position: {x: -5, y: 2}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Bananas
-    position: {x: -8, y: 2}
+    position: {x: -7, y: 2}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Bananas
-    position: {x: -7, y: 4}
+    position: {x: -6, y: 4}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Trampoline
-    position: {x: -7, y: -7.12}
+    position: {x: -6, y: -7.12}
+    rotation: 0
+    customData: {fileID: 0}
   - addressableKey: Trampoline
-    position: {x: 2, y: -5.12}
-  playerStartPosition: {x: -13.75, y: -4, z: 0}
+    position: {x: 3, y: -5.12}
+    rotation: 0
+    customData: {fileID: 0}
+  playerStartPosition: {x: -12.75, y: -3.9, z: 0}

@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerAnimation : MonoBehaviour
 {
     public Animator animator;
+    public SpriteRenderer spriteRenderer;
     bool isFacingRight = true;
 
     private static readonly int xVelocityHash = Animator.StringToHash("xVelocity");
@@ -10,6 +11,13 @@ public class PlayerAnimation : MonoBehaviour
     private static readonly int isGroundedHash = Animator.StringToHash("isGrounded");
     private static readonly int isDoubleJumpHash = Animator.StringToHash("isDoubleJump");
     private static readonly int isOnWallHash = Animator.StringToHash("isOnWall");
+    private static readonly int isDead = Animator.StringToHash("isDead");
+
+    void OnValidate()
+    {
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     void Start()
     {
@@ -24,9 +32,10 @@ public class PlayerAnimation : MonoBehaviour
         FlipSprite();
 
         animator.SetFloat(xVelocityHash, Mathf.Abs(PlayerController.Instance.playerInput.move.x));
-        animator.SetFloat(yVelocityHash, PlayerController.Instance.playerMovement.playerRB.linearVelocityY);
+        animator.SetFloat(yVelocityHash, PlayerController.Instance.playerPhysic.playerRB.linearVelocityY);
         animator.SetBool(isGroundedHash, PlayerController.Instance.playerInput.isGrounded);
         animator.SetBool(isOnWallHash, PlayerController.Instance.playerInput.isOnWall);
+        animator.SetBool(isDead, PlayerController.Instance.playerInput.isDead);
     }
 
     void FlipSprite()
@@ -39,5 +48,10 @@ public class PlayerAnimation : MonoBehaviour
             ls.x *= -1f;
             transform.localScale = ls;
         }
+    }
+
+    public void ToggleRenderer(bool b)
+    {
+        spriteRenderer.enabled = b;
     }
 }
