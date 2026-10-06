@@ -65,7 +65,7 @@ public class PlayerCollision : MonoBehaviour
                 {
                     // Sau tất cả các điều kiện thì chắn chắn player đang trượt trên tường rồi
                     // Nhưng nếu lúc này bị dính external push thì vẫn phải bỏ qua 
-                    if (!PlayerController.Instance.playerInput.isExternallyPushed)
+                    if (!PlayerController.Instance.playerInput.isExternallyForced)
                     {
                         PlayerController.Instance.playerInput.isOnWall = true;
                     }

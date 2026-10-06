@@ -15,7 +15,7 @@ public abstract class State
     public virtual void OnFixedUpdate()
     {
         PlayerController.Instance.playerPhysic.MoveHorizontal(PlayerController.Instance.playerInput.move.x);
-        PlayerController.Instance.playerPhysic.HandleExternalPush(PlayerController.Instance.playerInput.move);
+        PlayerController.Instance.playerPhysic.HandleExternalForce(PlayerController.Instance.playerInput.move);
     }
     public virtual void OnExit() { }
     public virtual void HandleInput() { }

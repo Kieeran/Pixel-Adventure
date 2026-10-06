@@ -18,7 +18,8 @@ public class PlayerPhysic : MonoBehaviour
     [SerializeField] private float deadSpinSpeed = 180f;
     [SerializeField] private float deadSpinAngle = 17.5f;
 
-    Vector2 externalPush;
+    Vector2 externalForce;
+    Vector2 dragForcePercentage = Vector2.one;
     float defaultGravityScale;
     RigidbodyConstraints2D defaultConstraints;
 
@@ -72,38 +73,49 @@ public class PlayerPhysic : MonoBehaviour
         );
     }
 
-    public void HandleExternalPush(Vector2 move)
+    public void HandleExternalForce(Vector2 move)
     {
-        if (!PlayerController.Instance.playerInput.isExternallyPushed) return;
+        if (!PlayerController.Instance.playerInput.isExternallyForced) return;
         if (PlayerController.Instance.playerInput.isDead) return;
 
         Vector2 v = playerRB.linearVelocity;
 
-        if (externalPush.x != 0)
+        if (externalForce.x != 0)
         {
-            v.x = externalPush.x + move.x * moveSpeed;
+            v.x = externalForce.x + move.x * moveSpeed;
         }
 
-        if (externalPush.y != 0)
+        if (externalForce.y != 0)
         {
-            v.y = externalPush.y;
+            v.y = externalForce.y;
         }
+
+        v.x *= (1 - dragForcePercentage.x);
+        v.y *= (1 - dragForcePercentage.y);
 
         playerRB.linearVelocity = v;
     }
 
-    public void SetExternalPush(Vector2 direction, float power)
+    public void SetExternalForce(Vector2 direction, float power)
     {
-        PlayerController.Instance.playerInput.isExternallyPushed = true;
-        externalPush = direction.normalized * power;
+        PlayerController.Instance.playerInput.isExternallyForced = true;
+        externalForce = direction.normalized * power;
         if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x))
             playerRB.gravityScale = 0;
     }
 
-    public void ClearExternalPush()
+    public void ClearExternalForce()
     {
         playerRB.gravityScale = defaultGravityScale;
-        PlayerController.Instance.playerInput.isExternallyPushed = false;
+        dragForcePercentage = Vector2.one;
+
+        PlayerController.Instance.playerInput.isExternallyForced = false;
+    }
+
+    public void ResistMovement(Vector2 percentage)
+    {
+        dragForcePercentage = percentage;
+        PlayerController.Instance.playerInput.isExternallyForced = true;
     }
 
     public void Jump()
@@ -155,7 +167,7 @@ public class PlayerPhysic : MonoBehaviour
 
     void KnockBack(Vector2 direction, float force)
     {
-        ClearExternalPush();
+        ClearExternalForce();
 
         Vector2 dir = direction.normalized;
 

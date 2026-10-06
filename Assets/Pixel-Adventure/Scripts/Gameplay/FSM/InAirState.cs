@@ -42,7 +42,7 @@ public class InAirState : State
     {
         if (PlayerController.Instance.playerInput.isJumpInAir == false && PlayerController.Instance.playerInput.isGrounded == false)
         {
-            if (PlayerController.Instance.playerInput.isExternallyPushed) return;
+            if (PlayerController.Instance.playerInput.isExternallyForced) return;
 
             PlayerController.Instance.playerPhysic.JumpInAir();
             PlayerController.Instance.playerInput.isJumpInAir = true;

@@ -16,7 +16,7 @@ public class FanCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Character"))
         {
             cachedPlayerMovement = collision.GetComponent<PlayerPhysic>();
-            cachedPlayerMovement.SetExternalPush(fan.pushDirection, fan.GetPushPower());
+            cachedPlayerMovement.SetExternalForce(fan.pushDirection, fan.GetPushPower());
         }
     }
 
@@ -24,7 +24,7 @@ public class FanCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Character"))
         {
-            cachedPlayerMovement.SetExternalPush(fan.pushDirection, fan.GetPushPower());
+            cachedPlayerMovement.SetExternalForce(fan.pushDirection, fan.GetPushPower());
         }
     }
 
@@ -32,7 +32,7 @@ public class FanCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Character"))
         {
-            cachedPlayerMovement.ClearExternalPush();
+            cachedPlayerMovement.ClearExternalForce();
             cachedPlayerMovement = null;
         }
     }
