@@ -13,5 +13,57 @@ MonoBehaviour:
   m_Name: Level_15
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelID: 15
-  placedObjectDatas: []
+  placedObjectDatas:
+  - addressableKey: Kiwi
+    position: {x: 11.5, y: 4}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Kiwi
+    position: {x: 13.5, y: 4}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Kiwi
+    position: {x: 12.5, y: 5.25}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -9, y: -4}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -7, y: -4}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -5, y: -4}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -3, y: -4}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -1, y: -4}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -11, y: -2}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -9, y: -2}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -7, y: -2}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -5, y: -2}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -3, y: -2}
+    rotation: 0
+    customData: {fileID: 0}
   playerStartPosition: {x: -13, y: 0.2, z: 0}

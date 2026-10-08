@@ -13,6 +13,7 @@ public class PlayerInput : MonoBehaviour
     public bool isContactLeftWall = false;
     public bool isExternallyForced = false;
     public bool isDead = false;
+    public bool isResisted = false;
 
     public bool IsMovingHorizontal()
     {

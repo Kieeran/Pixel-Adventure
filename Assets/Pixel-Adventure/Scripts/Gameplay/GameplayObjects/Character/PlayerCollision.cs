@@ -61,7 +61,7 @@ public class PlayerCollision : MonoBehaviour
             {
                 PlayerController.Instance.playerInput.isGrounded = false;
                 // Chỉ khi character rớt xuống mà lúc đó đang va chạm với tường thì mới được tính là đang trên tường
-                if (PlayerController.Instance.playerPhysic.playerRB.linearVelocityY < 0f)
+                if (PlayerController.Instance.playerPhysic.playerRB.linearVelocityY <= 0f)
                 {
                     // Sau tất cả các điều kiện thì chắn chắn player đang trượt trên tường rồi
                     // Nhưng nếu lúc này bị dính external push thì vẫn phải bỏ qua 

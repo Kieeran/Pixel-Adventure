@@ -1,9 +1,7 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class SandCollision : MonoBehaviour
+public class MudCollision : MonoBehaviour
 {
-    [SerializeField] float resistanceRatio;
     PlayerPhysic cachedPlayerPhysic = null;
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -11,7 +9,16 @@ public class SandCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Character"))
         {
             cachedPlayerPhysic = collision.gameObject.GetComponent<PlayerPhysic>();
-            cachedPlayerPhysic.ResistMovement(new Vector2(resistanceRatio, 0));
+
+            ContactPoint2D contact = collision.GetContact(0);
+            if (contact.normal.y < -0.7f)
+            {
+                cachedPlayerPhysic.ResistMovement(new Vector2(1, 0));
+            }
+            if (contact.normal.x != 0)
+            {
+                cachedPlayerPhysic.ResistMovement(new Vector2(0, 1));
+            }
         }
     }
 

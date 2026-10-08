@@ -19,7 +19,7 @@ public class PlayerPhysic : MonoBehaviour
     [SerializeField] private float deadSpinAngle = 17.5f;
 
     Vector2 externalForce;
-    Vector2 dragForcePercentage = Vector2.one;
+    Vector2 resistance;
     float defaultGravityScale;
     RigidbodyConstraints2D defaultConstraints;
 
@@ -90,8 +90,18 @@ public class PlayerPhysic : MonoBehaviour
             v.y = externalForce.y;
         }
 
-        v.x *= (1 - dragForcePercentage.x);
-        v.y *= (1 - dragForcePercentage.y);
+        playerRB.linearVelocity = v;
+    }
+
+    public void HandleResistance()
+    {
+        if (!PlayerController.Instance.playerInput.isResisted) return;
+        if (PlayerController.Instance.playerInput.isDead) return;
+
+        Vector2 v = playerRB.linearVelocity;
+
+        v.x *= 1 - resistance.x;
+        v.y *= 1 - resistance.y;
 
         playerRB.linearVelocity = v;
     }
@@ -107,15 +117,35 @@ public class PlayerPhysic : MonoBehaviour
     public void ClearExternalForce()
     {
         playerRB.gravityScale = defaultGravityScale;
-        dragForcePercentage = Vector2.one;
-
         PlayerController.Instance.playerInput.isExternallyForced = false;
     }
 
-    public void ResistMovement(Vector2 percentage)
+    public void ClearResistance()
     {
-        dragForcePercentage = percentage;
-        PlayerController.Instance.playerInput.isExternallyForced = true;
+        if (resistance.y == 1)
+        {
+            playerRB.gravityScale = defaultGravityScale;
+        }
+
+        resistance = Vector2.zero;
+        PlayerController.Instance.playerInput.isResisted = false;
+    }
+
+    public void ResistMovement(Vector2 resistance)
+    {
+        this.resistance = resistance;
+
+        if (resistance.y == 1)
+        {
+            playerRB.gravityScale = 0;
+        }
+
+        PlayerController.Instance.playerInput.isResisted = true;
+    }
+
+    public bool CanMoveHorizontal()
+    {
+        return resistance.x != 1;
     }
 
     public void Jump()
@@ -136,11 +166,17 @@ public class PlayerPhysic : MonoBehaviour
             (PlayerController.Instance.playerInput.isContactLeftWall ? Vector2.right : Vector2.left) * wallBouncePower + Vector2.up * jumpPower,
             ForceMode2D.Impulse
         );
+
+        // Chổ này phải set thủ công ở đây vì nếu không qua fram FixedUpdate sau sẽ đi qua hàm HandleResistance() reset lại lực vertical
+        PlayerController.Instance.playerInput.isResisted = false;
     }
 
     public void SlideOnWall()
     {
         if (PlayerController.Instance.playerInput.isDead) return;
+
+        // Resistance theo chiều dọc chỉ áp dụng khi player trượt trên tường
+        if (PlayerController.Instance.playerInput.isResisted && resistance.y == 1) return;
 
         playerRB.linearVelocity = new Vector2(
             playerRB.linearVelocity.x,

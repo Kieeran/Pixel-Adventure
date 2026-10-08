@@ -867,7 +867,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf5440bd527973c4ba38e02d24e423d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SandCollision
-  dragPercentage: 0.7
+  resistanceRatio: 0.7
 --- !u!1 &8720948413452064022
 GameObject:
   m_ObjectHideFlags: 0

@@ -31,7 +31,10 @@ public class PlayerAnimation : MonoBehaviour
     {
         FlipSprite();
 
-        animator.SetFloat(xVelocityHash, Mathf.Abs(PlayerController.Instance.playerInput.move.x));
+        animator.SetFloat(
+            xVelocityHash,
+            PlayerController.Instance.playerPhysic.CanMoveHorizontal() ? Mathf.Abs(PlayerController.Instance.playerInput.move.x) : 0
+        );
         animator.SetFloat(yVelocityHash, PlayerController.Instance.playerPhysic.playerRB.linearVelocityY);
         animator.SetBool(isGroundedHash, PlayerController.Instance.playerInput.isGrounded);
         animator.SetBool(isOnWallHash, PlayerController.Instance.playerInput.isOnWall);
