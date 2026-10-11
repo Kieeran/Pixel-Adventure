@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4023077700948029076}
   - component: {fileID: 3512382931307194622}
   - component: {fileID: 3913225473618403398}
+  - component: {fileID: 6540506382772840678}
   - component: {fileID: 727480738158640197}
   m_Layer: 0
   m_Name: Mud_Tilemap
@@ -1122,6 +1123,33 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2.7014399, y: 9.5273285}
   m_EdgeRadius: 0
+--- !u!50 &6540506382772840678
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5016757786263486904}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &727480738158640197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1134,7 +1162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2fc3c413d7715e48815478e0796507b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MudCollision
-  dragPercentage: 1
 --- !u!1 &9071252532926019317
 GameObject:
   m_ObjectHideFlags: 0

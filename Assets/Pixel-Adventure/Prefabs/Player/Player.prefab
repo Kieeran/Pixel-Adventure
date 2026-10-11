@@ -14900,9 +14900,6 @@ MonoBehaviour:
   downwardKnockBackMultiplier: 0
   deadSpinSpeed: 180
   deadSpinAngle: 17.5
-  slideVelocityX: 0
-  offset: 1
-  vel: {x: 0, y: 0}
 --- !u!114 &3918691766044789199
 MonoBehaviour:
   m_ObjectHideFlags: 0
