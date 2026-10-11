@@ -20,6 +20,8 @@ public class PlayerPhysic : MonoBehaviour
 
     Vector2 externalForce;
     Vector2 resistance;
+    float slideVelocityX = 0f;
+    readonly float offset = 1;
     float defaultGravityScale;
     RigidbodyConstraints2D defaultConstraints;
 
@@ -104,6 +106,49 @@ public class PlayerPhysic : MonoBehaviour
         v.y *= 1 - resistance.y;
 
         playerRB.linearVelocity = v;
+    }
+
+    public void HandleSlide()
+    {
+        if (PlayerController.Instance.playerInput.isDead) return;
+        if (!PlayerController.Instance.playerInput.isGrounded)
+        {
+            slideVelocityX = 0;
+            return;
+        }
+
+        if (playerRB.linearVelocityX > 0)
+        {
+            slideVelocityX += offset;
+            if (slideVelocityX > moveSpeed)
+            {
+                slideVelocityX = moveSpeed;
+            }
+        }
+
+        else if (playerRB.linearVelocityX < 0)
+        {
+            slideVelocityX -= offset;
+            if (slideVelocityX < -moveSpeed)
+            {
+                slideVelocityX = -moveSpeed;
+            }
+        }
+
+        if (!PlayerController.Instance.playerInput.isSliding) return;
+
+        playerRB.linearVelocity = new Vector2(slideVelocityX, playerRB.linearVelocityY);
+    }
+
+    public void Sliding()
+    {
+        PlayerController.Instance.playerInput.isSliding = true;
+    }
+
+    public void StopSliding()
+    {
+        PlayerController.Instance.playerInput.isSliding = false;
+        slideVelocityX = 0;
     }
 
     public void SetExternalForce(Vector2 direction, float power)

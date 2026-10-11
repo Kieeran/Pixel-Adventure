@@ -14,6 +14,7 @@ public class PlayerInput : MonoBehaviour
     public bool isExternallyForced = false;
     public bool isDead = false;
     public bool isResisted = false;
+    public bool isSliding = false;
 
     public bool IsMovingHorizontal()
     {

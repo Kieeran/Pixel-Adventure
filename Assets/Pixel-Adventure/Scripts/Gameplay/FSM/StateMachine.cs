@@ -17,6 +17,7 @@ public abstract class State
         PlayerController.Instance.playerPhysic.MoveHorizontal(PlayerController.Instance.playerInput.move.x);
         PlayerController.Instance.playerPhysic.HandleExternalForce(PlayerController.Instance.playerInput.move);
         PlayerController.Instance.playerPhysic.HandleResistance();
+        PlayerController.Instance.playerPhysic.HandleSlide();
     }
     public virtual void OnExit() { }
     public virtual void HandleInput() { }
