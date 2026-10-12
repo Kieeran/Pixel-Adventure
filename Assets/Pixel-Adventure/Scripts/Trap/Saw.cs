@@ -34,9 +34,9 @@ public class Saw : PlacedObject
         chains.gameObject.SetActive(renderChains);
     }
 
-    public void SetChainsProperties(List<Vector2> chainWaypoints, Vector2 rootPos, float spacing)
+    public void SetChainsProperties(List<Vector2> chainWaypoints, Vector2 rootPos, float spacing, Sprite skin)
     {
-        chains.SetProperties(chainWaypoints, rootPos, spacing);
+        chains.SetProperties(chainWaypoints, rootPos, spacing, skin);
     }
 
     public override void OnSpawn()
@@ -47,7 +47,7 @@ public class Saw : PlacedObject
         isLoop = data.isLoop;
         SetRenderChains(data.renderChains);
         waypoints = new List<SawWaypointData>(data.waypoints);
-        SetChainsProperties(data.chainWaypoints, data.rootPos, data.spacing);
+        SetChainsProperties(data.chainWaypoints, data.rootPos, data.spacing, data.chainSkin);
         chains.Render();
 
         // Giống Platform: đợi LevelManager load level xong rồi mới tách chains ra khỏi saw

@@ -20,6 +20,7 @@ public class SawData : CustomData
     public List<Vector2> chainWaypoints;
     public Vector2 rootPos;
     public float spacing;
+    public Sprite chainSkin;
 
     public override void ApplyTo(PlacedObject target)
     {
@@ -28,7 +29,7 @@ public class SawData : CustomData
 
         saw.isLoop = isLoop;
         saw.SetRenderChains(renderChains);
-        saw.SetChainsProperties(chainWaypoints, rootPos, spacing);
+        saw.SetChainsProperties(chainWaypoints, rootPos, spacing, chainSkin);
 
         foreach (var wp in waypoints)
         {
@@ -68,5 +69,6 @@ public class SawData : CustomData
         chainWaypoints = new List<Vector2>(saw.chains.waypoints);
         rootPos = saw.chains.rootPos;
         spacing = saw.chains.spacing;
+        chainSkin = saw.chains.chainSkin.sprite;
     }
 }

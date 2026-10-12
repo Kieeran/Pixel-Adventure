@@ -43,9 +43,9 @@ public class Platform : PlacedObject
         controlledByPlayer = isBrownPlatform;
     }
 
-    public void SetChainsProperties(List<Vector2> chainWaypoints, Vector2 rootPos, float spacing)
+    public void SetChainsProperties(List<Vector2> chainWaypoints, Vector2 rootPos, float spacing, Sprite skin)
     {
-        chains.SetProperties(chainWaypoints, rootPos, spacing);
+        chains.SetProperties(chainWaypoints, rootPos, spacing, skin);
     }
 
     public override void OnSpawn()
@@ -55,7 +55,7 @@ public class Platform : PlacedObject
         PlatformData data = customData as PlatformData;
         SetPlatformSkin(data.isBrownPlatform);
         waypoints = new List<Vector2>(data.waypoints);
-        SetChainsProperties(data.chainWaypoints, data.rootPos, data.spacing);
+        SetChainsProperties(data.chainWaypoints, data.rootPos, data.spacing, data.chainSkin);
         chains.Render();
 
         // Chổ này khá dơ, sẽ quay lại sửa sau 

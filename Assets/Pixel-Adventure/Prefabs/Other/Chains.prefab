@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chains
   prefabChain: {fileID: 3695845084747737164}
-  waypointsRoot: {fileID: 8643910297399256878}
+  chainHolder: {fileID: 8643910297399256878}
+  waypointHolder: {fileID: 4334969238134515721}
   spacing: 0.5
   waypoints: []
   rootPos: {x: 0, y: 0}

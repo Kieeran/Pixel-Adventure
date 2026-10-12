@@ -21,3 +21,4 @@ MonoBehaviour:
   - {x: 0, y: 6}
   rootPos: {x: 0, y: 0.5}
   spacing: 0.5
+  chainSkin: {fileID: 21300000, guid: d9c5a449db91d51488798b761c22fb97, type: 3}

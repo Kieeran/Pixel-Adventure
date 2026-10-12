@@ -26,3 +26,4 @@ MonoBehaviour:
   chainWaypoints: []
   rootPos: {x: 0, y: 0}
   spacing: 0.5
+  chainSkin: {fileID: 0}
