@@ -62,7 +62,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -209,6 +209,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpikedBall
   customData: {fileID: 0}
   spikedBallCollision: {fileID: 8210458538190335272}
+  rb: {fileID: 7552168609289145621}
+  knockBackForce: 1
+  ball: {fileID: 3519070783106797481}
+  chains: {fileID: 8145502845271455243}
+  rotateContinuously: 0
+  rotateClockwise: 0
+  continuousStartAngle: 0
+  rotationSpeed: 90
+  swingStartAngle: -45
+  swingEndAngle: 45
+  swingAcceleration: 180
 --- !u!114 &8210458538190335272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -343,3 +354,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2774662618383134573, guid: bf7675322527a2e45a20e7526c782651, type: 3}
   m_PrefabInstance: {fileID: 8450816686491782066}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8145502845271455243 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 310175180253035961, guid: bf7675322527a2e45a20e7526c782651, type: 3}
+  m_PrefabInstance: {fileID: 8450816686491782066}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5834991dd5d784d9c664240ffd5714, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Chains

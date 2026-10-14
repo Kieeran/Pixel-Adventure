@@ -51,12 +51,12 @@ public class Saw : PlacedObject
         chains.Render();
 
         // Giống Platform: đợi LevelManager load level xong rồi mới tách chains ra khỏi saw
-        Invoke(nameof(WaitOneSec), 0.1f);
+        Invoke(nameof(Wait), 0.1f);
 
         InitWaypointMovement();
     }
 
-    void WaitOneSec()
+    void Wait()
     {
         chains.transform.SetParent(transform.parent, true);
     }

@@ -13,5 +13,109 @@ MonoBehaviour:
   m_Name: Level_13
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelID: 13
-  placedObjectDatas: []
+  placedObjectDatas:
+  - addressableKey: SpikedBall
+    position: {x: -1.5, y: 5.5}
+    rotation: 0
+    customData: {fileID: 11400000, guid: 6a152a4419de722488620b3e599aa19f, type: 2}
+  - addressableKey: SpikedBall
+    position: {x: 9.5, y: 2.5}
+    rotation: 0
+    customData: {fileID: 11400000, guid: 6b0a7a234356d14408afd27cb6ac1ed0, type: 2}
+  - addressableKey: SpikedBall
+    position: {x: 8.5, y: -3.5}
+    rotation: 0
+    customData: {fileID: 11400000, guid: 845a9598fade4f0429b6e8cc8c2ac97d, type: 2}
+  - addressableKey: SpikedBall
+    position: {x: -3.5, y: -1.5}
+    rotation: 0
+    customData: {fileID: 11400000, guid: 3932863fc85bd974e850701da45ecb95, type: 2}
+  - addressableKey: Orange
+    position: {x: -3.5, y: -3.5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -1.5, y: -3.5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -5.5, y: -3.5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -4.5, y: -5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -2.5, y: -5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -0.5, y: -5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Orange
+    position: {x: -6.5, y: -5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Pineapple
+    position: {x: 8.5, y: -2}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Pineapple
+    position: {x: 9.5, y: 4}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Kiwi
+    position: {x: -13, y: 3.5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Kiwi
+    position: {x: -11.5, y: 3.5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Kiwi
+    position: {x: -10, y: 3.5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Kiwi
+    position: {x: -8.5, y: 3.5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Kiwi
+    position: {x: -7, y: 3.5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Kiwi
+    position: {x: -12.25, y: 5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Kiwi
+    position: {x: -10.75, y: 5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Kiwi
+    position: {x: -12.25, y: 2}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Kiwi
+    position: {x: -10.75, y: 2}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Kiwi
+    position: {x: -9.25, y: 5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Kiwi
+    position: {x: -7.75, y: 5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Kiwi
+    position: {x: -9.25, y: 2}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Kiwi
+    position: {x: -7.75, y: 2}
+    rotation: 0
+    customData: {fileID: 0}
   playerStartPosition: {x: -13, y: -4.8, z: 0}
