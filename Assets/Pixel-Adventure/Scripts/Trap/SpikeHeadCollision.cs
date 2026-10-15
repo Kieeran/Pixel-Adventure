@@ -31,12 +31,27 @@ public class SpikeHeadCollision : MonoBehaviour
 
         for (int i = 0; i < collision.contactCount; i++)
         {
-            if (spikeHead.IsBlockedByTerrain(collision.GetContact(i).normal))
+            ContactPoint2D contact = collision.GetContact(i);
+            if (spikeHead.IsBlockedByTerrain(contact.normal))
             {
-                spikeHead.OnTerrainCollision();
+                spikeHead.OnTerrainCollision(GetTerrainCollisionSide(contact.normal));
                 return;
             }
         }
+    }
+
+    static SpikeHead.TerrainCollisionSide GetTerrainCollisionSide(Vector2 contactNormal)
+    {
+        if (Mathf.Abs(contactNormal.x) > Mathf.Abs(contactNormal.y))
+        {
+            return contactNormal.x > 0f
+                ? SpikeHead.TerrainCollisionSide.Left
+                : SpikeHead.TerrainCollisionSide.Right;
+        }
+
+        return contactNormal.y > 0f
+            ? SpikeHead.TerrainCollisionSide.Bottom
+            : SpikeHead.TerrainCollisionSide.Top;
     }
 
     void OnTriggerEnter2D(Collider2D other)

@@ -4,9 +4,19 @@ using UnityEngine;
 public class SpikeHead : PlacedObject
 {
     public enum MovementDirection { Up, Down, Left, Right }
+    public enum TerrainCollisionSide
+    {
+        Left = 0,
+        Right = 1,
+        Top = 2,
+        Bottom = 3
+    }
 
+    private static readonly int isHitHash = Animator.StringToHash("isHit");
+    private static readonly int hitSideHash = Animator.StringToHash("hitSide");
     [SerializeField] SpikeHeadCollision spikeHeadCollision;
     [SerializeField] Rigidbody2D rb;
+    [SerializeField] Animator animator;
     [SerializeField] float acceleration = 1f;
     [SerializeField] float maxSpeed = 5f;
     [SerializeField] float initialSpeed = 1f;
@@ -23,6 +33,7 @@ public class SpikeHead : PlacedObject
     {
         spikeHeadCollision = GetComponent<SpikeHeadCollision>();
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public override void OnSpawn()
@@ -92,7 +103,7 @@ public class SpikeHead : PlacedObject
         PlayerController.Instance.playerPhysic.ReceiveDamage(hitPos, knockBackForce);
     }
 
-    public void OnTerrainCollision()
+    public void OnTerrainCollision(TerrainCollisionSide hitSide)
     {
         if (isWaiting || directions.Count == 0) return;
 
@@ -100,6 +111,9 @@ public class SpikeHead : PlacedObject
         waitTimer = 0f;
         currentSpeed = 0f;
         rb.linearVelocity = Vector2.zero;
+
+        animator.SetTrigger(isHitHash);
+        animator.SetInteger(hitSideHash, (int)hitSide);
     }
 
     public bool IsBlockedByTerrain(Vector2 contactNormal)
