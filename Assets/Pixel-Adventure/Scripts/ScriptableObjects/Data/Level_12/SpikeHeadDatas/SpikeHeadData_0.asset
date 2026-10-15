@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32126feb00d3f9448820b0d8c1bf2bf8, type: 3}
+  m_Name: SpikeHeadData_0
+  m_EditorClassIdentifier: Assembly-CSharp::SpikeHeadData
+  directions: 0200000003000000
+  delayTime: 1

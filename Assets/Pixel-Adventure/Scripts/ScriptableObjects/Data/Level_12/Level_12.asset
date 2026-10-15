@@ -13,5 +13,89 @@ MonoBehaviour:
   m_Name: Level_12
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelID: 12
-  placedObjectDatas: []
+  placedObjectDatas:
+  - addressableKey: SpikeHead
+    position: {x: -0.41, y: -6.6}
+    rotation: 0
+    customData: {fileID: 11400000, guid: 4824808ca32094c418a94167a2c6eb19, type: 2}
+  - addressableKey: SpikeHead
+    position: {x: 7.48, y: 4.54}
+    rotation: 0
+    customData: {fileID: 11400000, guid: 4c0da1602d75b80469304a9fcec1b512, type: 2}
+  - addressableKey: SpikeHead
+    position: {x: 12.484, y: 4.5400004}
+    rotation: 0
+    customData: {fileID: 11400000, guid: 678724c88e7ef8b48a32025d7052afaa, type: 2}
+  - addressableKey: SpikeHead
+    position: {x: -12.634, y: 4.65}
+    rotation: 0
+    customData: {fileID: 11400000, guid: d1aab8ad64346e94295275944ff65b73, type: 2}
+  - addressableKey: Melon
+    position: {x: -1.5, y: -4.14}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Melon
+    position: {x: -4, y: -4.73}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Melon
+    position: {x: -6.5, y: -4.14}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Melon
+    position: {x: -9, y: -4.73}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Melon
+    position: {x: -11.5, y: -4.14}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Cherry
+    position: {x: 10, y: -4.5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Cherry
+    position: {x: 10, y: -2.25}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Cherry
+    position: {x: 10, y: 0}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Cherry
+    position: {x: 10, y: 2.25}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Cherry
+    position: {x: 10, y: 4.5}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Pineapple
+    position: {x: -5, y: 2}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Pineapple
+    position: {x: -6, y: 3.64}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Pineapple
+    position: {x: -8, y: 3.64}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Pineapple
+    position: {x: -10, y: 3.64}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Pineapple
+    position: {x: -7, y: 2}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Pineapple
+    position: {x: -9, y: 2}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Pineapple
+    position: {x: -11, y: 2}
+    rotation: 0
+    customData: {fileID: 0}
   playerStartPosition: {x: 2, y: -3.8, z: 0}
