@@ -235,7 +235,7 @@ public class PlayerPhysic : MonoBehaviour
         playerRB.AddForce(direction * force, ForceMode2D.Impulse);
     }
 
-    public void ReceiveDamage(Vector2 hitPos, float knockBackForce)
+    public void ReceiveDamage(Vector2 hitPos, float knockBackForce, Vector2 direction = default)
     {
         // Lấy tâm trước khi OnDead tắt collider
         Vector2 center = col.bounds.center;
@@ -243,7 +243,14 @@ public class PlayerPhysic : MonoBehaviour
         PlayerController.Instance.playerInput.isDead = true;
         PlayerController.Instance.OnDead?.Invoke();
 
-        KnockBack(center - hitPos, knockBackForce);
+        if (direction != default)
+        {
+            KnockBack(direction, knockBackForce);
+        }
+        else
+        {
+            KnockBack(center - hitPos, knockBackForce);
+        }
     }
 
     void KnockBack(Vector2 direction, float force)

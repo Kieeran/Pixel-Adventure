@@ -28,6 +28,8 @@ public class RockHead : PlacedObject
     bool isWaiting;
     float waitTimer;
     float currentSpeed;
+    private bool isCarryingPlayer;
+    private bool isClearExternalForce;
 
     void OnValidate()
     {
@@ -38,7 +40,8 @@ public class RockHead : PlacedObject
 
     public override void OnSpawn()
     {
-        rockHeadCollision.OnCharacterCollided += OnCharacterCollided;
+        rockHeadCollision.OnCharacterRidingStateChanged += HandleCharacterRidingStateChanged;
+        rockHeadCollision.OnCharacterCrushed += HandleCharacterCrushed;
 
         if (customData is RockHeadData data)
         {
@@ -56,17 +59,26 @@ public class RockHead : PlacedObject
         currentSpeed = initialSpeed;
         rb.gravityScale = 0f;
         rb.linearVelocity = Vector2.zero;
+        isCarryingPlayer = false;
+        isClearExternalForce = false;
     }
 
     public override void OnDespawn()
     {
-        rockHeadCollision.OnCharacterCollided -= OnCharacterCollided;
+        rockHeadCollision.OnCharacterRidingStateChanged -= HandleCharacterRidingStateChanged;
+        rockHeadCollision.OnCharacterCrushed -= HandleCharacterCrushed;
 
         rb.linearVelocity = Vector2.zero;
         currentDirectionIndex = 0;
         isWaiting = false;
         waitTimer = 0f;
         currentSpeed = 0f;
+        isClearExternalForce = false;
+        if (isCarryingPlayer)
+        {
+            PlayerController.Instance.playerPhysic.ClearExternalForce();
+            isCarryingPlayer = false;
+        }
     }
 
     void FixedUpdate()
@@ -75,6 +87,19 @@ public class RockHead : PlacedObject
         {
             rb.linearVelocity = Vector2.zero;
             return;
+        }
+
+        if (isCarryingPlayer)
+        {
+            PlayerController.Instance.playerPhysic.SetExternalForce(GetCurrentMovementDirection(), currentSpeed);
+        }
+        else
+        {
+            if (!isClearExternalForce)
+            {
+                PlayerController.Instance.playerPhysic.ClearExternalForce();
+                isClearExternalForce = true;
+            }
         }
 
         if (isWaiting)
@@ -91,16 +116,22 @@ public class RockHead : PlacedObject
             return;
         }
 
-        rb.linearVelocity = GetDirectionVector(directions[currentDirectionIndex]) * currentSpeed;
+        rb.linearVelocity = GetCurrentMovementDirection() * currentSpeed;
         currentSpeed = Mathf.Min(
             currentSpeed + Mathf.Max(0f, acceleration) * Time.fixedDeltaTime,
             Mathf.Max(0f, maxSpeed)
         );
     }
 
-    void OnCharacterCollided(Vector2 hitPos)
+    void HandleCharacterRidingStateChanged(bool isRiding)
     {
-        PlayerController.Instance.playerPhysic.ReceiveDamage(hitPos, knockBackForce);
+        isCarryingPlayer = isRiding;
+        isClearExternalForce = isRiding;
+    }
+
+    void HandleCharacterCrushed(Vector2 hitDirection)
+    {
+        PlayerController.Instance.playerPhysic.ReceiveDamage(Vector2.zero, knockBackForce, hitDirection);
     }
 
     public void OnTerrainCollision(TerrainCollisionSide hitSide, Vector2 overlappedRetrieveOffset)
@@ -122,7 +153,7 @@ public class RockHead : PlacedObject
     {
         if (isWaiting || directions.Count == 0) return false;
 
-        Vector2 movementDirection = GetDirectionVector(directions[currentDirectionIndex]);
+        Vector2 movementDirection = GetCurrentMovementDirection();
         // Bỏ qua va chạm theo trục vuông góc với hướng di chuyển để không dừng nhầm.
         bool isHorizontalMovement = movementDirection.x != 0f;
         bool isHorizontalContact = Mathf.Abs(contactNormal.x) > Mathf.Abs(contactNormal.y);
@@ -150,5 +181,10 @@ public class RockHead : PlacedObject
             MovementDirection.Right => Vector2.right,
             _ => Vector2.zero
         };
+    }
+
+    public Vector2 GetCurrentMovementDirection()
+    {
+        return GetDirectionVector(directions[currentDirectionIndex]);
     }
 }
