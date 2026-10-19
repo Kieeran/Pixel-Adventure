@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3797312698065485645}
   m_Layer: 0
   m_Name: RockHead
-  m_TagString: Untagged
+  m_TagString: RockHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,6 +49,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RockHead
   customData: {fileID: 0}
+  rockHeadCollision: {fileID: 7713068458639667038}
+  rb: {fileID: 3797312698065485645}
+  animator: {fileID: 8965437419225811654}
+  acceleration: 25
+  maxSpeed: 30
+  initialSpeed: 0
+  delayTime: 1
+  knockBackForce: 7
+  directions: 
 --- !u!114 &7713068458639667038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +70,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff910c59095db74295bfda7d286719c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RockHeadCollision
+  col: {fileID: 387383160597871130}
+  rockHead: {fileID: 817368245579109639}
 --- !u!50 &3797312698065485645
 Rigidbody2D:
   serializedVersion: 5
@@ -69,9 +80,9 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2389493064507719343}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
@@ -86,8 +97,8 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &4910055364592383909
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +111,7 @@ GameObject:
   - component: {fileID: 387383160597871130}
   m_Layer: 0
   m_Name: Physic
-  m_TagString: Untagged
+  m_TagString: RockHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -154,7 +165,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0031372309, y: 0.009411693}
+  m_Offset: {x: 0.0019617379, y: 0.0019772053}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -164,7 +175,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.9966657, y: 1.997638}
+  m_Size: {x: 1.934299, y: 1.9413047}
   m_EdgeRadius: 0
 --- !u!1 &5703633612184172352
 GameObject:

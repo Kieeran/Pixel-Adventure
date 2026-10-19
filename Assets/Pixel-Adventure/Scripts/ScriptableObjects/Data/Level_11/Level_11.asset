@@ -14,6 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelID: 11
   placedObjectDatas:
+  - addressableKey: RockHead
+    position: {x: 9, y: -7}
+    rotation: 0
+    customData: {fileID: 11400000, guid: 31e990860e0807f43b2a764ba51e3c3c, type: 2}
+  - addressableKey: RockHead
+    position: {x: -13, y: -7}
+    rotation: 0
+    customData: {fileID: 11400000, guid: 1b2421432a74ce14e9188faeb1d37ac7, type: 2}
+  - addressableKey: RockHead
+    position: {x: -4, y: -1}
+    rotation: 0
+    customData: {fileID: 11400000, guid: 6ad36e9bafa280c45a935569a273dcf3, type: 2}
+  - addressableKey: RockHead
+    position: {x: 12, y: 5}
+    rotation: 0
+    customData: {fileID: 11400000, guid: c73c8267e7343924daac7a7335f10902, type: 2}
   - addressableKey: Apple
     position: {x: -1.5, y: -5.58}
     rotation: 0
