@@ -13,5 +13,45 @@ MonoBehaviour:
   m_Name: Level_14
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelID: 14
-  placedObjectDatas: []
+  placedObjectDatas:
+  - addressableKey: Cherry
+    position: {x: 2, y: -4}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Cherry
+    position: {x: -10, y: -4}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Cherry
+    position: {x: -8, y: -4}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Cherry
+    position: {x: -6, y: -4}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Cherry
+    position: {x: -4, y: -4}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Cherry
+    position: {x: -2, y: -4}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Cherry
+    position: {x: 0, y: -4}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Pineapple
+    position: {x: 13, y: 1}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Pineapple
+    position: {x: 12, y: -2}
+    rotation: 0
+    customData: {fileID: 0}
+  - addressableKey: Pineapple
+    position: {x: 13, y: 4}
+    rotation: 0
+    customData: {fileID: 0}
   playerStartPosition: {x: -13, y: 0.2, z: 0}

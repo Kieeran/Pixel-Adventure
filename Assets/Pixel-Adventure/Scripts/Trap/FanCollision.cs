@@ -4,7 +4,7 @@ public class FanCollision : MonoBehaviour
 {
     [SerializeField] Fan fan;
 
-    PlayerPhysic cachedPlayerMovement;
+    PlayerPhysic cachedPlayerPhysic = null;
 
     void OnValidate()
     {
@@ -15,8 +15,8 @@ public class FanCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Character"))
         {
-            cachedPlayerMovement = collision.GetComponent<PlayerPhysic>();
-            cachedPlayerMovement.SetExternalPush(fan.pushDirection, fan.GetPushPower());
+            cachedPlayerPhysic = collision.GetComponentInParent<PlayerPhysic>();
+            cachedPlayerPhysic.SetExternalForce(fan.pushDirection, fan.GetPushPower());
         }
     }
 
@@ -24,7 +24,7 @@ public class FanCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Character"))
         {
-            cachedPlayerMovement.SetExternalPush(fan.pushDirection, fan.GetPushPower());
+            cachedPlayerPhysic.SetExternalForce(fan.pushDirection, fan.GetPushPower());
         }
     }
 
@@ -32,8 +32,17 @@ public class FanCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Character"))
         {
-            cachedPlayerMovement.ClearExternalPush();
-            cachedPlayerMovement = null;
+            cachedPlayerPhysic.ClearExternalForce();
+            cachedPlayerPhysic = null;
+        }
+    }
+
+    void OnDisable()
+    {
+        if (cachedPlayerPhysic != null)
+        {
+            cachedPlayerPhysic.ClearExternalForce();
+            cachedPlayerPhysic = null;
         }
     }
 }

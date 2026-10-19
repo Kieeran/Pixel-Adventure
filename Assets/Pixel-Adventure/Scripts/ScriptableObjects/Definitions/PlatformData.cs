@@ -11,6 +11,7 @@ public class PlatformData : CustomData
     public List<Vector2> chainWaypoints;
     public Vector2 rootPos;
     public float spacing;
+    public Sprite chainSkin;
 
     public override void ApplyTo(PlacedObject target)
     {
@@ -18,7 +19,7 @@ public class PlatformData : CustomData
         if (target is not Platform platform) return;
 
         platform.SetPlatformSkin(isBrownPlatform);
-        platform.SetChainsProperties(chainWaypoints, rootPos, spacing);
+        platform.SetChainsProperties(chainWaypoints, rootPos, spacing, chainSkin);
 
         foreach (var wp in waypoints)
         {
@@ -60,5 +61,6 @@ public class PlatformData : CustomData
         chainWaypoints = new List<Vector2>(platform.chains.waypoints);
         rootPos = platform.chains.rootPos;
         spacing = platform.chains.spacing;
+        chainSkin = platform.chains.chainSkin.sprite;
     }
 }

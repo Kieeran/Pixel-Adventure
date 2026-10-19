@@ -14,7 +14,8 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Terrain") ||
             collision.gameObject.CompareTag("Box") ||
             collision.gameObject.CompareTag("Block") ||
-            collision.gameObject.CompareTag("OneWayPlatform")
+            collision.gameObject.CompareTag("OneWayPlatform") ||
+            collision.gameObject.CompareTag("RockHead")
         )
         {
             // Nếu va chạm với OneWayPlatform mà đang bị overlapped
@@ -61,11 +62,11 @@ public class PlayerCollision : MonoBehaviour
             {
                 PlayerController.Instance.playerInput.isGrounded = false;
                 // Chỉ khi character rớt xuống mà lúc đó đang va chạm với tường thì mới được tính là đang trên tường
-                if (PlayerController.Instance.playerPhysic.playerRB.linearVelocityY < 0f)
+                if (PlayerController.Instance.playerPhysic.playerRB.linearVelocityY <= 0f)
                 {
                     // Sau tất cả các điều kiện thì chắn chắn player đang trượt trên tường rồi
                     // Nhưng nếu lúc này bị dính external push thì vẫn phải bỏ qua 
-                    if (!PlayerController.Instance.playerInput.isExternallyPushed)
+                    if (!PlayerController.Instance.playerInput.isExternallyForced)
                     {
                         PlayerController.Instance.playerInput.isOnWall = true;
                     }
@@ -79,7 +80,8 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Terrain") ||
             collision.gameObject.CompareTag("Box") ||
             collision.gameObject.CompareTag("Block") ||
-            collision.gameObject.CompareTag("OneWayPlatform")
+            collision.gameObject.CompareTag("OneWayPlatform") ||
+            collision.gameObject.CompareTag("RockHead")
         )
         {
             PlayerController.Instance.playerInput.isGrounded = false;

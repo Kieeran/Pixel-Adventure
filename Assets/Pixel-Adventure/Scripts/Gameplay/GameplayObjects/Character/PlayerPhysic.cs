@@ -18,7 +18,10 @@ public class PlayerPhysic : MonoBehaviour
     [SerializeField] private float deadSpinSpeed = 180f;
     [SerializeField] private float deadSpinAngle = 17.5f;
 
-    Vector2 externalPush;
+    Vector2 externalForce;
+    Vector2 resistance;
+    float slideVelocityX = 0f;
+    readonly float offset = 1;
     float defaultGravityScale;
     RigidbodyConstraints2D defaultConstraints;
 
@@ -72,38 +75,122 @@ public class PlayerPhysic : MonoBehaviour
         );
     }
 
-    public void HandleExternalPush(Vector2 move)
+    public void HandleExternalForce(Vector2 move)
     {
-        if (!PlayerController.Instance.playerInput.isExternallyPushed) return;
+        if (!PlayerController.Instance.playerInput.isExternallyForced) return;
         if (PlayerController.Instance.playerInput.isDead) return;
 
         Vector2 v = playerRB.linearVelocity;
 
-        if (externalPush.x != 0)
+        if (externalForce.x != 0)
         {
-            v.x = externalPush.x + move.x * moveSpeed;
+            v.x = externalForce.x + move.x * moveSpeed;
         }
 
-        if (externalPush.y != 0)
+        if (externalForce.y != 0)
         {
-            v.y = externalPush.y;
+            v.y = externalForce.y;
         }
 
         playerRB.linearVelocity = v;
     }
 
-    public void SetExternalPush(Vector2 direction, float power)
+    public void HandleResistance()
     {
-        PlayerController.Instance.playerInput.isExternallyPushed = true;
-        externalPush = direction.normalized * power;
+        if (!PlayerController.Instance.playerInput.isResisted) return;
+        if (PlayerController.Instance.playerInput.isDead) return;
+
+        Vector2 v = playerRB.linearVelocity;
+
+        v.x *= 1 - resistance.x;
+        v.y *= 1 - resistance.y;
+
+        playerRB.linearVelocity = v;
+    }
+
+    public void HandleSlide()
+    {
+        if (PlayerController.Instance.playerInput.isDead) return;
+        if (!PlayerController.Instance.playerInput.isGrounded)
+        {
+            slideVelocityX = 0;
+            return;
+        }
+
+        if (playerRB.linearVelocityX > 0)
+        {
+            slideVelocityX += offset;
+            if (slideVelocityX > moveSpeed)
+            {
+                slideVelocityX = moveSpeed;
+            }
+        }
+
+        else if (playerRB.linearVelocityX < 0)
+        {
+            slideVelocityX -= offset;
+            if (slideVelocityX < -moveSpeed)
+            {
+                slideVelocityX = -moveSpeed;
+            }
+        }
+
+        if (!PlayerController.Instance.playerInput.isSliding) return;
+
+        playerRB.linearVelocity = new Vector2(slideVelocityX, playerRB.linearVelocityY);
+    }
+
+    public void Sliding()
+    {
+        PlayerController.Instance.playerInput.isSliding = true;
+    }
+
+    public void StopSliding()
+    {
+        PlayerController.Instance.playerInput.isSliding = false;
+        slideVelocityX = 0;
+    }
+
+    public void SetExternalForce(Vector2 direction, float power)
+    {
+        PlayerController.Instance.playerInput.isExternallyForced = true;
+        externalForce = direction.normalized * power;
         if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x))
             playerRB.gravityScale = 0;
     }
 
-    public void ClearExternalPush()
+    public void ClearExternalForce()
     {
         playerRB.gravityScale = defaultGravityScale;
-        PlayerController.Instance.playerInput.isExternallyPushed = false;
+        PlayerController.Instance.playerInput.isExternallyForced = false;
+    }
+
+    public void ClearResistance()
+    {
+        if (resistance.y == 1)
+        {
+            playerRB.gravityScale = defaultGravityScale;
+        }
+
+        resistance = Vector2.zero;
+        PlayerController.Instance.playerInput.isResisted = false;
+    }
+
+    public void ResistMovement(Vector2 resistance)
+    {
+        this.resistance = resistance;
+
+        if (resistance.y == 1)
+        {
+            playerRB.gravityScale = 0;
+        }
+
+        PlayerController.Instance.playerInput.isResisted = true;
+    }
+
+    public bool CanMoveHorizontal()
+    {
+        return resistance.x != 1;
     }
 
     public void Jump()
@@ -124,11 +211,17 @@ public class PlayerPhysic : MonoBehaviour
             (PlayerController.Instance.playerInput.isContactLeftWall ? Vector2.right : Vector2.left) * wallBouncePower + Vector2.up * jumpPower,
             ForceMode2D.Impulse
         );
+
+        // Chổ này phải set thủ công ở đây vì nếu không qua fram FixedUpdate sau sẽ đi qua hàm HandleResistance() reset lại lực vertical
+        PlayerController.Instance.playerInput.isResisted = false;
     }
 
     public void SlideOnWall()
     {
         if (PlayerController.Instance.playerInput.isDead) return;
+
+        // Resistance theo chiều dọc chỉ áp dụng khi player trượt trên tường
+        if (PlayerController.Instance.playerInput.isResisted && resistance.y == 1) return;
 
         playerRB.linearVelocity = new Vector2(
             playerRB.linearVelocity.x,
@@ -142,7 +235,7 @@ public class PlayerPhysic : MonoBehaviour
         playerRB.AddForce(direction * force, ForceMode2D.Impulse);
     }
 
-    public void ReceiveDamage(Vector2 hitPos, float knockBackForce)
+    public void ReceiveDamage(Vector2 hitPos, float knockBackForce, Vector2 direction = default)
     {
         // Lấy tâm trước khi OnDead tắt collider
         Vector2 center = col.bounds.center;
@@ -150,12 +243,19 @@ public class PlayerPhysic : MonoBehaviour
         PlayerController.Instance.playerInput.isDead = true;
         PlayerController.Instance.OnDead?.Invoke();
 
-        KnockBack(center - hitPos, knockBackForce);
+        if (direction != default)
+        {
+            KnockBack(direction, knockBackForce);
+        }
+        else
+        {
+            KnockBack(center - hitPos, knockBackForce);
+        }
     }
 
     void KnockBack(Vector2 direction, float force)
     {
-        ClearExternalPush();
+        ClearExternalForce();
 
         Vector2 dir = direction.normalized;
 

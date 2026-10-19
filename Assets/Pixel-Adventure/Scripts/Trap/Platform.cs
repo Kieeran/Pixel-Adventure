@@ -43,9 +43,9 @@ public class Platform : PlacedObject
         controlledByPlayer = isBrownPlatform;
     }
 
-    public void SetChainsProperties(List<Vector2> chainWaypoints, Vector2 rootPos, float spacing)
+    public void SetChainsProperties(List<Vector2> chainWaypoints, Vector2 rootPos, float spacing, Sprite skin)
     {
-        chains.SetProperties(chainWaypoints, rootPos, spacing);
+        chains.SetProperties(chainWaypoints, rootPos, spacing, skin);
     }
 
     public override void OnSpawn()
@@ -55,7 +55,7 @@ public class Platform : PlacedObject
         PlatformData data = customData as PlatformData;
         SetPlatformSkin(data.isBrownPlatform);
         waypoints = new List<Vector2>(data.waypoints);
-        SetChainsProperties(data.chainWaypoints, data.rootPos, data.spacing);
+        SetChainsProperties(data.chainWaypoints, data.rootPos, data.spacing, data.chainSkin);
         chains.Render();
 
         // Chổ này khá dơ, sẽ quay lại sửa sau 
@@ -78,7 +78,7 @@ public class Platform : PlacedObject
 
         if (isCarryingPlayer && isMoving)
         {
-            PlayerController.Instance.playerPhysic.ClearExternalPush();
+            PlayerController.Instance.playerPhysic.ClearExternalForce();
         }
 
         brownSkin.gameObject.SetActive(true);
@@ -112,12 +112,12 @@ public class Platform : PlacedObject
         {
             if (isMoving)
             {
-                PlayerController.Instance.playerPhysic.SetExternalPush((moveDirection * Vector2.right).normalized, moveSpeed);
+                PlayerController.Instance.playerPhysic.SetExternalForce((moveDirection * Vector2.right).normalized, moveSpeed);
             }
             else
             {
                 // Chổ này clear external push do platform dừng lại
-                PlayerController.Instance.playerPhysic.ClearExternalPush();
+                PlayerController.Instance.playerPhysic.ClearExternalForce();
             }
         }
     }
@@ -245,7 +245,7 @@ public class Platform : PlacedObject
         if (!isCarryingPlayer)
         {
             // Chổ này clear external push do player rời khỏi platform -> không nhận lực đẩy khi platform carry nữa
-            PlayerController.Instance.playerPhysic.ClearExternalPush();
+            PlayerController.Instance.playerPhysic.ClearExternalForce();
         }
 
         if (!controlledByPlayer) return;

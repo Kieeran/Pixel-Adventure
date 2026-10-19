@@ -1,143 +1,110 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
+/// <summary>
+/// Rải các chain (mắt xích) dọc theo đường gấp khúc đi qua các waypoint.
+///
+/// Cấu trúc object con (theo thứ tự, OnValidate tự gán):
+///   con 0 = prefabChain    : chain mẫu, được Instantiate ra nhiều bản
+///   con 1 = chainHolder    : chứa các chain được spawn
+///   con 2 = waypointHolder : chứa các marker (waypoint) để kéo thả khi design level
+///
+/// Luồng dữ liệu:
+///   - Khi design (Editor): kéo marker -> cập nhật waypoints -> Render lại (xem Update).
+///   - Khi load level / play: SetProperties(data) -> Render (không dùng marker).
+/// </summary>
 [ExecuteAlways]
 public class Chains : MonoBehaviour
 {
+    // Chặn trường hợp spacing quá nhỏ (hoặc đường quá dài) làm spawn quá nhiều, treo editor
+    const int MaxChains = 2000;
+
     [SerializeField] Transform prefabChain;
     [SerializeField] Transform chainHolder;
-    [SerializeField] Transform waypointsRoot;
+    [SerializeField] Transform waypointHolder;
+
+    public SpriteRenderer chainSkin;
+
+    // Khoảng cách giữa 2 chain, đo DỌC THEO ĐƯỜNG ĐI (path length), không phải khoảng cách thẳng.
+    // Nên ở góc cua, khoảng cách thẳng giữa 2 chain sẽ nhỏ hơn spacing (góc càng gắt càng nhỏ).
     public float spacing = 0.5f;
+
+    // Vị trí các waypoint ở local space của object này. Đây là dữ liệu chính của level.
     public List<Vector2> waypoints = new();
     public Vector2 rootPos = Vector2.zero;
 
-    readonly List<Transform> spawnedChains = new();
-    readonly List<Vector2> lastBakedPositions = new();
-    Transform lastPrefabChain;
-
-    public void SetProperties(List<Vector2> waypoints, Vector2 rootPos, float spacing)
+    // Khởi tạo các properties cần thiết cho chains khi:
+    // - Muốn khôi phục chains trở lại để tiếp tục design level
+    // - Muốn đặt chains lên level khi đang play
+    public void SetProperties(List<Vector2> waypoints, Vector2 rootPos, float spacing, Sprite chainSkin)
     {
-        this.waypoints.Clear();
+        // Copy sang list mới để không bị dùng chung list với nơi gọi
         this.waypoints = new List<Vector2>(waypoints);
         this.rootPos = rootPos;
         this.spacing = spacing;
+        this.chainSkin.sprite = chainSkin;
 
         transform.localPosition = rootPos;
 
-        if (!Application.isPlaying)
-        {
-            RestoreWaypointMarkers();
-            lastPrefabChain = prefabChain;
-        }
+        // Nếu khôi phục chains trở lại để tiếp tục design level thì khôi phục cả các wp để design
+#if UNITY_EDITOR
+        if (!Application.isPlaying) SyncMarkersFromWaypoints();
+#endif
 
         Render();
     }
 
-    void RestoreWaypointMarkers()
-    {
-        if (waypointsRoot == null) return;
-
-        while (waypointsRoot.childCount > waypoints.Count)
-        {
-            DestroyImmediate(waypointsRoot.GetChild(waypointsRoot.childCount - 1).gameObject);
-        }
-
-        while (waypointsRoot.childCount < waypoints.Count)
-        {
-            new GameObject("Waypoint").transform.SetParent(waypointsRoot);
-        }
-
-        lastBakedPositions.Clear();
-        for (int i = 0; i < waypoints.Count; i++)
-        {
-            Transform marker = waypointsRoot.GetChild(i);
-            marker.name = $"Waypoint_{i}";
-            marker.position = transform.TransformPoint(waypoints[i]);
-            lastBakedPositions.Add(waypoints[i]);
-        }
-    }
-
-    void OnValidate()
-    {
-        if (transform.childCount > 0) prefabChain = transform.GetChild(0);
-        if (transform.childCount > 1) chainHolder = transform.GetChild(1);
-        if (transform.childCount > 2) waypointsRoot = transform.GetChild(2);
-
-        rootPos = transform.localPosition;
-    }
-
-    void Update()
-    {
-        if (Application.isPlaying) return;
-        if (waypointsRoot == null) return;
-        if (!HasChanges()) return;
-
-        Bake();
-
-        lastPrefabChain = prefabChain;
-    }
-
-    bool HasChanges()
-    {
-        if (prefabChain != lastPrefabChain) return true;
-        if (waypointsRoot.childCount != lastBakedPositions.Count) return true;
-
-        for (int i = 0; i < waypointsRoot.childCount; i++)
-        {
-            Vector2 markerPosition = transform.InverseTransformPoint(waypointsRoot.GetChild(i).position);
-            if (markerPosition != lastBakedPositions[i]) return true;
-        }
-
-        return false;
-    }
-
-    [ContextMenu("Bake")]
-    public void Bake()
-    {
-        waypoints.Clear();
-        lastBakedPositions.Clear();
-
-        if (waypointsRoot == null) return;
-
-        for (int i = 0; i < waypointsRoot.childCount; i++)
-        {
-            Vector2 markerPosition = transform.InverseTransformPoint(waypointsRoot.GetChild(i).position);
-            waypoints.Add(markerPosition);
-            lastBakedPositions.Add(markerPosition);
-        }
-
-        Render();
-    }
-
+    // Rải chain dọc theo waypoints.
+    //
+    // Hình dung có một "cây bút" đi dọc đường gấp khúc, cứ đi đủ `spacing` thì đặt một chain.
+    //   currentPoint           : vị trí hiện tại của cây bút
+    //   distanceUntilNextChain : quãng cây bút còn phải đi nữa thì mới đặt chain tiếp theo
+    //   segmentIndex           : đoạn đang đi, là đoạn từ waypoints[segmentIndex] -> waypoints[segmentIndex + 1]
     public void Render()
     {
+        // Xoá chain cũ trước khi vẽ lại
         ClearChains();
 
-        if (prefabChain == null || spacing <= 0f || waypoints.Count < 2) return;
+        if (prefabChain == null || chainHolder == null) return;
+        if (spacing <= 0f || waypoints.Count < 2) return;
 
+        // Bắt đầu spawn ở wp 0
         Vector2 currentPoint = waypoints[0];
         SpawnChainAt(currentPoint);
 
         float distanceUntilNextChain = spacing;
         int segmentIndex = 0;
+        int spawned = 1;
 
-        while (segmentIndex < waypoints.Count - 1)
+        while (segmentIndex < waypoints.Count - 1 && spawned < MaxChains)
         {
             Vector2 segmentEnd = waypoints[segmentIndex + 1];
             float distanceToSegmentEnd = Vector2.Distance(currentPoint, segmentEnd);
 
+            // Nhánh 1: đoạn còn lại ngắn hơn quãng cần đi -> không đủ chỗ đặt chain trong đoạn này.
+            // Cây bút đi hết đoạn tới waypoint kế, rồi sang đoạn tiếp theo.
+            // Quãng đã đi được trừ vào distanceUntilNextChain, phần còn thiếu mang sang đoạn sau.
+            // Nhờ vậy ở góc cua: (chain trước -> wp) + (wp -> chain sau) = đúng 1 spacing.
+            // Nhánh này cũng chạy khi còn dư cuối đoạn (vd đoạn dài 1.0, spacing 0.4 -> dư 0.2 mang sang đoạn sau).
             if (distanceToSegmentEnd < distanceUntilNextChain)
             {
+                // chưa đủ khoảng cách -> sang đoạn kế, giữ phần dư để spacing đều qua góc cua
                 distanceUntilNextChain -= distanceToSegmentEnd;
                 currentPoint = segmentEnd;
                 segmentIndex++;
                 continue;
             }
 
+            // Nhánh 2: đoạn còn đủ dài -> tiến đúng distanceUntilNextChain theo hướng đoạn, đặt chain,
+            // rồi reset để chain kế tiếp cách đúng 1 spacing.
+            // Lưu ý distanceUntilNextChain có thể < spacing ở chain đầu tiên sau góc cua (do phần dư mang sang).
             Vector2 direction = (segmentEnd - currentPoint).normalized;
             currentPoint += direction * distanceUntilNextChain;
             SpawnChainAt(currentPoint);
+            spawned++;
             distanceUntilNextChain = spacing;
         }
     }
@@ -145,30 +112,141 @@ public class Chains : MonoBehaviour
     void SpawnChainAt(Vector2 localPosition)
     {
         Transform chain = Instantiate(prefabChain, chainHolder);
+        // prefabChain (con 0) thường đang tắt để không hiện ra, nên bản copy phải bật lên
         chain.gameObject.SetActive(true);
         chain.localPosition = localPosition;
-        spawnedChains.Add(chain);
     }
 
+    // Xoá toàn bộ con của chainHolder (không cần list riêng -> hết lỗi "dây ma" sau reload/recompile).
+    // Trước đây dùng list spawnedChains (không serialize) nên sau reload list rỗng, chain cũ nằm lại trong scene.
+    // Lưu ý: Chains.prefab cần được save lại để chainHolder được serialize đúng.
     void ClearChains()
     {
-        for (int i = spawnedChains.Count - 1; i >= 0; i--)
+        if (chainHolder == null) return;
+
+        // Duyệt ngược vì xoá con sẽ làm đổi childCount / index
+        for (int i = chainHolder.childCount - 1; i >= 0; i--)
         {
-            Transform chain = spawnedChains[i];
-            if (chain == null) continue;
-
-            if (Application.isPlaying) Destroy(chain.gameObject);
-            else DestroyImmediate(chain.gameObject);
+            GameObject child = chainHolder.GetChild(i).gameObject;
+            // Destroy chỉ xoá ở cuối frame (dùng khi Play), DestroyImmediate xoá ngay (dùng ở Editor)
+            if (Application.isPlaying) Destroy(child);
+            else DestroyImmediate(child);
         }
-
-        spawnedChains.Clear();
     }
 
-    // TODO: Lỗi dư chain khi reload (chỉ ảnh hưởng editor, không ảnh hưởng play/data)
-    // - spawnedChains là readonly nên không được serialize -> reset rỗng sau khi reload scene / recompile
-    // - Chain clone thì được lưu trong scene -> ClearChains() không biết để xoá -> render lại sinh thêm 1 lớp chain đè lên
-    // - Nếu kéo waypoint sau khi reload -> lớp chain cũ nằm lại ở vị trí cũ (dây "ma")
-    // - Tạm thời: chạy Edit level để dọn sạch
-    // - Hướng sửa: bỏ spawnedChains, ClearChains() xoá toàn bộ con của chainHolder (giống Spikes)
-    //   -> trước đó cần Save lại Chains.prefab để field chainHolder được serialize đúng (hiện đang thiếu trong file prefab)
+#if UNITY_EDITOR
+    // Giá trị spacing của lần render gần nhất, để biết khi nào người dùng đổi spacing trong Inspector
+    float lastSpacing;
+
+    // Gán reference theo thứ tự con (xem mô tả ở đầu class) và đồng bộ rootPos với vị trí thực
+    void OnValidate()
+    {
+        if (transform.childCount > 0) prefabChain = transform.GetChild(0);
+        if (transform.childCount > 1) chainHolder = transform.GetChild(1);
+        if (transform.childCount > 2) waypointHolder = transform.GetChild(2);
+
+        chainSkin = prefabChain.GetComponent<SpriteRenderer>();
+        rootPos = transform.localPosition;
+    }
+
+    // Kéo marker / đổi spacing / thêm xoá marker -> tự render lại.
+    // Không render trực tiếp trong OnValidate vì Instantiate/Destroy bị cấm ở đó.
+    void Update()
+    {
+        if (Application.isPlaying || waypointHolder == null) return;
+        if (!HasChanges()) return;
+
+        RefreshFromMarkers();
+    }
+
+    // So sánh trạng thái hiện tại (marker + spacing) với lần render gần nhất.
+    // Không cần lưu list vị trí riêng vì waypoints luôn đồng bộ với marker sau mỗi lần Refresh.
+    // Lưu ý: đổi prefabChain (thay con 0 bằng object khác) KHÔNG tự render lại, cần kéo marker hoặc đổi spacing.
+    bool HasChanges()
+    {
+        // spacing mà khác lastSpacing thì đã có sự thay đổi
+        if (!Mathf.Approximately(spacing, lastSpacing)) return true;
+        // số wp thực tế ở waypointHolder khác số wp ở waypoints thì vừa thêm wp
+        if (waypointHolder.childCount != waypoints.Count) return true;
+
+        // Detect thay đổi vị trí wp
+        // (Vector2 != so sánh gần đúng, nên sai số float khi đổi qua lại world/local không gây render liên tục)
+        for (int i = 0; i < waypoints.Count; i++)
+        {
+            if (GetMarkerLocalPosition(i) != waypoints[i]) return true;
+        }
+
+        return false;
+    }
+
+    // marker (scene) -> waypoints (data) -> render
+    void RefreshFromMarkers()
+    {
+        waypoints.Clear();
+        for (int i = 0; i < waypointHolder.childCount; i++)
+        {
+            waypoints.Add(GetMarkerLocalPosition(i));
+        }
+
+        lastSpacing = spacing;
+
+        Render();
+    }
+
+    // waypoints (data) -> marker (scene)
+    void SyncMarkersFromWaypoints()
+    {
+        if (waypointHolder == null) return;
+
+        // Tăng giảm số waypoint sao cho bằng với số waypoint được lưu ở dạng data
+        while (waypointHolder.childCount > waypoints.Count)
+        {
+            DestroyImmediate(waypointHolder.GetChild(waypointHolder.childCount - 1).gameObject);
+        }
+
+        while (waypointHolder.childCount < waypoints.Count)
+        {
+            CreateMarker(waypointHolder.childCount);
+        }
+
+        // Set các giá trị từ data vào các waypoint
+        for (int i = 0; i < waypoints.Count; i++)
+        {
+            Transform marker = waypointHolder.GetChild(i);
+            marker.name = $"Waypoint_{i}";
+            marker.position = transform.TransformPoint(waypoints[i]);
+        }
+
+        // Đặt mốc để Update không tưởng là có thay đổi và render lại lần nữa
+        lastSpacing = spacing;
+    }
+
+    // Vị trí marker ở local space của object này (waypoints cũng lưu ở local space).
+    // InverseTransformPoint trả Vector3, gán sang Vector2 sẽ bỏ z.
+    Vector2 GetMarkerLocalPosition(int index)
+    {
+        return transform.InverseTransformPoint(waypointHolder.GetChild(index).position);
+    }
+
+    // Tag EditorOnly: Unity loại các object có tag này khỏi build
+    Transform CreateMarker(int index)
+    {
+        GameObject marker = new($"Waypoint_{index}") { tag = "EditorOnly" };
+        marker.transform.SetParent(waypointHolder, false);
+        return marker.transform;
+    }
+
+    [ContextMenu("Add waypoint")]
+    void AddWaypoint()
+    {
+        if (waypointHolder == null) return;
+
+        int index = waypointHolder.childCount;
+        Transform marker = CreateMarker(index);
+        marker.localPosition = Vector2.zero;
+
+        // Cho phép Ctrl+Z để hoàn tác việc thêm waypoint
+        Undo.RegisterCreatedObjectUndo(marker.gameObject, "Add waypoint");
+    }
+#endif
 }

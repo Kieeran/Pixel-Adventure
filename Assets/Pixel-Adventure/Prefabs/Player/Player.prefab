@@ -14746,7 +14746,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &95255012435249809
 MonoBehaviour:
@@ -14761,7 +14761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 6457185354270965852}
-  playerMovement: {fileID: 6441224581145184201}
+  playerPhysic: {fileID: 6441224581145184201}
   playerCollision: {fileID: 3918691766044789199}
   playerAnimation: {fileID: 5803102028198684687}
   CurrentState: 
@@ -14872,8 +14872,10 @@ MonoBehaviour:
   isJumpInAir: 0
   isOnWall: 0
   isContactLeftWall: 0
-  isExternallyPushed: 0
+  isExternallyForced: 0
   isDead: 0
+  isResisted: 0
+  isSliding: 0
 --- !u!114 &6441224581145184201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14886,12 +14888,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fb6f54c0c68fc549ac178423ae10875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPhysic
-  playerRB: {fileID: 0}
+  playerRB: {fileID: 1795255654124406223}
+  col: {fileID: 7811861908759658456}
   moveSpeed: 7
   slideOnWallSpeed: 3
   jumpPower: 20
   jumpAirPower: 15
   wallBouncePower: 10
+  verticalHitThreshold: 10
+  verticalTiltAngle: 17.5
+  downwardKnockBackMultiplier: 0
+  deadSpinSpeed: 180
+  deadSpinAngle: 17.5
 --- !u!114 &3918691766044789199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15110,6 +15118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimation
   animator: {fileID: 8631672350750552613}
+  spriteRenderer: {fileID: 8288712105440442291}
 --- !u!1 &7932850783537353504
 GameObject:
   m_ObjectHideFlags: 0

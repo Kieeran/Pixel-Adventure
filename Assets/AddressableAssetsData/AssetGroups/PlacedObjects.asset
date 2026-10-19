@@ -15,8 +15,20 @@ MonoBehaviour:
   m_GroupName: PlacedObjects
   m_GUID: a0d209a4cdaf4a549a96c4a44c8d5b39
   m_SerializeEntries:
+  - m_GUID: 2ee2eb950be6cf64ea60537ee3e50a44
+    m_Address: SpikeHead
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 35cc5695a6b2ad64e98ef5bfdd1b34d5
     m_Address: Spikes
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3824514782e9d004c8fbb33f8b2b6725
+    m_Address: SpikedBall
     m_ReadOnly: 0
     m_SerializedLabels:
     - Trap
@@ -95,6 +107,12 @@ MonoBehaviour:
     FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 7dcd2164c8ec03847bbd835f589731d0
     m_Address: Fan
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Trap
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 836ba210bd8759f4d8c0baff61cc1448
+    m_Address: RockHead
     m_ReadOnly: 0
     m_SerializedLabels:
     - Trap
