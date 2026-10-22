@@ -56,12 +56,6 @@ public class SpikedBall : PlacedObject
 
         if (customData is SpikedBallData data) data.ApplyTo(this);
 
-        // PoolManager đặt vị trí và góc của object sau OnSpawn; chờ một nhịp để đọc được transform đã đặt.
-        Invoke(nameof(Wait), 0.1f);
-    }
-
-    void Wait()
-    {
         InitializeRotation();
     }
 

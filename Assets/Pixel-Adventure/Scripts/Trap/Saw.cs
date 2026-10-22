@@ -50,15 +50,9 @@ public class Saw : PlacedObject
         SetChainsProperties(data.chainWaypoints, data.rootPos, data.spacing, data.chainSkin);
         chains.Render();
 
-        // Giống Platform: đợi LevelManager load level xong rồi mới tách chains ra khỏi saw
-        Invoke(nameof(Wait), 0.1f);
+        chains.transform.SetParent(transform.parent, true);
 
         InitWaypointMovement();
-    }
-
-    void Wait()
-    {
-        chains.transform.SetParent(transform.parent, true);
     }
 
     public override void OnDespawn()

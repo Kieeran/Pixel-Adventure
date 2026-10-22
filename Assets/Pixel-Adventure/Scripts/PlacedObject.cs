@@ -8,4 +8,9 @@ public class PlacedObject : MonoBehaviour
 
     public virtual void OnSpawn() { }
     public virtual void OnDespawn() { }
+    public void EnableObject()
+    {
+        gameObject.SetActive(true);
+        OnSpawn();
+    }
 }

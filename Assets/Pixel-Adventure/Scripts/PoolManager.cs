@@ -86,11 +86,9 @@ public class PoolManager : MonoBehaviour
 
         PlacedObject obj = pools[id].Dequeue();
 
-        obj.gameObject.SetActive(true);
         obj.transform.SetParent(null);
 
         obj.customData = customData;
-        obj.OnSpawn();
 
         activeObjects.Add(obj);
 
@@ -135,6 +133,8 @@ public class PoolManager : MonoBehaviour
                 );
 
                 LevelManager.Instance.currentLevel.AddPlacedObject(obj);
+
+                obj.EnableObject();
             }
             else Debug.Log("pools not contain id: " + data.addressableKey);
         }

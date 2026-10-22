@@ -44,6 +44,7 @@ public class BoxRewardSystem : MonoBehaviour
             foreach (string id in fruitIdsToSpawn)
             {
                 PlacedObject obj = PoolManager.Instance.GetByID(id);
+                obj.EnableObject();
                 if (obj.TryGetComponent<Fruit>(out var fruit))
                 {
                     LevelManager.Instance.currentLevel.AddPlacedObject(obj);

@@ -58,16 +58,9 @@ public class Platform : PlacedObject
         SetChainsProperties(data.chainWaypoints, data.rootPos, data.spacing, data.chainSkin);
         chains.Render();
 
-        // Chổ này khá dơ, sẽ quay lại sửa sau 
-        // Thay vì đợi loading các manager, pool khởi tạo, ta đợi luôn LevelManager load level trước khi khởi động các object trên level
-        Invoke(nameof(WaitOneSec), 0.1f);
+        chains.transform.SetParent(transform.parent, true);
 
         InitWaypointMovement();
-    }
-
-    void WaitOneSec()
-    {
-        chains.transform.SetParent(transform.parent, true);
     }
 
     public override void OnDespawn()
