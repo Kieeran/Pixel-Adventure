@@ -11,7 +11,7 @@ public class FanGroupSequencer : MonoBehaviour
     List<string> groupIds;
     Coroutine sequenceRoutine;
 
-    void Start()
+    public void Init()
     {
         LevelManager.Instance.CurrentLevelLoaded += OnCurrentLevelLoaded;
     }

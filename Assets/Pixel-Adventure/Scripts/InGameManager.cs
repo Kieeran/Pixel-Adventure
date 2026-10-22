@@ -1,11 +1,23 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InGameManager : MonoBehaviour
 {
     public static InGameManager Instance { get; private set; }
+    [SerializeField] MainCanvas mainCanvas;
+    [SerializeField] UIManager uIManager;
+    [SerializeField] PoolManager poolManager;
+    [SerializeField] LevelManager levelManager;
+
+    [Space(10)]
+    [SerializeField] FanGroupSequencer fanGroupSequencer;
+
+    [Space(10)]
+    public GameData gameData;
+
+    private int currentLevel;
+    public int GetCurrentLevel() { return currentLevel; }
+    public void SetCurrentLevel(int i) { currentLevel = i; }
 
     private void Awake()
     {
@@ -15,42 +27,38 @@ public class InGameManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        StartCoroutine(Init());
     }
 
-    private int currentLevel;
-    public GameData gameData;
-    public int GetCurrentLevel() { return currentLevel; }
-    public void SetCurrentLevel(int i) { currentLevel = i; }
-
-    // Dơ: sẽ quay lại refactor khi hoàn thành full levels
-    public Action OnGameReady;
-    public Action OnPoolsReady;
-    public Action OnLevelsReady;
-    bool assetsLoaded = false;
-    bool levelsLoaded = false;
-
-    void Start()
+    IEnumerator Init()
     {
-        currentLevel = gameData.currentLevel;
-
-        OnPoolsReady += () =>
+        while (PoolManager.Instance == null)
         {
-            assetsLoaded = true;
-            CheckGameReady();
-        };
-
-        OnLevelsReady += () =>
-        {
-            levelsLoaded = true;
-            CheckGameReady();
-        };
-    }
-
-    void CheckGameReady()
-    {
-        if (assetsLoaded && levelsLoaded)
-        {
-            OnGameReady?.Invoke();
+            Instantiate(poolManager);
+            yield return null;
         }
+        while (LevelManager.Instance == null)
+        {
+            Instantiate(levelManager);
+            yield return null;
+        }
+        while (UIManager.Instance == null)
+        {
+            Instantiate(uIManager);
+            yield return null;
+        }
+
+        yield return PoolManager.Instance.Init();
+
+        yield return LevelManager.Instance.SetupLevels();
+
+        yield return LevelManager.Instance.Init();
+
+        yield return UIManager.Instance.Init(mainCanvas);
+
+        fanGroupSequencer.Init();
+
+        yield break;
     }
 }

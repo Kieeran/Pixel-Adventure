@@ -7,8 +7,8 @@ public class LevelManager : MonoBehaviour
 {
     public int currentLevelID;
     public Level currentLevel;
-    public List<Level> preFabLevels;
-    public Dictionary<int, Level> levels;
+    public List<Level> preFabLevels = new();
+    public Dictionary<int, Level> levels = new();
 
     public Level GetCurrentLevel() { return currentLevel; }
 
@@ -34,19 +34,19 @@ public class LevelManager : MonoBehaviour
             return;
         }
         Instance = this;
-
-        SetupLevels();
     }
 
-    void SetupLevels()
+    public IEnumerator SetupLevels()
     {
-        levels = new();
-        preFabLevels = new();
+        bool done = false;
+
         LoadPrefabsByLabel(levelAddressableLabel, () =>
         {
             preFabLevels.Sort((a, b) => a.levelData.levelID.CompareTo(b.levelData.levelID));
-            InGameManager.Instance.OnLevelsReady?.Invoke();
+            done = true;
         });
+
+        yield return new WaitUntil(() => done == true);
     }
 
     void LoadPrefabsByLabel(string label, Action onComplete)
@@ -90,15 +90,14 @@ public class LevelManager : MonoBehaviour
         });
     }
 
-    void Start()
+    public IEnumerator Init()
     {
-        InGameManager.Instance.OnGameReady += () =>
-        {
-            Debug.Log("Start to load level");
-            player = Instantiate(_prefabCharacter);
+        Debug.Log("Start to load level");
+        player = Instantiate(_prefabCharacter);
 
-            LoadLevel();
-        };
+        LoadLevel();
+
+        yield break;
     }
 
     void LoadLevel()

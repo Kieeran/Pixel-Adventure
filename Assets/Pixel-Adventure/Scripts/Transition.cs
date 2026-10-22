@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Transition : MonoBehaviour
@@ -18,14 +16,9 @@ public class Transition : MonoBehaviour
         currentSpeed = 0;
     }
 
-    private void Start()
+    public void Init()
     {
-        UIManager.Instance.OnPreButtonPressed += () =>
-        {
-            currentSpeed = speed;
-        };
-
-        UIManager.Instance.OnNextButtonPressed += () =>
+        UIManager.Instance.mainCanvas.OnChangeLevelButtonPressed += () =>
         {
             currentSpeed = speed;
         };

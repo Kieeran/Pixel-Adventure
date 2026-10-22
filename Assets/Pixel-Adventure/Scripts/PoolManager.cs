@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,10 +7,10 @@ using UnityEngine;
 public class PoolManager : MonoBehaviour
 {
     public static PoolManager Instance { get; private set; }
-    Dictionary<string, Queue<PlacedObject>> pools;
-    Dictionary<string, PlacedObject> prefabs;
+    Dictionary<string, Queue<PlacedObject>> pools = new();
+    Dictionary<string, PlacedObject> prefabs = new();
     Dictionary<string, Transform> containers;
-    public List<PlacedObject> activeObjects { get; private set; }
+    public List<PlacedObject> activeObjects { get; private set; } = new();
 
     readonly List<string> labels = new() { "Fruit", "Box", "Trap" };
 
@@ -23,24 +24,19 @@ public class PoolManager : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
+    public IEnumerator Init()
     {
-        Init();
-    }
-
-    void Init()
-    {
-        pools = new();
-        prefabs = new();
-        activeObjects = new();
+        bool done = false;
 
         LoadAllPrefabs(() =>
         {
             InitContainers();
             InitPools();
 
-            InGameManager.Instance.OnPoolsReady?.Invoke();
+            done = true;
         });
+
+        yield return new WaitUntil(() => done == true);
     }
 
     void InitContainers()
