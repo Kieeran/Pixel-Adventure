@@ -1,9 +1,10 @@
+#if UNITY_EDITOR
+
 using UnityEditor.AddressableAssets;
 using UnityEditor.AddressableAssets.Settings;
 using UnityEditor;
 using UnityEngine;
 
-#if UNITY_EDITOR
 public class LevelDesigner : MonoBehaviour
 {
     public Level level;

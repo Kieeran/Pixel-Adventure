@@ -1,10 +1,13 @@
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.AddressableAssets;
-using UnityEditor.AddressableAssets.Settings;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
+
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEditor.AddressableAssets;
+using UnityEditor.AddressableAssets.Settings;
+#endif
 
 public class AddressableHandler : MonoBehaviour
 {
