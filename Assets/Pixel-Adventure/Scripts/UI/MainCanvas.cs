@@ -8,8 +8,9 @@ public class MainCanvas : MonoBehaviour
 
     [SerializeField] BackgroundScroll backgroundScroll;
     [SerializeField] Transition transition;
-    [SerializeField] Button preButton;
-    [SerializeField] Button nextButton;
+    [SerializeField] Button previousLevelButton;
+    [SerializeField] Button reloadLevelButton;
+    [SerializeField] Button nextLevelButton;
 
     List<Sprite> backGroundSprites;
 
@@ -19,20 +20,20 @@ public class MainCanvas : MonoBehaviour
         int currentLevel = InGameManager.Instance.GetCurrentLevel();
         if (currentLevel <= 0)
         {
-            preButton.gameObject.SetActive(false);
-            nextButton.gameObject.SetActive(true);
+            previousLevelButton.image.enabled = false;
+            nextLevelButton.image.enabled = true;
         }
         if (currentLevel >= LevelManager.Instance.preFabLevels.Count - 1)
         {
-            preButton.gameObject.SetActive(true);
-            nextButton.gameObject.SetActive(false);
+            previousLevelButton.image.enabled = true;
+            nextLevelButton.image.enabled = false;
         }
 
         backGroundSprites = UIManager.Instance.backGroundSprites;
         int randomIndex = Random.Range(0, backGroundSprites.Count - 1);
         backgroundScroll.SetBackgroundSprite(backGroundSprites[randomIndex]);
 
-        preButton.onClick.AddListener(() =>
+        previousLevelButton.onClick.AddListener(() =>
         {
             int currentLevel = InGameManager.Instance.GetCurrentLevel() - 1;
             if (currentLevel < 0) return;
@@ -41,17 +42,17 @@ public class MainCanvas : MonoBehaviour
 
             if (currentLevel == 0)
             {
-                preButton.gameObject.SetActive(false);
+                previousLevelButton.image.enabled = false;
             }
             else
             {
-                nextButton.gameObject.SetActive(true);
+                nextLevelButton.image.enabled = true;
             }
 
             OnChangeLevelButtonPressed?.Invoke();
         });
 
-        nextButton.onClick.AddListener(() =>
+        nextLevelButton.onClick.AddListener(() =>
         {
             int currentLevel = InGameManager.Instance.GetCurrentLevel() + 1;
             if (currentLevel >= LevelManager.Instance.preFabLevels.Count) return;
@@ -60,13 +61,18 @@ public class MainCanvas : MonoBehaviour
 
             if (currentLevel == LevelManager.Instance.preFabLevels.Count - 1)
             {
-                nextButton.gameObject.SetActive(false);
+                nextLevelButton.image.enabled = false;
             }
             else
             {
-                preButton.gameObject.SetActive(true);
+                previousLevelButton.image.enabled = true;
             }
 
+            OnChangeLevelButtonPressed?.Invoke();
+        });
+
+        reloadLevelButton.onClick.AddListener(() =>
+        {
             OnChangeLevelButtonPressed?.Invoke();
         });
 
