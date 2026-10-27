@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    public InputAction moveAction;
-    public InputAction jumpAction;
-
     public Vector2 move = Vector2.zero;
     public bool isGrounded = false;
     public bool isJumpInAir = false;
@@ -23,28 +20,16 @@ public class PlayerInput : MonoBehaviour
         return PlayerController.Instance.playerInput.move.x != 0;
     }
 
-    public void Awake()
+    void Awake()
     {
-        jumpAction.started += ctx =>
+        InputManager.Instance.OnJump += () =>
         {
             PlayerController.Instance.OnJump?.Invoke();
         };
     }
 
-    public void OnEnable()
+    void Update()
     {
-        moveAction.Enable();
-        jumpAction.Enable();
-    }
-
-    public void OnDisable()
-    {
-        moveAction.Disable();
-        jumpAction.Disable();
-    }
-
-    public void Update()
-    {
-        move = moveAction.ReadValue<Vector2>();
+        move = InputManager.Instance.GetMoveValue();
     }
 }
