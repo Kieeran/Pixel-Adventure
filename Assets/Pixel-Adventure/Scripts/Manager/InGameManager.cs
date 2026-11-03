@@ -1,6 +1,25 @@
 using System.Collections;
 using UnityEngine;
 
+public enum PlatformType { Web, Desktop, Mobile }
+
+public static class PlatformUtil
+{
+    public static PlatformType Current
+    {
+        get
+        {
+#if UNITY_WEBGL
+            return PlatformType.Web;
+#elif UNITY_ANDROID
+            return PlatformType.Mobile;
+#else
+            return PlatformType.Desktop;   // Windows (và Editor)
+#endif
+        }
+    }
+}
+
 public class InGameManager : MonoBehaviour
 {
     public static InGameManager Instance { get; private set; }
@@ -8,6 +27,8 @@ public class InGameManager : MonoBehaviour
     [SerializeField] UIManager uIManager;
     [SerializeField] PoolManager poolManager;
     [SerializeField] LevelManager levelManager;
+    [SerializeField] InputManager inputManager;
+    [SerializeField] Camera mainCamera;
 
     [Space(10)]
     [SerializeField] FanGroupSequencer fanGroupSequencer;
@@ -33,6 +54,8 @@ public class InGameManager : MonoBehaviour
 
     IEnumerator Init()
     {
+        SetCameraProperties();
+
         while (PoolManager.Instance == null)
         {
             Instantiate(poolManager);
@@ -48,17 +71,41 @@ public class InGameManager : MonoBehaviour
             Instantiate(uIManager);
             yield return null;
         }
+        while (InputManager.Instance == null)
+        {
+            Instantiate(inputManager);
+            yield return null;
+        }
 
         yield return PoolManager.Instance.Init();
 
         yield return LevelManager.Instance.SetupLevels();
 
-        yield return LevelManager.Instance.Init();
-
         yield return UIManager.Instance.Init(mainCanvas);
+
+        yield return InputManager.Instance.Init();
+
+        yield return LevelManager.Instance.Init();
 
         fanGroupSequencer.Init();
 
         yield break;
+    }
+
+    void SetCameraProperties()
+    {
+        switch (PlatformUtil.Current)
+        {
+            case PlatformType.Web:     /* WebGL trên máy tính */
+            case PlatformType.Desktop: /* app Windows */
+                break;
+            case PlatformType.Mobile:  /* Android */
+                mainCamera.orthographicSize = 11.5f;
+                mainCamera.transform.eulerAngles = new Vector3(11.75f, 0, 0);
+
+                Application.targetFrameRate = 60;
+                Screen.sleepTimeout = SleepTimeout.NeverSleep;
+                break;
+        }
     }
 }

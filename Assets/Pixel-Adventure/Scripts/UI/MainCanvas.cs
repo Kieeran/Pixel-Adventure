@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,12 @@ public class MainCanvas : MonoBehaviour
     [SerializeField] Button previousLevelButton;
     [SerializeField] Button reloadLevelButton;
     [SerializeField] Button nextLevelButton;
+    [Space(10)]
+    [SerializeField] MobileHoldButton moveLeftButton;
+    [SerializeField] MobileHoldButton moveRightButton;
+    [SerializeField] Button jumpButton;
+
+    public event Action OnJumpButtonPressed;
 
     List<Sprite> backGroundSprites;
 
@@ -30,7 +37,7 @@ public class MainCanvas : MonoBehaviour
         }
 
         backGroundSprites = UIManager.Instance.backGroundSprites;
-        int randomIndex = Random.Range(0, backGroundSprites.Count - 1);
+        int randomIndex = UnityEngine.Random.Range(0, backGroundSprites.Count - 1);
         backgroundScroll.SetBackgroundSprite(backGroundSprites[randomIndex]);
 
         previousLevelButton.onClick.AddListener(() =>
@@ -76,6 +83,35 @@ public class MainCanvas : MonoBehaviour
             OnChangeLevelButtonPressed?.Invoke();
         });
 
+        switch (PlatformUtil.Current)
+        {
+            case PlatformType.Web:     /* WebGL trên máy tính */
+            case PlatformType.Desktop: /* app Windows */
+                moveLeftButton.gameObject.SetActive(false);
+                moveRightButton.gameObject.SetActive(false);
+                jumpButton.gameObject.SetActive(false);
+                break;
+            case PlatformType.Mobile:  /* Android */
+                moveLeftButton.gameObject.SetActive(true);
+                moveRightButton.gameObject.SetActive(true);
+                jumpButton.gameObject.SetActive(true);
+                break;
+        }
+
+        jumpButton.onClick.AddListener(() =>
+        {
+            OnJumpButtonPressed?.Invoke();
+        });
+
         transition.Init();
+    }
+
+    public Vector2 GetMoveButtonSignal()
+    {
+        float moveX = 0;
+        if (moveLeftButton.IsHeld == true && moveRightButton.IsHeld == false) moveX = -1;
+        else if (moveLeftButton.IsHeld == false && moveRightButton.IsHeld == true) moveX = 1;
+
+        return new Vector2(moveX, 0);
     }
 }

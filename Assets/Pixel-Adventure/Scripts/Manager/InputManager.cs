@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +15,8 @@ public class InputManager : MonoBehaviour
 
     public Vector2 GetMoveValue() { return move; }
 
+    bool isInit = false;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -22,7 +25,6 @@ public class InputManager : MonoBehaviour
             return;
         }
         Instance = this;
-        Init();
     }
 
     public void OnEnable()
@@ -37,16 +39,38 @@ public class InputManager : MonoBehaviour
         jumpAction.Disable();
     }
 
-    void Init()
+    public IEnumerator Init()
     {
-        jumpAction.started += ctx =>
+        if (PlatformUtil.Current == PlatformType.Mobile)
         {
-            OnJump?.Invoke();
-        };
+            UIManager.Instance.mainCanvas.OnJumpButtonPressed += () =>
+            {
+                OnJump?.Invoke();
+            };
+        }
+        else
+        {
+            jumpAction.started += ctx =>
+            {
+                OnJump?.Invoke();
+            };
+        }
+
+        isInit = true;
+        yield break;
     }
 
     void Update()
     {
-        move = moveAction.ReadValue<Vector2>();
+        if (!isInit) return;
+
+        if (PlatformUtil.Current == PlatformType.Mobile)
+        {
+            move = UIManager.Instance.mainCanvas.GetMoveButtonSignal();
+        }
+        else
+        {
+            move = moveAction.ReadValue<Vector2>();
+        }
     }
 }

@@ -1,0 +1,97 @@
+<linker>
+  <assembly fullname="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="Arrow" preserve="all" />
+    <type fullname="ArrowCollision" preserve="all" />
+    <type fullname="Block" preserve="all" />
+    <type fullname="BlockBreaks" preserve="all" />
+    <type fullname="BlockCollision" preserve="all" />
+    <type fullname="Box" preserve="all" />
+    <type fullname="BoxCollision" preserve="all" />
+    <type fullname="BoxRewardData" preserve="all" />
+    <type fullname="Breaks" preserve="all" />
+    <type fullname="Chains" preserve="all" />
+    <type fullname="FallingPlatform" preserve="all" />
+    <type fullname="FallingPlatformCollision" preserve="all" />
+    <type fullname="Fan" preserve="all" />
+    <type fullname="FanCollision" preserve="all" />
+    <type fullname="FanGroupData" preserve="all" />
+    <type fullname="Fires" preserve="all" />
+    <type fullname="FiresCollision" preserve="all" />
+    <type fullname="FiresData" preserve="all" />
+    <type fullname="FireUnit" preserve="all" />
+    <type fullname="Fruit" preserve="all" />
+    <type fullname="FruitCollision" preserve="all" />
+    <type fullname="IceCollision" preserve="all" />
+    <type fullname="Level" preserve="all" />
+    <type fullname="LevelData" preserve="all" />
+    <type fullname="MudCollision" preserve="all" />
+    <type fullname="Platform" preserve="all" />
+    <type fullname="PlatformCollision" preserve="all" />
+    <type fullname="PlatformData" preserve="all" />
+    <type fullname="RockHead" preserve="all" />
+    <type fullname="RockHeadCollision" preserve="all" />
+    <type fullname="RockHeadData" preserve="all" />
+    <type fullname="SandCollision" preserve="all" />
+    <type fullname="Saw" preserve="all" />
+    <type fullname="SawCollision" preserve="all" />
+    <type fullname="SawData" preserve="all" />
+    <type fullname="SingleBreak" preserve="all" />
+    <type fullname="SpikedBall" preserve="all" />
+    <type fullname="SpikedBallCollision" preserve="all" />
+    <type fullname="SpikedBallData" preserve="all" />
+    <type fullname="SpikeHead" preserve="all" />
+    <type fullname="SpikeHeadCollision" preserve="all" />
+    <type fullname="SpikeHeadData" preserve="all" />
+    <type fullname="Spikes" preserve="all" />
+    <type fullname="SpikesCollision" preserve="all" />
+    <type fullname="SpikesData" preserve="all" />
+    <type fullname="Trampoline" preserve="all" />
+    <type fullname="TrampolineCollision" preserve="all" />
+    <type fullname="PlacedObjectData" preserve="nothing" serialized="true" />
+    <type fullname="SawWaypointData" preserve="nothing" serialized="true" />
+  </assembly>
+  <assembly fullname="Unity.Addressables, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.AddressableAssets.Addressables" preserve="all" />
+  </assembly>
+  <assembly fullname="Unity.ResourceManager, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" preserve="all">
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.AssetBundleProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.BundledAssetProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.InstanceProvider" preserve="all" />
+    <type fullname="UnityEngine.ResourceManagement.ResourceProviders.SceneProvider" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.AnimationModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.AnimationClip" preserve="all" />
+    <type fullname="UnityEngine.Animator" preserve="all" />
+    <type fullname="UnityEngine.RuntimeAnimatorController" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.GameObject" preserve="all" />
+    <type fullname="UnityEngine.Material" preserve="all" />
+    <type fullname="UnityEngine.Object" preserve="all" />
+    <type fullname="UnityEngine.Shader" preserve="all" />
+    <type fullname="UnityEngine.Sprite" preserve="all" />
+    <type fullname="UnityEngine.SpriteRenderer" preserve="all" />
+    <type fullname="UnityEngine.Texture2D" preserve="all" />
+    <type fullname="UnityEngine.Transform" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.GridModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Grid" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.ParticleSystemModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.ParticleSystem" preserve="all" />
+    <type fullname="UnityEngine.ParticleSystemRenderer" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.Physics2DModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.BoxCollider2D" preserve="all" />
+    <type fullname="UnityEngine.CircleCollider2D" preserve="all" />
+    <type fullname="UnityEngine.CompositeCollider2D" preserve="all" />
+    <type fullname="UnityEngine.PlatformEffector2D" preserve="all" />
+    <type fullname="UnityEngine.Rigidbody2D" preserve="all" />
+  </assembly>
+  <assembly fullname="UnityEngine.TilemapModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+    <type fullname="UnityEngine.Tilemaps.Tile" preserve="all" />
+    <type fullname="UnityEngine.Tilemaps.Tilemap" preserve="all" />
+    <type fullname="UnityEngine.Tilemaps.TilemapCollider2D" preserve="all" />
+    <type fullname="UnityEngine.Tilemaps.TilemapRenderer" preserve="all" />
+  </assembly>
+</linker>
