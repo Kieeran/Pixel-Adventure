@@ -1,0 +1,48 @@
+using UnityEngine;
+
+public class Transition : MonoBehaviour
+{
+    [SerializeField] float speed;
+    [SerializeField] float endX;
+    RectTransform transition;
+    Vector2 originPos;
+    float currentSpeed;
+    bool isLoaded = false;  // dơ
+
+    void Awake()
+    {
+        transition = GetComponent<RectTransform>();
+        originPos = transition.anchoredPosition;
+        currentSpeed = 0;
+    }
+
+    public void Init()
+    {
+        UIManager.Instance.mainCanvas.OnChangeLevelButtonPressed += () =>
+        {
+            currentSpeed = speed;
+        };
+    }
+
+    void Update()       // dơ: chổ này mốt đổi thành clamp cho mượt
+    {
+        if (currentSpeed != 0)
+        {
+            Vector2 movement = Vector2.right * (speed * Time.deltaTime);
+            transition.anchoredPosition += movement;
+
+            if (transition.anchoredPosition.x >= 0 && !isLoaded)
+            {
+                LevelManager.Instance.SetIsReadyToLoad();
+                isLoaded = true;
+            }
+
+            if (transition.anchoredPosition.x >= endX)
+            {
+                transition.anchoredPosition = originPos;
+                currentSpeed = 0;
+                isLoaded = false;
+            }
+        }
+    }
+}
