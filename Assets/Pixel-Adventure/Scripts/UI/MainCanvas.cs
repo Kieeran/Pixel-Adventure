@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class MainCanvas : MonoBehaviour
 {
-    public event System.Action OnChangeLevelButtonPressed;
-
     [SerializeField] BackgroundScroll backgroundScroll;
     [SerializeField] Transition transition;
     [SerializeField] Button previousLevelButton;
@@ -16,6 +14,10 @@ public class MainCanvas : MonoBehaviour
     [SerializeField] MobileHoldButton moveLeftButton;
     [SerializeField] MobileHoldButton moveRightButton;
     [SerializeField] Button jumpButton;
+
+    [SerializeField] Transform deadPopup;
+    [SerializeField] Button retryButton;
+    [SerializeField] Transform keyHint;
 
     public event Action OnJumpButtonPressed;
 
@@ -56,7 +58,7 @@ public class MainCanvas : MonoBehaviour
                 nextLevelButton.image.enabled = true;
             }
 
-            OnChangeLevelButtonPressed?.Invoke();
+            EventChannel.Instance.OnChangeLevel?.Invoke();
         });
 
         nextLevelButton.onClick.AddListener(() =>
@@ -75,12 +77,17 @@ public class MainCanvas : MonoBehaviour
                 previousLevelButton.image.enabled = true;
             }
 
-            OnChangeLevelButtonPressed?.Invoke();
+            EventChannel.Instance.OnChangeLevel?.Invoke();
         });
 
         reloadLevelButton.onClick.AddListener(() =>
         {
-            OnChangeLevelButtonPressed?.Invoke();
+            EventChannel.Instance.OnChangeLevel?.Invoke();
+        });
+
+        retryButton.onClick.AddListener(() =>
+        {
+            EventChannel.Instance.OnChangeLevel?.Invoke();
         });
 
         switch (PlatformUtil.Current)
@@ -104,6 +111,22 @@ public class MainCanvas : MonoBehaviour
         });
 
         transition.Init();
+
+        EventChannel.Instance.OnPlayerDisabled += () =>
+        {
+            deadPopup.gameObject.SetActive(true);
+        };
+        EventChannel.Instance.OnChangeLevel += () =>
+        {
+            deadPopup.gameObject.SetActive(false);
+        };
+
+        deadPopup.gameObject.SetActive(false);
+
+        if (PlatformUtil.Current == PlatformType.Mobile)
+        {
+            keyHint.gameObject.SetActive(false);
+        }
     }
 
     public Vector2 GetMoveButtonSignal()

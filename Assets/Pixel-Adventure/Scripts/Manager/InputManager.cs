@@ -7,6 +7,7 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
 
+    public InputAction resetLevelAction;
     public InputAction moveAction;
     public InputAction jumpAction;
     public event Action OnJump;
@@ -31,12 +32,16 @@ public class InputManager : MonoBehaviour
     {
         moveAction.Enable();
         jumpAction.Enable();
+
+        resetLevelAction.Enable();
     }
 
     public void OnDisable()
     {
         moveAction.Disable();
         jumpAction.Disable();
+
+        resetLevelAction.Disable();
     }
 
     public IEnumerator Init()
@@ -53,6 +58,11 @@ public class InputManager : MonoBehaviour
             jumpAction.started += ctx =>
             {
                 OnJump?.Invoke();
+            };
+
+            resetLevelAction.started += ctx =>
+            {
+                EventChannel.Instance.OnChangeLevel?.Invoke();
             };
         }
 

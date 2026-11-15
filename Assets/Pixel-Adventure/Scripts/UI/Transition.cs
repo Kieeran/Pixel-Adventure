@@ -18,7 +18,7 @@ public class Transition : MonoBehaviour
 
     public void Init()
     {
-        UIManager.Instance.mainCanvas.OnChangeLevelButtonPressed += () =>
+        EventChannel.Instance.OnChangeLevel += () =>
         {
             currentSpeed = speed;
         };

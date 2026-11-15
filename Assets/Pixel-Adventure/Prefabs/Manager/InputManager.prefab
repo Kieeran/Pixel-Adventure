@@ -44,6 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9c1f3a465e3534e9fcdfadb673f889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InputManager
+  resetLevelAction:
+    m_Name: Reset Level
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ff9ef811-4bf0-4449-a2ba-e90ce60e9cbd
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 06e74831-8169-4730-8296-135ce00ed79a
+      m_Path: <Keyboard>/r
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Reset Level
+      m_Flags: 0
+    m_Flags: 0
   moveAction:
     m_Name: Move
     m_Type: 0

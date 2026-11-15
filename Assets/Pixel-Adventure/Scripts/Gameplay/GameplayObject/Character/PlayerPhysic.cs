@@ -54,6 +54,8 @@ public class PlayerPhysic : MonoBehaviour
         playerRB.angularVelocity = 0;
         playerRB.position = Vector2.zero;
         playerRB.rotation = 0;
+
+        EventChannel.Instance.OnPlayerDisabled?.Invoke();
     }
 
     public void Reset()

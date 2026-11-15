@@ -54,6 +54,8 @@ public class InGameManager : MonoBehaviour
 
     IEnumerator Init()
     {
+        currentLevel = gameData.currentLevel;
+
         SetCameraProperties();
 
         while (PoolManager.Instance == null)
