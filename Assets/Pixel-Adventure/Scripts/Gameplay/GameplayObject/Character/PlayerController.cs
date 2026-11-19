@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public static PlayerController Instance { get; private set; }
-
     public PlayerInput playerInput;
     public PlayerPhysic playerPhysic;
     public PlayerCollision playerCollision;
@@ -28,12 +26,15 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
+        playerInput = playerInput != null ? playerInput : GetComponent<PlayerInput>();
+        playerPhysic = playerPhysic != null ? playerPhysic : GetComponent<PlayerPhysic>();
+        playerCollision = playerCollision != null ? playerCollision : GetComponent<PlayerCollision>();
+        playerAnimation = playerAnimation != null ? playerAnimation : GetComponent<PlayerAnimation>();
+
+        playerInput.playerController = this;
+        playerPhysic.playerController = this;
+        playerCollision.playerController = this;
+        playerAnimation.playerController = this;
 
         InitFSM();
     }
@@ -55,13 +56,13 @@ public class PlayerController : MonoBehaviour
 
     void InitFSM()
     {
-        StateMachine = new StateMachine();
-        IdleState = new IdleState();
-        WalkState = new WalkState();
-        InAirState = new InAirState();
-        SlideOnWallState = new SlideOnWallState();
+        StateMachine = new StateMachine(this);
+        IdleState = new IdleState(StateMachine);
+        WalkState = new WalkState(StateMachine);
+        InAirState = new InAirState(StateMachine);
+        SlideOnWallState = new SlideOnWallState(StateMachine);
 
-        DeadState = new DeadState();
+        DeadState = new DeadState(StateMachine);
         StateMachine.AddAnyTransition(DeadState, () => playerInput.isDead);
 
         StateMachine.Initialize(InAirState);

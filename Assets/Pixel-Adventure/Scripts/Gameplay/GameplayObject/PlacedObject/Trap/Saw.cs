@@ -82,9 +82,9 @@ public class Saw : PlacedObject
         rb.linearVelocity = moveDirection * moveSpeed;
     }
 
-    void OnCharacterCollided(Vector2 hitPos)
+    void OnCharacterCollided(PlayerController playerController, Vector2 hitPos)
     {
-        PlayerController.Instance.playerPhysic.ReceiveDamage(hitPos, knockBackForce);
+        playerController.playerPhysic.ReceiveDamage(hitPos, knockBackForce);
     }
 
     void HandleMovement()

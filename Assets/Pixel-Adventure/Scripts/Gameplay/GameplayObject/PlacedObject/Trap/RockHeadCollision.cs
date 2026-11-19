@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RockHeadCollision : MonoBehaviour
 {
-    public event Action<bool> OnCharacterRidingStateChanged;
-    public event Action<Vector2> OnCharacterCrushed;
+    public event Action<PlayerController, bool> OnCharacterRidingStateChanged;
+    public event Action<PlayerController, Vector2> OnCharacterCrushed;
     [SerializeField] BoxCollider2D col;
     [SerializeField] RockHead rockHead;
 
@@ -32,11 +32,14 @@ public class RockHeadCollision : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Character"))
         {
-            ContactPoint2D contact = collision.GetContact(0);
-            if (contact.normal.y < -0.7f)
+            if (collision.gameObject.TryGetComponent<PlayerController>(out var controller))
             {
-                characterOnRockHead = true;
-                OnCharacterRidingStateChanged?.Invoke(true);
+                ContactPoint2D contact = collision.GetContact(0);
+                if (contact.normal.y < -0.7f)
+                {
+                    characterOnRockHead = true;
+                    OnCharacterRidingStateChanged?.Invoke(controller, true);
+                }
             }
         }
     }
@@ -50,27 +53,30 @@ public class RockHeadCollision : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Character"))
         {
-            // A - RockHead; B - Player; C - Terrain
-            Collider2D b = collision.collider;
-
-            // Hướng B bị A đẩy (normal chỉ hướng A bị đẩy ra, nên đảo dấu)
-            Vector2 pushOnB = -collision.GetContact(0).normal;
-
-            bContacts.Clear();
-            b.GetContacts(bContacts);
-
-            foreach (var cp in bContacts)
+            if (collision.gameObject.TryGetComponent<PlayerController>(out var controller))
             {
-                Collider2D c = cp.collider == b ? cp.otherCollider : cp.collider;
-                if (c.attachedRigidbody == collision.otherRigidbody) continue;   // bỏ A
-                if (c.attachedRigidbody != null && c.attachedRigidbody.bodyType != RigidbodyType2D.Static) continue;    // chỉ quan tâm vật tĩnh
+                // A - RockHead; B - Player; C - Terrain
+                Collider2D b = collision.collider;
 
-                Vector2 pushOnBFromC = cp.otherCollider == b ? cp.normal : -cp.normal;
+                // Hướng B bị A đẩy (normal chỉ hướng A bị đẩy ra, nên đảo dấu)
+                Vector2 pushOnB = -collision.GetContact(0).normal;
 
-                if (Vector2.Dot(pushOnB, pushOnBFromC) < -0.7f)
+                bContacts.Clear();
+                b.GetContacts(bContacts);
+
+                foreach (var cp in bContacts)
                 {
-                    // B bị kẹp giữa A và C
-                    OnCharacterCrushed?.Invoke(pushOnB);
+                    Collider2D c = cp.collider == b ? cp.otherCollider : cp.collider;
+                    if (c.attachedRigidbody == collision.otherRigidbody) continue;   // bỏ A
+                    if (c.attachedRigidbody != null && c.attachedRigidbody.bodyType != RigidbodyType2D.Static) continue;    // chỉ quan tâm vật tĩnh
+
+                    Vector2 pushOnBFromC = cp.otherCollider == b ? cp.normal : -cp.normal;
+
+                    if (Vector2.Dot(pushOnB, pushOnBFromC) < -0.7f)
+                    {
+                        // B bị kẹp giữa A và C
+                        OnCharacterCrushed?.Invoke(controller, pushOnB);
+                    }
                 }
             }
         }
@@ -83,7 +89,7 @@ public class RockHeadCollision : MonoBehaviour
             if (characterOnRockHead)
             {
                 characterOnRockHead = false;
-                OnCharacterRidingStateChanged?.Invoke(false);
+                OnCharacterRidingStateChanged?.Invoke(null, false);
             }
         }
     }

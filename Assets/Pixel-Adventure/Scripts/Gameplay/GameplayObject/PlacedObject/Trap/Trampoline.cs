@@ -25,9 +25,9 @@ public class Trampoline : PlacedObject
         trampolineCollision.OnCharacterCollided -= OnCharacterCollided;
     }
 
-    void OnCharacterCollided()
+    void OnCharacterCollided(PlayerController playerController)
     {
         animator.SetTrigger(IsCollidedHash);
-        PlayerController.Instance.playerPhysic.ReboundVertically(Vector2.up, pushCharacterForce);
+        playerController.playerPhysic.ReboundVertically(Vector2.up, pushCharacterForce);
     }
 }

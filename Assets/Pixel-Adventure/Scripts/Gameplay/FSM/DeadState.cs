@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class DeadState : State
 {
-    public DeadState()
+    public DeadState(StateMachine stateMachine) : base(stateMachine)
     {
         Name = StateName.Dead.ToString();
     }
 
     public override void OnFixedUpdate()
     {
-        PlayerController.Instance.playerPhysic.LimitDeadSpin();
+        StateMachine.PlayerController.playerPhysic.LimitDeadSpin();
     }
 }

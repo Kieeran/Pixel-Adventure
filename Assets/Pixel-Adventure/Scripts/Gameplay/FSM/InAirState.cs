@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InAirState : State
 {
-    public InAirState()
+    public InAirState(StateMachine stateMachine) : base(stateMachine)
     {
         Name = StateName.InAir.ToString();
     }
@@ -10,43 +10,43 @@ public class InAirState : State
     public override void HandleInput()
     {
         // InAir -> Idle
-        if (PlayerController.Instance.playerInput.isGrounded == true && !PlayerController.Instance.playerInput.IsMovingHorizontal())
+        if (StateMachine.PlayerController.playerInput.isGrounded == true && !StateMachine.PlayerController.playerInput.IsMovingHorizontal())
         {
-            PlayerController.Instance.StateMachine.ChangeState(PlayerController.Instance.IdleState);
+            StateMachine.PlayerController.StateMachine.ChangeState(StateMachine.PlayerController.IdleState);
         }
 
         // InAir -> Walk
-        if (PlayerController.Instance.playerInput.isGrounded == true && PlayerController.Instance.playerInput.IsMovingHorizontal())
+        if (StateMachine.PlayerController.playerInput.isGrounded == true && StateMachine.PlayerController.playerInput.IsMovingHorizontal())
         {
-            PlayerController.Instance.StateMachine.ChangeState(PlayerController.Instance.WalkState);
+            StateMachine.PlayerController.StateMachine.ChangeState(StateMachine.PlayerController.WalkState);
         }
 
         // InAir -> SlideOnWall
-        if (PlayerController.Instance.playerInput.isOnWall)
+        if (StateMachine.PlayerController.playerInput.isOnWall)
         {
-            PlayerController.Instance.StateMachine.ChangeState(PlayerController.Instance.SlideOnWallState);
+            StateMachine.PlayerController.StateMachine.ChangeState(StateMachine.PlayerController.SlideOnWallState);
         }
     }
 
     public override void OnEnter()
     {
-        PlayerController.Instance.OnJump += OnJumpInAir;
+        StateMachine.PlayerController.OnJump += OnJumpInAir;
     }
 
     public override void OnExit()
     {
-        PlayerController.Instance.OnJump -= OnJumpInAir;
+        StateMachine.PlayerController.OnJump -= OnJumpInAir;
     }
 
     void OnJumpInAir()
     {
-        if (PlayerController.Instance.playerInput.isJumpInAir == false && PlayerController.Instance.playerInput.isGrounded == false)
+        if (StateMachine.PlayerController.playerInput.isJumpInAir == false && StateMachine.PlayerController.playerInput.isGrounded == false)
         {
-            if (PlayerController.Instance.playerInput.isExternallyForced) return;
+            if (StateMachine.PlayerController.playerInput.isExternallyForced) return;
 
-            PlayerController.Instance.playerPhysic.JumpInAir();
-            PlayerController.Instance.playerInput.isJumpInAir = true;
-            PlayerController.Instance.OnDoubleJump?.Invoke();
+            StateMachine.PlayerController.playerPhysic.JumpInAir();
+            StateMachine.PlayerController.playerInput.isJumpInAir = true;
+            StateMachine.PlayerController.OnDoubleJump?.Invoke();
         }
     }
 }

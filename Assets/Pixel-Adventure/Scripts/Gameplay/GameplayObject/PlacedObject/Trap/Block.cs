@@ -20,9 +20,9 @@ public class Block : PlacedObject
         if (TryGetComponent<BlockCollision>(out var collision)) blockCollision = collision;
     }
 
-    void OnCharacterCollided(Vector2 direction)
+    void OnCharacterCollided(PlayerController playerController, Vector2 direction)
     {
-        PlayerController.Instance.playerPhysic.ReboundVertically(
+        playerController.playerPhysic.ReboundVertically(
             direction,
             direction == Vector2.up ? knockCharacterUpForce : knockCharacterDownForce
         );

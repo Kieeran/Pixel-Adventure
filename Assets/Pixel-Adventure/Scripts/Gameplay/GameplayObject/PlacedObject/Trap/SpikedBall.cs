@@ -126,9 +126,9 @@ public class SpikedBall : PlacedObject
         rb.angularVelocity = swingDirection * swingCurrentSpeed;
     }
 
-    void OnCharacterCollided(Vector2 hitPos)
+    void OnCharacterCollided(PlayerController playerController, Vector2 hitPos)
     {
-        PlayerController.Instance.playerPhysic.ReceiveDamage(hitPos, knockBackForce);
+        playerController.playerPhysic.ReceiveDamage(hitPos, knockBackForce);
     }
 
     void InitializeRotation()

@@ -25,11 +25,11 @@ public class Arrow : PlacedObject
         arrowCollision.OnCharacterCollided -= OnCharacterCollided;
     }
 
-    void OnCharacterCollided()
+    void OnCharacterCollided(PlayerController playerController)
     {
         physic.gameObject.SetActive(false);
         animator.SetTrigger(IsCollidedHash);
-        PlayerController.Instance.playerPhysic.ReboundVertically(Vector2.up, pushCharacterForce);
+        playerController.playerPhysic.ReboundVertically(Vector2.up, pushCharacterForce);
         StartCoroutine(HelperFunctions.WaitCurrentAnimationEnd(animator, () =>
         {
             PoolManager.Instance.Return(this);

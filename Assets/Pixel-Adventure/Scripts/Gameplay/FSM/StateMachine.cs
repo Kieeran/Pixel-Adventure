@@ -9,30 +9,36 @@ public enum StateName
 public abstract class State
 {
     public string Name { get; protected set; }
+    public StateMachine StateMachine { get; private set; }
+
+    public State(StateMachine stateMachine)
+    {
+        StateMachine = stateMachine;
+    }
 
     public virtual void OnEnter() { }
     public virtual void OnUpdate() { }
     public virtual void OnFixedUpdate()
     {
-        PlayerController.Instance.playerPhysic.MoveHorizontal(PlayerController.Instance.playerInput.move.x);
-        PlayerController.Instance.playerPhysic.HandleExternalForce(PlayerController.Instance.playerInput.move);
-        PlayerController.Instance.playerPhysic.HandleResistance();
-        PlayerController.Instance.playerPhysic.HandleSlide();
+        StateMachine.PlayerController.playerPhysic.MoveHorizontal(StateMachine.PlayerController.playerInput.move.x);
+        StateMachine.PlayerController.playerPhysic.HandleExternalForce(StateMachine.PlayerController.playerInput.move);
+        StateMachine.PlayerController.playerPhysic.HandleResistance();
+        StateMachine.PlayerController.playerPhysic.HandleSlide();
     }
     public virtual void OnExit() { }
     public virtual void HandleInput() { }
-}
-
-public class AniState : State
-{
-    public int IdStateHash;
-    public StateMachine Machine;
 }
 
 public class StateMachine
 {
     private readonly List<(State to, Func<bool> condition)> anyTransitions = new();
     public State CurrentState { get; private set; }
+    public PlayerController PlayerController { get; private set; }
+
+    public StateMachine(PlayerController playerController)
+    {
+        PlayerController = playerController;
+    }
 
     public void Initialize(State startingState)
     {

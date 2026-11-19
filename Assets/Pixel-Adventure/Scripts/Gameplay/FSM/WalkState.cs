@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WalkState : State
 {
-    public WalkState()
+    public WalkState(StateMachine stateMachine) : base(stateMachine)
     {
         Name = StateName.Walk.ToString();
     }
@@ -10,30 +10,30 @@ public class WalkState : State
     public override void HandleInput()
     {
         // Walk -> Idle
-        if (!PlayerController.Instance.playerInput.IsMovingHorizontal())
+        if (!StateMachine.PlayerController.playerInput.IsMovingHorizontal())
         {
-            PlayerController.Instance.StateMachine.ChangeState(PlayerController.Instance.IdleState);
+            StateMachine.PlayerController.StateMachine.ChangeState(StateMachine.PlayerController.IdleState);
         }
 
         // Walk -> InAir
-        if (PlayerController.Instance.playerInput.isGrounded == false)
+        if (StateMachine.PlayerController.playerInput.isGrounded == false)
         {
-            PlayerController.Instance.StateMachine.ChangeState(PlayerController.Instance.InAirState);
+            StateMachine.PlayerController.StateMachine.ChangeState(StateMachine.PlayerController.InAirState);
         }
     }
 
     public override void OnEnter()
     {
-        PlayerController.Instance.OnJump += OnJump;
+        StateMachine.PlayerController.OnJump += OnJump;
     }
 
     public override void OnExit()
     {
-        PlayerController.Instance.OnJump -= OnJump;
+        StateMachine.PlayerController.OnJump -= OnJump;
     }
 
     void OnJump()
     {
-        PlayerController.Instance.playerPhysic.Jump();
+        StateMachine.PlayerController.playerPhysic.Jump();
     }
 }

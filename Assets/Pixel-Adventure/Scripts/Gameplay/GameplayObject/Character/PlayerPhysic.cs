@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerPhysic : MonoBehaviour
 {
+    public PlayerController playerController;
     public Rigidbody2D playerRB;
 
     [SerializeField] Collider2D col;
@@ -37,7 +38,7 @@ public class PlayerPhysic : MonoBehaviour
         defaultGravityScale = playerRB.gravityScale;
         defaultConstraints = playerRB.constraints;
 
-        PlayerController.Instance.OnDead += OnDead;
+        playerController.OnDead += OnDead;
     }
 
     void OnDead()
@@ -48,7 +49,7 @@ public class PlayerPhysic : MonoBehaviour
 
     void DisablePlayer()
     {
-        PlayerController.Instance.playerAnimation.ToggleRenderer(false);
+        playerController.playerAnimation.ToggleRenderer(false);
         playerRB.gravityScale = 0;
         playerRB.linearVelocity = Vector2.zero;
         playerRB.angularVelocity = 0;
@@ -60,8 +61,8 @@ public class PlayerPhysic : MonoBehaviour
 
     public void Reset()
     {
-        PlayerController.Instance.playerAnimation.ToggleRenderer(true);
-        PlayerController.Instance.playerInput.isDead = false;
+        playerController.playerAnimation.ToggleRenderer(true);
+        playerController.playerInput.isDead = false;
         playerRB.gravityScale = defaultGravityScale;
         playerRB.constraints = defaultConstraints;
         col.enabled = true;
@@ -69,7 +70,7 @@ public class PlayerPhysic : MonoBehaviour
 
     public void MoveHorizontal(float inputX)
     {
-        if (PlayerController.Instance.playerInput.isDead) return;
+        if (playerController.playerInput.isDead) return;
 
         playerRB.linearVelocity = new Vector2(
             inputX * moveSpeed,
@@ -79,8 +80,8 @@ public class PlayerPhysic : MonoBehaviour
 
     public void HandleExternalForce(Vector2 move)
     {
-        if (!PlayerController.Instance.playerInput.isExternallyForced) return;
-        if (PlayerController.Instance.playerInput.isDead) return;
+        if (!playerController.playerInput.isExternallyForced) return;
+        if (playerController.playerInput.isDead) return;
 
         Vector2 v = playerRB.linearVelocity;
 
@@ -99,8 +100,8 @@ public class PlayerPhysic : MonoBehaviour
 
     public void HandleResistance()
     {
-        if (!PlayerController.Instance.playerInput.isResisted) return;
-        if (PlayerController.Instance.playerInput.isDead) return;
+        if (!playerController.playerInput.isResisted) return;
+        if (playerController.playerInput.isDead) return;
 
         Vector2 v = playerRB.linearVelocity;
 
@@ -112,8 +113,8 @@ public class PlayerPhysic : MonoBehaviour
 
     public void HandleSlide()
     {
-        if (PlayerController.Instance.playerInput.isDead) return;
-        if (!PlayerController.Instance.playerInput.isGrounded)
+        if (playerController.playerInput.isDead) return;
+        if (!playerController.playerInput.isGrounded)
         {
             slideVelocityX = 0;
             return;
@@ -137,25 +138,25 @@ public class PlayerPhysic : MonoBehaviour
             }
         }
 
-        if (!PlayerController.Instance.playerInput.isSliding) return;
+        if (!playerController.playerInput.isSliding) return;
 
         playerRB.linearVelocity = new Vector2(slideVelocityX, playerRB.linearVelocityY);
     }
 
     public void Sliding()
     {
-        PlayerController.Instance.playerInput.isSliding = true;
+        playerController.playerInput.isSliding = true;
     }
 
     public void StopSliding()
     {
-        PlayerController.Instance.playerInput.isSliding = false;
+        playerController.playerInput.isSliding = false;
         slideVelocityX = 0;
     }
 
     public void SetExternalForce(Vector2 direction, float power)
     {
-        PlayerController.Instance.playerInput.isExternallyForced = true;
+        playerController.playerInput.isExternallyForced = true;
         externalForce = direction.normalized * power;
         if (Mathf.Abs(direction.y) > Mathf.Abs(direction.x))
             playerRB.gravityScale = 0;
@@ -164,7 +165,7 @@ public class PlayerPhysic : MonoBehaviour
     public void ClearExternalForce()
     {
         playerRB.gravityScale = defaultGravityScale;
-        PlayerController.Instance.playerInput.isExternallyForced = false;
+        playerController.playerInput.isExternallyForced = false;
     }
 
     public void ClearResistance()
@@ -175,7 +176,7 @@ public class PlayerPhysic : MonoBehaviour
         }
 
         resistance = Vector2.zero;
-        PlayerController.Instance.playerInput.isResisted = false;
+        playerController.playerInput.isResisted = false;
     }
 
     public void ResistMovement(Vector2 resistance)
@@ -187,7 +188,7 @@ public class PlayerPhysic : MonoBehaviour
             playerRB.gravityScale = 0;
         }
 
-        PlayerController.Instance.playerInput.isResisted = true;
+        playerController.playerInput.isResisted = true;
     }
 
     public bool CanMoveHorizontal()
@@ -210,20 +211,20 @@ public class PlayerPhysic : MonoBehaviour
     {
         playerRB.linearVelocity = new Vector2(playerRB.linearVelocity.x, 0);
         playerRB.AddForce(
-            (PlayerController.Instance.playerInput.isContactLeftWall ? Vector2.right : Vector2.left) * wallBouncePower + Vector2.up * jumpPower,
+            (playerController.playerInput.isContactLeftWall ? Vector2.right : Vector2.left) * wallBouncePower + Vector2.up * jumpPower,
             ForceMode2D.Impulse
         );
 
         // Chổ này phải set thủ công ở đây vì nếu không qua fram FixedUpdate sau sẽ đi qua hàm HandleResistance() reset lại lực vertical
-        PlayerController.Instance.playerInput.isResisted = false;
+        playerController.playerInput.isResisted = false;
     }
 
     public void SlideOnWall()
     {
-        if (PlayerController.Instance.playerInput.isDead) return;
+        if (playerController.playerInput.isDead) return;
 
         // Resistance theo chiều dọc chỉ áp dụng khi player trượt trên tường
-        if (PlayerController.Instance.playerInput.isResisted && resistance.y == 1) return;
+        if (playerController.playerInput.isResisted && resistance.y == 1) return;
 
         playerRB.linearVelocity = new Vector2(
             playerRB.linearVelocity.x,
@@ -242,8 +243,8 @@ public class PlayerPhysic : MonoBehaviour
         // Lấy tâm trước khi OnDead tắt collider
         Vector2 center = col.bounds.center;
 
-        PlayerController.Instance.playerInput.isDead = true;
-        PlayerController.Instance.OnDead?.Invoke();
+        playerController.playerInput.isDead = true;
+        playerController.OnDead?.Invoke();
 
         if (direction != default)
         {

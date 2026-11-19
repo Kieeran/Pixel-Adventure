@@ -68,9 +68,19 @@ public class FireUnit : MonoBehaviour
         {
             if (!canDealDamage) return;
 
+            PlayerController controller = null;
+            if (other.attachedRigidbody.gameObject != null)
+            {
+                // GetComponent on the loop, maybe bad perfomance
+                // But only when PlayerController has not properly setup - edge case
+                // Keep an eye on this
+                controller = other.attachedRigidbody.GetComponent<PlayerController>();
+            }
+            if (controller == null) return;
+
             // Điểm trên collider gai gần tâm player nhất, để hướng knockback không phụ thuộc vào độ dài cụm gai
             Vector2 hitPos = col.ClosestPoint(other.bounds.center);
-            PlayerController.Instance.playerPhysic.ReceiveDamage(hitPos, knockBackForce);
+            controller.playerPhysic.ReceiveDamage(hitPos, knockBackForce);
             canDealDamage = false;
         }
     }

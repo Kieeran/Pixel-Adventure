@@ -30,6 +30,7 @@ public class RockHead : PlacedObject
     float currentSpeed;
     private bool isCarryingPlayer;
     private bool isClearExternalForce;
+    private PlayerController cachedPlayerController = null;
 
     void OnValidate()
     {
@@ -60,7 +61,7 @@ public class RockHead : PlacedObject
         rb.gravityScale = 0f;
         rb.linearVelocity = Vector2.zero;
         isCarryingPlayer = false;
-        isClearExternalForce = false;
+        isClearExternalForce = true;
     }
 
     public override void OnDespawn()
@@ -74,9 +75,10 @@ public class RockHead : PlacedObject
         waitTimer = 0f;
         currentSpeed = 0f;
         isClearExternalForce = false;
-        if (isCarryingPlayer)
+        if (isCarryingPlayer && cachedPlayerController != null)
         {
-            PlayerController.Instance.playerPhysic.ClearExternalForce();
+            cachedPlayerController.playerPhysic.ClearExternalForce();
+            cachedPlayerController = null;
             isCarryingPlayer = false;
         }
     }
@@ -91,14 +93,15 @@ public class RockHead : PlacedObject
 
         if (isCarryingPlayer)
         {
-            PlayerController.Instance.playerPhysic.SetExternalForce(GetCurrentMovementDirection(), currentSpeed);
+            cachedPlayerController.playerPhysic.SetExternalForce(GetCurrentMovementDirection(), currentSpeed);
         }
         else
         {
-            if (!isClearExternalForce)
+            if (!isClearExternalForce && cachedPlayerController != null)
             {
-                PlayerController.Instance.playerPhysic.ClearExternalForce();
+                cachedPlayerController.playerPhysic.ClearExternalForce();
                 isClearExternalForce = true;
+                cachedPlayerController = null;
             }
         }
 
@@ -123,15 +126,17 @@ public class RockHead : PlacedObject
         );
     }
 
-    void HandleCharacterRidingStateChanged(bool isRiding)
+    void HandleCharacterRidingStateChanged(PlayerController playerController, bool isRiding)
     {
         isCarryingPlayer = isRiding;
         isClearExternalForce = isRiding;
+        cachedPlayerController = playerController != null ? playerController : cachedPlayerController;
     }
 
-    void HandleCharacterCrushed(Vector2 hitDirection)
+    void HandleCharacterCrushed(PlayerController playerController, Vector2 hitDirection)
     {
-        PlayerController.Instance.playerPhysic.ReceiveDamage(Vector2.zero, knockBackForce, hitDirection);
+        cachedPlayerController = playerController;
+        cachedPlayerController.playerPhysic.ReceiveDamage(Vector2.zero, knockBackForce, hitDirection);
     }
 
     public void OnTerrainCollision(TerrainCollisionSide hitSide, Vector2 overlappedRetrieveOffset)

@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-
-    }
+    public PlayerController playerController;
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -34,8 +31,8 @@ public class PlayerCollision : MonoBehaviour
             {
                 ContactPoint2D contact = collision.GetContact(i);
 
-                if (contact.normal.x > 0) PlayerController.Instance.playerInput.isContactLeftWall = true;
-                else if (contact.normal.x < 0) PlayerController.Instance.playerInput.isContactLeftWall = false;
+                if (contact.normal.x > 0) playerController.playerInput.isContactLeftWall = true;
+                else if (contact.normal.x < 0) playerController.playerInput.isContactLeftWall = false;
 
                 // Nếu contact.normal.y > 0.7f => va chạm từ trên xuống => character chắn chắn đang đứng ở mặt đất
                 // Set isGrounded = true
@@ -43,9 +40,9 @@ public class PlayerCollision : MonoBehaviour
                 // Set isJumpInAir = false (reset)
                 if (contact.normal.y > 0.7f)
                 {
-                    PlayerController.Instance.playerInput.isGrounded = true;
-                    PlayerController.Instance.playerInput.isOnWall = false;
-                    PlayerController.Instance.playerInput.isJumpInAir = false;
+                    playerController.playerInput.isGrounded = true;
+                    playerController.playerInput.isOnWall = false;
+                    playerController.playerInput.isJumpInAir = false;
                     break;
                 }
 
@@ -60,15 +57,15 @@ public class PlayerCollision : MonoBehaviour
             // => Character đang va chạm với tường (xét va chạm horizontal)
             if (count >= collision.contactCount - 1)
             {
-                PlayerController.Instance.playerInput.isGrounded = false;
+                playerController.playerInput.isGrounded = false;
                 // Chỉ khi character rớt xuống mà lúc đó đang va chạm với tường thì mới được tính là đang trên tường
-                if (PlayerController.Instance.playerPhysic.playerRB.linearVelocityY <= 0f)
+                if (playerController.playerPhysic.playerRB.linearVelocityY <= 0f)
                 {
                     // Sau tất cả các điều kiện thì chắn chắn player đang trượt trên tường rồi
                     // Nhưng nếu lúc này bị dính external push thì vẫn phải bỏ qua 
-                    if (!PlayerController.Instance.playerInput.isExternallyForced)
+                    if (!playerController.playerInput.isExternallyForced)
                     {
-                        PlayerController.Instance.playerInput.isOnWall = true;
+                        playerController.playerInput.isOnWall = true;
                     }
                 }
             }
@@ -84,8 +81,8 @@ public class PlayerCollision : MonoBehaviour
             collision.gameObject.CompareTag("RockHead")
         )
         {
-            PlayerController.Instance.playerInput.isGrounded = false;
-            PlayerController.Instance.playerInput.isOnWall = false;
+            playerController.playerInput.isGrounded = false;
+            playerController.playerInput.isOnWall = false;
         }
     }
 }

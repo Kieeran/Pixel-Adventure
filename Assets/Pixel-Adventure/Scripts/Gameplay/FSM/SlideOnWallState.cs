@@ -3,7 +3,7 @@ using UnityEngine;
 public class SlideOnWallState : State
 {
     bool isBounceWall = false;
-    public SlideOnWallState()
+    public SlideOnWallState(StateMachine stateMachine) : base(stateMachine)
     {
         Name = StateName.SlideOnWall.ToString();
     }
@@ -11,55 +11,55 @@ public class SlideOnWallState : State
     public override void HandleInput()
     {
         // SlideOnWall -> Idle
-        if (PlayerController.Instance.playerInput.isGrounded && !PlayerController.Instance.playerInput.IsMovingHorizontal())
+        if (StateMachine.PlayerController.playerInput.isGrounded && !StateMachine.PlayerController.playerInput.IsMovingHorizontal())
         {
-            PlayerController.Instance.StateMachine.ChangeState(PlayerController.Instance.IdleState);
+            StateMachine.PlayerController.StateMachine.ChangeState(StateMachine.PlayerController.IdleState);
         }
 
         // SlideOnWall -> InAir
-        if (!PlayerController.Instance.playerInput.isOnWall)
+        if (!StateMachine.PlayerController.playerInput.isOnWall)
         {
-            PlayerController.Instance.StateMachine.ChangeState(PlayerController.Instance.InAirState);
+            StateMachine.PlayerController.StateMachine.ChangeState(StateMachine.PlayerController.InAirState);
         }
     }
 
     public override void OnFixedUpdate()
     {
-        if (PlayerController.Instance.playerInput.isExternallyForced)
+        if (StateMachine.PlayerController.playerInput.isExternallyForced)
         {
-            PlayerController.Instance.playerInput.isOnWall = false;
+            StateMachine.PlayerController.playerInput.isOnWall = false;
             return;
         }
 
         if (isBounceWall)
         {
-            if (!PlayerController.Instance.playerInput.IsMovingHorizontal())
+            if (!StateMachine.PlayerController.playerInput.IsMovingHorizontal())
             {
-                PlayerController.Instance.playerInput.isOnWall = false;
+                StateMachine.PlayerController.playerInput.isOnWall = false;
             }
             return;
         }
 
-        PlayerController.Instance.playerPhysic.SlideOnWall();
-        PlayerController.Instance.playerPhysic.MoveHorizontal(PlayerController.Instance.playerInput.move.x);
+        StateMachine.PlayerController.playerPhysic.SlideOnWall();
+        StateMachine.PlayerController.playerPhysic.MoveHorizontal(StateMachine.PlayerController.playerInput.move.x);
     }
 
     public override void OnEnter()
     {
         isBounceWall = false;
-        PlayerController.Instance.OnJump += OnJump;
+        StateMachine.PlayerController.OnJump += OnJump;
     }
 
     public override void OnExit()
     {
-        PlayerController.Instance.OnJump -= OnJump;
+        StateMachine.PlayerController.OnJump -= OnJump;
     }
 
     void OnJump()
     {
         if (isBounceWall) return;
 
-        PlayerController.Instance.playerPhysic.JumpFromWall();
+        StateMachine.PlayerController.playerPhysic.JumpFromWall();
         isBounceWall = true;
     }
 }

@@ -28,6 +28,8 @@ public class Platform : PlacedObject
     private bool hasPendingCollisionEvent;
     private bool pendingCollisionValue;
 
+    private PlayerController cachedPlayerController = null;
+
     void OnValidate()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -69,9 +71,10 @@ public class Platform : PlacedObject
 
         chains.transform.SetParent(transform);
 
-        if (isCarryingPlayer && isMoving)
+        if (isCarryingPlayer && isMoving && cachedPlayerController != null)
         {
-            PlayerController.Instance.playerPhysic.ClearExternalForce();
+            cachedPlayerController.playerPhysic.ClearExternalForce();
+            cachedPlayerController = null;
         }
 
         brownSkin.gameObject.SetActive(true);
@@ -101,16 +104,16 @@ public class Platform : PlacedObject
 
         rb.linearVelocity = moveDirection * moveSpeed;
 
-        if (isCarryingPlayer)
+        if (isCarryingPlayer && cachedPlayerController != null)
         {
             if (isMoving)
             {
-                PlayerController.Instance.playerPhysic.SetExternalForce((moveDirection * Vector2.right).normalized, moveSpeed);
+                cachedPlayerController.playerPhysic.SetExternalForce((moveDirection * Vector2.right).normalized, moveSpeed);
             }
             else
             {
                 // Chổ này clear external push do platform dừng lại
-                PlayerController.Instance.playerPhysic.ClearExternalForce();
+                cachedPlayerController.playerPhysic.ClearExternalForce();
             }
         }
     }
@@ -230,7 +233,7 @@ public class Platform : PlacedObject
         }
     }
 
-    void OnCharacterCollided(bool isCharacterCollided)
+    void OnCharacterCollided(PlayerController playerController, bool isCharacterCollided)
     {
         // Nếu player nhảy lên trên platform -> isCharacterCollided = true -> platform carry player
         // Nếu player rời khỏi platform -> isCharacterCollided = false -> platform không carry player
@@ -238,8 +241,10 @@ public class Platform : PlacedObject
         if (!isCarryingPlayer)
         {
             // Chổ này clear external push do player rời khỏi platform -> không nhận lực đẩy khi platform carry nữa
-            PlayerController.Instance.playerPhysic.ClearExternalForce();
+            cachedPlayerController.playerPhysic.ClearExternalForce();
+            cachedPlayerController = null;
         }
+        cachedPlayerController = playerController;
 
         if (!controlledByPlayer) return;
 

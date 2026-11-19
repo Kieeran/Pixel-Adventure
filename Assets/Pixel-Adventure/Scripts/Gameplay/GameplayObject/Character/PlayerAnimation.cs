@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerAnimation : MonoBehaviour
 {
+    public PlayerController playerController;
     public Animator animator;
     public SpriteRenderer spriteRenderer;
     bool isFacingRight = true;
@@ -21,7 +22,7 @@ public class PlayerAnimation : MonoBehaviour
 
     void Start()
     {
-        PlayerController.Instance.OnDoubleJump += () =>
+        playerController.OnDoubleJump += () =>
         {
             animator.SetTrigger(isDoubleJumpHash);
         };
@@ -33,17 +34,17 @@ public class PlayerAnimation : MonoBehaviour
 
         animator.SetFloat(
             xVelocityHash,
-            PlayerController.Instance.playerPhysic.CanMoveHorizontal() ? Mathf.Abs(PlayerController.Instance.playerInput.move.x) : 0
+            playerController.playerPhysic.CanMoveHorizontal() ? Mathf.Abs(playerController.playerInput.move.x) : 0
         );
-        animator.SetFloat(yVelocityHash, PlayerController.Instance.playerPhysic.playerRB.linearVelocityY);
-        animator.SetBool(isGroundedHash, PlayerController.Instance.playerInput.isGrounded);
-        animator.SetBool(isOnWallHash, PlayerController.Instance.playerInput.isOnWall);
-        animator.SetBool(isDead, PlayerController.Instance.playerInput.isDead);
+        animator.SetFloat(yVelocityHash, playerController.playerPhysic.playerRB.linearVelocityY);
+        animator.SetBool(isGroundedHash, playerController.playerInput.isGrounded);
+        animator.SetBool(isOnWallHash, playerController.playerInput.isOnWall);
+        animator.SetBool(isDead, playerController.playerInput.isDead);
     }
 
     void FlipSprite()
     {
-        Vector2 move = PlayerController.Instance.playerInput.move;
+        Vector2 move = playerController.playerInput.move;
         if (isFacingRight && move.x < 0f || !isFacingRight && move.x > 0f)
         {
             isFacingRight = !isFacingRight;

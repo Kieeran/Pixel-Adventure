@@ -3,13 +3,22 @@ using UnityEngine;
 
 public class ArrowCollision : MonoBehaviour
 {
-    public event Action OnCharacterCollided;
+    public event Action<PlayerController> OnCharacterCollided;
 
-    void OnTriggerEnter2D(Collider2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Character"))
+        if (other.gameObject.CompareTag("Character"))
         {
-            OnCharacterCollided?.Invoke();
+            PlayerController controller = null;
+
+            if (other.attachedRigidbody.gameObject != null)
+            {
+                controller = other.attachedRigidbody.GetComponent<PlayerController>();
+            }
+
+            if (controller == null) return;
+
+            OnCharacterCollided?.Invoke(controller);
         }
     }
 }
