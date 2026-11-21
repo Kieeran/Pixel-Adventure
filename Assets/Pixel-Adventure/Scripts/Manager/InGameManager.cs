@@ -39,6 +39,10 @@ public class InGameManager : MonoBehaviour
     private int currentLevel;
     public int GetCurrentLevel() { return currentLevel; }
     public void SetCurrentLevel(int i) { currentLevel = i; }
+    public void StoreCurrentLevel(int i)
+    {
+        gameData.currentLevel = i;
+    }
 
     private void Awake()
     {
@@ -79,15 +83,17 @@ public class InGameManager : MonoBehaviour
             yield return null;
         }
 
+        yield return UIManager.Instance.Init(mainCanvas);
+
+        yield return UIManager.Instance.mainCanvas.homePage.Init();
+
         yield return PoolManager.Instance.Init();
 
         yield return LevelManager.Instance.SetupLevels();
 
-        yield return UIManager.Instance.Init(mainCanvas);
+        yield return UIManager.Instance.mainCanvas.gameplayPage.Init();
 
         yield return InputManager.Instance.Init();
-
-        yield return LevelManager.Instance.Init();
 
         fanGroupSequencer.Init();
 

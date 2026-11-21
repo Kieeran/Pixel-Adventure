@@ -19,4 +19,6 @@ public class EventChannel : MonoBehaviour
     public Action<Box> OnBoxHit;
     public Action OnPlayerDisabled;
     public Action OnChangeLevel;
+    public Action OnStartGameplay;
+    public Action OnBackHome;
 }

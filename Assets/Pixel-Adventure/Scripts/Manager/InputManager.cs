@@ -48,7 +48,7 @@ public class InputManager : MonoBehaviour
     {
         if (PlatformUtil.Current == PlatformType.Mobile)
         {
-            UIManager.Instance.mainCanvas.OnJumpButtonPressed += () =>
+            UIManager.Instance.mainCanvas.gameplayPage.OnJumpButtonPressed += () =>
             {
                 OnJump?.Invoke();
             };
@@ -76,7 +76,7 @@ public class InputManager : MonoBehaviour
 
         if (PlatformUtil.Current == PlatformType.Mobile)
         {
-            move = UIManager.Instance.mainCanvas.GetMoveButtonSignal();
+            move = UIManager.Instance.mainCanvas.gameplayPage.GetMoveButtonSignal();
         }
         else
         {

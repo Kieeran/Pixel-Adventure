@@ -34,6 +34,8 @@ public class LevelManager : MonoBehaviour
             return;
         }
         Instance = this;
+
+        Init();
     }
 
     public IEnumerator SetupLevels()
@@ -90,14 +92,26 @@ public class LevelManager : MonoBehaviour
         });
     }
 
-    public IEnumerator Init()
+    void Init()
+    {
+        EventChannel.Instance.OnStartGameplay += StartGameplay;
+        EventChannel.Instance.OnBackHome += ExitGameplay;
+    }
+
+    void StartGameplay()
     {
         Debug.Log("Start to load level");
         player = Instantiate(_prefabCharacter);
 
         LoadLevel();
+    }
 
-        yield break;
+    void ExitGameplay()
+    {
+        Destroy(player.gameObject);
+        currentLevel.Unload();
+        Destroy(currentLevel.gameObject);
+        InGameManager.Instance.StoreCurrentLevel(currentLevelID);
     }
 
     void LoadLevel()
